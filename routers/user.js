@@ -21,6 +21,8 @@ router.post('/', async (req, res, next) => {
         ...req.body
     }
 
+    console.log(newUser);
+
     const user = new User(newUser);
     
     try {
