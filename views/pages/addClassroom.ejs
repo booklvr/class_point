@@ -1,0 +1,20 @@
+<%- include ('../partials/head'); %>
+
+<header>
+    <%- include ('../partials/navbar'); %>
+    <h1>Add A Classroom</h1>
+
+    
+    <main>
+        <form action="/classroom/addClassroom" method="POST" enctype="multipart/form-data" id="addClassroom" class="" autocomplete="off">
+            <!-- <label for="name">Class Name</label>
+            <input type="text" id="name" placeholder="Class Name" required/> -->
+            <label class="" for="upload">CSV File</label>
+            <input class="" id="file" name="csvfile" type="file" placeholder="upload csv file"/>
+                
+            <button class="" type="submit">Upload</button>
+        </form>
+    </main>
+
+    
+</header>

@@ -9,6 +9,10 @@ const classroomSchema = new mongoose.Schema({
         required: true,
         ref: 'User' // connect to user model
     },
+    // name: {
+    //     type: String,
+    //     required: true,
+    // },
     students: {
         type: Array,
         "default": []

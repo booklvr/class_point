@@ -61,7 +61,7 @@ router.get('/login', async(req, res) => {
 
 router.post('/login', passport.authenticate("local", 
     {
-        failureRedirect: "/login",
+        failureRedirect: "/users/login",
         // failureFlash: true,
         // successFlash: "Try answering some questions."
     }), function(req, res){
@@ -69,10 +69,12 @@ router.post('/login', passport.authenticate("local",
 })
 
 //LOGOUT USER
-router.get('/', async(req, res) => {
+router.get('/logout', async(req, res) => {
     console.log('');
 
-    res.send('test');
+    req.logout();
+    // req.flash('success', 'See you later!');
+    res.redirect('/'); 
 })
 
 //UPDATE USER FORM
