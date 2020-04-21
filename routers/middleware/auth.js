@@ -9,7 +9,7 @@ middlewareObj.isLoggedIn = (req, res, next) => {
     }
     console.log('you need to be logged in to do that')
     // req.flash("error", "You need to be logged in to do that");
-    res.send("please login first");
+    res.render('pages/login');
 }
 
 module.exports = middlewareObj;

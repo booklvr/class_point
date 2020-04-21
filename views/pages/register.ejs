@@ -1,0 +1,27 @@
+<%- include ('../partials/head'); %>
+
+<header>
+    <%- include ('../partials/navbar'); %>
+
+</header>
+
+<main>
+    Register
+    <form action="/users/" method="POST" id="registerForm" class="" autocomplete="off">
+        <ol class="">
+            <li>
+                <label class="" for="name">Name</label>
+                <input class="" id="name" name="name" type="text" placeholder="Name" required/>
+            </li>
+            <li>
+                <label class="" for="email">Email</label>
+                <input class="" id="email" name="email" type="email" placeholder="email@mail.com" required/>
+            </li>
+            <li>
+                <label class="" for="password" data-info="Enter a password longer than 7 characters">Password</label>
+                <input class="" id="password" name="password" type="password" placeholder="password" required/>
+            </li>
+        </ol>
+        <button class="" type="submit">Register</button>
+    </form>
+</main>

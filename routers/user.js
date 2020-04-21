@@ -1,4 +1,5 @@
 const   express =       require('express'),
+        passport =      require('passport'),
         User  =       require('../db/models/user'),
         Classroom =      require('../db/models/classroom'),
         { isLoggedIn } = require('./middleware/auth');
@@ -9,14 +10,22 @@ const router = new express.Router();
 router.get('/me', isLoggedIn, async(req, res) => {
     console.log('get logged in User classroom');
 
-    res.send('test');
+    // const classrooms = Classrooms.find({User: req.user._id})
+    // res.send('classrooms');
+
+    res.render('pages/classrooms')
 })
 
+// REGISTER USER FORM
+router.get('/', (req, res) => {
+    console.log('get register form');
+    res.render("pages/register");
+});
+
 // REGISTER NEW User
-router.post('/', async (req, res, next) => {
+router.post('/', async (req, res) => {
     console.log('registering new user');
 
-    
     const newUser = {
         ...req.body
     }
@@ -33,7 +42,7 @@ router.post('/', async (req, res, next) => {
             } 
             passport.authenticate("local")(req, res, function(){
                 // req.flash("success", "successfully signed up! nice to meet you " + req.body.username);
-                res.send(user);
+                res.redirect('../classroom')
             });
         });
     } catch (err) {
@@ -41,23 +50,22 @@ router.post('/', async (req, res, next) => {
         res.status(500).send({error: 'server error'});
         
     }
-    
-
-    // res.send('test');
 })
 
 //LOGIN USER FORM
 router.get('/login', async(req, res) => {
     console.log('get login form');
 
-    res.send('test');
+    res.render("pages/login");
 })
 
-//LOGIN USER
-router.post('/login', isLoggedIn, async(req, res) => {
-    console.log('logging in user');
-
-    res.send('test');
+router.post('/login', passport.authenticate("local", 
+    {
+        failureRedirect: "/login",
+        // failureFlash: true,
+        // successFlash: "Try answering some questions."
+    }), function(req, res){
+        res.redirect('/users/me')
 })
 
 //LOGOUT USER
