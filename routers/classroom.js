@@ -16,7 +16,7 @@ router.get('/', isLoggedIn, (req, res) => {
 })
 
 // GET ADD CLASSROOM FORM 
-router.get('/addClassroom', isLoggedIn, (req, res) => {
+router.get('/addClassroom', (req, res) => {
     console.log('get addClassroom form');
 
 
@@ -25,16 +25,23 @@ router.get('/addClassroom', isLoggedIn, (req, res) => {
 })
 
 // ADD CLASSROOM
-router.post('/addClassroom', isLoggedIn, upload, async (req, res) => {
+router.post('/addClassroom', upload, async (req, res) => {
     console.log('get add classroom form');
 
     console.log(req.file.originalname);
     const csv = req.file.buffer.toString()
+    // console.log("csv", csv)
+    
 
     const lines = csv.split('\n')
     
+
+    // headers = lines[0].split(',');
+    // console.log("headers", headers)
+
     
-    console.log(lines);
+    
+    
     
     res.render('pages/addClassroom');
 }, (error, req, res, next) => {
