@@ -1,20 +1,33 @@
 <%- include ('../partials/head'); %>
 
-<header>
-    <%- include ('../partials/navbar'); %>
-    <h1>Add A Classroom</h1>
+    <header>
+        <%- include ('../partials/navbar'); %>
+        <h1>Add A Classroom</h1>
+        
+    </header>
 
     
     <main>
         <form action="/classroom/addClassroom" method="POST" enctype="multipart/form-data" id="addClassroom" class="" autocomplete="off">
             <!-- <label for="name">Class Name</label>
-            <input type="text" id="name" placeholder="Class Name" required/> -->
-            <label class="" for="upload">CSV File</label>
+            <input type="text" id="name" name="className" placeholder="Class Name" required/> -->
+            <h2>Download a CSV file</h2>
+            <label class="" for="file">CSV File</label>
             <input class="" id="file" name="csvfile" type="file" placeholder="upload csv file"/>
-                
+            <h2>Or Add Students manually</h2>
             <button class="" type="submit">Upload</button>
         </form>
     </main>
 
-    
-</header>
+<script src="../public/js/uploadCSV.js"></script>
+<!-- <script>
+    const file = document.getElementById('file');
+
+    console.log('made it to helper function');
+
+    file.addEventListener('change', (e) => {
+        e.target.closest('form').submit();
+    })
+</script> -->
+</body>
+</html>

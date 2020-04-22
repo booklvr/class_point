@@ -9,15 +9,18 @@ const classroomSchema = new mongoose.Schema({
         required: true,
         ref: 'User' // connect to user model
     },
-    // name: {
+    // className: {
     //     type: String,
     //     required: true,
     // },
-    students: {
-        type: Array,
-        "default": []
-    }
-})
+    // students: {
+    //     type: Array,
+    //     "default": []
+    // }
+}, {
+    timestamps: true
+});
+
 
 const Classroom = mongoose.model('Classroom', classroomSchema);
 

@@ -3,6 +3,7 @@ const   express =       require('express'),
         User  =             require('../db/models/user'),
         upload =            require('./middleware/csv.multer'),
         Classroom =         require('../db/models/classroom'),
+        Student =           require('../db/models/student'),
         { isLoggedIn } =    require('./middleware/auth');
 
 const router = new express.Router();
@@ -27,9 +28,34 @@ router.get('/addClassroom', (req, res) => {
 router.post('/addClassroom', upload, async (req, res) => {
     console.log('get add classroom form');
 
-    console.log(req.file.originalname);
+    console.log('name:', req.body.className);
+
+    // if (!req.body.className){ 
+    //     return res.status(400).send({error: 'could not add question'});
+    // }
+
+    try {
+        const classroom = new Classroom({
+            // user: req.user._id,
+            // className: req.body.name
+        })
+
+        await classroom.save();
+        console.log(classroom);
+    } catch (err) {
+        console.log(err),
+        res.status(500).send(err);
+    }
+
+    // // console.log('classroom._id:', classroom._id);
+
+    
+
+    console.log('from', req.file.originalname);
     const csv = req.file.buffer.toString()
     // console.log("csv", csv)
+
+    
     
 
     let lines = csv.split('\n')
@@ -43,9 +69,9 @@ router.post('/addClassroom', upload, async (req, res) => {
     const students = [];
 
     for (i = 1; i < lines.length - 1; i++) {
-       const student = {}
+        const student = {}
         keys.forEach((key, index) => {
-            student[key] = lines[index];
+            student[key] = lines[i][index];
         })
         students.push(student);
 
@@ -64,7 +90,7 @@ router.post('/addClassroom', upload, async (req, res) => {
     
     
     
-    res.render('pages/addClassroom');
+    // res.render('pages/addClassroom');
 }, (error, req, res, next) => {
     
     res.status(400).send({error: error.message});
