@@ -1,6 +1,5 @@
 const   express =       require('express'),
         multer =            require('multer'),
-        csv =               require('csvtojson'),
         User  =             require('../db/models/user'),
         upload =            require('./middleware/csv.multer'),
         Classroom =         require('../db/models/classroom'),
@@ -33,7 +32,29 @@ router.post('/addClassroom', upload, async (req, res) => {
     // console.log("csv", csv)
     
 
-    const lines = csv.split('\n')
+    let lines = csv.split('\n')
+                    .map(line => line.trim().split(','));
+    // lines = lines.map(line => line.trim());
+    console.log("lines", lines)
+
+    const keys = lines[0];
+    console.log("keys", keys);
+
+    const students = [];
+
+    for (i = 1; i < lines.length - 1; i++) {
+       const student = {}
+        keys.forEach((key, index) => {
+            student[key] = lines[index];
+        })
+        students.push(student);
+
+    }
+    console.log(students);
+    
+
+
+    
     
 
     // headers = lines[0].split(',');
