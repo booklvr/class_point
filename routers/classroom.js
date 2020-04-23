@@ -1,4 +1,5 @@
-const   express =       require('express'),
+const   express =           require('express'),
+        url =               require('url'),
         multer =            require('multer'),
         upload =            require('./middleware/csv.multer'),
         User  =             require('../db/models/user'),
@@ -48,7 +49,7 @@ router.get('/add', isLoggedIn, (req, res) => {
 })
 
 // ADD CLASSROOM
-router.post('/add', isLoggedIn, upload, async (req, res) => {
+router.post('/add/csv', isLoggedIn, upload, async (req, res) => {
     
     console.log('get add classroom form');
     console.log('name:', req.body.className);
@@ -75,20 +76,20 @@ router.post('/add', isLoggedIn, upload, async (req, res) => {
 
     
 
-    console.log('classroom._id:', classroom._id);
+    // console.log('classroom._id:', classroom._id);
 
     
 
     // console.log('from', req.file.originalname);
     const csv = req.file.buffer.toString()
-    console.log("csv", csv)
+    // console.log("csv", csv)
 
     
     
 
     let lines = csv.split('\n')
                     .map(line => line.trim().split(','));
-    console.log("lines", lines)
+    // console.log("lines", lines)
 
     const keys = lines[0];
     // console.log("keys", keys);
@@ -108,18 +109,28 @@ router.post('/add', isLoggedIn, upload, async (req, res) => {
         await newStudent.save();
     }
 
-    
-    try {
-        await classroom.populate({
-            path: 'students',
-        }).execPopulate();
+    console.log('classroom._id:', classroom._id);
+   
+    res.redirect(`./update/${classroom._id}`)
+    // res.redirect(url.format({
+    //     pathname:"/classroom/update",
+    //     query: {
+    //         "classroom": `${classroom._id}`,
+    //     }
+    // }));
 
-        console.log(classroom);
-        res.render('pages/editClassroom', { classroom });
-    } catch (err) {
-        console.log(err);
-        res.status(500).send(err);
-    }
+    
+    // try {
+    //     await classroom.populate({
+    //         path: 'students',
+    //     }).execPopulate();
+
+    //     console.log(classroom);
+    //     res.render('pages/editClassroom', { classroom });
+    // } catch (err) {
+    //     console.log(err);
+    //     res.status(500).send(err);
+    // }
     
     // res.render('pages/editClassroom', );
 }, (error, req, res, next) => {
@@ -127,9 +138,13 @@ router.post('/add', isLoggedIn, upload, async (req, res) => {
     res.status(400).send({error: error.message});
 })
 
-router.get('/edit', async (req, res) => {
+router.get('/update/:id', isLoggedIn, async (req, res) => {
+    console.log('update route');
+    console.log('req.query:', req.query);
+
+   
     try {
-        const classroom = await Classroom.findOne({className: 'nick'})
+        const classroom = await Classroom.findById(req.params.id);
 
         if (!classroom) {
             return res.status(404).send('classroom not found');
@@ -139,13 +154,29 @@ router.get('/edit', async (req, res) => {
             path: 'students'
         }).execPopulate();
 
-        console.log(classroom);
+        console.log(classroom.students);
+
+        res.render('pages/editClassroom', {students: classroom.students});
 
     } catch (err) {
         console.log('err');
         res.status(404).send(err);
     }
 })
+
+router.post('./update', isLoggedIn, async (req, res) => {
+    // Need to get the classroom? 
+    
+    try {
+        const newStudent = await new Student({
+            ...req.body,
+        })
+    } catch (err) {
+        console.log(err);
+        res.status(400).send(err);
+    }
+})
+
 
 
 

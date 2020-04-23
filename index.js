@@ -6,6 +6,7 @@ const   express =           require('express'),
         LocalStrategy =     require('passport-local'),
         userRouter =     require('./routers/user'),
         classroomRouter =   require('./routers/classroom'),
+        studentRouter =     require('./routers/student'),
         mainRouter =        require('./routers/main'),
         User =           require('./db/models/user');
 
@@ -47,6 +48,7 @@ passport.deserializeUser(User.deserializeUser());
 
 app.use('/users', userRouter);
 app.use('/classroom', classroomRouter);
+app.use('/student', studentRouter);
 app.use('/', mainRouter);
 
 app.listen(port, () => console.log(`Server is up on port ${port}`));

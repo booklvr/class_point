@@ -4,8 +4,18 @@
     <%- include ('../partials/navbar'); %>
     <h1>Classrooms</h1>
 
-    <!--classrooms go here-->
+    <% students.forEach(function(student) { %> 
+
+        <div class="student">
+            <p><%=student.name%></p>
+            <p><%=student.sex%></p>
+            <a href="#"><i class="far fa-edit"></i></a>
+            <a href="#"><i class="far fa-trash-alt"></i></a>
+        </div>
+        
+
+    <% }) %>
     
-    <a href="/classroom/add">Add Class</a>
+    
     
 </header>

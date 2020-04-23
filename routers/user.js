@@ -65,7 +65,7 @@ router.post('/login', passport.authenticate("local",
         // failureFlash: true,
         // successFlash: "Try answering some questions."
     }), function(req, res){
-        res.redirect('/users/me')
+        res.redirect('/classroom')
 })
 
 //LOGOUT USER

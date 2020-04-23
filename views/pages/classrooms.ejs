@@ -6,8 +6,12 @@
 
     <!--classrooms go here-->
     <% classrooms.forEach(function(classroom) { %> 
-
-        <a href="#"><%= classroom.className %></a>
+        <div>
+            <a href="#"><%= classroom.className %></a>
+            <a href="/classroom/update/<%= classroom._id %>"><i class="far fa-edit"></i></a>
+            <a href="#"><i class="far fa-trash-alt"></i></a>
+        </div>
+        
 
     <% }) %>
     

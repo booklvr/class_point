@@ -1,0 +1,9 @@
+body {
+  background-color: lightgrey; }
+
+.student {
+  display: inline-block;
+  color: pink; }
+
+body {
+  background-color: white; }
