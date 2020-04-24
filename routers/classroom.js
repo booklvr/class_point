@@ -17,14 +17,14 @@ router.get('/', isLoggedIn, async (req, res) => {
     try {
         let user = await User.findById(req.user._id);
 
-        console.log('user pre', user);
+        // console.log('user pre', user);
 
         user = await user.populate({
             path: 'classrooms',
         }).execPopulate();
 
         classrooms = user.classrooms;
-        console.log("classrooms", classrooms)
+        // console.log("classrooms", classrooms)
 
 
         // console.log('user post populate', user);
@@ -40,7 +40,7 @@ router.get('/', isLoggedIn, async (req, res) => {
 })
 
 // GET ADD CLASSROOM FORM 
-router.get('/add', isLoggedIn, (req, res) => {
+router.get('/add', (req, res) => {
     console.log('get addClassroom form');
 
 
@@ -51,9 +51,9 @@ router.get('/add', isLoggedIn, (req, res) => {
 // ADD CLASSROOM
 router.post('/add/csv', isLoggedIn, upload, async (req, res) => {
     
-    console.log('get add classroom form');
-    console.log('name:', req.body.className);
-    console.log('user._id: ', req.user._id);
+    // console.log('get add classroom form');
+    // console.log('name:', req.body.className);
+    // console.log('user._id: ', req.user._id);
 
     if (!req.body.className){ 
         return res.status(400).send({error: 'could not add question'});
@@ -109,30 +109,10 @@ router.post('/add/csv', isLoggedIn, upload, async (req, res) => {
         await newStudent.save();
     }
 
-    console.log('classroom._id:', classroom._id);
+    // console.log('classroom._id:', classroom._id);
    
-    res.redirect(`./update/${classroom._id}`)
-    // res.redirect(url.format({
-    //     pathname:"/classroom/update",
-    //     query: {
-    //         "classroom": `${classroom._id}`,
-    //     }
-    // }));
-
+    res.redirect(`../update/${classroom._id}`)
     
-    // try {
-    //     await classroom.populate({
-    //         path: 'students',
-    //     }).execPopulate();
-
-    //     console.log(classroom);
-    //     res.render('pages/editClassroom', { classroom });
-    // } catch (err) {
-    //     console.log(err);
-    //     res.status(500).send(err);
-    // }
-    
-    // res.render('pages/editClassroom', );
 }, (error, req, res, next) => {
     
     res.status(400).send({error: error.message});
@@ -140,7 +120,7 @@ router.post('/add/csv', isLoggedIn, upload, async (req, res) => {
 
 router.get('/update/:id', isLoggedIn, async (req, res) => {
     console.log('update route');
-    console.log('req.query:', req.query);
+    // console.log('req.query:', req.query);
 
    
     try {
@@ -154,9 +134,12 @@ router.get('/update/:id', isLoggedIn, async (req, res) => {
             path: 'students'
         }).execPopulate();
 
-        console.log(classroom.students);
+        // console.log(classroom.students);
 
-        res.render('pages/editClassroom', {students: classroom.students});
+        res.render('pages/editClassroom', {
+            students: classroom.students,
+            className: classroom.className
+        });
 
     } catch (err) {
         console.log('err');
@@ -164,7 +147,7 @@ router.get('/update/:id', isLoggedIn, async (req, res) => {
     }
 })
 
-router.post('./update', isLoggedIn, async (req, res) => {
+router.post('/update', isLoggedIn, async (req, res) => {
     // Need to get the classroom? 
     
     try {
@@ -174,6 +157,24 @@ router.post('./update', isLoggedIn, async (req, res) => {
     } catch (err) {
         console.log(err);
         res.status(400).send(err);
+    }
+})
+
+router.get('/delete/:id', isLoggedIn, async (req, res) => {
+    console.log('classroom id:', req.params.id)
+    try {
+        const deleteClass = await Classroom.findOne({_id: req.params.id});
+        await deleteClass.deleteOne();
+
+        if (deleteClass) {
+            // req.flash('success', 'Classroom deleted Successfully');
+            console.log('deleted classroom successfully');
+            res.redirect('../');
+        }
+        else{res.status(404).send('classroom not found')};
+    } catch (err) {
+        console.log(err);
+        res.status(500).send(err);
     }
 })
 

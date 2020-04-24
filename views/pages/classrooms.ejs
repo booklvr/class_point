@@ -7,9 +7,10 @@
     <!--classrooms go here-->
     <% classrooms.forEach(function(classroom) { %> 
         <div>
-            <a href="#"><%= classroom.className %></a>
+            <p><%= classroom.className %></p>
+            <a href="/classroom/gameform/<%= classroom._id %>">play</a>
             <a href="/classroom/update/<%= classroom._id %>"><i class="far fa-edit"></i></a>
-            <a href="#"><i class="far fa-trash-alt"></i></a>
+            <a href="/classroom/delete/<%= classroom._id %>"><i class="far fa-trash-alt"></i></a>
         </div>
         
 

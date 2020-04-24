@@ -28,6 +28,36 @@ classroomSchema.virtual('students', {
     foreignField: 'classroom' // name of thing on Classrooom model that creates relationship (user ._id);
 })
 
+classroomSchema.pre('deleteOne', {document: true, query: false}, async function(req, res, next) {
+    console.log('initiating cascade delete students from classroom');
+    const classroom = this;
+    console.log("find students in classroom:", classroom)
+
+    
+    // console.log("question", question)
+    // const questionID = await question.getFilter()["_id"];
+    // console.log("questionId", questionID)
+
+    try {
+        if (typeof classroom === 'undefined') {
+            console.log("Can't find classroom in classroom.pre('deleteOne') middleware.  Throw Error");
+            throw new Error("Can't find clsassroom in classroomSchema.pre('deleteOne') middleware");
+        }
+
+        const deletedStudents = await Student.deleteMany({classroom: classroom._id})
+
+        
+        console.log('deletedStudents', deletedStudents);
+        console.log('deleted Students successfully');
+
+        // throw new Error('from questionSchema.pre(delete One) throw error');
+    } catch (err) {
+        console.log(err);
+        res.status(500).send(err);
+    }
+
+    next();
+});
 
 const Classroom = mongoose.model('Classroom', classroomSchema);
 
