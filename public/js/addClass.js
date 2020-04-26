@@ -11,7 +11,7 @@ const quickDeleteStudent = document.getElementById('quickDeleteStudent');
 console.log('made it to CSV helper function');
 
 // CONSTANTS
-const students = [];
+let students = [];
 
 
 
@@ -27,21 +27,24 @@ file.addEventListener('change', (e) => {
     }
 })
 
+
+
 // ADD A STUDENT TO STUDENT ARRAY AND CREATE STUDENT DOM ELEMENT
 addStudent.addEventListener('click', (e) => {
     e.preventDefault();
     // create student object
     student = createStudentObject(radios, studentName);
-    
+
     students.push(student)
 
     var studentDiv = document.createElement("div");
     studentDiv.className += 'student';
+    studentDiv.setAttribute('id', student.id)
     studentDiv.innerHTML = `
         <p>${student.name}</p>
         <p>${student.gender}</p>
-        <i class="quickEditStudent" class="far fa-edit"></i>
-        <i class="quickDeleteStudent" class="far fa-trash-alt"></i>
+        <i class="quickEditStudent far fa-edit"></i>
+        <i class="quickDeleteStudent far fa-trash-alt"></i>
     `;
     allStudents.appendChild(studentDiv);
 
@@ -58,11 +61,31 @@ addStudent.addEventListener('click', (e) => {
 allStudents.addEventListener('click', (e) => {
     console.log('reached students array')
     if (hasClass(e.target, 'quickDeleteStudent')) {
-        console.log("let's delete this fucker");
-    } else if (hasClass(e.target, 'quickEditStudent')) {
+        console.log('removing', e.target.parentElement);
+        console.log('id', e.target.parentElement.id);
+        students = students.filter(student => {
+            console.log('student.id:', student.id);
+
+            student.id === e.target.parentElement.id ? console.log('they fucking match') : console.log("some fuckery is going down with this shit !")
+            
+            console.log('e.target.parentElement.id:', e.target.parentElement.id);
+            return student.id !== e.target.parentElement.id
+        });
+        e.target.parentElement.remove();
+    } 
+    
+    console.log(students);
+})
+
+allStudents.addEventListener('click', (e) => {
+    console.log('reached students array');
+    if (hasClass(e.target, 'quickEditStudent')) {
+        console.log('editing', e.target.parentElement);
         console.log("let's edit this fucker")
     }
 })
+
+
 
 
 
@@ -78,6 +101,10 @@ function createStudentObject(radios, studentName) {
     }
 
     student.name = studentName.value;
+
+    const id = ID();
+    console.log("id = ", id)
+    student.id = id;
     
     // get gender
     //loop through radio buttons and check for checked radio
@@ -100,4 +127,8 @@ function createStudentObject(radios, studentName) {
 
 function hasClass(elem, className) {
     return elem.className.split(' ').indexOf(className) > -1;
+}
+
+function ID () {
+    return '_' + Math.random().toString(36).substr(2, 9);
 }
