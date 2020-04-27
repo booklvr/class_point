@@ -41,7 +41,7 @@ classroomSchema.pre('deleteOne', {document: true, query: false}, async function(
     try {
         if (typeof classroom === 'undefined') {
             console.log("Can't find classroom in classroom.pre('deleteOne') middleware.  Throw Error");
-            throw new Error("Can't find clsassroom in classroomSchema.pre('deleteOne') middleware");
+            throw new Error("Can't find classroom in classroomSchema.pre('deleteOne') middleware");
         }
 
         const deletedStudents = await Student.deleteMany({classroom: classroom._id})
