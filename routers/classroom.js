@@ -49,7 +49,7 @@ router.get('/add', (req, res) => {
 })
 
 // ADD CLASSROOM
-router.post('/add/csv', isLoggedIn, upload, async (req, res) => {
+router.post('/add', isLoggedIn, upload, async (req, res) => {
     
     // console.log('get add classroom form');
     // console.log('name:', req.body.className);
@@ -74,26 +74,22 @@ router.post('/add/csv', isLoggedIn, upload, async (req, res) => {
         res.status(500).send(err);
     }
 
+    // IF NO FILE STREAM
+    if(!req.file) {
+        console.log('no file uploaded reverting to add manually');
+        return res.render('pages/addStudents', {classroom})
+    }
+
     
-
-    // console.log('classroom._id:', classroom._id);
-
-    
-
-    // console.log('from', req.file.originalname);
+    //convert CSV BUFFER TO STRING
     const csv = req.file.buffer.toString()
-    // console.log("csv", csv)
 
-    
-    
-
+    // split lines on carriage return, split each by comma
     let lines = csv.split('\n')
                     .map(line => line.trim().split(','));
-    // console.log("lines", lines)
 
+    // get the keys from line 1;
     const keys = lines[0];
-    // console.log("keys", keys);
-
     
     for (i = 1; i < lines.length - 1; i++) {
         const student = {}
@@ -104,14 +100,11 @@ router.post('/add/csv', isLoggedIn, upload, async (req, res) => {
         newStudent = new Student({
             ...student,
             classroom: classroom._id,
-            
         })
         await newStudent.save();
     }
 
-    // console.log('classroom._id:', classroom._id);
-   
-    res.redirect(`../update/${classroom._id}`)
+    res.redirect(`./update/${classroom._id}`)
     
 }, (error, req, res, next) => {
     
@@ -177,8 +170,5 @@ router.get('/delete/:id', isLoggedIn, async (req, res) => {
         res.status(500).send(err);
     }
 })
-
-
-
 
 module.exports = router;

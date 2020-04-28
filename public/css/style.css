@@ -1,8 +1,6 @@
-body {
-  background-color: lightgrey; }
-
-body {
-  background-color: white; }
-
-#students student p {
-  display: inline; }
+.studentListItem {
+  list-style-type: none; }
+  .studentListItem .icon-male {
+    color: skyblue; }
+  .studentListItem .icon-female {
+    color: pink; }

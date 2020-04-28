@@ -1,0 +1,54 @@
+<%- include ('../partials/head'); %>
+
+    <header>
+        <%- include ('../partials/navbar'); %>
+        <h1>Add Students to <%= classroom.name %></h1>
+
+        
+        
+    </header>
+
+    <main>
+        
+        <form class="" action="/student" method="POST" id="addClassroom" autofocus autocomplete="off">
+            
+        </form>
+
+        <form id="formManual" action="/classroom/add" method="POST"></form>
+            
+            <ul id="students">
+                <!-- <li class="student">
+                    <p>Name</p>
+                    <p>Sex</p>
+                    <a href="#"><i class="far fa-edit"></i></a>
+                    <a href="#"><i class="far fa-trash-alt"></i></a>
+                </li> -->
+                
+            </ul>
+            
+            <label for="addStudentName" class="">Name</label>
+            <input class="" type="text" name="studentName" id="addStudentName">
+            <label for="addRadio-male" class="">male</label>
+            <input class="" id="addRadio-male" type="radio" name="addSex" value="male">
+            <label for="addRadio-female" class="">female</label>
+            <input class=""id="addRadio-female" type="radio" name="addSex" value="female">
+            <button id="addStudent"><i class="fas fa-plus"></i></button>
+        </form>
+        <div>
+            <a href="#" id="addAllStudents">Complete</a>
+        </div>
+        
+    </main>
+
+<script src="../public/js/addClass.js"></script>
+<!-- <script>
+    const file = document.getElementById('file');
+
+    console.log('made it to helper function');
+
+    file.addEventListener('change', (e) => {
+        e.target.closest('form').submit();
+    })
+</script> -->
+</body>
+</html>

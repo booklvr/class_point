@@ -4,18 +4,29 @@
     <%- include ('../partials/navbar'); %>
     <h1>Classrooms</h1>
     <h2><%= className %></h2>
+    <ul>
+
+    
     <% students.forEach(function(student) { %> 
 
-        <div class="student">
-            <p><%=student.name%></p>
+        <li class="studentListItem">
+            <span class="list-name"><%=student.name%></span>
+            <% if (student.sex === 'male') { %> 
+                <i class="icon-male fas fa-child"></i>
+            <% } else { %>
+                <i class="icon-female fas fa-child"></i>
+            <% } %>
+            <i class="quickEditStudent far fa-edit"></i>
+            <i class="quickDeleteStudent far fa-trash-alt"></i>
+            <!-- <p><%=student.name%></p>
             <p><%=student.sex%></p>
             <a href="#"><i class="far fa-edit"></i></a>
-            <a href="#"><i class="far fa-trash-alt"></i></a>
-        </div>
+            <a href="#"><i class="far fa-trash-alt"></i></a> -->
+        </li>
         
 
     <% }) %>
-    
+    </ul>
     
     
 </header>

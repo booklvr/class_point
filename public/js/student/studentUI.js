@@ -1,20 +1,23 @@
-const file = document.getElementById('file');
-const className = document.getElementById('className');
-const formManual = document.getElementById('formManual');
-const addStudent = document.getElementById('addStudent');
-const addStudentName = document.getElementById('addStudentName');
-const addRadios = document.querySelectorAll('input[name="addSex"]');
-const editRadios = document.querySelectorAll('input[name="editSex"]');
-const allStudents = document.getElementById('students');
-const quickEditStudent = document.getElementById('quickEditStudent');
-const quickDeleteStudent = document.getElementById('quickDeleteStudent');
+var classUI = (function() {
+    var DOMStrings = {
+        file: '.file',
+        className: '.className'
+    };
 
-console.log('made it to CSV helper function');
+    return {
 
-// CONSTANTS
-let students = [];
+        getDOMSTrings: function() {
+            return DOMStrings;
+        }
+    };
+})();
+
+export{UIController};
 
 
+
+// const file = document.getElementById('file');
+// const className = document.getElementById('className');
 
 //ADD EVENT LISTENERS
 
@@ -79,23 +82,21 @@ allStudents.addEventListener('click', (e) => {
                 const editedStudent = createdEditedStudent(e.target.parentElement.parentElement.elements)
                 
                 students.forEach((student) => {
+                    console.log('editing the student in the array');
                     if(student.id === id) {
                         student.name = editedStudent.name;
+                        console.log('editedStudent.gender:', editedStudent.gender);
                         student.gender = editedStudent.gender;
+                        console.log(student);
                     }
                 })
                 console.log(students);
-                // const editedStudent = createStudentObject(editRadios, editStudentName);
+                
                 editForm.remove();
                 
                 createStudentsDOM();
             }
-           
         })
-
-        
-
-        
     }
 })
 
@@ -162,40 +163,39 @@ function clearFormValues(radios, studentName) {
 
 function addStudentsToDom(students) {
     students.forEach(student => {
-        let studentDiv = document.createElement("div");
-        studentDiv.className += 'student';
-        studentDiv.setAttribute('id', student.id)
-        studentDiv.innerHTML = `
-            <p>${student.name}</p>
-            <p>${student.gender}</p>
+        let studentListItem = document.createElement("li");
+        studentListItem.className += 'studentListItem';
+        studentListItem.setAttribute('id', student.id)
+        studentListItem.innerHTML = `
+            <span class="list-name">${student.name}</span>
+            <i class="${'fas fa-child icon-' + student.gender}"></i>
             <i class="quickEditStudent far fa-edit"></i>
             <i class="quickDeleteStudent far fa-trash-alt"></i>
         `;
-        allStudents.appendChild(studentDiv);
+        allStudents.appendChild(studentListItem);
     })
 }
 
-// function addStudentToDom(student) {
-    
-// }
 
 //CREATE EDIT FORM
 function createEditForm (student) {
     let editForm = document.createElement("form");
         editForm.setAttribute('id', 'formEdit');
-        editForm.innerHTML = `
-            <label for="editStudentName" class="">Name</label>
-            <input class="" type="text" name="studentName" id="editStudentName" value="${student.name}">
-            <label for="editRadio-male" class="">male</label>
-            <input class="" id="editRadio-male" type="radio" name="editSex" value="male">
-            <label for="editRadio-female" class="">female</label>
-            <input class="" id="editRadio-female" type="radio" name="editSex" value="female">
-            <button><i class="editStudent fas fa-edit"></i></button>
-        `
+        
+        // editForm.innerHTML = `
+        //     <label for="editStudentName" class="">Name</label>
+        //     <input class="" type="text" name="studentName" id="editStudentName" value="${student.name}">
+        //     <label for="editRadio-male" class="">male</label>
+        //     <input class="" id="editRadio-male" type="radio" name="editSex" value="male">
+        //     <label for="editRadio-female" class="">female</label>
+        //     <input class="" id="editRadio-female" type="radio" name="editSex" value="female">
+        //     <button><i class="editStudent fas fa-edit"></i></button>
+        // `
         return editForm;
 }
 
 function createdEditedStudent (target) {
+    console.log('creating the edited student');
     console.log(target);
     if (target[0].value === '' ?? (target[1].checked === false && target[2].checked == false)) {
         return alert('Please fill complete all fields');

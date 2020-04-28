@@ -3,49 +3,22 @@
     <header>
         <%- include ('../partials/navbar'); %>
         <h1>Add A Classroom</h1>
-        
     </header>
 
     
     <main>
-        <form action="/classroom/add/csv" method="POST" enctype="multipart/form-data" id="addClassroom" class="" autocomplete="off">
-            <h2>Download a CSV file</h2>
+        <form action="/classroom/add" method="POST" enctype="multipart/form-data" id="addClassroom" class="" autocomplete="off">
             <label for="name">Class Name</label>
-            <input type="text" id="className" name="className" placeholder="Class Name" required/><br/>
-            <label class="" for="file">CSV File</label>
-            <input class="" id="file" name="csvfile" type="file" placeholder="upload csv file"/>
-            <div><button class="" type="submit">Upload</button></div>
+            <input class="className" type="text" id="className" name="className" placeholder="Class Name" required/><br/>
+            <!-- <label class="" for="file">CSV File</label> -->
+            <input class="file" id="file" name="csvfile" type="file" placeholder="upload csv file"/>
+                <div class="or">or</div>
+            <button class="submit" type="submit">Add Students Manually</button>
         </form>
 
-        <form id="formManual" action="/classroom/add" method="POST"></form>
-            <h2>Or Add Students manually</h2>
-            <div id="students">
-                <!-- <div class="student">
-                    <p>Name</p>
-                    <p>Sex</p>
-                    <a href="#"><i class="far fa-edit"></i></a>
-                    <a href="#"><i class="far fa-trash-alt"></i></a>
-                </div> -->
-                
-            </div>
-            <label for="className2">Class Name</label>
-            <input type="text" id="className2" name="className" placeholder="Class Name" required/>
-            <br/>
-            <label for="addStudentName" class="">Name</label>
-            <input class="" type="text" name="studentName" id="addStudentName">
-            <label for="addRadio-male" class="">male</label>
-            <input class="" id="addRadio-male" type="radio" name="name" value="male">
-            <label for="addRadio-female" class="">female</label>
-            <input class=""id="addRadio-female" type="radio" name="addSex" value="female">
-            <button id="addStudent"><i class="fas fa-plus"></i></button>
-        </form>
-        <div>
-            <button id="true_submit">Add Class</button>
-        </div>
-        
     </main>
 
-<script src="../public/js/addClass.js"></script>
+<script type="module" src="../public/js/class/classController.js"></script>
 <!-- <script>
     const file = document.getElementById('file');
 

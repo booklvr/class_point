@@ -33,6 +33,7 @@ app.set('views', path.join(__dirname, 'views'));
 
 // Set static folder
 app.use('/public', express.static(__dirname + "/public"));
+// app.use(express.static(__dirname + '/public'));
 
 // PASSPORT CONFIGURATION
 app.use(require("express-session")({

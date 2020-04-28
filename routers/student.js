@@ -6,6 +6,12 @@ const   express =           require('express'),
 
         const router = new express.Router();
 
-router.get('')
+router.post('/', isLoggedIn, async (req, res) => {
+    // get classroom, name, sex;
+    
+    const newStudent = {
+        ...req.body,
+    }
+})
         
 module.exports = router;
