@@ -1,0 +1,58 @@
+<%- include ('../partials/head'); %>
+
+<header>
+    <%- include ('../partials/navbar'); %>
+    <h2><%= classroom.className %></h2>
+    <a href="#" class="play--btn">PLAY</a>
+
+</header>
+<main>
+    <form action="/student/<%= classroom._id %>" class="form__update" method="post">
+        <label for="addStudentName" class="">Name</label>
+        <input class="" type="text" name="name" auto>
+        <label for="addRadio-male" class="">male</label>
+        <input class="" id="addRadio-male" type="radio" name="sex" value="male">
+        <label for="addRadio-female" class="">female</label>
+        <input class=""id="addRadio-female" type="radio" name="sex" value="female">
+        <button class="update__submit--btn"><i class="fas fa-check"></i></button>
+    </form>
+    
+    <div class="student__list">
+        <% students.forEach(function(student) { %> 
+            <div class="student">
+                <div class="student__name"><%= student.name %></div>
+                <div class="right">
+                    <% if (student.sex === 'male') { %> 
+                        <div class="student__gender">
+                            <i class="male fas fa-child"></i>
+                        </div>
+                    <% } else { %>
+                        <div class="student__gender">
+                            <i class="female fas fa-child"></i>
+                        </div>
+                    <% } %>
+                    <div class="students__update">
+                        <a href="/student/update/<%= student._id %>"><i class="fas fa-sync-alt"></i></a>
+                        <a href="/student/delete/<%= student._id %>"><i class="fas fa-trash-alt"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="update__form hide__form">
+                <form action="/student/<%= student._id %>" class="form__update" method="post">
+                    <input class="update__name" type="text" name="name" value="<%= student.name %>" onfocus="this.setSelectionRange(this.value.length, this.value.length);"/>
+                    <input type="hidden" name="classroom" value="classroom._id">
+                    <button class="update__submit--btn"><i class="fas fa-check"></i></button>
+                </form>
+            </div>
+        <% }) %>
+    </div>
+</main>
+    
+    
+    
+   
+
+        
+    
+    
+

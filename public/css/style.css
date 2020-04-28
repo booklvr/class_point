@@ -1,6 +1,5 @@
-.studentListItem {
-  list-style-type: none; }
-  .studentListItem .icon-male {
-    color: skyblue; }
-  .studentListItem .icon-female {
-    color: pink; }
+.student__gender .male {
+  color: skyblue; }
+
+.student__gender .female {
+  color: pink; }

@@ -1,12 +1,15 @@
 
 
-.studentListItem {
-    list-style-type: none;
+.student {
+    
 
-    .icon-male {
-        color: skyblue
-    }
-    .icon-female {
-        color: pink;
+    &__gender {
+        .male {
+            color: skyblue;
+        }
+
+        .female {
+            color: pink;
+        }
     }
 }

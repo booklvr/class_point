@@ -1,14 +1,19 @@
 var classUI = (function() {
     var DOMStrings = {
-        file: '.file',
-        className: '.className'
+        
     };
 
     return {
-
+        // FUNCTIONS
         getDOMSTrings: function() {
             return DOMStrings;
-        }
+        },
+    
+        //SUBMIT FORM
+
+        
+        //CREATE DOM 
+
     };
 })();
 

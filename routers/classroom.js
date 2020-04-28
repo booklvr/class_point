@@ -39,11 +39,39 @@ router.get('/', isLoggedIn, async (req, res) => {
     // res.render('pages/classrooms');
 })
 
+router.get('/class/:id', isLoggedIn, async (req,res) => {
+    console.log('getting the single class');
+    console.log('update route');
+    // console.log('req.query:', req.query);
+    try {
+        const classroom = await Classroom.findById(req.params.id);
+
+        if (!classroom) {
+            return res.status(404).send('classroom not found');
+        }
+
+        await classroom.populate({
+            path: 'students'
+        }).execPopulate();
+
+        console.log(classroom.students);
+
+        // console.log(classroom.students);
+
+        res.render('pages/classroom', {
+            students: classroom.students,
+            classroom
+        });
+
+    } catch (err) {
+        console.log('err');
+        res.status(404).send(err);
+    }
+})
+
 // GET ADD CLASSROOM FORM 
 router.get('/add', (req, res) => {
     console.log('get addClassroom form');
-
-
 
     res.render('pages/addClassroom');
 })
@@ -77,7 +105,7 @@ router.post('/add', isLoggedIn, upload, async (req, res) => {
     // IF NO FILE STREAM
     if(!req.file) {
         console.log('no file uploaded reverting to add manually');
-        return res.render('pages/addStudents', {classroom})
+        return res.redirect(`./class/${classroom._id}`)
     }
 
     
@@ -96,7 +124,7 @@ router.post('/add', isLoggedIn, upload, async (req, res) => {
         keys.forEach((key, index) => {
             student[key] = lines[i][index];
         })
-        // students.push(student);
+
         newStudent = new Student({
             ...student,
             classroom: classroom._id,
@@ -104,54 +132,12 @@ router.post('/add', isLoggedIn, upload, async (req, res) => {
         await newStudent.save();
     }
 
-    res.redirect(`./update/${classroom._id}`)
+    res.redirect(`./class/${classroom._id}`)
     
 }, (error, req, res, next) => {
-    
     res.status(400).send({error: error.message});
 })
 
-router.get('/update/:id', isLoggedIn, async (req, res) => {
-    console.log('update route');
-    // console.log('req.query:', req.query);
-
-   
-    try {
-        const classroom = await Classroom.findById(req.params.id);
-
-        if (!classroom) {
-            return res.status(404).send('classroom not found');
-        }
-
-        await classroom.populate({
-            path: 'students'
-        }).execPopulate();
-
-        // console.log(classroom.students);
-
-        res.render('pages/editClassroom', {
-            students: classroom.students,
-            className: classroom.className
-        });
-
-    } catch (err) {
-        console.log('err');
-        res.status(404).send(err);
-    }
-})
-
-router.post('/update', isLoggedIn, async (req, res) => {
-    // Need to get the classroom? 
-    
-    try {
-        const newStudent = await new Student({
-            ...req.body,
-        })
-    } catch (err) {
-        console.log(err);
-        res.status(400).send(err);
-    }
-})
 
 router.get('/delete/:id', isLoggedIn, async (req, res) => {
     console.log('classroom id:', req.params.id)

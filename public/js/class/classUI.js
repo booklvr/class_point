@@ -30,31 +30,10 @@ var classUI = (function() {
                 return alert('Please enter the class name first.');
             }
         },
-        
-
     };
 })();
 
 export{classUI};
-
-
-// const file = document.getElementById('file');
-// const className = document.getElementById('className');
-
-// console.log('made it to CSV helper functions');
-
-//ADD EVENT LISTENERS
-
-// CHECK THAT THE CLASS NAME FIELD ISN"T EMPTY BEFORE UPLOAD CSV CLASS FORM
-// file.addEventListener('change', (e) => {
-//     if(className.value !== '') {
-//         // console.log(className.value);
-//         return e.target.closest('form').submit();
-//     } else {
-
-//         return alert('Please enter class name first.')
-//     }
-// })
 
 
 
