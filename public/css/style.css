@@ -3,3 +3,6 @@
 
 .student__gender .female {
   color: pink; }
+
+.hide {
+  display: none; }

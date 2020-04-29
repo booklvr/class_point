@@ -3,7 +3,7 @@
 <header>
     <%- include ('../partials/navbar'); %>
     <h2><%= classroom.className %></h2>
-    <a href="#" class="play--btn">PLAY</a>
+    <a href="/classroom/gameForm/<%= classroom._id %>" class="play--btn">PLAY</a>
 
 </header>
 <main>
@@ -32,15 +32,21 @@
                         </div>
                     <% } %>
                     <div class="students__update">
-                        <a href="/student/update/<%= student._id %>"><i class="fas fa-sync-alt"></i></a>
+                        <a href="#"><i class="fas fa-sync-alt"></i></a>
                         <a href="/student/delete/<%= student._id %>"><i class="fas fa-trash-alt"></i></a>
                     </div>
                 </div>
             </div>
             <div class="update__form hide__form">
-                <form action="/student/<%= student._id %>" class="form__update" method="post">
+                <form action="/student/update/<%= student._id %>" class="form__update" method="post">
                     <input class="update__name" type="text" name="name" value="<%= student.name %>" onfocus="this.setSelectionRange(this.value.length, this.value.length);"/>
-                    <input type="hidden" name="classroom" value="classroom._id">
+                    
+                    <label for="editRadio-male" class="">male</label>
+                    <input class="" id="editRadio-male" type="radio" name="sex" value="male">
+                    
+                    <label for="editRadio-female" class="">female</label>
+                    <input class=""id="editRadio-female" type="radio" name="sex" value="female">
+                    
                     <button class="update__submit--btn"><i class="fas fa-check"></i></button>
                 </form>
             </div>

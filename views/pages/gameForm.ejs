@@ -1,0 +1,66 @@
+<%- include ('../partials/head'); %>
+
+<header>
+    <%- include ('../partials/navbar'); %>
+    <h2>Game Form</h2>
+    <h3><%= classroom.className %></h3>
+    
+</header>
+<main>
+    <div>
+        <p>Current Students: <%= students.length %></p>
+    </div>
+    <form class="gameForm" action="classroom/gameForm/<%= classroom._id %>">
+        <input id="classroomID" type="hidden" value="<%= classroom._id %>">
+
+        <div class="radios">
+            <div class="radio">
+                <label for="individual">Individual</label>
+                <input id="individual" type="radio" name="gameType" value="individual"> 
+            </div>
+            
+            <div class="radio">
+                <label for="boysVsGirls">Girls Vs Boys</label>
+                <input id="boysVsGirls" type="radio" name="gameType">
+            </div>
+
+            <div class="radio">
+                <label for="teams">Teams</label>
+                <input id="teams" type="radio" name="gameType">
+            </div>
+        </div>
+        
+        <div class="hide">
+            <label for="numberOfTeams">Number of Teams</label>
+            <input id="numberOfTeams" type="number">
+        </div>
+
+        <div id="checkboxes" class="hide">
+            <p>Record points for:</p>
+            <label for="individualPoints">Individual Points</label>
+            <input id="individualPoints" type="checkbox" name="individualPoints" value="true">
+
+            <label id="teamPoints" for="individualPoints">Team Points</label>
+            <input id="teamPoints" type="checkbox" name="teamPoints" value="true">
+        </div>
+        
+
+        
+
+        <button class="hide" id="submit">Submit</button>
+    </form>
+    
+</main>
+
+<script type="module" src="../public/js/gameForm/gameFormController.js"></script>
+
+</body>
+
+</html>
+    
+   
+
+        
+    
+    
+
