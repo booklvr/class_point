@@ -3,19 +3,33 @@
 <header>
     <%- include ('../partials/navbar'); %>
     <h1>Classrooms</h1>
+</header>
 
-    <!--classrooms go here-->
-    <% classrooms.forEach(function(classroom) { %> 
+<main>
+     <!--classrooms go here-->
+     <div class="errors"></div>
+
+     <% data.forEach(function(classroom) { %> 
         <div>
             <a href="/classroom/class/<%= classroom._id %>"><%= classroom.className %></a>
-            <a href="/classroom/gameform/<%= classroom._id %>">play</a>
             <a href="/classroom/delete/<%= classroom._id %>"><i class="far fa-trash-alt"></i></a>
         </div>
+        <li>
+            <a data-class_size="<%= classroom.classSize %>" class="checkTeams" href="/game/individual/<%= classroom._id %>">Individual Game</a>
+            <a data-class_size="<%= classroom.classSize %>" class="checkTeams" href="/game/boysVsGirls/<%= classroom._id%>">Girls Vs Boys</a>
+            <a data-class_size="<%= classroom.classSize %>" class="checkTeams" href="game/teamForm/<%= classroom._id %>">Team Game</a>
+        </li>
+        
         
 
     <% }) %>
     
     <a href="/classroom/add">Add Class</a>
+</main>
+<script type="module" src="../public/js/classroom/controller.js"></script>
+</body>
+</html>
+   
     
-</header>
+
 

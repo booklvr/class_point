@@ -2,12 +2,13 @@
     <div class="navbar__container">
         <a href="/" class="navbar__brand" id="navbar__brand">Class Point</a>
         <ul class="navbar__links">
-            <li><a class="navbar__link" href="/classroom">Classes</a></li>
-            <li><a class="navbar__link" href="/users/login">Login</a></li>
-            <li><a class="cta__button" href="/users/">SignUp</a></li>
-        
-            <li><a class="navbar__link" href="/users/logout">Logout</a></li>
-            <li class="dropdown__menu-item"><a href="/users/update">Edit Account</a></li>
+            <% if(currentUser){ %>
+                <li><a class="navbar__link" href="/classroom">Classes</a></li>
+                <li><a class="navbar__link" href="/users/logout">Logout</a></li>
+            <% }  else { %>
+                <li><a class="navbar__link" href="/users/login">Login</a></li>
+                <li><a class="cta__button" href="/users/">SignUp</a></li>
+            <% } %>    
         </ul>
     </div>
 </nav>

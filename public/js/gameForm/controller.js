@@ -1,4 +1,4 @@
-import { gameFormUI as UI } from './gameFormUI.js';
+import { gameFormUI as UI } from './UI.js';
 
 var controller = (function(UI) {
     var setupEventListeners = function() {

@@ -1,4 +1,4 @@
-var classUI = (function() {
+var addClassroomUI = (function() {
     var DOMStrings = {
         file: '.file',
         className: '.className',
@@ -30,10 +30,14 @@ var classUI = (function() {
                 return alert('Please enter the class name first.');
             }
         },
+        
+
     };
 })();
 
-export{classUI};
+export{addClassroomUI};
+
+
 
 
 

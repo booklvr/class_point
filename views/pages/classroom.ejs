@@ -3,10 +3,21 @@
 <header>
     <%- include ('../partials/navbar'); %>
     <h2><%= classroom.className %></h2>
-    <a href="/classroom/gameForm/<%= classroom._id %>" class="play--btn">PLAY</a>
 
+    
 </header>
 <main>
+    <ul>
+        <li>
+            <a data-class_size="<%= students.length %>" class="checkTeams" href="/game/individual/<%= classroom._id %>">Individual Game</a>
+            <a data-class_size="<%= students.length %>" class="checkTeams" href="/game/boysVsGirls/<%= classroom._id %>">Girls Vs Boys</a>
+            <a data-class_size="<%= students.length %>" class="checkTeams" href="game/teamForm/<%= classroom._id %>">Team Game</a>
+        </li>
+    </ul>
+
+    <div class="errors"></div>
+
+
     <form action="/student/<%= classroom._id %>" class="form__update" method="post">
         <label for="addStudentName" class="">Name</label>
         <input class="" type="text" name="name" auto>
@@ -53,8 +64,11 @@
         <% }) %>
     </div>
 </main>
-    
-    
+
+<script type="module" src="/public/js/classroom/controller.js"></script>
+
+</body>
+</html>
     
    
 

@@ -24,12 +24,34 @@ router.get('/', isLoggedIn, async (req, res) => {
         }).execPopulate();
 
         classrooms = user.classrooms;
+
+        const data = [];
+
+        await Promise.all(classrooms.map(async (classroom) => {
+            try {
+                await classroom.populate({
+                    path: 'students' // populate questions
+                }).execPopulate();
+            } catch (err) {
+                console.log(err);
+            }
+            const result = {};
+            result._id = classroom._id;
+            result.className = classroom.className;
+            result.classSize = classroom.students.length;
+            
+            data.push(result);
+        }))
+
+        console.log(data);
+
+        
         // console.log("classrooms", classrooms)
 
 
         // console.log('user post populate', user);
         // console.log('user.classrooms', user.classrooms);
-        res.render('pages/classrooms', { classrooms });
+        res.render('pages/classrooms', { data });
     } catch (err) {
         console.log(err);
         res.status(404).send(err);
@@ -39,7 +61,7 @@ router.get('/', isLoggedIn, async (req, res) => {
     // res.render('pages/classrooms');
 })
 
-router.get('/class/:id', isLoggedIn, async (req,res) => {
+router.get('/class/:id', async (req,res) => {
     console.log('getting the single class');
     console.log('update route');
     // console.log('req.query:', req.query);
@@ -84,7 +106,7 @@ router.post('/add', isLoggedIn, upload, async (req, res) => {
     // console.log('user._id: ', req.user._id);
 
     if (!req.body.className){ 
-        return res.status(400).send({error: 'could not add question'});
+        return res.status(400).send({error: 'could not add student'});
     }
 
     let classroom;
@@ -170,15 +192,30 @@ router.get('/gameForm/:id', async (req, res) => {
         }).execPopulate();
 
         students = classroom.students;
-        console.log(students);
+        // console.log(students);
 
         res.render('pages/gameForm', {classroom, students})
     } catch (err) {
         console.log(err);
         res.status(404).send(err);
     }
-
-    
 })
+
+// router.get('/size/:id', isLoggedIn, async (req, res) => {
+//     console.log("return the class size");
+    
+//     try {
+
+//         const classroom = await Classroom.findById(req.params.id);
+//         await classroom.populate({
+//             path: 'students'
+//         }).execPopulate();
+
+//         res.send(classroom.students.length)
+//     } catch (err) {
+//         console.log(err);
+//         res.status(500).send(err);
+//     }
+// }) 
 
 module.exports = router;

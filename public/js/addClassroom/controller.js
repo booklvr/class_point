@@ -1,4 +1,4 @@
-import { classUI as UI } from './classUI.js';
+import { addClassroomUI as UI } from './UI.js';
 
 var controller = (function(UI) {
     var setupEventListeners = function() {
@@ -9,8 +9,7 @@ var controller = (function(UI) {
             file: document.querySelector(DOMStrings.file)
         };
 
-        DOM.file.addEventListener('change', UI.checkForClassName);
-        
+        DOM.file.addEventListener('change', UI.checkForClassName); 
     }
 
     return {
