@@ -1,0 +1,37 @@
+<%- include ('../partials/head'); %>
+
+<header>
+    <%- include ('../partials/navbar'); %>
+    <h1>Individual Game</h1>
+</header>
+
+<main>
+    <div class="game__container">
+        <div class="currentStudent">
+            <h3>Current Student</h3>
+            <span class=name>Name</span>
+            <button class="add"><i class="fas fa-plus"></i></button>
+            <button class="minus"><i class="minus fas fa-minus"></i></button>
+            <span class="points">0</span>
+        </div>
+        <div class="nextStudent">
+            <h4>Next Student</h4>
+            <span class=name>Name</span>
+            <button class="add"><i class="fas fa-plus"></i></button>
+            <button class="minus"><i class="minus fas fa-minus"></i></button>
+            <span class="points">0</span>
+        </div>
+        <br/>
+        <% students.forEach(function (student) { %> 
+            <div class="student">
+                <span class=name><%=student.name %></span>
+                <button class="add"><i class="fas fa-plus"></i></button>
+                <button class="minus"><i class="minus fas fa-minus"></i></button>
+                <span class="points">0</span>
+            </div>
+        <% }) %>
+    </div>
+</main>
+
+</body>
+</html>

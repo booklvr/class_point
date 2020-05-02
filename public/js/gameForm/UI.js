@@ -1,25 +1,119 @@
 var gameFormUI = (function() {
     var DOMStrings = {
         // ID's
-        classroomID: '#classroomID',
-        individual: '#individual',
-        teams: '#teams',
-        boysVsGirls: '#boysVsGirls',
-        numberOfTeams: '#numberOfTeams',
         submit: '#submit',
-        checkboxes: '#checkboxes',
+        numberOfTeams: '#numberOfTeams',
+        gameFormClassroomData: '#gameFormClassroomData',
         
         // CLASSES
-        radios: '.radios',
-        radio: '.radio'
+        teams: '.teams',
+        gameForm: '.gameForm',
+        errors: '.errors'
     };
 
     var DOM = {
+        gameForm: document.querySelector(DOMStrings.gameForm),
+        errors: document.querySelector(DOMStrings.errors),
+        gameFormClassroomData: document.querySelector(DOMStrings.gameFormClassroomData),
         teams: document.querySelector(DOMStrings.teams),
-        numberOfTeams: document.querySelector(DOMStrings.numberOfTeams),
-        submit: document.querySelector(DOMStrings.submit),
-        checkboxes: document.querySelector(DOMStrings.checkboxes),
-        boysVsGirls: document.querySelector(DOMStrings.boysVsGirls),
+    } 
+
+    // CREATE STUDENTS AND TEAMS ARRAY
+    let studentsArray = [];
+    let teamsArray = [];
+
+    // HELPER FUNCTIONS
+
+    // * populate teams array with one team
+    const getClassroomData = async function () {
+        console.log('get classroom data')
+        const classroomID = DOM.gameFormClassroomData.dataset.classroom_id;
+        // console.log(classroomID)
+
+        const response = await fetch(`/game/classData/${classroomID}`)
+        
+        const students = await response.json();
+
+        studentsArray = students;
+    }
+
+    const tooManyTeams = function (teamSize) {
+        console.log(studentsArray.length);
+        console.log((( studentsArray.length + 1 ) / teamSize) < 2)
+        if ((( studentsArray.length + 1 ) / teamSize) < 2) {
+            return true;
+        }
+    }
+
+    const createTeams = function (teamNumber) {
+        console.log('creatingTeams');
+        // clear array
+        teamsArray = [];
+        
+        // instantiate variables
+        var i,j,temp, chunk;
+
+        // find chunk size
+        chunk = studentsArray.length / teamNumber;
+
+        for (i=0,j=studentsArray.length; i<j; i+=chunk) {
+            temp = studentsArray.slice(i,i+chunk);
+            console.log(temp);
+            teamsArray.push(temp);
+        }
+        console.log(teamsArray);
+    }
+
+    const addTeamsToDOM = function () {
+        DOM.teams.innerHTML = '';
+
+        teamsArray.forEach((team, index) => {
+            //create new team div
+            const newTeam = document.createElement('div');
+            newTeam.className += 'team';
+            //add title
+            const teamName = document.createElement('h3');
+            teamName.className += 'teamName';
+            teamName.innerHTML = `Team ${index + 1}`
+            newTeam.appendChild(teamName);
+            let teamList = document.createElement('ul');
+            teamList.className += 'teamList';
+            team.forEach(student => {
+                let newStudent = document.createElement("li");
+                newStudent.className += 'student';
+                newStudent.innerHTML = `
+                    <span class="student-name">${student.name}</span>
+                    <i class="${'fas fa-child icon-' + student.sex}"></i>
+                    <i id="${student._id}" class="deleteStudent fas fa-trash-alt"></i></a>
+                `;
+                teamList.appendChild(newStudent);
+            })
+            newTeam.appendChild(teamList);
+            // const teamName = document.createElement('ul')
+            DOM.teams.appendChild(newTeam);
+        })
+    }
+
+    const removeStudentfromArray = function (studentID) {
+        // console.log(studentID);
+
+        studentsArray = studentsArray.filter(student => student._id !== studentID)
+        console.log(studentsArray);
+    }
+
+    const removeStudentFromTeam = function (studentID) {
+        teamsArray = teamsArray.map(team => team = team.filter(student => student._id !== studentID))
+
+        console.log(teamsArray);
+    }
+
+    // * add error messages
+    const addErrorMessage = function (message) {
+        DOM.errors.innerHTML = message;
+
+        setTimeout(() => {
+            DOM.errors.innerHTML = "";
+        }, 3000);
     }
 
     return {
@@ -28,43 +122,62 @@ var gameFormUI = (function() {
         },
         // FUNCTIONS
 
-        radioChecked: function() {
-            
-            if(DOM.teams.checked === true) {
-                // show the number of teams input
-                DOM.numberOfTeams.parentElement.classList.remove('hide');
-                DOM.numberOfTeams.setAttribute('required', true);
-            } else {
-                // hide number of teams input 
-                DOM.numberOfTeams.parentElement.classList.add('hide');
-                DOM.numberOfTeams.removeAttribute('required');
-            }
+        getClassroomData: async function () {
+            console.log('get classroom data')
+            const classroomID = DOM.gameFormClassroomData.dataset.classroom_id;
+            // console.log(classroomID)
 
-            if(DOM.teams.checked || DOM.boysVsGirls.checked) {
-                console.log('do something here!!!!!! FUCK')
-            }
-            // show the submit button
-            DOM.submit.classList.remove('hide');
+            const response = await fetch(`/game/classData/${classroomID}`)
+            
+            const students = await response.json();
+
+            students.forEach(student => studentsArray.push(student));
         },
 
-        submitEvent: function () {
-            console.log('submit clicked')
-        }
+        logStudents: function () {
+            console.log('students array:', studentsArray);
+        },
 
-        // checkForClassName: function() {
-        //     // get elements
-        //     const className = document.querySelector(DOMStrings.className)
-        //     const or = document.querySelector(DOMStrings.or);
-        //     const submitBtn = document.querySelector(DOMStrings.submit);
+        createTeamsDOM: function (teamSize) {
             
-        //     if(className.value !== '') {
-        //         return event.target.closest('form').submit();
-        //     } else {
-        //         submitBtn.innerText = 'Upload File';
-        //         or.remove();
-        //         return alert('Please enter the class name first.');
-        //     }
-        // },
+            if (tooManyTeams(teamSize)) {
+                console.log('Too many teams, not enough students');
+                return addErrorMessage('There are not enough students for that many teams');
+            }
+
+            createTeams(teamSize);
+            addTeamsToDOM();
+        },
+
+        deleteStudent: function (e) {
+            if (e.target.classList.contains('deleteStudent')) {
+                console.log('delete this mother fucker yeah')
+                
+
+                removeStudentfromArray(e.target.id)
+
+                removeStudentFromTeam(e.target.id);
+                //remove the student form the DOM
+                // console.log(e.target.parentElement);
+                let li = e.target.parentElement;
+                li.remove();
+            }
+        },
+        
+        submitEvent: function (e) {
+            // posting teams to teamGame
+            e.preventDefault();
+            console.log('posting teams to team route');
+
+            const url = "/game/team";
+             
+            fetch(url, {
+                method: 'post',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(teamsArray)
+            }).then(res => res)
+            .then(text => console.log(text))
+        }  
     };
 })();
 

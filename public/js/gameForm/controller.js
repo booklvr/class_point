@@ -6,27 +6,34 @@ var controller = (function(UI) {
         var DOMStrings = UI.getDOMStrings();
 
         var DOM = {
-            // file: document.querySelector(DOMStrings.file)
-            // radios = document.querySelector(DOMStrings.radios),
-            radios: document.querySelectorAll('input[type=radio]'),
-            submit: document.querySelector(DOMStrings.submit),
             
+            submit: document.querySelector(DOMStrings.submit),
+            numberOfTeams: document.querySelector(DOMStrings.numberOfTeams),
+            gameFormClassroomData: document.querySelector(DOMStrings.gameFormClassroomData),
+            teams: document.querySelector(DOMStrings.teams),
         };
         
 
         //EVENT LISTENERS
-        // ** radio changed
-        DOM.radios.forEach(radio => {
-            radio.addEventListener('change', UI.radioChecked);
-        })
-
-        // ** submit clicked
+        // submit event -> go to game
         DOM.submit.addEventListener('click', UI.submitEvent);
+
+        // create teams on change of number input
+        DOM.numberOfTeams.addEventListener('change', (e) => {
+            UI.createTeamsDOM(e.target.value);
+        });
+
+        //delete student from teams
+        DOM.teams.addEventListener('click', UI.deleteStudent);
     }
 
     return {
-        init: function () {
+        init: async function () {
             console.log('You can now create a game');
+            await UI.getClassroomData();
+            UI.logStudents();
+            UI.createTeamsDOM(1);
+            // UI.addTeamsToDOM();
             setupEventListeners();
             
         }

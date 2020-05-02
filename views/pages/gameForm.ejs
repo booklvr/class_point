@@ -2,57 +2,39 @@
 
 <header>
     <%- include ('../partials/navbar'); %>
-    <h2>Game Form</h2>
+    <h2>Create Your Teams</h2>
     <h3><%= classroom.className %></h3>
     
 </header>
-<main>
+<main id="gameFormClassroomData" data-classroom_id="<%= classroom._id %>">
     <div>
         <p>Current Students: <%= students.length %></p>
     </div>
-    <form class="gameForm" action="classroom/gameForm/<%= classroom._id %>">
-        <input id="classroomID" type="hidden" value="<%= classroom._id %>">
-
-        <div class="radios">
-            <div class="radio">
-                <label for="individual">Individual</label>
-                <input id="individual" type="radio" name="gameType" value="individual"> 
-            </div>
-            
-            <div class="radio">
-                <label for="boysVsGirls">Girls Vs Boys</label>
-                <input id="boysVsGirls" type="radio" name="gameType">
-            </div>
-
-            <div class="radio">
-                <label for="teams">Teams</label>
-                <input id="teams" type="radio" name="gameType">
-            </div>
-        </div>
+    <div class="errors"></div>
+    
+    <form class="gameForm" data-classroomID="<%= classroom._id %>" action="classroom/gameForm/<%= classroom._id %>">
         
-        <div class="hide">
+        <div>
             <label for="numberOfTeams">Number of Teams</label>
-            <input id="numberOfTeams" type="number">
+            <input id="numberOfTeams" type="number" value="1">
         </div>
-
-        <div id="checkboxes" class="hide">
-            <p>Record points for:</p>
-            <label for="individualPoints">Individual Points</label>
-            <input id="individualPoints" type="checkbox" name="individualPoints" value="true">
-
-            <label id="teamPoints" for="individualPoints">Team Points</label>
-            <input id="teamPoints" type="checkbox" name="teamPoints" value="true">
-        </div>
-        
 
         
 
-        <button class="hide" id="submit">Submit</button>
+        <button id="submit">Play</button>
     </form>
+
+    <div class="teams">
+        <!-- <ul class="team">
+            <li class="student">student1</li>
+            <li class="student">student2</li>
+            <i class="fas fa-trash-alt"></i></a>
+        </ul> -->
+    </div>
     
 </main>
 
-<script type="module" src="../public/js/gameForm/gameFormController.js"></script>
+<script type="module" src="../public/js/gameForm/controller.js"></script>
 
 </body>
 

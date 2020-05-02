@@ -92,7 +92,7 @@ router.get('/class/:id', async (req,res) => {
 })
 
 // GET ADD CLASSROOM FORM 
-router.get('/add', (req, res) => {
+router.get('/add', isLoggedIn, (req, res) => {
     console.log('get addClassroom form');
 
     res.render('pages/addClassroom');
@@ -179,27 +179,8 @@ router.get('/delete/:id', isLoggedIn, async (req, res) => {
     }
 })
 
-// GET THE GAME FORM
-router.get('/gameForm/:id', async (req, res) => {
-    console.log('rendering game form');
 
-    try {
-        const classroom = await Classroom.findById(req.params.id);
-        // console.log(classroom)
 
-        await classroom.populate({
-            path: 'students'
-        }).execPopulate();
-
-        students = classroom.students;
-        // console.log(students);
-
-        res.render('pages/gameForm', {classroom, students})
-    } catch (err) {
-        console.log(err);
-        res.status(404).send(err);
-    }
-})
 
 // router.get('/size/:id', isLoggedIn, async (req, res) => {
 //     console.log("return the class size");
