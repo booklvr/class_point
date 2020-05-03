@@ -5,80 +5,58 @@
     <h1>Boys Vs Girls</h1>
 </header>
 
-<main>
+<main id="boysVsGirlsClassData" data-classroom_id="<%= classroomID %>">
+    <p><%= classroomID %></p>
     <div class="game__container">
         
-
-        <!-- <div class="currentStudent">
-            <h3>Current Student</h3>
-            <span class=name>Name</span>
-            <button class="add"><i class="fas fa-plus"></i></button>
-            <button class="minus"><i class="minus fas fa-minus"></i></button>
-            <span class="points">0</span>
-        </div>
-        <div class="nextStudent">
-            <h4>Next Student</h4>
-            <span class=name>Name</span>
-            <button class="add"><i class="fas fa-plus"></i></button>
-            <button class="minus"><i class="minus fas fa-minus"></i></button>
-            <span class="points">0</span>
-        </div>
-        <br/> -->
-        <div class="boys">
+        <div class="boy__container">
             <h3>boys</h3>
             <div class="currentBoy">
-                <h3>Current Boy</h3>
-                <span class=name>Current</span>
+                <h4>Current Boy</h4>
+                <!-- <span class=name>Current</span>
                 <button class="add"><i class="fas fa-plus"></i></button>
                 <button class="minus"><i class="minus fas fa-minus"></i></button>
-                <span class="points">0</span>
+                <span class="points">0</span> -->
             </div>
             <div class="nextBoy">
-                <h4>Next Boy</h4>
-                <span class=name>Next</span>
+                <h5>Next Boy</h5>
+                
+                <!-- <span class=name>Next</span>
                 <button class="add"><i class="fas fa-plus"></i></button>
                 <button class="minus"><i class="minus fas fa-minus"></i></button>
-                <span class="points">0</span>
+                <span class="points">0</span> -->
             </div>
-            <br/>
-            <% boys.forEach(function (student) { %> 
-                <div class="student" id="<%=student._id%>">
-                    <span class=name><%=student.name %></span>
-                    <button class="add"><i class="fas fa-plus"></i></button>
-                    <button class="minus"><i class="minus fas fa-minus"></i></button>
-                    <span class="points">0</span>
-                </div>
-            <% }) %>
+            <br>
+            <div class="boys">
+                <!--boysArray-->
+            </div>
         </div>
-        <div class="girls">
+
+
+        <div class="girl__container">
             <h3>Girls</h3>
             <div class="currentGirl">
-                <h3>Current Girl</h3>
-                <span class=name>Current</span>
+                <h4>Current Girl</h4>
+                <!-- <span class=name>Current</span>
                 <button class="add"><i class="fas fa-plus"></i></button>
                 <button class="minus"><i class="minus fas fa-minus"></i></button>
-                <span class="points">0</span>
+                <span class="points">0</span> -->
             </div>
             <div class="nextGirl">
-                <h4>Next Girl</h4>
-                <span class=name>Next</span>
+                <h5>Next Girl</h5>
+                <!-- <span class=name>Next</span>
                 <button class="add"><i class="fas fa-plus"></i></button>
                 <button class="minus"><i class="minus fas fa-minus"></i></button>
-                <span class="points">0</span>
+                <span class="points">0</span> -->
             </div>
-            </br/>
-            <% girls.forEach(function (student) { %> 
-                <div class="student" id="<%=student._id%>">
-                    <span class=name><%=student.name %></span>
-                    <button class="add"><i class="fas fa-plus"></i></button>
-                    <button class="minus"><i class="minus fas fa-minus"></i></button>
-                    <span class="points">0</span>
-                </div>
-            <% }) %>
+            <br>
+            <div class="girls">
+                <!--girls array-->
+            </div>
         </div>
         
     </div>
 </main>
-
+<script type="module" src="/public/js/boysVsGirls/controller.js"></script>
 </body>
 </html>

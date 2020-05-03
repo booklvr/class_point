@@ -2,6 +2,7 @@ const   express =           require('express'),
         User  =             require('../db/models/user'),
         Classroom =         require('../db/models/classroom'),
         Student =           require('../db/models/student'),
+        gameHelper =        require('./helpers/gameHelper'),
         { isLoggedIn } =    require('./middleware/auth');
 
 
@@ -12,6 +13,14 @@ const router = new express.Router();
 router.get('/individual/:id', async (req, res) => {
     console.log('made it to the individual game')
 
+    // console.log(req.params.id);
+
+    res.render('pages/individual', {classroomID: req.params.id})
+});
+
+router.get('/individual/data/:id', async (req, res) => {
+    console.log('fetch data for individual game');
+
     try {
         const classroom = await Classroom.findById(req.params.id);
 
@@ -20,18 +29,29 @@ router.get('/individual/:id', async (req, res) => {
         }).execPopulate();
 
         students = classroom.students;
+        // console.log('students:', students);
 
-        res.render('pages/individual', {students})
+        studentsShuffled = gameHelper.shuffleArray(students);
+        
+        // console.log('shuffledStudents:', studentsShuffled);
+        // res.send(students);
+        res.send(studentsShuffled);
     } catch (err) {
         console.log(err);
         res.status(500).send(err);
     }
-});
+})
 
 // get the boysVsGirls game
 // * id = classroom._id
 router.get('/boysVsGirls/:id', async (req, res) => {
     console.log('made it to the boys vs girls game');
+
+    res.render('pages/boysVsGirls', {classroomID: req.params.id});
+})
+
+router.get('/boysVsGirls/data/:id', async (req, res) => {
+    console.log('get the boys Vs girls data');
 
     try {
         const classroom = await Classroom.findById(req.params.id);
@@ -43,23 +63,31 @@ router.get('/boysVsGirls/:id', async (req, res) => {
         const students = classroom.students;
         console.log(students);
 
-        const boys = students.filter(student => student.sex === 'male');
-        console.log('boys', boys);
+        // ****** FOR DEVELOPEMNT DONT" SHUFFLE
 
-        const girls = students.filter(student => student.sex === 'female');
-        console.log('girls', girls);
+        // const shuffledStudents = gameHelper.shuffleArray(students);
 
-        // const girls = students.filter(student = student.sex === 'female');
+        //shuffle the array for different game play
+        // const boys = shuffledStudents.filter(student => student.sex === 'male');
+
+        // *** for developemnt
+        boys = students.filter(student => student.sex === 'male');
+        girls = students.filter(student => student.sex === 'female');
+
+        // console.log('boys', boys);
+
+        // const girls = shuffledStudents.filter(student => student.sex === 'female');
         // console.log('girls', girls);
 
-
-        res.render('pages/boysVsGirls', {girls, boys});
+        res.send({girls, boys});
         
     } catch (err) {
         console.log(err);
         res.status(404).send(err);
     }
 })
+
+
 
 // get the team game
 // * id = classroom._id

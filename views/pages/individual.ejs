@@ -5,33 +5,29 @@
     <h1>Individual Game</h1>
 </header>
 
-<main>
+<main id="individualGameClassData" data-classroom_id="<%= classroomID %>">
+    <div class="buttons">
+        <button class="previous">Previous</button>
+        <button class="next">Next</button>
+    </div>
     <div class="game__container">
         <div class="currentStudent">
             <h3>Current Student</h3>
-            <span class=name>Name</span>
-            <button class="add"><i class="fas fa-plus"></i></button>
-            <button class="minus"><i class="minus fas fa-minus"></i></button>
-            <span class="points">0</span>
         </div>
         <div class="nextStudent">
-            <h4>Next Student</h4>
+            <h3>Next Student</h3>
+            <!-- <h4>Next Student</h4>
             <span class=name>Name</span>
             <button class="add"><i class="fas fa-plus"></i></button>
             <button class="minus"><i class="minus fas fa-minus"></i></button>
-            <span class="points">0</span>
+            <span class="points">0</span> -->
         </div>
         <br/>
-        <% students.forEach(function (student) { %> 
-            <div class="student">
-                <span class=name><%=student.name %></span>
-                <button class="add"><i class="fas fa-plus"></i></button>
-                <button class="minus"><i class="minus fas fa-minus"></i></button>
-                <span class="points">0</span>
-            </div>
-        <% }) %>
+        <div class="students"></div>
+        
     </div>
 </main>
 
+<script type="module" src="/public/js/individual/controller.js"></script>
 </body>
 </html>

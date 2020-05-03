@@ -16,8 +16,10 @@ var controller = (function(UI) {
     }
 
     return {
-        init: function () { 
-            console.log('You can now play an individual game');
+        init: async function () { 
+            console.log('You can now play a boy Vs girls game');
+            await UI.getClassroomData();
+            UI.createDOM();
             setupEventListeners();
         }
     }
