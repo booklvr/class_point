@@ -6,19 +6,23 @@
 </header>
 
 <main id="boysVsGirlsClassData" data-classroom_id="<%= classroomID %>">
-    <p><%= classroomID %></p>
+    
     <div class="game__container">
+        <div class="buttons">
+            <button class="previous">Previous</button>
+            <button class="next">Next</button>
+        </div>
         
         <div class="boy__container">
             <h3>boys</h3>
-            <div class="currentBoy">
+            <div class="currentBoy boy_array">
                 <h4>Current Boy</h4>
                 <!-- <span class=name>Current</span>
                 <button class="add"><i class="fas fa-plus"></i></button>
                 <button class="minus"><i class="minus fas fa-minus"></i></button>
                 <span class="points">0</span> -->
             </div>
-            <div class="nextBoy">
+            <div class="nextBoy boy_array">
                 <h5>Next Boy</h5>
                 
                 <!-- <span class=name>Next</span>
@@ -27,7 +31,7 @@
                 <span class="points">0</span> -->
             </div>
             <br>
-            <div class="boys">
+            <div class="boys boy_array">
                 <!--boysArray-->
             </div>
         </div>
@@ -35,14 +39,14 @@
 
         <div class="girl__container">
             <h3>Girls</h3>
-            <div class="currentGirl">
+            <div class="currentGirl girl_array">
                 <h4>Current Girl</h4>
                 <!-- <span class=name>Current</span>
                 <button class="add"><i class="fas fa-plus"></i></button>
                 <button class="minus"><i class="minus fas fa-minus"></i></button>
                 <span class="points">0</span> -->
             </div>
-            <div class="nextGirl">
+            <div class="nextGirl girl_array">
                 <h5>Next Girl</h5>
                 <!-- <span class=name>Next</span>
                 <button class="add"><i class="fas fa-plus"></i></button>
@@ -50,11 +54,10 @@
                 <span class="points">0</span> -->
             </div>
             <br>
-            <div class="girls">
+            <div class="girls girl_array">
                 <!--girls array-->
             </div>
         </div>
-        
     </div>
 </main>
 <script type="module" src="/public/js/boysVsGirls/controller.js"></script>

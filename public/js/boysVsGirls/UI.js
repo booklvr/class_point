@@ -7,7 +7,9 @@ var boysVsGirlsUI = (function() {
         nextStudent: '.nextStudent',
         next: '.next',
         previous: '.previous',
-        // students: '.students',
+        gameContainer: '.game__container',
+        boysContainer: '.boy__container',
+        girlsContainer: '.girl__container',
         boys: '.boys',
         girls: '.girls',
         currentBoy: '.currentBoy',
@@ -15,6 +17,8 @@ var boysVsGirlsUI = (function() {
         currentGirl: '.currentGirl',
         nextGirl: '.nextGirl',
         student: '.student',
+        next: '.next',
+        previous: '.previous',
         
        // BY ID
        classroomData: '#boysVsGirlsClassData',  
@@ -22,6 +26,9 @@ var boysVsGirlsUI = (function() {
 
     var DOM = {
         classroomData: document.querySelector(DOMStrings.classroomData),
+        gameContainer: document.querySelector(DOMStrings.gameContainer),
+        boysContainer: document.querySelector(DOMStrings.boysContainer),
+        girlsContainer: document.querySelector(DOMStrings.girlsContainer),
         boys: document.querySelector(DOMStrings.boys),
         girls: document.querySelector(DOMStrings.girls),
         currentBoy: document.querySelector(DOMStrings.currentBoy),
@@ -34,7 +41,8 @@ var boysVsGirlsUI = (function() {
     
     let boysArray = [];
     let girlsArray = [];
-    let count = 0;
+    
+    let boysTurn;
 
     //HELPER FUNCTIONS
 
@@ -57,6 +65,10 @@ var boysVsGirlsUI = (function() {
         };
     }
 
+    const boysStart = function () {
+        return Math.floor(Math.random() * 2);
+    }
+
     const getCurrentandNext = function (array, appendTo, index) {
         console.log('create new student DOM')
         const addStudent = array[index];
@@ -71,6 +83,55 @@ var boysVsGirlsUI = (function() {
         `;
         console.log('newStudent', newStudent);
         appendTo.appendChild(newStudent);
+    };
+
+    const updatePointDom = function(student, plusOrMinus) {
+        // console.log('studentID', student.id);
+        let children = student.children;
+        // console.log('children',children);
+
+        if (plusOrMinus === 'add') {
+            children[3].innerHTML = +children[3].innerHTML + 1;
+        } else if (plusOrMinus === 'minus') {
+            children[3].innerHTML = +children[3].innerHTML - 1;
+        }
+    };
+
+    // different from individual
+    const updatePointStudentArray = function(student, addOrMinus){
+        const studentID = student.id;
+
+        const updateArray = function (array) {
+            array.map(student => {
+                if (student._id === studentID ) {
+                    addOrMinus === 'add' ? student.points++ : student.points--;
+                }
+            })
+        }
+        
+        console.log('studentID', studentID);
+
+        if (student.parentElement.classList.contains('boy_array')) {
+            console.log('update boys array')
+            updateArray(boysArray);
+        } else if (student.parentElement.classList.contains('girl_array')) {
+            console.log('update girls array')
+            updateArray(girlsArray);
+        }
+        console.log(boysArray);
+        console.log(girlsArray);
+    }
+
+    const changeOrder = function (boysTurn) {
+        if(boysTurn) {
+            console.log('boys boysTurn');
+            DOM.gameContainer.appendChild(DOM.girlsContainer);
+            boysTurn = true;
+        } else {
+            console.log('girls Turn')
+            DOM.gameContainer.appendChild(DOM.boysContainer);
+            boysTurn = false;
+        }
     }
 
     const addErrorMessage = function () {
@@ -84,6 +145,12 @@ var boysVsGirlsUI = (function() {
     return {
         getDOMStrings: function() {
             return DOMStrings;
+        },
+
+        whoGoesFirst: function() { 
+            boysTurn = boysStart();
+            changeOrder(boysTurn);
+            
         },
         // OTHER FUNCTIONS
         getClassroomData: async function () {
@@ -115,8 +182,44 @@ var boysVsGirlsUI = (function() {
             // getNextStudent();
             createTeam(boysArray, DOM.boys);
             createTeam(girlsArray, DOM.girls);
-
         },
+        changePoint: function(e) {
+            // console.log(e.target);
+            
+            if (e.target.parentElement.classList.contains('add')) {
+                console.log('add please');
+                updatePointDom(e.target.parentElement.parentElement, 'add');
+                updatePointStudentArray(e.target.parentElement.parentElement, 'add');
+            } else if (e.target.parentElement.classList.contains('minus')) {
+                console.log('minus the points')
+                updatePointDom(e.target.parentElement.parentElement, 'minus');
+                updatePointStudentArray(e.target.parentElement.parentElement, 'minus');
+            }
+        },
+        goToNext: function(e) {
+            console.log('go to next')
+            boysTurn = !boysTurn;
+            changeOrder(boysTurn);
+            
+            // shift the correct array
+            boysTurn ? shiftArray(boysArray) : shiftArray(girlsArray);
+            
+
+            // shiftArray();
+            // clearDOM();
+            // getCurrentStudent();
+            // getNextStudent();
+            // createStudents();
+        },
+
+        goToPrevious: function(e) {
+            console.log('go to previous')
+            // unshiftArray();
+            // clearDOM();
+            // getCurrentStudent();
+            // getNextStudent();
+            // createStudents();
+        }
     };
 })();
 
