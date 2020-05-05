@@ -12,13 +12,13 @@ var boysVsGirlsUI = (function() {
         girlsContainer: '.girl__container',
         boys: '.boys',
         girls: '.girls',
-        currentBoy: '.currentBoy',
-        nextBoy: '.nextBoy',
-        currentGirl: '.currentGirl',
-        nextGirl: '.nextGirl',
+        boyFocus: '.boy__focus',
+        girlFocus: '.girl__focus',
         student: '.student',
         next: '.next',
         previous: '.previous',
+        boyPoints: '.boy__point',
+        girlPoints: '.girl__point',
         
        // BY ID
        classroomData: '#boysVsGirlsClassData',  
@@ -31,10 +31,10 @@ var boysVsGirlsUI = (function() {
         girlsContainer: document.querySelector(DOMStrings.girlsContainer),
         boys: document.querySelector(DOMStrings.boys),
         girls: document.querySelector(DOMStrings.girls),
-        currentBoy: document.querySelector(DOMStrings.currentBoy),
-        currentGirl: document.querySelector(DOMStrings.currentGirl),
-        nextBoy: document.querySelector(DOMStrings.nextBoy),
-        nextGirl: document.querySelector(DOMStrings.nextGirl),
+        boyFocus: document.querySelector(DOMStrings.boyFocus),
+        girlFocus: document.querySelector(DOMStrings.girlFocus),
+        boyPoints: document.querySelector(DOMStrings.boyPoints),
+        girlPoints: document.querySelector(DOMStrings.girlPoints),
     }
 
     //persistent data
@@ -47,9 +47,9 @@ var boysVsGirlsUI = (function() {
     //HELPER FUNCTIONS
 
     const createTeam = function (array, appendTo) {
-        console.log('creating boys DOM')
+        console.log('creating DOM')
         
-        for (let i = 2; i < array.length; i++) {
+        for (let i = 1; i < array.length; i++) {
             const newStudent = document.createElement('div');
             newStudent.className += 'student';
             newStudent.setAttribute('id', array[i]._id);
@@ -57,7 +57,7 @@ var boysVsGirlsUI = (function() {
                 <span class=name>${array[i].name}</span>
                 <button class="minus"><i class="fas fa-minus"></i></button>
                 <button class="add"><i class="fas fa-plus"></i></button>
-                <span class="points">0</span>
+                <span class="points">${array[i].points}</span>
             `;
             // console.log('newStudent', newStudent);
             
@@ -69,9 +69,14 @@ var boysVsGirlsUI = (function() {
         return Math.floor(Math.random() * 2);
     }
 
-    const getCurrentandNext = function (array, appendTo, index) {
-        console.log('create new student DOM')
-        const addStudent = array[index];
+    const getCurrent = function () {
+        console.log('create current student DOM');
+
+        const array = boysTurn ? boysArray : girlsArray;
+        const appendTo = boysTurn ? DOM.boyFocus : DOM.girlFocus;
+        appendTo.innerHTML = '';
+        
+        const addStudent = array[0];
         const newStudent = document.createElement('div');
         newStudent.className += 'student';
         newStudent.setAttribute('id', addStudent._id);
@@ -79,11 +84,37 @@ var boysVsGirlsUI = (function() {
             <span class=name>${addStudent.name}</span>
             <button class="minus"><i class="fas fa-minus"></i></button>
             <button class="add"><i class="fas fa-plus"></i></button>
-            <span class="points">0</span>
+            <span class="points">${addStudent.points}</span>
         `;
-        console.log('newStudent', newStudent);
+        // console.log('newStudent', newStudent);
         appendTo.appendChild(newStudent);
     };
+
+    const getNext = function () {
+        console.log('create next student dom');
+        const array = boysTurn ? girlsArray : boysArray;
+        const appendTo = boysTurn ? DOM.girlFocus : DOM.boyFocus;
+
+        appendTo.innerHTML = '';
+        
+        const addStudent = array[0];
+        const newStudent = document.createElement('div');
+        newStudent.className += 'student';
+        newStudent.setAttribute('id', addStudent._id);
+        newStudent.innerHTML = `
+            <span class=name>${addStudent.name}</span>
+            <button class="minus"><i class="fas fa-minus"></i></button>
+            <button class="add"><i class="fas fa-plus"></i></button>
+            <span class="points">${addStudent.points}</span>
+        `;
+        // console.log('newStudent', newStudent);
+
+        const upNext = document.createElement('h4');
+        upNext.className += 'upNext__title';
+        upNext.innerHTML = 'Up Next';
+        appendTo.appendChild(upNext);  
+        appendTo.appendChild(newStudent);
+    }
 
     const updatePointDom = function(student, plusOrMinus) {
         // console.log('studentID', student.id);
@@ -97,6 +128,8 @@ var boysVsGirlsUI = (function() {
         }
     };
 
+    
+
     // different from individual
     const updatePointStudentArray = function(student, addOrMinus){
         const studentID = student.id;
@@ -109,8 +142,6 @@ var boysVsGirlsUI = (function() {
             })
         }
         
-        console.log('studentID', studentID);
-
         if (student.parentElement.classList.contains('boy_array')) {
             console.log('update boys array')
             updateArray(boysArray);
@@ -118,13 +149,24 @@ var boysVsGirlsUI = (function() {
             console.log('update girls array')
             updateArray(girlsArray);
         }
-        console.log(boysArray);
-        console.log(girlsArray);
+    }
+
+    const changeTeamPoints = function (team, addOrMinus) {
+        console.log('change team points');
+        
+        if (addOrMinus === 'add') {
+            console.log('add points to team');
+            team.innerHTML = +team.innerHTML + 1;
+        } else if (addOrMinus === 'minus') {
+            console.log('minus points from team');
+            team.innerHTML = team.innerHTML - 1;
+        }
+        // addOrMinus === 'add' ? team.innerHTML = +team.innerHTML++ : team.innerHTML = +team.innerHTML--;
     }
 
     const changeOrder = function (boysTurn) {
         if(boysTurn) {
-            console.log('boys boysTurn');
+            console.log('boys Turn');
             DOM.gameContainer.appendChild(DOM.girlsContainer);
             boysTurn = true;
         } else {
@@ -134,12 +176,33 @@ var boysVsGirlsUI = (function() {
         }
     }
 
-    const addErrorMessage = function () {
-        DOM.errors.innerHTML = "Class is too small, please add students";
+    const shiftArray = function (array) {
+        console.log("shift array");
+        array.push(array.shift());
+    }
 
-        setTimeout(() => {
-            DOM.errors.innerHTML = "";
-        }, 3000);
+    // const addErrorMessage = function () {
+    //     DOM.errors.innerHTML = "Class is too small, please add students";
+
+    //     setTimeout(() => {
+    //         DOM.errors.innerHTML = "";
+    //     }, 3000);
+    // }
+
+    const clearDOM = function() {
+        DOM.boys.innerHTML = '';
+        DOM.girls.innerHTML = '';
+
+        const removeStudent = function (student) {
+            for (let i = 0; i < student.childNodes.length; i++ ) {
+                if (student.childNodes[i].className === 'student') {
+                    student.childNodes[i].remove();
+                }
+            }
+        }
+        removeStudent(DOM.boyFocus);
+        removeStudent(DOM.girlFocus);
+        
     }
 
     return {
@@ -169,31 +232,42 @@ var boysVsGirlsUI = (function() {
             girlsArray = result.girls;
             boysArray = result.boys;
 
-            console.log('boys', boysArray);
-            console.log('girls', girlsArray);
+            // console.log('boys', boysArray);
+            // console.log('girls', girlsArray);
         },
         createDOM: function () {
             // console.log('studentsArray', studentsArray);
-            getCurrentandNext(boysArray, DOM.currentBoy, 0);
-            getCurrentandNext(girlsArray, DOM.currentGirl, 0);
-            getCurrentandNext(boysArray, DOM.nextBoy, 1);
-            getCurrentandNext(girlsArray, DOM.nextGirl, 1);
+            getCurrent();
+            getNext();
+            
             
             // getNextStudent();
             createTeam(boysArray, DOM.boys);
             createTeam(girlsArray, DOM.girls);
         },
+
         changePoint: function(e) {
-            // console.log(e.target);
             
             if (e.target.parentElement.classList.contains('add')) {
                 console.log('add please');
                 updatePointDom(e.target.parentElement.parentElement, 'add');
                 updatePointStudentArray(e.target.parentElement.parentElement, 'add');
+                
+                
+                //add points to team
+                e.target.parentElement.parentElement.parentElement.classList.contains('boy_array') ? 
+                    changeTeamPoints(DOM.boyPoints, 'add') : 
+                    changeTeamPoints(DOM.girlPoints, 'add');
+
             } else if (e.target.parentElement.classList.contains('minus')) {
                 console.log('minus the points')
                 updatePointDom(e.target.parentElement.parentElement, 'minus');
                 updatePointStudentArray(e.target.parentElement.parentElement, 'minus');
+                
+                //minus points from team
+                e.target.parentElement.parentElement.parentElement.classList.contains('boy_array') ? 
+                    changeTeamPoints(DOM.boyPoints, 'minus') : 
+                    changeTeamPoints(DOM.girlPoints, 'minus');
             }
         },
         goToNext: function(e) {
@@ -202,14 +276,17 @@ var boysVsGirlsUI = (function() {
             changeOrder(boysTurn);
             
             // shift the correct array
-            boysTurn ? shiftArray(boysArray) : shiftArray(girlsArray);
+            boysTurn ? shiftArray(girlsArray) : shiftArray(boysArray);
             
 
-            // shiftArray();
-            // clearDOM();
-            // getCurrentStudent();
+            
+            clearDOM();
+            getCurrent();
+            getNext();
+            
             // getNextStudent();
-            // createStudents();
+            createTeam(boysArray, DOM.boys);
+            createTeam(girlsArray, DOM.girls);
         },
 
         goToPrevious: function(e) {

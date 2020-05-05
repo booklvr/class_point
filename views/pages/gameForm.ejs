@@ -12,11 +12,11 @@
     </div>
     <div class="errors"></div>
     
-    <form class="gameForm" data-classroomID="<%= classroom._id %>" action="classroom/gameForm/<%= classroom._id %>">
+    <form class="gameForm" data-classroomID="<%= classroom._id %>">
         
         <div>
             <label for="numberOfTeams">Number of Teams</label>
-            <input id="numberOfTeams" type="number" value="1">
+            <input id="numberOfTeams" type="number" name="numberOfTeams" value="1">
         </div>
 
         

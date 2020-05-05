@@ -11,12 +11,14 @@ var controller = (function(UI) {
             numberOfTeams: document.querySelector(DOMStrings.numberOfTeams),
             gameFormClassroomData: document.querySelector(DOMStrings.gameFormClassroomData),
             teams: document.querySelector(DOMStrings.teams),
+            // gameForm: document.querySelector(DOMStrings.gameForm),
         };
         
 
         //EVENT LISTENERS
         // submit event -> go to game
         DOM.submit.addEventListener('click', UI.submitEvent);
+        // DOM.gameForm.addEventListener('submit', UI.submitEvent)
 
         // create teams on change of number input
         DOM.numberOfTeams.addEventListener('change', (e) => {

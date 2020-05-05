@@ -40,9 +40,9 @@ var individualUI = (function() {
             <span class=name>${currentStudent.name}</span>
             <button class="minus"><i class="fas fa-minus"></i></button>
             <button class="add"><i class="fas fa-plus"></i></button>
-            <span class="points">0</span>
+            <span class="points">${currentStudent.points}</span>
         `;
-        console.log('newStudent', newStudent);
+        // console.log('newStudent', newStudent);
         DOM.currentStudent.appendChild(newStudent);
     }
 
@@ -56,9 +56,9 @@ var individualUI = (function() {
             <span class=name>${nextStudent.name}</span>
             <button class="minus"><i class="fas fa-minus"></i></button>
             <button class="add"><i class="fas fa-plus"></i></button>
-            <span class="points">0</span>
+            <span class="points">${nextStudent.points}</span>
         `;
-        console.log('newStudent', newStudent);
+        // console.log('newStudent', newStudent);
         DOM.nextStudent.appendChild(newStudent); 
     }
 
@@ -74,7 +74,7 @@ var individualUI = (function() {
                 <span class=name>${studentsArray[i].name}</span>
                 <button class="minus"><i class="fas fa-minus"></i></button>
                 <button class="add"><i class="fas fa-plus"></i></button>
-                <span class="points">0</span>
+                <span class="points">${studentsArray[i].points}</span>
             `;
             // console.log('newStudent', newStudent);
             
@@ -110,12 +110,14 @@ var individualUI = (function() {
     }
 
     const updatePointStudentArray = function(studentID, addOrMinus){
-        console.log('studentID', studentID);
+        console.log('update the points in the students array');
+        // console.log('studentID', studentID);
         studentsArray.map(student => {
             if (student._id === studentID) {
                 addOrMinus === 'add' ? student.points++ : student.points--;
             }
         })
+        
         // console.log(studentsArray);
     }
 
@@ -129,7 +131,7 @@ var individualUI = (function() {
 
     const shiftArray = function () {
         studentsArray.push(studentsArray.shift());
-        // console.log(studentsArray)
+        // console.log('after shift', studentsArray)
     }
 
     const unshiftArray = function () {
@@ -160,21 +162,21 @@ var individualUI = (function() {
         },
 
         createDOM: function () {
-            // console.log('studentsArray', studentsArray);
+            console.log('creating the dom');
             getCurrentStudent();
             getNextStudent();
             createStudents();
         },
 
         changePoint: function(e) {
-            console.log(e.target);
-            console.log('event.currentTarget', e.currentTarget);
+            console.log('changing the points');
+            
             if (e.target.parentElement.classList.contains('add')) {
-                console.log('add please');
+                console.log('add the point');
                 updatePointDom(e.target.parentElement.parentElement, 'add');
                 updatePointStudentArray(e.target.parentElement.parentElement.id, 'add');
             } else if (e.target.parentElement.classList.contains('minus')) {
-                console.log('minus the points')
+                console.log('minus the point')
                 updatePointDom(e.target.parentElement.parentElement, 'minus');
                 updatePointStudentArray(e.target.parentElement.parentElement.id, 'minus');
             }

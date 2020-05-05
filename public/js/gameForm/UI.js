@@ -191,14 +191,39 @@ var gameFormUI = (function() {
             e.preventDefault();
             console.log('posting teams to team route');
 
+            let data = teamsArray;
+
             const url = "/game/team";
+
+            
+
+            
+             
+            // console.log('this: FUCCKCKJ:DLSKFJ:KLSDJF', this);
+
+            
+
+            
+
+            // fetch(url, {
+            //     method: 'post',
+            //     body: formData
+            // }).then(response => JSON.stringify(response))
+            // .then(json => console.log(json))
+            // .catch(error => console.log(error));
+
+            
              
             fetch(url, {
                 method: 'post',
-                headers: {'Content-Type': 'application/json'},
+                // redirect: 'follow',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                // credentials: 'same-origin',
                 body: JSON.stringify(teamsArray)
-            }).then(res => res)
-            .then(text => console.log(text))
+            }).then(res => res.json)
+            .then(text => console.log('final result', text))
         }  
     };
 })();

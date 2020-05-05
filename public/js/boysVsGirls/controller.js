@@ -9,10 +9,8 @@ var controller = (function(UI) {
         var DOM = {
             boys: document.querySelector(DOMStrings.boys),
             girls: document.querySelector(DOMStrings.girls),
-            currentBoy: document.querySelector(DOMStrings.currentBoy),
-            currentGirl: document.querySelector(DOMStrings.currentGirl),
-            nextBoy: document.querySelector(DOMStrings.nextBoy),
-            nextGirl: document.querySelector(DOMStrings.nextGirl),
+            boyFocus: document.querySelector(DOMStrings.boyFocus),
+            girlFocus: document.querySelector(DOMStrings.girlFocus),
             next: document.querySelector(DOMStrings.next),
             previous: document.querySelector(DOMStrings.previous),
         };
@@ -20,12 +18,10 @@ var controller = (function(UI) {
         //EVENT LISTENERS
         DOM.boys.addEventListener('click', UI.changePoint);
         DOM.girls.addEventListener('click', UI.changePoint);
-        DOM.currentBoy.addEventListener('click', UI.changePoint);
-        DOM.currentGirl.addEventListener('click', UI.changePoint);
-        DOM.nextBoy.addEventListener('click', UI.changePoint);
-        DOM.nextGirl.addEventListener('click', UI.changePoint);
+        DOM.boyFocus.addEventListener('click', UI.changePoint);
+        DOM.girlFocus.addEventListener('click', UI.changePoint);
         DOM.next.addEventListener('click', UI.goToNext);
-        DOM.previous.addEventListener('click', UI.goToPrevious);
+        // DOM.previous.addEventListener('click', UI.goToPrevious);
     }
 
     return {

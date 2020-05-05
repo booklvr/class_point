@@ -28,7 +28,6 @@ var controller = (function(UI) {
             await UI.getClassroomData();
             UI.createDOM();
             setupEventListeners();
-            
         }
     }
 })(UI);

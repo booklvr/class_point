@@ -61,22 +61,22 @@ router.get('/boysVsGirls/data/:id', async (req, res) => {
         }).execPopulate();
 
         const students = classroom.students;
-        console.log(students);
+        // console.log(students);
 
         // ****** FOR DEVELOPEMNT DONT" SHUFFLE
 
-        // const shuffledStudents = gameHelper.shuffleArray(students);
+        const shuffledStudents = gameHelper.shuffleArray(students);
 
         //shuffle the array for different game play
-        // const boys = shuffledStudents.filter(student => student.sex === 'male');
+        const boys = shuffledStudents.filter(student => student.sex === 'male');
 
         // *** for developemnt
-        boys = students.filter(student => student.sex === 'male');
-        girls = students.filter(student => student.sex === 'female');
+        // boys = students.filter(student => student.sex === 'male');
+        // girls = students.filter(student => student.sex === 'female');
 
         // console.log('boys', boys);
 
-        // const girls = shuffledStudents.filter(student => student.sex === 'female');
+        const girls = shuffledStudents.filter(student => student.sex === 'female');
         // console.log('girls', girls);
 
         res.send({girls, boys});
@@ -88,13 +88,35 @@ router.get('/boysVsGirls/data/:id', async (req, res) => {
 })
 
 
-
+let teams;
 // get the team game
 // * id = classroom._id
 router.post('/team', (req, res) => {
-    res.send('made it to the individual game')
-    console.log('res.body', req.body)
+    console.log('YOU HAVE MAD IT TO THE TEAM DATA POST ROUTE')
+
+    console.log('req.body', req.body);
+
+    teams = req.body;
+
+    // teams.forEach((team, index) => {
+    //     console.log('team', index);
+    //     team.forEach(student => console.log('student:', student))
+    // });
+
+    // console.log('you stupid stupid computer i hate you why dont');
+    // debuger;
+    // res.status(500).render('pages/team');
+    // res.status(305).redirect('./teams');
+    // res.set('Content-Type', 'text/html');
+    // res.redirect('/game/teams');
+    res.render('pages/team')
+
+    console.log('ahhhhhhhhhhhhhhh')
 })
+
+router.get('/teams', (req, res) => {
+    res.render('pages/team', {teams: teams})
+});
 
 // GET THE GAME FORM
 router.get('/teamForm/:id', async (req, res) => {
