@@ -2,51 +2,43 @@
 
 <header>
     <%- include ('../partials/navbar'); %>
-    <h1>Boys Vs Girls</h1>
-</header>
-
+    <h2>Create Your Teams</h2>
+    <h3><%= classroom.className %></h3>
     
-    <div class="game__container">
-        <div class="buttons">
-            <!-- <button class="previous">Previous</button> -->
-            <button class="next">Next</button>
-        </div>
+</header>
+<main id="gameFormClassroomData" data-classroom_id="<%= classroom._id %>">
+    
+    <div class="errors"></div>
+    
+    <form class="gameForm" data-classroomID="<%= classroom._id %>">
         
-        <div class="boy__container">
-            <h3>Boys</h3>
-            <p class="boy__point">0</p>
-            <div class="boy__focus boy_array">
-                
-                <!-- <span class=name>Current</span>
-                <button class="add"><i class="fas fa-plus"></i></button>
-                <button class="minus"><i class="minus fas fa-minus"></i></button>
-                <span class="points">0</span> -->
-            </div>
-            
-            <br>
-            <div class="boys boy_array">
-                <!--boysArray-->
-            </div>
+        <div>
+            <label for="numberOfTeams">Number of Teams</label>
+            <input id="numberOfTeams" type="number" name="numberOfTeams" value="1">
         </div>
 
-        <div class="girl__container">
-            <h3>Girls</h3>
-            <p class="girl__point">0</p>
-            
-            <div class="girl__focus girl_array">
-                
-                <!-- <span class=name>Next</span>
-                <button class="add"><i class="fas fa-plus"></i></button>
-                <button class="minus"><i class="minus fas fa-minus"></i></button>
-                <span class="points">0</span> -->
-            </div>
-            <br>
-            <div class="girls girl_array">
-                <!--girls array-->
-            </div>
-        </div>
+        <button id="submit">Play</button>
+    </form>
+
+    <div class="teams">
+        <!-- <ul class="team">
+            <li class="student">student1</li>
+            <li class="student">student2</li>
+            <i class="fas fa-trash-alt"></i></a>
+        </ul> -->
     </div>
+    
 </main>
-<script type="module" src="/public/js/team/controller.js"></script>
+
+<script type="module" src="../public/js/team/controller.js"></script>
+
 </body>
+
 </html>
+    
+   
+
+        
+    
+    
+

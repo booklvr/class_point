@@ -88,35 +88,29 @@ router.get('/boysVsGirls/data/:id', async (req, res) => {
 })
 
 
-let teams;
+// let teams;
 // get the team game
 // * id = classroom._id
-router.post('/team', (req, res) => {
-    console.log('YOU HAVE MAD IT TO THE TEAM DATA POST ROUTE')
+// router.post('/team', (req, res) => {
+//     console.log('YOU HAVE MAD IT TO THE TEAM DATA POST ROUTE')
 
-    console.log('req.body', req.body);
+//     console.log('req.body', req.body);
 
-    teams = req.body;
+//     teams = req.body;
 
-    // teams.forEach((team, index) => {
-    //     console.log('team', index);
-    //     team.forEach(student => console.log('student:', student))
-    // });
+//     res.send(teams);
 
-    // console.log('you stupid stupid computer i hate you why dont');
-    // debuger;
-    // res.status(500).render('pages/team');
-    // res.status(305).redirect('./teams');
-    // res.set('Content-Type', 'text/html');
-    // res.redirect('/game/teams');
-    res.render('pages/team')
+//     console.log('ahhhhhhhhhhhhhhh')
+// })
 
-    console.log('ahhhhhhhhhhhhhhh')
-})
+// router.get('/teams/:id', (req, res) => {
+//     res.render('pages/team', {classroomID: req.params.id})
+// });
 
-router.get('/teams', (req, res) => {
-    res.render('pages/team', {teams: teams})
-});
+// router.get('/teams/data/:id', (req, res) => {
+//     console.log(teams);
+//     res.send({teams});
+// })
 
 // GET THE GAME FORM
 router.get('/teamForm/:id', async (req, res) => {
@@ -133,7 +127,7 @@ router.get('/teamForm/:id', async (req, res) => {
         students = classroom.students;
         // console.log(students);
 
-        res.render('pages/gameForm', {classroom, students: students})
+        res.render('pages/team', {classroom, students: students})
     } catch (err) {
         console.log(err);
         res.status(404).send(err);
