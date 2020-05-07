@@ -7,15 +7,18 @@ var gameFormUI = (function() {
         
         
         // CLASSES
+        gameContainer: '.game__container',
         teams: '.teams',
         gameForm: '.gameForm',
         errors: '.errors',
         addTeam: '.add__team',
         minusTeam: '.minus__team',
+        next: '.next',
     };
 
     var DOM = {
         gameForm: document.querySelector(DOMStrings.gameForm),
+        gameContainer: document.querySelector(DOMStrings.gameContainer),
         errors: document.querySelector(DOMStrings.errors),
         gameFormClassroomData: document.querySelector(DOMStrings.gameFormClassroomData),
         teams: document.querySelector(DOMStrings.teams),
@@ -24,6 +27,7 @@ var gameFormUI = (function() {
     // CREATE STUDENTS AND TEAMS ARRAY
     let studentsArray = [];
     let teamsArray = [];
+    // let teamsPoints = [];
 
     // HELPER FUNCTIONS
 
@@ -64,16 +68,23 @@ var gameFormUI = (function() {
         chunk = studentsArray.length / teamNumber;
 
         for (i=0,j=studentsArray.length; i<j; i+=chunk) {
+            const team = {}
+            team.teamPoints = 0;
+            team.totalPoints = 0;
+            
             temp = studentsArray.slice(i,i+chunk);
-            console.log(temp);
-            teamsArray.push(temp);
+            console.log('temp', temp);
+            temp.teamPoints = 0;
+            temp.totalPoints = 0;
+            team.students = temp;
+            teamsArray.push(team);
         }
         console.log(teamsArray);
     }
 
     const addPreviewToDOM = function () {
         DOM.teams.innerHTML = '';
-
+        
         teamsArray.forEach((team, index) => {
             //create new team div
             const newTeam = document.createElement('div');
@@ -85,7 +96,7 @@ var gameFormUI = (function() {
             newTeam.appendChild(teamName);
             let teamList = document.createElement('ul');
             teamList.className += 'teamList';
-            team.forEach(student => {
+            team.students.forEach(student => {
                 let newStudent = document.createElement("li");
                 newStudent.className += 'student';
                 newStudent.innerHTML = `
@@ -150,15 +161,26 @@ var gameFormUI = (function() {
     }
 
     const addTeamsToDom = function () {
+        // add button to the DOM
+        const buttons = document.createElement('div');
+        buttons.classList += 'buttons';
+        buttons.innerHTML = `
+            <button class="next">Next</button>
+        `
+        DOM.gameContainer.insertBefore(buttons, DOM.gameContainer.firstChild);
 
-        teamsArray.forEach((team, index) => {
+        // add teams to the dom
+        
+        teamsArray.forEach((team, teamIndex) => {
             //create new team div
             const newTeam = document.createElement('div');
             newTeam.className += 'team';
+            newTeam.setAttribute('id', `team${teamIndex+1}`)
+            
             //add title
             const teamName = document.createElement('h3');
             teamName.className += 'teamName';
-            teamName.innerHTML = `Team ${index + 1}`
+            teamName.innerHTML = `Team ${teamIndex + 1}`
             newTeam.appendChild(teamName);
             let teamPoint = document.createElement('div');
             teamPoint.className += 'teamPoint';
@@ -168,26 +190,56 @@ var gameFormUI = (function() {
                 <span class="teamPointValue">0</span>
             `;
             newTeam.appendChild(teamPoint);
+
             let teamList = document.createElement('ul');
             teamList.className += 'teamList';
-            team.forEach(student => {
+            let totalPoints = 0;
+            team.students.forEach((student, studentIndex) => {
+                
                 let newStudent = document.createElement("li");
                 newStudent.className += 'student';
                 newStudent.setAttribute('id', student._id);
                 newStudent.innerHTML = `
-                <span class=name>${student.name}</span>
-                <button class="minus"><i class="fas fa-minus"></i></button>
-                <button class="add"><i class="fas fa-plus"></i></button>
-                <span class="points">${student.points}</span>
+                    <span class=name>${student.name}</span>
+                    <button class="minus"><i class="fas fa-minus"></i></button>
+                    <button class="add"><i class="fas fa-plus"></i></button>
+                    <span class="points">${student.points}</span>
                 `;
                 teamList.appendChild(newStudent);
+                // create current student
+                if (teamIndex === 0 && studentIndex === 0) {
+                    const currentTitle = document.createElement('h3');
+                    currentTitle.classList += 'currentTitle';
+                    currentTitle.innerHTML = 'Current Student';
+                    teamList.insertBefore(currentTitle, teamList.firstChild);
+                    console.log('current student');
+                    newStudent.className += ' currentStudent';
+                // create next student
+                } else if (teamIndex === 1 && studentIndex === 0) {
+                    const nextTitle = document.createElement('h3');
+                    nextTitle.classList += 'nextTitle';
+                    nextTitle.innerHTML = 'Upcoming Student';
+                    teamList.insertBefore(nextTitle, teamList.firstChild);
+                    console.log('current student');
+                    newStudent.className += ' nextStudent';
+                }
+
+                totalPoints += student.points;
+
+                
             })
+            // console.log('teamsPoints.team1', teamsPoints.team1);
+            // totalPoints += teamsPoints[newTeam.id];
+            // teamPoint.querySelector('.teamPointValue').innerHTML = totalPoints;
             // console.log(newTeam)
             newTeam.appendChild(teamList);
+
             // const teamName = document.createElement('ul')
             DOM.teams.appendChild(newTeam);
         })
     }
+
+   
 
     const updatePointDom = function(student, plusOrMinus) {
         // console.log('studentID', student.id);
@@ -206,7 +258,7 @@ var gameFormUI = (function() {
         const studentID = student.id;
         console.log('studentID', studentID)
 
-        teamsArray.forEach(team => team.map(student => {
+        teamsArray.forEach(team => team.students.map(student => {
             if (student._id === studentID ) {
                 addOrMinus === 'add' ? student.points++ : student.points--;
             }
@@ -219,6 +271,17 @@ var gameFormUI = (function() {
         const pointDiv = team.children[1].children[2];
 
         addOrMinus === 'add' ? +pointDiv.innerHTML++ : +pointDiv.innerHTML--;
+    }
+
+    const clearDOM = function() {
+        DOM.teams.innerHTML = '';
+        DOM.gameContainer.firstChild.remove();
+    }
+
+    const shiftArrays = function (array) {
+        console.log("shift array");
+        array[0].students.push(array[0].students.shift())
+        array.push(array.shift());
     }
 
     return {
@@ -239,7 +302,7 @@ var gameFormUI = (function() {
             students.forEach(student => studentsArray.push(student));
 
             //shuffle students array for different game play every time
-            studentsArray = shuffleArray(studentsArray);
+            // studentsArray = shuffleArray(studentsArray);
         },
 
         logStudents: function () {
@@ -273,16 +336,14 @@ var gameFormUI = (function() {
 
         // ********************************************************* 
         // *** Functions for Game Play ***
-
-        
-        
         submitEvent: function (e) {
             // posting teams to teamGame
             e.preventDefault();
-            console.log('creating game teams to team route');
 
             clearPage();
+            
             addTeamsToDom();
+            
 
             // console.log(teamsArray);
 
@@ -304,7 +365,6 @@ var gameFormUI = (function() {
         },
         
         changePoint: function(e) {
-            
             if (e.target.parentElement.classList.contains('add')) {
                 console.log('add please');
                 updatePointDom(e.target.parentElement.parentElement, 'add');
@@ -316,25 +376,56 @@ var gameFormUI = (function() {
                 updatePointDom(e.target.parentElement.parentElement, 'minus');
                 updatePointStudentArray(e.target.parentElement.parentElement, 'minus');
                 updateTeamPointsDOM(e.target.parentElement.parentElement.parentElement.parentElement, 'minus');
-                
             }
         },
         changeTeamPoints: function(e) {
             const target = e.target.parentElement;
+
+            const team = target.parentElement.parentElement.id;
+            
+            
             
             const pointDiv = e.target.parentElement.parentElement;
             
             if (target.classList.contains('add__team')) {
                 console.log('add to team')
                 pointDiv.children[2].innerHTML = +pointDiv.children[2].innerHTML + 1;
+                
             } else if (target.classList.contains('minus__team')) {
                 console.log('minus from the team');
                 pointDiv.children[2].innerHTML = +pointDiv.children[2].innerHTML - 1;
-            }
-
-
+            } 
             
-        }
+        },
+        goToNext: function(e) {
+            if(e.target.classList.contains('next')) {
+                console.log('go to next')
+
+                clearDOM();
+                // shift arrays 
+                shiftArrays(teamsArray);
+                addTeamsToDom();
+                
+
+            }
+            
+            // boysTurn = !boysTurn;
+            // changeOrder(boysTurn);
+            
+            // // shift the correct array
+            // boysTurn ? shiftArray(girlsArray) : shiftArray(boysArray);
+            
+            
+            
+            // clearDOM();
+            // getCurrent();
+            // getNext();
+            
+            // // getNextStudent();
+            // createTeam(boysArray, DOM.boys);
+            // createTeam(girlsArray, DOM.girls);
+        },
+
     };
 })();
 

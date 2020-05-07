@@ -6,11 +6,12 @@ var controller = (function(UI) {
         var DOMStrings = UI.getDOMStrings();
 
         var DOM = {
-            
+            gameContainer: document.querySelector(DOMStrings.gameContainer),
             submit: document.querySelector(DOMStrings.submit),
             numberOfTeams: document.querySelector(DOMStrings.numberOfTeams),
             gameFormClassroomData: document.querySelector(DOMStrings.gameFormClassroomData),
             teams: document.querySelector(DOMStrings.teams),
+            
             // gameForm: document.querySelector(DOMStrings.gameForm),
         };
         
@@ -29,6 +30,7 @@ var controller = (function(UI) {
         DOM.teams.addEventListener('click', UI.deleteStudent);
         DOM.teams.addEventListener('click', UI.changePoint);
         DOM.teams.addEventListener('click', UI.changeTeamPoints);
+        DOM.gameContainer.addEventListener('click', UI.goToNext);
     }
 
     return {
