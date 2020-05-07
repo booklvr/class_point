@@ -19,9 +19,8 @@ var boysVsGirlsUI = (function() {
         previous: '.previous',
         boyPoints: '.boy__point',
         girlPoints: '.girl__point',
-        
-       // BY ID
-       classroomData: '#boysVsGirlsClassData',  
+        classroomData: '.classroomData',
+        teams: '.teams',  
     };
 
     var DOM = {
@@ -35,35 +34,52 @@ var boysVsGirlsUI = (function() {
         girlFocus: document.querySelector(DOMStrings.girlFocus),
         boyPoints: document.querySelector(DOMStrings.boyPoints),
         girlPoints: document.querySelector(DOMStrings.girlPoints),
+        teams: document.querySelector(DOMStrings.teams),
     }
 
     //persistent data
+    let studentsArray = [];
+    let teamsArray = [];
+    // let boysArray = [];
+    // let girlsArray = [];
     
-    let boysArray = [];
-    let girlsArray = [];
-    
-    let boysTurn;
+    // let boysTurn;
 
     //HELPER FUNCTIONS
+    const removeStudentfromArray = function (studentID) {
+        console.log(studentID);
 
-    const createTeam = function (array, appendTo) {
-        console.log('creating DOM')
-        
-        for (let i = 1; i < array.length; i++) {
-            const newStudent = document.createElement('div');
-            newStudent.className += 'student';
-            newStudent.setAttribute('id', array[i]._id);
-            newStudent.innerHTML = `
-                <span class=name>${array[i].name}</span>
-                <button class="minus"><i class="fas fa-minus"></i></button>
-                <button class="add"><i class="fas fa-plus"></i></button>
-                <span class="points">${array[i].points}</span>
-            `;
-            // console.log('newStudent', newStudent);
-            
-            appendTo.appendChild(newStudent);
-        };
+        studentsArray = studentsArray.filter(student => student._id !== studentID)
+        console.log(studentsArray);
+    };
+
+    const removeStudentFromTeam = function (studentID) {
+        console.log(teamsArray);
+        teamsArray = teamsArray.map(team => team = team.students.filter(student => student._id !== studentID))
+
+        console.log(teamsArray);
     }
+
+   
+
+    // const createTeam = function (array, appendTo) {
+    //     console.log('creating DOM')
+        
+    //     for (let i = 1; i < array.length; i++) {
+    //         const newStudent = document.createElement('div');
+    //         newStudent.className += 'student';
+    //         newStudent.setAttribute('id', array[i]._id);
+    //         newStudent.innerHTML = `
+    //             <span class=name>${array[i].name}</span>
+    //             <button class="minus"><i class="fas fa-minus"></i></button>
+    //             <button class="add"><i class="fas fa-plus"></i></button>
+    //             <span class="points">${array[i].points}</span>
+    //         `;
+    //         // console.log('newStudent', newStudent);
+            
+    //         appendTo.appendChild(newStudent);
+    //     };
+    // }
 
     const boysStart = function () {
         return Math.floor(Math.random() * 2);
@@ -209,32 +225,115 @@ var boysVsGirlsUI = (function() {
         getDOMStrings: function() {
             return DOMStrings;
         },
-
-        whoGoesFirst: function() { 
-            boysTurn = boysStart();
-            changeOrder(boysTurn);
-            
-        },
-        // OTHER FUNCTIONS
         getClassroomData: async function () {
             console.log('get classroom data')
-            
-            //get classroom ID
             const classroomID = DOM.classroomData.dataset.classroom_id;
-            console.log('classroomID', classroomID);
-            
-            // fetch classroom data
-            const response = await fetch(`/game/boysVsGirls/data/${classroomID}`)
-            
-            // add data to students array
-            const result = await response.json();
+            // console.log(classroomID)
 
-            girlsArray = result.girls;
-            boysArray = result.boys;
+            const response = await fetch(`/game/classData/${classroomID}`)
+            
+            const students = await response.json();
 
-            // console.log('boys', boysArray);
-            // console.log('girls', girlsArray);
+            students.forEach(student => studentsArray.push(student));
+
+            //shuffle students array for different game play every time
+            // studentsArray = shuffleArray(studentsArray);
+            console.log(studentsArray);
+            
         },
+        createTeams: function () {
+            console.log('creatingTeams');
+            // clear array
+            const boys = {
+                name: 'Boys Team',
+                totalPoints: 0,
+                teamID: 'boys',
+                students: studentsArray.filter(student => student.sex === 'male'),
+            }
+    
+            const girls = {
+                name: 'Girls Team',
+                totalPoints: 0,
+                teamId: 'girls',
+                students: studentsArray.filter(student => student.sex === 'male'),
+            }
+            teamsArray.push(boys);
+            teamsArray.push(girls);
+    
+            console.log(teamsArray);
+        },
+
+        addPreviewToDOM: function () {
+            DOM.teams.innerHTML = '';
+            
+            teamsArray.forEach((team, index) => {
+                //create new team div
+                const newTeam = document.createElement('div');
+                newTeam.className += 'team';
+                //add title
+                const teamName = document.createElement('h3');
+                teamName.className += 'teamName';
+                teamName.innerHTML = team.name;
+                newTeam.appendChild(teamName);
+                let teamList = document.createElement('ul');
+                teamList.className += 'teamList';
+                team.students.forEach(student => {
+                    let newStudent = document.createElement("li");
+                    newStudent.className += 'student';
+                    newStudent.innerHTML = `
+                        <span class="student-name">${student.name}</span>
+                        <i class="${'fas fa-child icon-' + student.sex}"></i>
+                        <i id="${student._id}" class="deleteStudent fas fa-trash-alt"></i></a>
+                    `;
+                    teamList.appendChild(newStudent);
+                })
+                newTeam.appendChild(teamList);
+                // const teamName = document.createElement('ul')
+                DOM.teams.appendChild(newTeam);
+            })
+        },
+
+        deleteStudent: function (e) {
+            console.log('deleting student')
+            if (e.target.classList.contains('deleteStudent')) {
+                
+                removeStudentfromArray(e.target.id)
+
+                removeStudentFromTeam(e.target.id);
+                //remove the student form the DOM
+                // console.log(e.target.parentElement);
+                let li = e.target.parentElement;
+                li.remove();
+            }
+        },
+
+
+
+        // whoGoesFirst: function() { 
+        //     boysTurn = boysStart();
+        //     changeOrder(boysTurn);
+            
+        // },
+        // OTHER FUNCTIONS
+        // getClassroomData: async function () {
+        //     console.log('get classroom data')
+            
+        //     //get classroom ID
+        //     const classroomID = DOM.classroomData.dataset.classroom_id;
+        //     console.log('classroomID', classroomID);
+            
+        //     // fetch classroom data
+        //     const response = await fetch(`/game/boysVsGirls/data/${classroomID}`)
+            
+        //     // add data to students array
+        //     const result = await response.json();
+
+        //     girlsArray = result.girls;
+        //     boysArray = result.boys;
+
+        //     // console.log('boys', boysArray);
+        //     // console.log('girls', girlsArray);
+        // },
         createDOM: function () {
             // console.log('studentsArray', studentsArray);
             getCurrent();

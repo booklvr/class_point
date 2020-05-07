@@ -87,31 +87,6 @@ router.get('/boysVsGirls/data/:id', async (req, res) => {
     }
 })
 
-
-// let teams;
-// get the team game
-// * id = classroom._id
-// router.post('/team', (req, res) => {
-//     console.log('YOU HAVE MAD IT TO THE TEAM DATA POST ROUTE')
-
-//     console.log('req.body', req.body);
-
-//     teams = req.body;
-
-//     res.send(teams);
-
-//     console.log('ahhhhhhhhhhhhhhh')
-// })
-
-// router.get('/teams/:id', (req, res) => {
-//     res.render('pages/team', {classroomID: req.params.id})
-// });
-
-// router.get('/teams/data/:id', (req, res) => {
-//     console.log(teams);
-//     res.send({teams});
-// })
-
 // GET THE GAME FORM
 router.get('/teamForm/:id', async (req, res) => {
     console.log('rendering game form');

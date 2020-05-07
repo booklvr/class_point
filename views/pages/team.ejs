@@ -6,7 +6,7 @@
     <h3><%= classroom.className %></h3>
     
 </header>
-<main id="gameFormClassroomData" data-classroom_id="<%= classroom._id %>">
+<main class="classroomData" data-classroom_id="<%= classroom._id %>">
     
     <div class="errors"></div>
     
@@ -21,7 +21,9 @@
     </form>
 
     <div class="game__container">
+        <div class="preview__teams"></div>
         <div class="teams">
+            
             <!-- <ul class="team">
                 <li class="student">student1</li>
                 <li class="student">student2</li>

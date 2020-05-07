@@ -5,48 +5,19 @@
     <h1>Boys Vs Girls</h1>
 </header>
 
-<main id="boysVsGirlsClassData" data-classroom_id="<%= classroomID %>">
-    
-    <div class="game__container">
-        <div class="buttons">
-            <!-- <button class="previous">Previous</button> -->
-            <button class="next">Next</button>
-        </div>
-        
-        <div class="boy__container">
-            <h3>B oys</h3>
-            <p class="boy__point">0</p>
-            <div class="boy__focus boy_array">
-                
-                <!-- <span class=name>Current</span>
-                <button class="add"><i class="fas fa-plus"></i></button>
-                <button class="minus"><i class="minus fas fa-minus"></i></button>
-                <span class="points">0</span> -->
-            </div>
-            
-            <br>
-            <div class="boys boy_array">
-                <!--boysArray-->
-            </div>
-        </div>
+<main class="classroomData" data-classroom_id="<%= classroomID %>">
 
-        <div class="girl__container">
-            <h3>Girls</h3>
-            <p class="girl__point">0</p>
-            
-            <div class="girl__focus girl_array">
-                
-                <!-- <span class=name>Next</span>
-                <button class="add"><i class="fas fa-plus"></i></button>
-                <button class="minus"><i class="minus fas fa-minus"></i></button>
-                <span class="points">0</span> -->
-            </div>
-            <br>
-            <div class="girls girl_array">
-                <!--girls array-->
-            </div>
+    <div class="game__container">
+        <div class="teams">
+            <!-- <ul class="team">
+                <li class="student">student1</li>
+                <li class="student">student2</li>
+                <i class="fas fa-trash-alt"></i></a>
+            </ul> -->
         </div>
     </div>
+    
+    
 </main>
 <script type="module" src="/public/js/boysVsGirls/controller.js"></script>
 </body>

@@ -10,7 +10,9 @@ var controller = (function(UI) {
             submit: document.querySelector(DOMStrings.submit),
             numberOfTeams: document.querySelector(DOMStrings.numberOfTeams),
             gameFormClassroomData: document.querySelector(DOMStrings.gameFormClassroomData),
+            previewTeams: document.querySelector(DOMStrings.previewTeams),
             teams: document.querySelector(DOMStrings.teams),
+
             
             // gameForm: document.querySelector(DOMStrings.gameForm),
         };
@@ -27,8 +29,8 @@ var controller = (function(UI) {
         });
 
         //delete student from teams
-        DOM.teams.addEventListener('click', UI.deleteStudent);
-        DOM.teams.addEventListener('click', UI.changePoint);
+        DOM.previewTeams.addEventListener('click', UI.deleteStudent);
+        DOM.teams.addEventListener('click', UI.changePointStudent);
         DOM.teams.addEventListener('click', UI.changeTeamPoints);
         DOM.gameContainer.addEventListener('click', UI.goToNext);
     }
@@ -37,7 +39,8 @@ var controller = (function(UI) {
         init: async function () {
             console.log('You can now create a game');
             await UI.getClassroomData();
-            UI.logStudents();
+            
+            // UI.logStudents();
             UI.createPreviewDOM(1);
             // UI.addTeamsToDOM();
             setupEventListeners();
