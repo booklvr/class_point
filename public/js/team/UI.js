@@ -120,20 +120,30 @@ var gameFormUI = (function() {
     //     console.log('studentsArray', studentsArray);
     // }
 
-    const removeStudentFromTeam = function (studentID) {
-        // teamsArray.forEach(team => team.students.map(students => students.filter(student => student._id !== studentID)))
-        // teamsArray = teamsArray.map(team => team.students = team.students.filter(student => student._id !== studentID))
-        teamsArray.forEach(team => {
-            console.log('team', team.students);
-            team.students.filter(student => {
-                console.log('student', student)
-                student.filter(student._id !== studentID);
-            })
-        })
-        
+    // const removeStudentFromTeam = function (studentID) {
+    //     // teamsArray.forEach(team => team.students.map(students => students.filter(student => student._id !== studentID)))
+    //     // teamsArray = teamsArray.map(team => team.students = team.students.filter(student => student._id !== studentID))
+    //     teamsArray.forEach(team => {
+    //         console.log('team', team.students);
+    //         team.students.filter(student => {
+    //             console.log('student', student)
+    //             student.filter(student._id !== studentID);
+    //         })
+    //     })
 
+    const removeStudentFromTeam = function (studentID) {
+        teamsArray.forEach(team => team.students = team.students.filter(student => student._id !== studentID))
+        
         console.log('teamsArray', teamsArray);
     }
+
+    const removeStudentfromArray = function (studentID) {
+        // console.log(studentID);
+
+        studentsArray = studentsArray.filter(student => student._id !== studentID)
+        console.log('studentsArray', studentsArray);
+    }
+        
 
     const shuffleArray = function(array) {
         var currentIndex = array.length, temporaryValue, randomIndex;
@@ -359,9 +369,8 @@ var gameFormUI = (function() {
             if (e.target.classList.contains('deleteStudent')) {
                 console.log('delete this mother fucker yeah')
                 
-                // removeStudentfromArray(e.target.id)
-
                 removeStudentFromTeam(e.target.id);
+                removeStudentfromArray(e.target.id)
                 //remove the student form the DOM
                 // console.log(e.target.parentElement);
                 let li = e.target.parentElement;
@@ -443,22 +452,6 @@ var gameFormUI = (function() {
                 shiftArrays(teamsArray);
                 addTeamsToDom();
             }
-            
-            // boysTurn = !boysTurn;
-            // changeOrder(boysTurn);
-            
-            // // shift the correct array
-            // boysTurn ? shiftArray(girlsArray) : shiftArray(boysArray);
-            
-            
-            
-            // clearDOM();
-            // getCurrent();
-            // getNext();
-            
-            // // getNextStudent();
-            // createTeam(boysArray, DOM.boys);
-            // createTeam(girlsArray, DOM.girls);
         },
 
     };

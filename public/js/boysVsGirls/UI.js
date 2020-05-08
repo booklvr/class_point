@@ -21,6 +21,8 @@ var boysVsGirlsUI = (function() {
         girlPoints: '.girl__point',
         classroomData: '.classroomData',
         teams: '.teams',  
+        submit: '.submit',
+        previewTeams: '.preview__teams',
     };
 
     var DOM = {
@@ -35,6 +37,8 @@ var boysVsGirlsUI = (function() {
         boyPoints: document.querySelector(DOMStrings.boyPoints),
         girlPoints: document.querySelector(DOMStrings.girlPoints),
         teams: document.querySelector(DOMStrings.teams),
+        previewTeams: document.querySelector(DOMStrings.previewTeams),
+        submit: document.querySelector(DOMStrings.submit),
     }
 
     //persistent data
@@ -46,181 +50,182 @@ var boysVsGirlsUI = (function() {
     // let boysTurn;
 
     //HELPER FUNCTIONS
+    const removeStudentFromTeam = function (studentID) {
+        teamsArray.forEach(team => team.students = team.students.filter(student => student._id !== studentID))
+        
+        console.log('teamsArray', teamsArray);
+    }
+
     const removeStudentfromArray = function (studentID) {
-        console.log(studentID);
+        // console.log(studentID);
 
         studentsArray = studentsArray.filter(student => student._id !== studentID)
-        console.log(studentsArray);
+        console.log('studentsArray', studentsArray);
+    }
+
+    const clearPage = function () {
+       
+        DOM.previewTeams.remove();
+        DOM.submit.remove();
+        DOM.teams.innerHTML = '';
+    }
+
+
+    ///////////////////////////////////////////////////////////////////////////////
+    // *** for game play
+   
+    const addTeamsToDom = function () {
+        // add button to the DOM
+        const buttons = document.createElement('div');
+        buttons.classList += 'buttons';
+        buttons.innerHTML = `
+            <button class="next">Next</button>
+        `
+        DOM.gameContainer.insertBefore(buttons, DOM.gameContainer.firstChild);
+
+        // add teams to the dom
+        
+        teamsArray.forEach((team, teamIndex) => {
+            
+            console.log('team', team)
+            //create new team div
+            const newTeam = document.createElement('div');
+            newTeam.className += 'team';
+            newTeam.setAttribute('id', team.teamID)
+            
+            //add title
+            const teamName = document.createElement('h3');
+            teamName.className += 'teamName';
+            teamName.innerHTML = team.name;
+            newTeam.appendChild(teamName);
+            let teamPoint = document.createElement('div');
+            teamPoint.className += 'teamPoint';
+            teamPoint.innerHTML = `
+                <button class="minus minus__team"><i class="fas fa-minus"></i></button>
+                <button class="add add__team"><i class="fas fa-plus"></i></button>
+                <span class="teamPointValue">${team.totalPoints}</span>
+            `;
+            newTeam.appendChild(teamPoint);
+
+            let teamList = document.createElement('ul');
+            teamList.className += 'teamList';
+            let totalPoints = 0;
+            team.students.forEach((student, studentIndex) => {
+                
+                let newStudent = document.createElement("li");
+                newStudent.className += 'student';
+                newStudent.setAttribute('id', student._id);
+                newStudent.innerHTML = `
+                    <span class=name>${student.name}</span>
+                    <button class="minus minus__student"><i class="fas fa-minus"></i></button>
+                    <button class="add add__student"><i class="fas fa-plus"></i></button>
+                    <span class="points">${student.points}</span>
+                `;
+                teamList.appendChild(newStudent);
+                // create current student
+                if (teamIndex === 0 && studentIndex === 0) {
+                    const currentTitle = document.createElement('h3');
+                    currentTitle.classList += 'currentTitle';
+                    currentTitle.innerHTML = 'Current Student';
+                    teamList.insertBefore(currentTitle, teamList.firstChild);
+                    console.log('current student');
+                    newStudent.className += ' currentStudent';
+                // create next student
+                } else if (teamIndex === 1 && studentIndex === 0) {
+                    const nextTitle = document.createElement('h3');
+                    nextTitle.classList += 'nextTitle';
+                    nextTitle.innerHTML = 'Upcoming Student';
+                    teamList.insertBefore(nextTitle, teamList.firstChild);
+                    console.log('next student');
+                    newStudent.className += ' nextStudent';
+                }
+
+                // totalPoints += student.points;
+            })
+            // console.log('teamsPoints.team1', teamsPoints.team1);
+            // totalPoints += teamsPoints[newTeam.id];
+            // teamPoint.querySelector('.teamPointValue').innerHTML = totalPoints;
+            // console.log(newTeam)
+            newTeam.appendChild(teamList);
+
+            // const teamName = document.createElement('ul')
+            DOM.teams.appendChild(newTeam);
+        })
+    }
+
+    //is it an add or minus button;
+    const plusOrMinus = function (target) {
+        return target.classList.contains('add') ? 1 : -1;
     };
 
-    const removeStudentFromTeam = function (studentID) {
-        console.log(teamsArray);
-        teamsArray = teamsArray.map(team => team = team.students.filter(student => student._id !== studentID))
-
-        console.log(teamsArray);
-    }
+    const updateStudentPointDom = function (target, action) {
+        console.log('updateStudentPointDom-teamsArray', teamsArray)
+        
+        //find pointsDiv
+        const pointsDiv = target.parentElement.lastElementChild;
+        //update pointsDiv
+        pointsDiv.innerHTML = +pointsDiv.innerHTML + action;
+    };
 
    
-
-    // const createTeam = function (array, appendTo) {
-    //     console.log('creating DOM')
+    const updatePointsArrayAll = function(student, action){
+        console.log('updatePointsArrayAll-teamsArray', teamsArray)
+        console.log(student.parentElement.parentElement);
         
-    //     for (let i = 1; i < array.length; i++) {
-    //         const newStudent = document.createElement('div');
-    //         newStudent.className += 'student';
-    //         newStudent.setAttribute('id', array[i]._id);
-    //         newStudent.innerHTML = `
-    //             <span class=name>${array[i].name}</span>
-    //             <button class="minus"><i class="fas fa-minus"></i></button>
-    //             <button class="add"><i class="fas fa-plus"></i></button>
-    //             <span class="points">${array[i].points}</span>
-    //         `;
-    //         // console.log('newStudent', newStudent);
-            
-    //         appendTo.appendChild(newStudent);
-    //     };
-    // }
-
-    const boysStart = function () {
-        return Math.floor(Math.random() * 2);
-    }
-
-    const getCurrent = function () {
-        console.log('create current student DOM');
-
-        const array = boysTurn ? boysArray : girlsArray;
-        const appendTo = boysTurn ? DOM.boyFocus : DOM.girlFocus;
-        appendTo.innerHTML = '';
-        
-        const addStudent = array[0];
-        const newStudent = document.createElement('div');
-        newStudent.className += 'student';
-        newStudent.setAttribute('id', addStudent._id);
-        newStudent.innerHTML = `
-            <span class=name>${addStudent.name}</span>
-            <button class="minus"><i class="fas fa-minus"></i></button>
-            <button class="add"><i class="fas fa-plus"></i></button>
-            <span class="points">${addStudent.points}</span>
-        `;
-        // console.log('newStudent', newStudent);
-        appendTo.appendChild(newStudent);
-    };
-
-    const getNext = function () {
-        console.log('create next student dom');
-        const array = boysTurn ? girlsArray : boysArray;
-        const appendTo = boysTurn ? DOM.girlFocus : DOM.boyFocus;
-
-        appendTo.innerHTML = '';
-        
-        const addStudent = array[0];
-        const newStudent = document.createElement('div');
-        newStudent.className += 'student';
-        newStudent.setAttribute('id', addStudent._id);
-        newStudent.innerHTML = `
-            <span class=name>${addStudent.name}</span>
-            <button class="minus"><i class="fas fa-minus"></i></button>
-            <button class="add"><i class="fas fa-plus"></i></button>
-            <span class="points">${addStudent.points}</span>
-        `;
-        // console.log('newStudent', newStudent);
-
-        const upNext = document.createElement('h4');
-        upNext.className += 'upNext__title';
-        upNext.innerHTML = 'Up Next';
-        appendTo.appendChild(upNext);  
-        appendTo.appendChild(newStudent);
-    }
-
-    const updatePointDom = function(student, plusOrMinus) {
-        // console.log('studentID', student.id);
-        let children = student.children;
-        // console.log('children',children);
-
-        if (plusOrMinus === 'add') {
-            children[3].innerHTML = +children[3].innerHTML + 1;
-        } else if (plusOrMinus === 'minus') {
-            children[3].innerHTML = +children[3].innerHTML - 1;
-        }
-    };
-
-    
-
-    // different from individual
-    const updatePointStudentArray = function(student, addOrMinus){
         const studentID = student.id;
 
-        const updateArray = function (array) {
-            array.map(student => {
-                if (student._id === studentID ) {
-                    addOrMinus === 'add' ? student.points++ : student.points--;
-                }
-            })
-        }
+        teamsArray.forEach(team => team.students.map(student => {
+            
+            if (student._id === studentID) {
+                console.log("it's a match");
+                // add or minus points from student points
+                student.points += action;
+                team.totalPoints += action
+            }
+        }))
+        console.log(teamsArray);
+
         
-        if (student.parentElement.classList.contains('boy_array')) {
-            console.log('update boys array')
-            updateArray(boysArray);
-        } else if (student.parentElement.classList.contains('girl_array')) {
-            console.log('update girls array')
-            updateArray(girlsArray);
-        }
     }
-
-    const changeTeamPoints = function (team, addOrMinus) {
-        console.log('change team points');
+    const updatePointsArrayTeam = function (teamID, action) {
+        console.log('updatePointsArrayTeam-teamsArray', teamsArray);
+        // iterate over teams array
+        // add or minus point to teamPoints
+        console.log('teamsArray-before', teamsArray);
         
-        if (addOrMinus === 'add') {
-            console.log('add points to team');
-            team.innerHTML = +team.innerHTML + 1;
-        } else if (addOrMinus === 'minus') {
-            console.log('minus points from team');
-            team.innerHTML = team.innerHTML - 1;
-        }
-        // addOrMinus === 'add' ? team.innerHTML = +team.innerHTML++ : team.innerHTML = +team.innerHTML--;
+
+        teamsArray.forEach(team => {
+            console.log('team', team);
+            console.log('team.id', team.id);
+            console.log('teamID', teamID);
+            if (team.teamID === teamID) {
+                team.totalPoints += action;
+            }
+        })
+
+
+        console.log('teamsArray-before', teamsArray);
     }
 
-    const changeOrder = function (boysTurn) {
-        if(boysTurn) {
-            console.log('boys Turn');
-            DOM.gameContainer.appendChild(DOM.girlsContainer);
-            boysTurn = true;
-        } else {
-            console.log('girls Turn')
-            DOM.gameContainer.appendChild(DOM.boysContainer);
-            boysTurn = false;
-        }
+    const updateTeamPointDom = function (team, action) {
+        console.log('updateTeamPointDom-teamsArray', teamsArray);    
+        const pointValue = team.querySelector('.teamPointValue');
+        
+        action === 1 ? pointValue.innerHTML = +pointValue.innerHTML + 1 : pointValue.innerHTML = +pointValue.innerHTML -1;
     }
-
-    const shiftArray = function (array) {
-        console.log("shift array");
-        array.push(array.shift());
-    }
-
-    // const addErrorMessage = function () {
-    //     DOM.errors.innerHTML = "Class is too small, please add students";
-
-    //     setTimeout(() => {
-    //         DOM.errors.innerHTML = "";
-    //     }, 3000);
-    // }
 
     const clearDOM = function() {
-        DOM.boys.innerHTML = '';
-        DOM.girls.innerHTML = '';
-
-        const removeStudent = function (student) {
-            for (let i = 0; i < student.childNodes.length; i++ ) {
-                if (student.childNodes[i].className === 'student') {
-                    student.childNodes[i].remove();
-                }
-            }
-        }
-        removeStudent(DOM.boyFocus);
-        removeStudent(DOM.girlFocus);
-        
+        DOM.teams.innerHTML = '';
+        DOM.previewTeams = '';
+        DOM.gameContainer.firstChild.remove();
     }
 
+    const shiftArrays = function (array) {
+        console.log("shift array");
+        array[0].students.push(array[0].students.shift())
+        array.push(array.shift());
+    }
+    
     return {
         getDOMStrings: function() {
             return DOMStrings;
@@ -254,7 +259,7 @@ var boysVsGirlsUI = (function() {
             const girls = {
                 name: 'Girls Team',
                 totalPoints: 0,
-                teamId: 'girls',
+                teamID: 'girls',
                 students: studentsArray.filter(student => student.sex === 'male'),
             }
             teamsArray.push(boys);
@@ -289,24 +294,89 @@ var boysVsGirlsUI = (function() {
                 })
                 newTeam.appendChild(teamList);
                 // const teamName = document.createElement('ul')
-                DOM.teams.appendChild(newTeam);
+                DOM.previewTeams.appendChild(newTeam);
             })
         },
 
         deleteStudent: function (e) {
-            console.log('deleting student')
             if (e.target.classList.contains('deleteStudent')) {
+                console.log('delete student from arrays')
                 
-                removeStudentfromArray(e.target.id)
-
                 removeStudentFromTeam(e.target.id);
-                //remove the student form the DOM
-                // console.log(e.target.parentElement);
+                removeStudentfromArray(e.target.id)
+                
                 let li = e.target.parentElement;
                 li.remove();
             }
         },
 
+        //////////////////////////////////////////////////////////////////
+        // *** functions for game play ***
+        submitEvent: function (e) {
+            // posting teams to teamGame
+            e.preventDefault();
+            console.log("let's play")
+
+            clearPage();
+            
+            addTeamsToDom();
+            console.log('after-AddTeamsToDOM-teamsArray', teamsArray);
+        },
+
+        changePointStudent: function(e) {
+            console.log('changePointStudent-teamsArray', teamsArray);
+            const target = e.target.parentElement;
+            
+            if (target.classList.contains('add__student') || target.classList.contains('minus__student')) {
+                const action = plusOrMinus(target);
+                const student = target.parentElement;
+                const team = student.parentElement.parentElement;
+                
+                console.log(action);
+
+                updateStudentPointDom(target, action);
+                console.log('prePostUpdateAll', teamsArray);
+                updatePointsArrayAll(student, action);
+                console.log('postPointsUpdateAll', teamsArray);
+                updateTeamPointDom(team, action);
+            }
+            console.log('postStudent point update', teamsArray);
+        },
+
+        changeTeamPoints: function(e) {
+            console.log('changeTeamPoints-teamsArray', teamsArray);
+            const target = e.target.parentElement;
+            const pointDiv = target.parentElement;
+            
+            if (pointDiv.classList.contains('teamPoint')) {
+                const team = pointDiv.parentElement;
+                // const pointValue = pointDiv.lastElementChild;
+
+                let action = plusOrMinus(target);
+
+                // change points in teamsArray
+                updatePointsArrayTeam(team.id, action)
+
+                
+
+                //update DOM 
+                updateTeamPointDom(team, action);
+            }
+        },
+
+        goToNext: function(e) {
+            if(e.target.classList.contains('next')) {
+                console.log('go to next')
+                console.log('preClear', teamsArray);
+                clearDOM();
+                console.log('pre-shift', teamsArray);
+                // shift arrays 
+                shiftArrays(teamsArray);
+                console.log('teamArray-post-shift', teamsArray);
+                // addTeamsToDom();
+            }
+        },
+        
 
 
         // whoGoesFirst: function() { 
@@ -315,87 +385,48 @@ var boysVsGirlsUI = (function() {
             
         // },
         // OTHER FUNCTIONS
-        // getClassroomData: async function () {
-        //     console.log('get classroom data')
+        
+        // createDOM: function () {
+        //     // console.log('studentsArray', studentsArray);
+        //     getCurrent();
+        //     getNext();
             
-        //     //get classroom ID
-        //     const classroomID = DOM.classroomData.dataset.classroom_id;
-        //     console.log('classroomID', classroomID);
             
-        //     // fetch classroom data
-        //     const response = await fetch(`/game/boysVsGirls/data/${classroomID}`)
-            
-        //     // add data to students array
-        //     const result = await response.json();
-
-        //     girlsArray = result.girls;
-        //     boysArray = result.boys;
-
-        //     // console.log('boys', boysArray);
-        //     // console.log('girls', girlsArray);
+        //     // getNextStudent();
+        //     createTeam(boysArray, DOM.boys);
+        //     createTeam(girlsArray, DOM.girls);
         // },
-        createDOM: function () {
-            // console.log('studentsArray', studentsArray);
-            getCurrent();
-            getNext();
-            
-            
-            // getNextStudent();
-            createTeam(boysArray, DOM.boys);
-            createTeam(girlsArray, DOM.girls);
-        },
 
-        changePoint: function(e) {
+        // changePoint: function(e) {
             
-            if (e.target.parentElement.classList.contains('add')) {
-                console.log('add please');
-                updatePointDom(e.target.parentElement.parentElement, 'add');
-                updatePointStudentArray(e.target.parentElement.parentElement, 'add');
+        //     if (e.target.parentElement.classList.contains('add')) {
+        //         console.log('add please');
+        //         updatePointDom(e.target.parentElement.parentElement, 'add');
+        //         updatePointStudentArray(e.target.parentElement.parentElement, 'add');
                 
                 
-                //add points to team
-                e.target.parentElement.parentElement.parentElement.classList.contains('boy_array') ? 
-                    changeTeamPoints(DOM.boyPoints, 'add') : 
-                    changeTeamPoints(DOM.girlPoints, 'add');
+        //         //add points to team
+        //         e.target.parentElement.parentElement.parentElement.classList.contains('boy_array') ? 
+        //             changeTeamPoints(DOM.boyPoints, 'add') : 
+        //             changeTeamPoints(DOM.girlPoints, 'add');
 
-            } else if (e.target.parentElement.classList.contains('minus')) {
-                console.log('minus the points')
-                updatePointDom(e.target.parentElement.parentElement, 'minus');
-                updatePointStudentArray(e.target.parentElement.parentElement, 'minus');
+        //     } else if (e.target.parentElement.classList.contains('minus')) {
+        //         console.log('minus the points')
+        //         updatePointDom(e.target.parentElement.parentElement, 'minus');
+        //         updatePointStudentArray(e.target.parentElement.parentElement, 'minus');
                 
-                //minus points from team
-                e.target.parentElement.parentElement.parentElement.classList.contains('boy_array') ? 
-                    changeTeamPoints(DOM.boyPoints, 'minus') : 
-                    changeTeamPoints(DOM.girlPoints, 'minus');
-            }
-        },
-        goToNext: function(e) {
-            console.log('go to next')
-            boysTurn = !boysTurn;
-            changeOrder(boysTurn);
-            
-            // shift the correct array
-            boysTurn ? shiftArray(girlsArray) : shiftArray(boysArray);
-            
+        //         //minus points from team
+        //         e.target.parentElement.parentElement.parentElement.classList.contains('boy_array') ? 
+        //             changeTeamPoints(DOM.boyPoints, 'minus') : 
+        //             changeTeamPoints(DOM.girlPoints, 'minus');
+        //     }
+        // },
 
+        
+        // goToPrevious: function(e) {
+        //     console.log('go to previous')
             
-            clearDOM();
-            getCurrent();
-            getNext();
-            
-            // getNextStudent();
-            createTeam(boysArray, DOM.boys);
-            createTeam(girlsArray, DOM.girls);
-        },
-
-        goToPrevious: function(e) {
-            console.log('go to previous')
-            // unshiftArray();
-            // clearDOM();
-            // getCurrentStudent();
-            // getNextStudent();
-            // createStudents();
-        }
+        // }
     };
 })();
 

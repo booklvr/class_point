@@ -14,18 +14,19 @@ var controller = (function(UI) {
             next: document.querySelector(DOMStrings.next),
             previous: document.querySelector(DOMStrings.previous),
             teams: document.querySelector(DOMStrings.teams),
+            submit: document.querySelector(DOMStrings.submit),
+            gameContainer: document.querySelector(DOMStrings.gameContainer),
+            previewTeams: document.querySelector(DOMStrings.previewTeams),
         };
 
         //EVENT LISTENERS
 
         DOM.submit.addEventListener('click', UI.submitEvent);
-        DOM.teams.addEventListener('click', UI.deleteStudent);
-        // DOM.boys.addEventListener('click', UI.changePoint);
-        // DOM.girls.addEventListener('click', UI.changePoint);
-        // DOM.boyFocus.addEventListener('click', UI.changePoint);
-        // DOM.girlFocus.addEventListener('click', UI.changePoint);
-        // DOM.next.addEventListener('click', UI.goToNext);
-        // DOM.previous.addEventListener('click', UI.goToPrevious);
+        DOM.previewTeams.addEventListener('click', UI.deleteStudent);
+        DOM.teams.addEventListener('click', UI.changePointStudent);
+        DOM.teams.addEventListener('click', UI.changeTeamPoints);
+        DOM.gameContainer.addEventListener('click', UI.goToNext);
+        
     }
 
     return {
