@@ -196,7 +196,7 @@ var gameFormUI = (function() {
             //create new team div
             const newTeam = document.createElement('div');
             newTeam.className += 'team';
-            newTeam.setAttribute('id', `team${teamIndex+1}`)
+            newTeam.setAttribute('id', team.id)
             
             //add title
             const teamName = document.createElement('h3');
