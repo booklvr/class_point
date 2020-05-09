@@ -7,17 +7,13 @@ const   mongoose =  require('mongoose'),
 const classroomSchema = new mongoose.Schema({
     owner: {
         type: mongoose.Schema.Types.ObjectId, // from user Schema logged in user
-        // required: true,
+        required: true,
         ref: 'User' // connect to user model
     },
     className: {
         type: String,
         required: true,
     },
-    // students: {
-    //     type: Array,
-    //     "default": []
-    // }
 }, {
     timestamps: true
 });
@@ -32,11 +28,6 @@ classroomSchema.pre('deleteOne', {document: true, query: false}, async function(
     console.log('initiating cascade delete students from classroom');
     const classroom = this;
     console.log("find students in classroom:", classroom)
-
-    
-    // console.log("question", question)
-    // const questionID = await question.getFilter()["_id"];
-    // console.log("questionId", questionID)
 
     try {
         if (typeof classroom === 'undefined') {
