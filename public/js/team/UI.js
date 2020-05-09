@@ -17,6 +17,9 @@ var gameFormUI = (function() {
         addTeam: '.add__team',
         minusTeam: '.minus__team',
         next: '.next',
+        titleContainer: '.title__container',
+        title: '.title',
+        
     };
 
     var DOM = {
@@ -26,6 +29,8 @@ var gameFormUI = (function() {
         classroomData: document.querySelector(DOMStrings.classroomData),
         teams: document.querySelector(DOMStrings.teams),
         previewTeams: document.querySelector(DOMStrings.previewTeams),
+        titleContainer: document.querySelector(DOMStrings.titleContainer),
+        title: document.querySelector(DOMStrings.title),
     } 
 
     // CREATE STUDENTS AND TEAMS ARRAY
@@ -175,10 +180,25 @@ var gameFormUI = (function() {
 
     // ********************************************************* 
     // *** Functions for Game Play ***
-    const clearPage = function () {
+    const startGame = function () {
+        DOM.title.innerHTML = "Let's Play",
         DOM.gameForm.remove();
         DOM.previewTeams.remove();
         DOM.teams.innerHTML = '';
+
+        // add save refresh buttons
+        const saveRefreshButtons = document.createElement('div');
+        console.log(saveRefreshButtons);
+        
+        saveRefreshButtons.classList += saveRefreshButtons;
+        saveRefreshButtons.innerHTML = `
+            <button class="refresh"><i class="fas fa-sync-alt"></i></button>
+            
+        `
+        //add this later
+        // <button class="save"><i class="fas fa-save"></i></button>
+        DOM.titleContainer.insertBefore(saveRefreshButtons, DOM.titleContainer.children[1]);
+        // DOM.titleContainer.appendChild(saveRefreshButtons);
     }
 
     const addTeamsToDom = function () {
@@ -199,6 +219,8 @@ var gameFormUI = (function() {
             newTeam.setAttribute('id', team.id)
             
             //add title
+            
+
             const teamName = document.createElement('h3');
             teamName.className += 'teamName';
             teamName.innerHTML = team.name;
@@ -329,6 +351,16 @@ var gameFormUI = (function() {
         array.push(array.shift());
     }
 
+    const deleteScores = function () {
+        teamsArray.forEach(team => {
+            team.totalPoints = 0;
+            team.students.forEach(student => {
+                student.points = 0;
+            })
+        })
+        console.log(teamsArray);
+    }
+
     return {
         getDOMStrings: function() {
             return DOMStrings;
@@ -384,7 +416,7 @@ var gameFormUI = (function() {
             // posting teams to teamGame
             e.preventDefault();
 
-            clearPage();
+            startGame();
             
             addTeamsToDom();
             
@@ -453,6 +485,15 @@ var gameFormUI = (function() {
                 addTeamsToDom();
             }
         },
+
+        refreshScores: function(e) {
+            if (e.target.parentElement.classList.contains('refresh')) {
+                deleteScores();
+                clearDOM();
+                addTeamsToDom();
+            }
+            
+        }
 
     };
 })();

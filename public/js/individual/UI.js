@@ -6,6 +6,8 @@ var boysVsGirlsUI = (function() {
         teams: '.teams',  
         submit: '.submit',
         previewTeams: '.preview__teams',
+        titleContainer: '.title__container',
+        title: '.title',
     };
 
     var DOM = {
@@ -14,6 +16,8 @@ var boysVsGirlsUI = (function() {
         teams: document.querySelector(DOMStrings.teams),
         previewTeams: document.querySelector(DOMStrings.previewTeams),
         submit: document.querySelector(DOMStrings.submit),
+        titleContainer: document.querySelector(DOMStrings.titleContainer),
+        title: document.querySelector(DOMStrings.title),
     }
 
     //persistent data
@@ -29,10 +33,25 @@ var boysVsGirlsUI = (function() {
         studentsArray = studentsArray.filter(student => student._id !== studentID)
     }
 
-    const clearPage = function () {
+    const startGame = function () {
+        DOM.title.innerHTML = "Let's Play",
         DOM.previewTeams.remove();
         DOM.submit.remove();
         DOM.teams.innerHTML = '';
+
+        // add save refresh buttons
+        const saveRefreshButtons = document.createElement('div');
+        console.log(saveRefreshButtons);
+        
+        saveRefreshButtons.classList += saveRefreshButtons;
+        saveRefreshButtons.innerHTML = `
+            <button class="refresh"><i class="fas fa-sync-alt"></i></button>
+            
+        `
+        //add this later
+        // <button class="save"><i class="fas fa-save"></i></button>
+        DOM.titleContainer.insertBefore(saveRefreshButtons, DOM.titleContainer.children[1]);
+        // DOM.titleContainer.appendChild(saveRefreshButtons);
     };
 
     const shuffleArray = function(array) {
@@ -160,6 +179,13 @@ var boysVsGirlsUI = (function() {
         // array.push(studentsArray.pop());
         // console.log('arrayAfter', array)
     }
+
+    const deleteScoresIndividual = function () {
+        studentsArray.forEach(student => {
+            student.points = 0;
+        })
+        console.log(teamsArray);
+    }
     
     
     return {
@@ -221,7 +247,7 @@ var boysVsGirlsUI = (function() {
             e.preventDefault();
             console.log("let's play")
 
-            clearPage();
+            startGame();
 
             shuffleArray(studentsArray);
             
@@ -275,6 +301,14 @@ var boysVsGirlsUI = (function() {
                 addTeamsToDom();
             }
         },
+        refreshScores: function(e) {
+            if (e.target.parentElement.classList.contains('refresh')) {
+                deleteScoresIndividual();
+                clearDOM();
+                addTeamsToDom();
+            }
+            
+        }
     };
 })();
 

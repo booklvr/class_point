@@ -1,0 +1,23 @@
+body {
+  background-color: pink; }
+
+.student__gender .male {
+  color: skyblue; }
+
+.student__gender .female {
+  color: pink; }
+
+.hide {
+  display: none; }
+
+.currentStudent {
+  border: 1px solid red; }
+
+.nextStudent {
+  border-bottom: 1px solid pink; }
+
+.loader {
+  position: fixed;
+  z-index: 99;
+  top: 0;
+  left: 0; }

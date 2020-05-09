@@ -11,6 +11,8 @@ var controller = (function(UI) {
             submit: document.querySelector(DOMStrings.submit),
             gameContainer: document.querySelector(DOMStrings.gameContainer),
             previewTeams: document.querySelector(DOMStrings.previewTeams),
+            titleContainer: document.querySelector(DOMStrings.titleContainer),
+
         };
 
         //EVENT LISTENERS
@@ -20,6 +22,7 @@ var controller = (function(UI) {
         DOM.teams.addEventListener('click', UI.changePointStudent);
         DOM.teams.addEventListener('click', UI.changeTeamPoints);
         DOM.gameContainer.addEventListener('click', UI.goToNext);
+        DOM.titleContainer.addEventListener('click', UI.refreshScores);
         
     }
 

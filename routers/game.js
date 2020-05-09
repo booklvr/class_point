@@ -13,79 +13,90 @@ const router = new express.Router();
 router.get('/individual/:id', async (req, res) => {
     console.log('made it to the individual game')
 
-    // console.log(req.params.id);
-
-    res.render('pages/individual', {classroomID: req.params.id})
-});
-
-router.get('/individual/data/:id', async (req, res) => {
-    console.log('fetch data for individual game');
-
     try {
         const classroom = await Classroom.findById(req.params.id);
-
-        await classroom.populate({
-            path: 'students'
-        }).execPopulate();
-
-        students = classroom.students;
-        // console.log('students:', students);
-
-        studentsShuffled = gameHelper.shuffleArray(students);
-        
-        // console.log('shuffledStudents:', studentsShuffled);
-        // res.send(students);
-        res.send(studentsShuffled);
+        res.render('pages/individual', {classroom})
     } catch (err) {
         console.log(err);
-        res.status(500).send(err);
+        res.status(404).send(err);
     }
-})
+    
+});
+
+// router.get('/individual/data/:id', async (req, res) => {
+//     console.log('fetch data for individual game');
+
+//     try {
+//         const classroom = await Classroom.findById(req.params.id);
+
+//         await classroom.populate({
+//             path: 'students'
+//         }).execPopulate();
+
+//         students = classroom.students;
+//         // console.log('students:', students);
+
+//         studentsShuffled = gameHelper.shuffleArray(students);
+        
+//         // console.log('shuffledStudents:', studentsShuffled);
+//         // res.send(students);
+//         res.send(studentsShuffled);
+//     } catch (err) {
+//         console.log(err);
+//         res.status(500).send(err);
+//     }
+// })
 
 // get the boysVsGirls game
 // * id = classroom._id
 router.get('/boysVsGirls/:id', async (req, res) => {
     console.log('made it to the boys vs girls game');
 
-    res.render('pages/boysVsGirls', {classroomID: req.params.id});
-})
-
-router.get('/boysVsGirls/data/:id', async (req, res) => {
-    console.log('get the boys Vs girls data');
-
     try {
         const classroom = await Classroom.findById(req.params.id);
-
-        await classroom.populate({
-            path: 'students'
-        }).execPopulate();
-
-        const students = classroom.students;
-        // console.log(students);
-
-        // ****** FOR DEVELOPEMNT DONT" SHUFFLE
-
-        const shuffledStudents = gameHelper.shuffleArray(students);
-
-        //shuffle the array for different game play
-        const boys = shuffledStudents.filter(student => student.sex === 'male');
-
-        // *** for developemnt
-        // boys = students.filter(student => student.sex === 'male');
-        // girls = students.filter(student => student.sex === 'female');
-
-        // console.log('boys', boys);
-
-        const girls = shuffledStudents.filter(student => student.sex === 'female');
-        // console.log('girls', girls);
-
-        res.send({girls, boys});
-        
+        res.render('pages/boysVsGirls', {classroom})
     } catch (err) {
         console.log(err);
         res.status(404).send(err);
     }
 })
+
+// router.get('/boysVsGirls/data/:id', async (req, res) => {
+//     console.log('get the boys Vs girls data');
+
+//     try {
+//         const classroom = await Classroom.findById(req.params.id);
+
+//         await classroom.populate({
+//             path: 'students'
+//         }).execPopulate();
+
+//         const students = classroom.students;
+//         // console.log(students);
+
+//         // ****** FOR DEVELOPEMNT DONT" SHUFFLE
+
+//         const shuffledStudents = gameHelper.shuffleArray(students);
+
+//         //shuffle the array for different game play
+//         const boys = shuffledStudents.filter(student => student.sex === 'male');
+
+//         // *** for developemnt
+//         // boys = students.filter(student => student.sex === 'male');
+//         // girls = students.filter(student => student.sex === 'female');
+
+//         // console.log('boys', boys);
+
+//         const girls = shuffledStudents.filter(student => student.sex === 'female');
+//         // console.log('girls', girls);
+
+//         res.send({girls, boys});
+        
+//     } catch (err) {
+//         console.log(err);
+//         res.status(404).send(err);
+//     }
+// })
 
 // GET THE GAME FORM
 router.get('/teamForm/:id', async (req, res) => {
@@ -95,14 +106,14 @@ router.get('/teamForm/:id', async (req, res) => {
         const classroom = await Classroom.findById(req.params.id);
         // console.log(classroom)
 
-        await classroom.populate({
-            path: 'students'
-        }).execPopulate();
+        // await classroom.populate({
+        //     path: 'students'
+        // }).execPopulate();
 
-        students = classroom.students;
+        // students = classroom.students;
         // console.log(students);
 
-        res.render('pages/team', {classroom, students: students})
+        res.render('pages/team', {classroom})
     } catch (err) {
         console.log(err);
         res.status(404).send(err);

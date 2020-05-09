@@ -16,8 +16,8 @@
     </ul>
 
     <div class="errors"></div>
-
-
+    <div class="form__container">
+        <h3>Add A Student</h3>
     <form action="/student/<%= classroom._id %>" class="form__update" method="post">
         <label for="addStudentName" class="">Name</label>
         <input class="" type="text" name="name" auto>
@@ -27,6 +27,7 @@
         <input class=""id="addRadio-female" type="radio" name="sex" value="female">
         <button class="update__submit--btn"><i class="fas fa-check"></i></button>
     </form>
+    </div>
     
     <div class="student__list">
         <% students.forEach(function(student) { %> 

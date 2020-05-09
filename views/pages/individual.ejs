@@ -2,10 +2,13 @@
 
 <header>
     <%- include ('../partials/navbar'); %>
-    <h1>Individual Game</h1>
+    <div class="title__container">
+        <h2 class="title">Remove Absent Students</h2>
+        <h3><%= classroom.className %></h3>
+    </div>
 </header>
 
-<main class="classroomData" data-classroom_id="<%= classroomID %>">
+<main class="classroomData" data-classroom_id="<%= classroom._id %>">
     <div class="game__container">
         <button class="submit">Play</button>
         <div class="preview__teams"></div>

@@ -12,6 +12,7 @@ var controller = (function(UI) {
             gameFormClassroomData: document.querySelector(DOMStrings.gameFormClassroomData),
             previewTeams: document.querySelector(DOMStrings.previewTeams),
             teams: document.querySelector(DOMStrings.teams),
+            titleContainer: document.querySelector(DOMStrings.titleContainer),
 
             
             // gameForm: document.querySelector(DOMStrings.gameForm),
@@ -33,6 +34,7 @@ var controller = (function(UI) {
         DOM.teams.addEventListener('click', UI.changePointStudent);
         DOM.teams.addEventListener('click', UI.changeTeamPoints);
         DOM.gameContainer.addEventListener('click', UI.goToNext);
+        DOM.titleContainer.addEventListener('click', UI.refreshScores);
     }
 
     return {
