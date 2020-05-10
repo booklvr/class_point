@@ -1,13 +1,17 @@
+import { commonFunctions as CF } from '../commonFunctions.js';
+
 var boysVsGirlsUI = (function() {
     var DOMStrings = {
         // BY CLASS
+        submit: '.submit',
         gameContainer: '.game__container',
         classroomData: '.classroomData',
         teams: '.teams',  
-        submit: '.submit',
         previewTeams: '.preview__teams',
         titleContainer: '.title__container',
         title: '.title',
+        refreshStudentsBtn: '.refresh-studentsBtn',
+        shuffleStudentsBtn: '.shuffle-studentsBtn',
     };
 
     var DOM = {
@@ -22,37 +26,33 @@ var boysVsGirlsUI = (function() {
 
     //persistent data
     let studentsArray = [];
-    let teamsArray = [];
-
+    
     //HELPER FUNCTIONS
-    const removeStudentFromTeam = function (studentID) {
-        teamsArray.forEach(team => team.students = team.students.filter(student => student._id !== studentID))
-    }
 
-    const removeStudentfromArray = function (studentID) {
-        studentsArray = studentsArray.filter(student => student._id !== studentID)
-    }
+    // const removeStudentfromArray = function (studentID) {
+    //     studentsArray = studentsArray.filter(student => student._id !== studentID)
+    // }
 
-    const startGame = function () {
-        DOM.title.innerHTML = "Let's Play",
-        DOM.previewTeams.remove();
-        DOM.submit.remove();
-        DOM.teams.innerHTML = '';
+    // const startGame = function () {
+    //     DOM.title.innerHTML = "Let's Play",
+    //     DOM.previewTeams.remove();
+    //     DOM.submit.remove();
+    //     DOM.teams.innerHTML = '';
 
-        // add save refresh buttons
-        const saveRefreshButtons = document.createElement('div');
-        console.log(saveRefreshButtons);
+    //     // add save refresh buttons
+    //     const saveRefreshButtons = document.createElement('div');
+    //     console.log(saveRefreshButtons);
         
-        saveRefreshButtons.classList += saveRefreshButtons;
-        saveRefreshButtons.innerHTML = `
-            <button class="refresh"><i class="fas fa-sync-alt"></i></button>
+    //     saveRefreshButtons.classList += saveRefreshButtons;
+    //     saveRefreshButtons.innerHTML = `
+    //         <button class="refresh"><i class="fas fa-sync-alt"></i></button>
             
-        `
-        //add this later
-        // <button class="save"><i class="fas fa-save"></i></button>
-        DOM.titleContainer.insertBefore(saveRefreshButtons, DOM.titleContainer.children[1]);
-        // DOM.titleContainer.appendChild(saveRefreshButtons);
-    };
+    //     `
+    //     //add this later
+    //     // <button class="save"><i class="fas fa-save"></i></button>
+    //     DOM.titleContainer.insertBefore(saveRefreshButtons, DOM.titleContainer.children[1]);
+    //     // DOM.titleContainer.appendChild(saveRefreshButtons);
+    // };
 
     const shuffleArray = function(array) {
         var currentIndex = array.length, temporaryValue, randomIndex;
@@ -76,8 +76,29 @@ var boysVsGirlsUI = (function() {
     ///////////////////////////////////////////////////////////////////////////////
     // *** for game play
 
+    const addPreviewToDOM_Individual = function () {
+        DOM.teams.innerHTML = '';
+
+        const newTeam = document.createElement('div');
+        newTeam.className += 'team';
+        let teamList = document.createElement('ul');
+        teamList.className += 'teamList';
+        studentsArray.forEach(student => {
+            let newStudent = document.createElement("li");
+            newStudent.className += 'student';
+            newStudent.innerHTML = `
+                <span class="student-name">${student.name}</span>
+                <i class="${'fas fa-child icon-' + student.sex}"></i>
+                <i id="${student._id}" class="deleteStudent fas fa-trash-alt"></i></a>
+            `;
+            teamList.appendChild(newStudent);
+        })
+        newTeam.appendChild(teamList);
+        DOM.previewTeams.appendChild(newTeam);
+    };
+
    
-    const addTeamsToDom = function () {
+    const addIndividualsToDom = function () {
         // add button to the DOM
         const buttons = document.createElement('div');
         buttons.classList += 'buttons';
@@ -143,12 +164,12 @@ var boysVsGirlsUI = (function() {
         return target.classList.contains('add') ? 1 : -1;
     };
 
-    const updateStudentPointDom = function (target, action) {        
-        //find pointsDiv
-        const pointsDiv = target.parentElement.lastElementChild;
-        //update pointsDiv
-        pointsDiv.innerHTML = +pointsDiv.innerHTML + action;
-    };
+    // const updateStudentPointDom = function (target, action) {        
+    //     //find pointsDiv
+    //     const pointsDiv = target.parentElement.lastElementChild;
+    //     //update pointsDiv
+    //     pointsDiv.innerHTML = +pointsDiv.innerHTML + action;
+    // };
 
     const updateStudentsArrayPoints = function(student, action){        
         const studentID = student.id;
@@ -162,18 +183,17 @@ var boysVsGirlsUI = (function() {
         })
     }
 
-    const clearDOM = function() {
-        DOM.teams.innerHTML = '';
-        DOM.previewTeams = '';
-        DOM.gameContainer.firstChild.remove();
-    }
+    // const clearDOM = function() {
+    //     DOM.teams.innerHTML = '';
+    //     DOM.gameContainer.firstChild.remove();
+    // }
 
-    const shiftArrays = function (array) {
+    const shiftStudentsArray = function (array) {
         console.log("shift array");
         array.push(array.shift());
     }
 
-    const unShiftArrays = function (array) {
+    const unShiftStudentsArray = function (array) {
         console.log("unShift array");
         array.unshift(array.pop());
         // array.push(studentsArray.pop());
@@ -184,7 +204,7 @@ var boysVsGirlsUI = (function() {
         studentsArray.forEach(student => {
             student.points = 0;
         })
-        console.log(teamsArray);
+        console.log(studentsArray);
     }
     
     
@@ -206,38 +226,28 @@ var boysVsGirlsUI = (function() {
             // studentsArray = shuffleArray(studentsArray);
             console.log(studentsArray);
         },
-        
-        addPreviewToDOM: function () {
-            DOM.teams.innerHTML = '';
 
-            const newTeam = document.createElement('div');
-            newTeam.className += 'team';
-            let teamList = document.createElement('ul');
-            teamList.className += 'teamList';
-            studentsArray.forEach(student => {
-                let newStudent = document.createElement("li");
-                newStudent.className += 'student';
-                newStudent.innerHTML = `
-                    <span class="student-name">${student.name}</span>
-                    <i class="${'fas fa-child icon-' + student.sex}"></i>
-                    <i id="${student._id}" class="deleteStudent fas fa-trash-alt"></i></a>
-                `;
-                teamList.appendChild(newStudent);
-            })
-            newTeam.appendChild(teamList);
-            DOM.previewTeams.appendChild(newTeam);
+        createPreviewDOM: function () {
+            addPreviewToDOM_Individual();
         },
 
+        
+        
+        
+
         deleteStudent: function (e) {
+            console.log(e.target);
             if (e.target.classList.contains('deleteStudent')) {
                 console.log('delete student from arrays')
                 
-                removeStudentFromTeam(e.target.id);
-                removeStudentfromArray(e.target.id)
+                
+                studentsArray = CF.removeStudentfromArray(studentsArray, e.target.id)
+                
                 
                 let li = e.target.parentElement;
                 li.remove();
             }
+        
         },
 
         //////////////////////////////////////////////////////////////////
@@ -247,29 +257,22 @@ var boysVsGirlsUI = (function() {
             e.preventDefault();
             console.log("let's play")
 
-            startGame();
+            CF.startGame();
 
             shuffleArray(studentsArray);
             
-            addTeamsToDom();
-            console.log('after-AddTeamsToDOM-teamsArray', teamsArray);
-
-            
+            addIndividualsToDom();
         },
 
         changePointStudent: function(e) {
             const target = e.target.parentElement;
             
             if (target.classList.contains('add__student') || target.classList.contains('minus__student')) {
-                const action = plusOrMinus(target);
+                const action = CF.plusOrMinus(target);
                 const student = target.parentElement;
                 const team = student.parentElement.parentElement;
-                console.log('CHANGE POINT STUDENT')
-                console.log('action', action);
-                console.log('student', student);
-                console.log('team', team);
 
-                updateStudentPointDom(target, action);
+                CF.updateStudentPointDom(target, action);
 
                 updateStudentsArrayPoints(student, action);
             }
@@ -279,38 +282,54 @@ var boysVsGirlsUI = (function() {
             if(e.target.classList.contains('next')) {
                 console.log('go to next')
                 
-                clearDOM();
+                CF.clearDOM();
                 
                 // shift arrays 
-                shiftArrays(studentsArray);
+                shiftStudentsArray(studentsArray);
                 // console.log('teamArray-post-shift', teamsArray);
-                addTeamsToDom();
+                addIndividualsToDom();
             }
         },
         goToPrevious: function(e) {
             if(e.target.classList.contains('previous')) {
                 console.log('go to next')
                 
-                clearDOM();
+                CF.clearDOM();
                 
                 // shift arrays 
-                unShiftArrays(studentsArray);
+                unShiftStudentsArray(studentsArray);
                 
                 
                 // console.log('teamArray-post-shift', teamsArray);
-                addTeamsToDom();
+                addIndividualsToDom();
             }
         },
         refreshScores: function(e) {
             if (e.target.parentElement.classList.contains('refresh')) {
                 deleteScoresIndividual();
-                clearDOM();
-                addTeamsToDom();
+                CF.clearDOM();
+                addIndividualsToDom();
             }
             
+        },
+        refreshStudents: function(e) {
+            console.log("FUCCCCKKKKKKK")
+            if (e.target.parentElement.classList.contains('refresh-studentsBtn')) {
+                deleteScoresIndividual();
+                CF.clearDOM();
+                addIndividualsToDom();
+            }
+            
+        },
+        
+        
+        shuffleStudents: function (e) {
+            if (e.target.parentElement.classList.contains('shuffle-studensBtn')) {
+                console.log('shuffle students')
+            }
         }
     };
-})();
+})(CF);
 
 export{boysVsGirlsUI};
 

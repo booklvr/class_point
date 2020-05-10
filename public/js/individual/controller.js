@@ -30,7 +30,7 @@ var controller = (function(UI) {
             console.log('You can now play an individual game');
             await UI.getClassroomData();
             // s
-            UI.addPreviewToDOM();
+            UI.createPreviewDOM();
             setupEventListeners();
         }
     }

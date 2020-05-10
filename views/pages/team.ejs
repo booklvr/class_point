@@ -5,6 +5,11 @@
     <div class="title__container">
         <h2 class="title">Create Your Teams</h2>
         <h3><%= classroom.className %></h3>
+        <div class="optionsButtons">
+            <button class="refresh-studentsBtn"><i class="fas fa-sync-alt"></i></button>
+            <button class="shuffle-studensBtn"><i class="fas fa-random"></i></button>
+            
+        </div>
     </div>
     
     
@@ -20,18 +25,13 @@
             <input id="numberOfTeams" type="number" name="numberOfTeams" value="1">
         </div>
 
-        <button id="submit">Play</button>
+        <button class="submit">Play</button>
     </form>
 
     <div class="game__container">
         <div class="preview__teams"></div>
         <div class="teams">
-            
-            <!-- <ul class="team">
-                <li class="student">student1</li>
-                <li class="student">student2</li>
-                <i class="fas fa-trash-alt"></i></a>
-            </ul> -->
+           
         </div>
     </div>
 

@@ -30,8 +30,7 @@ var controller = (function(UI) {
         init: async function () { 
             console.log('You can now play a boy Vs girls game');
             await UI.getClassroomData();
-            UI.createTeams();
-            UI.addPreviewToDOM();
+            UI.createPreviewDOM();
             setupEventListeners();
         }
     }
