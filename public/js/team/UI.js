@@ -88,7 +88,7 @@ var gameFormUI = (function(CF) {
             students.forEach(student => studentsArray.push(student));
 
             //shuffle students array for different game play every time
-            // studentsArray = CF.shuffleArray(studentsArray);
+            studentsArray = CF.shuffleArray(studentsArray);
             backupArray = studentsArray;
         },
 
