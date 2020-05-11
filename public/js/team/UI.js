@@ -13,10 +13,16 @@ var gameFormUI = (function(CF) {
         previewTeams: '.preview__teams',
         titleContainer: '.title__container',
         refreshStudentsBtn: '.refresh-studentsBtn',
+        refreshGameBtn: '.refresh-gameBtn',
+        shuffleStudentsBtn: '.shuffle-studentsBtn',
+        saveGameBtn: '.save-gameBtn',
+        // options: '.options'
     };
 
     var DOM = {
+        
         classroomData: document.querySelector(DOMStrings.classroomData),
+        refreshStudentsBtn: document.querySelector(DOMStrings.refreshStudentsBtn),
     } 
     // CREATE STUDENTS AND TEAMS ARRAY
     let studentsArray = [];
@@ -87,8 +93,7 @@ var gameFormUI = (function(CF) {
 
             students.forEach(student => studentsArray.push(student));
 
-            //shuffle students array for different game play every time
-            studentsArray = CF.shuffleArray(studentsArray);
+            // backup students array for refresh
             backupArray = studentsArray;
         },
 
@@ -222,34 +227,27 @@ var gameFormUI = (function(CF) {
         // *************************************
         // * START A NEW GAME
         refreshScores: function(e) {
-            if (e.target.parentElement.classList.contains('refresh')) {
-                CF.deleteScores(teamsArray);
-                CF.clearDOM();
-                CF.addTeamsToDom(teamsArray);
-            }
+            CF.deleteScores(teamsArray);
+            CF.clearDOM();
+            CF.addTeamsToDom(teamsArray);
         },
         refreshStudents: function(e) {
             console.log('refreshStudents');
             CF.clearPreviewTeams();
+            CF.clearInput();
             studentsArray = backupArray;
             createTeams(1);
             CF.addPreviewToDOM(teamsArray);
-
-            // console.log("FUCCCCKKKKKKK")
-            // if (e.target.parentElement.classList.contains('refresh-studentsBtn')) {
-            //     console.log("YESSSS")
-            //     deleteScoresIndividual();
-            //     CF.clearDOM();
-            //     addIndividualsToDom();
-            // }
-            
         },
         
-        // shuffleStudents: function (e) {
-        //     if (e.target.parentElement.classList.contains('shuffle-studensBtn')) {
-        //         console.log('shuffle students')
-        //     }
-        // }
+        shufflePreview: function () {
+            console.log('shuffle these students around');
+            CF.shuffleArray(studentsArray);
+
+            const teamsSize = numberOfTeams.value;
+            createTeams(teamsSize);
+            CF.addPreviewToDOM(teamsArray);
+        }
     };
 })(CF);
 

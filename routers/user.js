@@ -29,6 +29,7 @@ router.post('/', async (req, res) => {
     const newUser = {
         ...req.body
     }
+    delete newUser.password;
 
     console.log(newUser);
 

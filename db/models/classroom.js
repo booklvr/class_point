@@ -7,7 +7,7 @@ const   mongoose =  require('mongoose'),
 const classroomSchema = new mongoose.Schema({
     owner: {
         type: mongoose.Schema.Types.ObjectId, // from user Schema logged in user
-        required: true,
+        // required: true,
         ref: 'User' // connect to user model
     },
     className: {

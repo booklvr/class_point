@@ -18,3 +18,12 @@
 
 .icon-female {
   color: pink; }
+
+main {
+  background-color: pink; }
+  main .game__container {
+    background-color: yellow; }
+    main .game__container .teams {
+      background-color: skyblue; }
+      main .game__container .teams .team .teamList {
+        list-style-type: none; }

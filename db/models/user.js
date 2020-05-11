@@ -27,12 +27,6 @@ const userSchema = new mongoose.Schema({
                 throw new Error('Must provide an email');
             }
         }
-    },
-    password: {
-        type: String,
-        required: false,
-        trim: true,
-        minlength: 1,
     }
 }, {
     timestamps: true
@@ -87,3 +81,11 @@ userSchema.virtual('classrooms', {
 const User = mongoose.model('user', userSchema);
 
 module.exports = User;
+
+// ,
+    // password: {
+    //     type: String,
+    //     required: false,
+    //     trim: true,
+    //     minlength: 1,
+    // }

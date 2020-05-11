@@ -14,6 +14,10 @@ var controller = (function(UI) {
             teams: document.querySelector(DOMStrings.teams),
             titleContainer: document.querySelector(DOMStrings.titleContainer),
             refreshStudentsBtn: document.querySelector(DOMStrings.refreshStudentsBtn),
+            shuffleStudentsBtn: document.querySelector(DOMStrings.shuffleStudentsBtn),
+            refreshGameBtn: document.querySelector(DOMStrings.refreshGameBtn),
+            // saveGameBtn: document.querySelector(DOMStrings.saveGameBtn),
+            // options: document.querySelector(DOMStrings.options),
             // gameForm: document.querySelector(DOMStrings.gameForm),
         };
         
@@ -32,8 +36,10 @@ var controller = (function(UI) {
         DOM.teams.addEventListener('click', UI.changePointStudent);
         DOM.teams.addEventListener('click', UI.changeTeamPoints);
         DOM.gameContainer.addEventListener('click', UI.goToNext);
-        DOM.titleContainer.addEventListener('click', UI.refreshScores);
+        DOM.refreshGameBtn.addEventListener('click', UI.refreshScores);
         DOM.refreshStudentsBtn.addEventListener('click', UI.refreshStudents);
+        DOM.shuffleStudentsBtn.addEventListener('click', UI.shufflePreview);
+        // DOM.saveGameBtn.addEventListener('click', UI.saveGame);
     }
 
     return {

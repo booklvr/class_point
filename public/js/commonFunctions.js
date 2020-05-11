@@ -3,7 +3,7 @@ var commonFunctions = (function() {
     
     var DOMStrings = {
         // ID's
-        // numberOfTeams: '#numberOfTeams',
+        numberOfTeams: '#numberOfTeams',
         
         // CLASSES
         submit: '.submit',
@@ -15,10 +15,12 @@ var commonFunctions = (function() {
         errors: '.errors',
         titleContainer: '.title__container',
         title: '.title',
-        
+        // refreshStudentsBtn: '.refresh-studentsBtn',
+        options: '.options'
     };
 
     var DOM = {
+        numberOfTeams: document.querySelector(DOMStrings.numberOfTeams),
         submit: document.querySelector(DOMStrings.submit),
         gameForm: document.querySelector(DOMStrings.gameForm),
         gameContainer: document.querySelector(DOMStrings.gameContainer),
@@ -28,6 +30,8 @@ var commonFunctions = (function() {
         previewTeams: document.querySelector(DOMStrings.previewTeams),
         titleContainer: document.querySelector(DOMStrings.titleContainer),
         title: document.querySelector(DOMStrings.title),
+        // refreshStudentsBtn: document.querySelector(DOMStrings.refreshStudentsBtn),
+        options: document.querySelector(DOMStrings.options),
     } 
     
 
@@ -114,23 +118,14 @@ var commonFunctions = (function() {
                 DOM.gameForm.remove();
             }
 
-            DOM.submit.remove();
             
             DOM.previewTeams.remove();
             DOM.teams.innerHTML = '';
-    
-            // add save refresh buttons
-            const saveRefreshButtons = document.createElement('div');
-            // console.log(saveRefreshButtons);
-            
-            saveRefreshButtons.classList += saveRefreshButtons;
-            saveRefreshButtons.innerHTML = `
-                <button class="refresh"><i class="fas fa-sync-alt"></i></button>
-                
-            `
-            //add this later
-            // <button class="save"><i class="fas fa-save"></i></button>
-            DOM.titleContainer.insertBefore(saveRefreshButtons, DOM.titleContainer.children[1]);
+
+            console.log(DOM.options.children)
+            for (let i = 0; i < DOM.options.children.length; i++) {
+                DOM.options.children[i].classList.toggle('hide');
+            }            
         },
 
         addTeamsToDom: function (teamsArray) {
@@ -281,6 +276,9 @@ var commonFunctions = (function() {
         },
         clearPreviewTeams: function() {
             DOM.previewTeams.innerHTML = '';
+        },
+        clearInput: function() {
+            DOM.numberOfTeams.value = 1;
         }
     } 
 })();
