@@ -1,102 +1,134 @@
-// body {
-//     background-color: pink;
-// }
-main {
+// // body {
+// //     background-color: pink;
+// // }
+// main {
+//     font-size: 1.5rem;
+//     font-family: $font-main;
+    
+//     .errors {
 
-    background-color: pink;
-    .errors {
+//     }
 
-    }
+//     .options {
 
-    .options {
+//         button {
 
-        button {
+//             li {
 
-            li {
+//             }
+//         }
+//     }
 
-            }
-        }
-    }
+//     .game__container {
+//         width: 30rem;
 
-    .game__container {
+//         background-color: yellow;
+//         .buttons {
 
-        background-color: yellow;
-        .buttons {
+//             .next {
 
-            .next {
+//             }
+//         }
 
-            }
-        }
+//         .teams,
+//         .preview__teams {
+        
 
-        .teams {
+//             background-color: skyblue;
+//             .team {
 
-            background-color: skyblue;
-            .team {
+//                 .teamName {
 
-                .teamName {
+//                 }
 
-                }
+//                 .teamPoint {
 
-                .teamPoint {
+//                     button {
+//                         background-color: purple;
+//                         margin: 0 .5rem;
+//                         i {
+//                             width: 25px;
+//                             height: 25px;
 
-                    button {
+//                             display: flex;
+//                             flex-direction: column;
+//                             justify-content: center;
+//                             align-items: center;
+//                         }
+//                     }
 
-                    }
+//                     .add {
 
-                    .add {
+//                     }
 
-                    }
+//                     .minus {
 
-                    .minus {
+//                     }
 
-                    }
+//                     .teamPointValue {
 
-                    .teamPointValue {
+//                     }
+//                 }
 
-                    }
-                }
+//                 .teamList {
 
-                .teamList {
+//                     list-style-type: none;
 
-                    list-style-type: none;
+//                     .currentTitle {
 
-                    .currentTitle {
+//                     }
 
-                    }
+//                     .nextTitle {
 
-                    .nextTitle {
+//                     }
 
-                    }
+//                     .currentStudent {
 
-                    .currentStudent {
+//                     }
 
-                    }
+//                     .nextStudent {
 
-                    .nextStudent {
+//                     }
 
-                    }
-
-                    .student {
-
+//                     .student {
+//                         display: flex;
+//                         flex-direction: row;
+//                         justify-content: flex-end;
                         
-                        .name {
+//                         .name {
 
-                        }
+//                         }
 
-                        button {
+//                         button {
+//                             margin: 0 .3rem;
 
-                        }
+//                             i {
 
-                        .points {
+//                                 width: 2rem;
+//                                 width: 2rem;
+                                
+//                                 display: flex;
+//                                 flex-direction: column;
+//                                 justify-content: center;
+//                                 align-items: center;
+//                             }
+//                         }
 
-                        }
+//                         .points {
+
+//                         }
 
 
-                    }
-                }
-            }
-        }
-    }
+//                     }
+//                 }
+//             }
+//         }
+//         .preview__teams {
+
+//             // background-color: red;
+
+//         }
+//     }
 
 
-}
+// }
