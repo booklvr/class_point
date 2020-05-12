@@ -26,16 +26,23 @@ router.get('/', (req, res) => {
 router.post('/', async (req, res) => {
     console.log('registering new user');
 
-    const newUser = {
-        ...req.body
-    }
-    delete newUser.password;
-
-    console.log(newUser);
-
-    const user = new User(newUser);
+    
     
     try {
+        if (req.body.password !== req.body.password2) {
+            throw new Error('passwords do not match');
+        }
+
+        const newUser = {
+            ...req.body
+        }
+        delete newUser.password;
+        delete newUser.password2;
+    
+        console.log(newUser);
+    
+        const user = new User(newUser);
+
         User.register(user, req.body.password, (err, user) => {
             if (err) {
                 console.log('error while registering user: ', err)
@@ -120,7 +127,5 @@ router.get('/delete', isLoggedIn, async(req, res) => {
 
     res.send('test');
 })
-
- 
 
 module.exports = router;
