@@ -14,21 +14,22 @@
 
 
 main {
-    font-size: 1.5rem;
+    
     // font-family: $font-main;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
     align-items: center;
+   
     
     
     .errors {
 
     }
-    .form_optionsContainer {
+    .optionsContainer {
         // background-color: yellow;
         
-        width: 17rem;
+        width: 19rem;
 
         .gameForm {
             
@@ -56,6 +57,7 @@ main {
         }
 
         .options {
+            
             width: 100%;
             // background-color: orange;
             display: flex;
@@ -67,6 +69,7 @@ main {
             .refresh-studentsBtn,
             .save-gameBtn,
             .refresh-gameBtn {
+                font-size: 2rem;
                 flex: 1;
             }
             .submit {
@@ -80,14 +83,21 @@ main {
 
     
     .game__container {
-        width: 17rem;
+        width: 19rem;
         // background-color: yellow;
 
         // background-color: yellow;
         .buttons {
+            background-color: pink;
+            width: 100%;
 
-            .next {
-                width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: stretch;
+
+            .next,
+            .previous {
+                flex: 1;
                 height: 3rem;
                 padding-top: .5rem;
             }
@@ -95,13 +105,14 @@ main {
 
         .teams,
         .preview__teams {
-            width: 17rem;
+            width: 19rem;
             margin-top: .5rem;
             font-size: 1.2rem;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            font-size: 1.5rem;
             
 
             // background-color: yellow;
@@ -109,6 +120,10 @@ main {
             .team {
                 width: 100%;
                 border: 1px solid #000;
+
+                &:first-of-type {
+                    font-size: 2rem;
+                }
 
 
                 &:not(:last-of-type) {
@@ -134,13 +149,14 @@ main {
 
                 .teamList {
                     // justify-content: space-around;
-                    
+                    font-size: 1.75rem;
                     display: flex;
                     flex-direction: column;
                     justify-content: center;
                     align-items: center;
 
                     .student {
+                        
                         display: flex;
                         flex-direction: row;
                         justify-content: space-evenly;
@@ -194,7 +210,8 @@ main {
                 align-items: center;
 
                 .currentTitle {
-
+                    font-size: 1.5rem;
+                    color: $color-success;
                 }
 
                 .nextTitle {
@@ -202,17 +219,22 @@ main {
                 }
 
                 .currentStudent {
-                    font-size: 1.5rem;
+                    font-size: 2.5rem;
                     color: $color-success;
                     margin-bottom: 1rem;
+                    border-bottom: 1px solid #000;
                 }
 
                 .nextStudent {
-                    font-size: 1.2rem;
+                    font-size: 2rem;
                     color: $color-error;
                 }
 
                 .student {
+                    width: 100%;
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
                     
                     
                     
@@ -224,21 +246,23 @@ main {
                     button {
                         flex: 1;
                         margin: 0 .3rem;
+                        width: 3rem;
+                        min-height: 3rem;
 
                         i {
-
-                            width: 2rem;
-                            width: 2rem;
-                            
                             display: flex;
                             flex-direction: column;
                             justify-content: center;
                             align-items: center;
+                            height: 2rem;
                         }
                     }
 
                     .points {
-
+                        width: 3.5rem;
+                        align-self: end;
+                        text-align: right;
+                        padding-right: .5rem;
                     }
 
 
