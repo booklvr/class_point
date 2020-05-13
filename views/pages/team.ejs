@@ -14,18 +14,20 @@
     <div class="errors"></div>
     
     <!-- <form class="gameForm" data-classroomID="<%= classroom._id %>"> -->
-        
-        <div class=gameForm>
-            <label for="numberOfTeams">Number of Teams</label>
-            <input id="numberOfTeams" type="number" name="numberOfTeams" value="1">
+        <div class="form_optionsContainer">
+            <div class=gameForm>
+                <label for="numberOfTeams">Number of Teams</label>
+                <input id="numberOfTeams" type="number" name="numberOfTeams" value="1">
+            </div>
+            <div class="options">
+                <button class="refresh-studentsBtn"><i class="fas fa-sync-alt"></i></button>
+                <button class="shuffle-studentsBtn"><i class="fas fa-random"></i></button>
+                <button class="refresh-gameBtn hide"><i class="fas fa-sync-alt"></i></button>
+                <button class="save-gameBtn hide"><i class="fas fa-save"></i></button>
+                <button class="submit">Play</button>
+            </div>
         </div>
-        <div class="options">
-            <button class="refresh-studentsBtn"><i class="fas fa-sync-alt"></i></button>
-            <button class="shuffle-studentsBtn"><i class="fas fa-random"></i></button>
-            <button class="refresh-gameBtn hide"><i class="fas fa-sync-alt"></i></button>
-            <button class="save-gameBtn hide"><i class="fas fa-save"></i></button>
-            <button class="submit">Play</button>
-        </div>
+       
         
         
     <!-- </form> -->

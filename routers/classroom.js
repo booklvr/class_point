@@ -43,8 +43,13 @@ router.get('/', isLoggedIn, async (req, res) => {
             data.push(result);
         }))
 
-        console.log(data);
+        console.log('DATA:', data);
 
+        data.sort(function(a, b) { 
+            return a.className.localeCompare(b.className) || (a.className - b.className); 
+        });
+
+        console.log('DATA-SORTED', data);
         
         // console.log("classrooms", classrooms)
 

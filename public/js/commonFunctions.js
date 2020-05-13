@@ -48,6 +48,7 @@ var commonFunctions = (function() {
                 //create new team div
                 const newTeam = document.createElement('div');
                 newTeam.className += 'team';
+                
                 //add title
                 const teamName = document.createElement('h3');
                 teamName.className += 'teamName';
