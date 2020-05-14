@@ -12,6 +12,10 @@ var controller = (function(UI) {
             gameContainer: document.querySelector(DOMStrings.gameContainer),
             previewTeams: document.querySelector(DOMStrings.previewTeams),
             titleContainer: document.querySelector(DOMStrings.titleContainer),
+            refreshStudentsBtn: document.querySelector(DOMStrings.refreshStudentsBtn),
+            shuffleStudentsBtn: document.querySelector(DOMStrings.shuffleStudentsBtn),
+            refreshGameBtn: document.querySelector(DOMStrings.refreshGameBtn),
+            // saveGameBtn: document.querySelector(DOMStrings.saveGameBtn),
 
         };
 
@@ -23,6 +27,10 @@ var controller = (function(UI) {
         DOM.gameContainer.addEventListener('click', UI.goToNext);
         DOM.gameContainer.addEventListener('click', UI.goToPrevious);
         DOM.titleContainer.addEventListener('click', UI.refreshScores);
+        DOM.refreshGameBtn.addEventListener('click', UI.refreshScores);
+        DOM.refreshStudentsBtn.addEventListener('click', UI.refreshStudents);
+        DOM.shuffleStudentsBtn.addEventListener('click', UI.shufflePreview);
+        // DOM.saveGameBtn.addEventListener('click', UI.saveGame);
     }
 
     return {

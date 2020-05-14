@@ -15,14 +15,14 @@ var gameFormUI = (function(CF) {
         refreshStudentsBtn: '.refresh-studentsBtn',
         refreshGameBtn: '.refresh-gameBtn',
         shuffleStudentsBtn: '.shuffle-studentsBtn',
-        saveGameBtn: '.save-gameBtn',
+        // saveGameBtn: '.save-gameBtn', // not yet
         // options: '.options'
     };
 
     var DOM = {
         
         classroomData: document.querySelector(DOMStrings.classroomData),
-        refreshStudentsBtn: document.querySelector(DOMStrings.refreshStudentsBtn),
+        // refreshStudentsBtn: document.querySelector(DOMStrings.refreshStudentsBtn),
     } 
     // CREATE STUDENTS AND TEAMS ARRAY
     let studentsArray = [];
@@ -233,7 +233,7 @@ var gameFormUI = (function(CF) {
         },
         refreshStudents: function(e) {
             console.log('refreshStudents');
-            CF.clearPreviewTeams();
+            
             CF.clearInput();
             studentsArray = backupArray;
             createTeams(1);

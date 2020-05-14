@@ -3,6 +3,7 @@ var registerUI = (function() {
         // BY CLASS
         btnSubmit: '.btnSubmit',
         formControl: '.form-control',
+        refreshGameBtn: '.refresh-gameBtn',
      
         // By ID
         registerForm: '#registerForm',

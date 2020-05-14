@@ -10,6 +10,10 @@ var boysVsGirlsUI = (function() {
         previewTeams: '.preview__teams',
         titleContainer: '.title__container',
         title: '.title',
+        refreshStudentsBtn: '.refresh-studentsBtn',
+        refreshGameBtn: '.refresh-gameBtn',
+        shuffleStudentsBtn: '.shuffle-studentsBtn',
+        // saveGameBtn: '.save-gameBtn', // not yet
     };
 
     var DOM = {
@@ -25,6 +29,7 @@ var boysVsGirlsUI = (function() {
     //persistent data
     let studentsArray = [];
     let teamsArray = [];
+    let backupArray = [];
 
     //HELPER FUNCTIONS
     const createBoysGirlsTeams = function () {
@@ -43,6 +48,7 @@ var boysVsGirlsUI = (function() {
             teamID: 'girls',
             students: studentsArray.filter(student => student.sex === 'female'),
         }
+        teamsArray = [];
         teamsArray.push(boys);
         teamsArray.push(girls);
     };
@@ -210,7 +216,7 @@ var boysVsGirlsUI = (function() {
 
             //shuffle students array for different game play every time
             studentsArray = CF.shuffleArray(studentsArray);
-            // console.log(studentsArray);
+            backupArray = studentsArray;
         },
  
         createPreviewDOM: function () {
@@ -300,13 +306,24 @@ var boysVsGirlsUI = (function() {
             }
         },
         refreshScores: function(e) {
-            if (e.target.parentElement.classList.contains('refresh')) {
-                CF.deleteScores(teamsArray);
-                CF.clearDOM();
-                CF.addTeamsToDom(teamsArray);
-            }
-            
+            CF.deleteScores(teamsArray);
+            CF.clearDOM();
+            CF.addTeamsToDom(teamsArray);
         },
+        refreshStudents: function(e) {
+            console.log('refreshStudents');
+            
+            studentsArray = backupArray;
+            createBoysGirlsTeams();
+            CF.addPreviewToDOM(teamsArray);
+        },
+        
+        shufflePreview: function () {
+            console.log('shuffle these students around');
+            CF.shuffleArray(studentsArray);
+            createBoysGirlsTeams();
+            CF.addPreviewToDOM(teamsArray);
+        }
     };
 })(CF);
 

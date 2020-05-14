@@ -15,7 +15,7 @@ var commonFunctions = (function() {
         errors: '.errors',
         titleContainer: '.title__container',
         title: '.title',
-        // refreshStudentsBtn: '.refresh-studentsBtn',
+        refreshStudentsBtn: '.refresh-studentsBtn',
         options: '.options'
     };
 
@@ -275,9 +275,7 @@ var commonFunctions = (function() {
             })
             console.log(teamsArray);
         },
-        clearPreviewTeams: function() {
-            DOM.previewTeams.innerHTML = '';
-        },
+        
         clearInput: function() {
             DOM.numberOfTeams.value = 1;
         }

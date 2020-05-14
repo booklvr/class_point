@@ -12,6 +12,8 @@ var boysVsGirlsUI = (function() {
         title: '.title',
         refreshStudentsBtn: '.refresh-studentsBtn',
         shuffleStudentsBtn: '.shuffle-studentsBtn',
+        refreshGameBtn: '.refresh-gameBtn',
+        // saveGameBtn: '.save-gameBtn', // not yet
     };
 
     var DOM = {
@@ -22,38 +24,14 @@ var boysVsGirlsUI = (function() {
         submit: document.querySelector(DOMStrings.submit),
         titleContainer: document.querySelector(DOMStrings.titleContainer),
         title: document.querySelector(DOMStrings.title),
+
     }
 
     //persistent data
     let studentsArray = [];
+    let backupArray = [];
     
     //HELPER FUNCTIONS
-
-    // const removeStudentfromArray = function (studentID) {
-    //     studentsArray = studentsArray.filter(student => student._id !== studentID)
-    // }
-
-    // const startGame = function () {
-    //     DOM.title.innerHTML = "Let's Play",
-    //     DOM.previewTeams.remove();
-    //     DOM.submit.remove();
-    //     DOM.teams.innerHTML = '';
-
-    //     // add save refresh buttons
-    //     const saveRefreshButtons = document.createElement('div');
-    //     console.log(saveRefreshButtons);
-        
-    //     saveRefreshButtons.classList += saveRefreshButtons;
-    //     saveRefreshButtons.innerHTML = `
-    //         <button class="refresh"><i class="fas fa-sync-alt"></i></button>
-            
-    //     `
-    //     //add this later
-    //     // <button class="save"><i class="fas fa-save"></i></button>
-    //     DOM.titleContainer.insertBefore(saveRefreshButtons, DOM.titleContainer.children[1]);
-    //     // DOM.titleContainer.appendChild(saveRefreshButtons);
-    // };
-
     const shuffleArray = function(array) {
         var currentIndex = array.length, temporaryValue, randomIndex;
 
@@ -69,15 +47,13 @@ var boysVsGirlsUI = (function() {
             array[currentIndex] = array[randomIndex];
             array[randomIndex] = temporaryValue;
         }
-
         return array;
     }
 
     ///////////////////////////////////////////////////////////////////////////////
     // *** for game play
-
     const addPreviewToDOM_Individual = function () {
-        DOM.teams.innerHTML = '';
+        DOM.previewTeams.innerHTML = '';
 
         const newTeam = document.createElement('div');
         newTeam.className += 'team';
@@ -224,6 +200,7 @@ var boysVsGirlsUI = (function() {
 
             //shuffle students array for different game play every time
             // studentsArray = shuffleArray(studentsArray);
+            backupArray = studentsArray;
             console.log(studentsArray);
         },
 
@@ -305,29 +282,30 @@ var boysVsGirlsUI = (function() {
             }
         },
         refreshScores: function(e) {
-            if (e.target.parentElement.classList.contains('refresh')) {
-                deleteScoresIndividual();
-                CF.clearDOM();
-                addIndividualsToDom();
-            }
             
+            deleteScoresIndividual();
+            // shuffleArray(studentsArray);  // not sure best practice....
+            CF.clearDOM();
+            addIndividualsToDom();
         },
+
         refreshStudents: function(e) {
-            console.log("FUCCCCKKKKKKK")
-            if (e.target.parentElement.classList.contains('refresh-studentsBtn')) {
-                deleteScoresIndividual();
-                CF.clearDOM();
-                addIndividualsToDom();
-            }
+            
+            console.log('refreshStudents');
+            studentsArray = backupArray;
+            addPreviewToDOM_Individual();
             
         },
         
         
-        shuffleStudents: function (e) {
-            if (e.target.parentElement.classList.contains('shuffle-studensBtn')) {
-                console.log('shuffle students')
-            }
-        }
+        shufflePreview: function (e) {
+            console.log('shuffle these students around');
+            CF.shuffleArray(studentsArray);
+
+            
+            addPreviewToDOM_Individual();
+        },
+
     };
 })(CF);
 
