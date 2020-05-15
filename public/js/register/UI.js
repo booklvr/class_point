@@ -41,6 +41,7 @@ var registerUI = (function() {
         const re = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
         if(re.test(input.value.trim())) {
           showSuccess(input);
+          console.log('Email verified');
           return true;
         } else {
           showError(input, "Email is not valid");
@@ -55,6 +56,7 @@ var registerUI = (function() {
             return false;
           } else {
             showSuccess(input);
+            console.log('All fields filled, verified');
             return true;
           }
         })
@@ -70,6 +72,7 @@ var registerUI = (function() {
             return false;
         } else {
             showSuccess(input);
+            console.log('Length, verified');
             return true;
         }
     }
@@ -79,6 +82,7 @@ var registerUI = (function() {
             console.log('input1.value', input1.value)
             console.log('input2.value', input2.value)
             showSuccess(input2);
+            console.log('Passwords Match, verified');
             return true;
         } else {
             console.log('input1.value', input1.value)
@@ -93,17 +97,19 @@ var registerUI = (function() {
     }
 
     function checkAllFields() {
-        if (!(
-            checkRequired([DOM.name, DOM.email, DOM.password, DOM.password2]) &&
-            checkLength(DOM.name, 3, 15) &&
-            checkLength(DOM.password, 6, 20) &&
-            checkEmail(DOM.email) &&
-            checkPasswordsMatch(DOM.password, DOM.password2)
-        )) {
-            return false;
-        } else {
-            return true;
-        }
+        console.log("helloo there mother fucker");
+        e.preventDefault()
+        // if (!(
+        //     checkRequired([DOM.name, DOM.email, DOM.password, DOM.password2]) &&
+        //     checkLength(DOM.name, 3, 15) &&
+        //     checkLength(DOM.password, 6, 20) &&
+        //     checkEmail(DOM.email) &&
+        //     checkPasswordsMatch(DOM.password, DOM.password2)
+        // )) {
+        //     return false;
+        // } else {
+        //     return true;
+        // }
         
     }
       
@@ -118,31 +124,7 @@ var registerUI = (function() {
         //////////////////////////////////////////////////////////////////
         // *** functions for game play ***
         submitEvent: function (e) {
-            e.preventDefault();
-            e.returnValue = true;
             
-
-
-
-            
-            // if (!(
-            //     checkRequired([DOM.name, DOM.email, DOM.password, DOM.password2]) &&
-            //     checkLength(DOM.name, 3, 15) &&
-            //     checkLength(DOM.password, 6, 20) &&
-            //     checkEmail(DOM.email) &&
-            //     checkPasswordsMatch(DOM.password, DOM.password2)
-            // )) {
-            //     console.log('something is not correct');
-            //     e.preventDefault();
-            // }
-
-            // checkRequired([DOM.name, DOM.email, DOM.password, DOM.password2]);
-            // checkLength(DOM.name, 3, 15);
-            // checkLength(DOM.password, 6, 20);
-            // checkEmail(DOM.email);
-            // checkPasswordsMatch(DOM.password, DOM.password2);
-
-            // e.submit();
         },
     };
 })();

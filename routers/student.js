@@ -80,5 +80,9 @@ router.get('/delete/:id', isLoggedIn, async (req, res) => {
         res.status(404).send(err);
     }
 })
+
+router.post('/updatePoints', async (req, res) => {
+    console.log('req.body', req.body);
+})
         
 module.exports = router;

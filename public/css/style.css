@@ -103,9 +103,6 @@ main {
         flex: 1; }
       main .optionsContainer .options .submit {
         flex: 2; }
-      main .optionsContainer .options .refresh-gameBtn,
-      main .optionsContainer .options .save-gameBtn {
-        display: none; }
   main .game__container {
     width: 19rem; }
     main .game__container .buttons {
@@ -313,9 +310,6 @@ main {
         flex: 1; }
       main .optionsContainer .options .submit {
         flex: 2; }
-      main .optionsContainer .options .refresh-gameBtn,
-      main .optionsContainer .options .save-gameBtn {
-        display: none; }
   main .game__container {
     width: 19rem; }
     main .game__container .buttons {

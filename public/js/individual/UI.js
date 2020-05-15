@@ -13,7 +13,7 @@ var boysVsGirlsUI = (function() {
         refreshStudentsBtn: '.refresh-studentsBtn',
         shuffleStudentsBtn: '.shuffle-studentsBtn',
         refreshGameBtn: '.refresh-gameBtn',
-        // saveGameBtn: '.save-gameBtn', // not yet
+        saveGameBtn: '.save-gameBtn', // not yet
     };
 
     var DOM = {
@@ -306,6 +306,27 @@ var boysVsGirlsUI = (function() {
             addPreviewToDOM_Individual();
         },
 
+        saveGame: function (e) {
+            console.log('save this mother fucker');
+
+            console.log(studentsArray);
+
+            const url = "/student/updatePoints";
+             
+            fetch(url, {
+                method: 'post',
+                
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                // credentials: 'same-origin',
+                body: studentsArray
+            }).then(res => res.json)
+            .then(text => console.log('final result', text))
+            
+            // console.log('clasroom data', DOM.gameFormClassroomData.dataset.classroom_id);
+            // window.location.href = `/game/teams/${DOM.gameFormClassroomData.dataset.classroom_id}`;
+        }
     };
 })(CF);
 

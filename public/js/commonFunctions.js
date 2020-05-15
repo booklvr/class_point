@@ -16,6 +16,7 @@ var commonFunctions = (function() {
         titleContainer: '.title__container',
         title: '.title',
         refreshStudentsBtn: '.refresh-studentsBtn',
+        // save
         options: '.options'
     };
 
