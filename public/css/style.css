@@ -135,7 +135,7 @@ main {
         border: 1px solid #000; }
         main .game__container .teams .team:first-of-type,
         main .game__container .preview__teams .team:first-of-type {
-          font-size: 2rem; }
+          font-size: 2.5rem; }
         main .game__container .teams .team:not(:last-of-type),
         main .game__container .preview__teams .team:not(:last-of-type) {
           margin-bottom: .5rem; }
@@ -156,7 +156,8 @@ main {
         flex-direction: row;
         justify-content: space-evenly; }
     main .game__container .teams .teamName {
-      display: inline-block; }
+      display: inline-block;
+      font-size: 2rem; }
     main .game__container .teams .teamPoint {
       display: inline-block; }
       main .game__container .teams .teamPoint button {
@@ -182,6 +183,15 @@ main {
         font-size: 1.5rem;
         color: #2ecc71;
         display: none; }
+      main .game__container .teams .teamList .nextTitle {
+        display: none; }
+      main .game__container .teams .teamList .currentStudent {
+        font-size: 2.5rem;
+        color: #2ecc71;
+        margin-bottom: 1rem; }
+      main .game__container .teams .teamList .nextStudent {
+        font-size: 2rem;
+        color: #e74c3c; }
       main .game__container .teams .teamList .student {
         width: 100%;
         display: flex;
@@ -335,7 +345,7 @@ main {
         border: 1px solid #000; }
         main .game__container .teams .team:first-of-type,
         main .game__container .preview__teams .team:first-of-type {
-          font-size: 2rem; }
+          font-size: 2.5rem; }
         main .game__container .teams .team:not(:last-of-type),
         main .game__container .preview__teams .team:not(:last-of-type) {
           margin-bottom: .5rem; }
@@ -356,7 +366,8 @@ main {
         flex-direction: row;
         justify-content: space-evenly; }
     main .game__container .teams .teamName {
-      display: inline-block; }
+      display: inline-block;
+      font-size: 2rem; }
     main .game__container .teams .teamPoint {
       display: inline-block; }
       main .game__container .teams .teamPoint button {
@@ -382,6 +393,15 @@ main {
         font-size: 1.5rem;
         color: #2ecc71;
         display: none; }
+      main .game__container .teams .teamList .nextTitle {
+        display: none; }
+      main .game__container .teams .teamList .currentStudent {
+        font-size: 2.5rem;
+        color: #2ecc71;
+        margin-bottom: 1rem; }
+      main .game__container .teams .teamList .nextStudent {
+        font-size: 2rem;
+        color: #e74c3c; }
       main .game__container .teams .teamList .student {
         width: 100%;
         display: flex;

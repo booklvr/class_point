@@ -128,7 +128,7 @@ main {
                 border: 1px solid #000;
 
                 &:first-of-type {
-                    font-size: 2rem;
+                    font-size: 2.5rem;
                 }
 
 
@@ -177,6 +177,7 @@ main {
             
             .teamName {
                 display: inline-block;
+                font-size: 2rem;
             }
 
             .teamPoint {
@@ -224,20 +225,20 @@ main {
                 }
 
                 .nextTitle {
-
+                    display: none;
                 }
 
-                // .currentStudent {
-                //     font-size: 2.5rem;
-                //     color: $color-success;
-                //     margin-bottom: 1rem;
-                //     border-bottom: 1px solid #000;
-                // }
+                .currentStudent {
+                    font-size: 2.5rem;
+                    color: $color-success;
+                    margin-bottom: 1rem;
+                    // border-bottom: 1px solid #000;
+                }
 
-                // .nextStudent {
-                //     font-size: 2rem;
-                //     color: $color-error;
-                // }
+                .nextStudent {
+                    font-size: 2rem;
+                    color: $color-error;
+                }
 
                 .student {
                     width: 100%;
