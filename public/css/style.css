@@ -175,15 +175,10 @@ main {
       align-items: center; }
       main .game__container .teams .teamList .currentTitle {
         font-size: 1.5rem;
-        color: #2ecc71; }
-      main .game__container .teams .teamList .currentStudent {
-        font-size: 2.5rem;
         color: #2ecc71;
-        margin-bottom: 1rem;
-        border-bottom: 1px solid #000; }
-      main .game__container .teams .teamList .nextStudent {
-        font-size: 2rem;
-        color: #e74c3c; }
+        display: none; }
+      main .game__container .teams .teamList .nextTitle {
+        display: none; }
       main .game__container .teams .teamList .student {
         width: 100%;
         display: flex;
@@ -377,15 +372,10 @@ main {
       align-items: center; }
       main .game__container .teams .teamList .currentTitle {
         font-size: 1.5rem;
-        color: #2ecc71; }
-      main .game__container .teams .teamList .currentStudent {
-        font-size: 2.5rem;
         color: #2ecc71;
-        margin-bottom: 1rem;
-        border-bottom: 1px solid #000; }
-      main .game__container .teams .teamList .nextStudent {
-        font-size: 2rem;
-        color: #e74c3c; }
+        display: none; }
+      main .game__container .teams .teamList .nextTitle {
+        display: none; }
       main .game__container .teams .teamList .student {
         width: 100%;
         display: flex;

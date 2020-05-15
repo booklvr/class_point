@@ -76,9 +76,13 @@ var registerUI = (function() {
 
     function checkPasswordsMatch(input1, input2) {
         if(input1.value === input2.value) {
+            console.log('input1.value', input1.value)
+            console.log('input2.value', input2.value)
             showSuccess(input2);
             return true;
         } else {
+            console.log('input1.value', input1.value)
+            console.log('input2.value', input2.value)
             showError(input2, 'Passwords do not match');
             return false;
         }
@@ -86,6 +90,21 @@ var registerUI = (function() {
 
     function getFieldName(input) {
         return input.id.charAt(0).toUpperCase() + input.id.slice(1);
+    }
+
+    function checkAllFields() {
+        if (!(
+            checkRequired([DOM.name, DOM.email, DOM.password, DOM.password2]) &&
+            checkLength(DOM.name, 3, 15) &&
+            checkLength(DOM.password, 6, 20) &&
+            checkEmail(DOM.email) &&
+            checkPasswordsMatch(DOM.password, DOM.password2)
+        )) {
+            return false;
+        } else {
+            return true;
+        }
+        
     }
       
     
@@ -99,9 +118,11 @@ var registerUI = (function() {
         //////////////////////////////////////////////////////////////////
         // *** functions for game play ***
         submitEvent: function (e) {
-            if (true) {
-                return false;
-            }   
+            e.preventDefault();
+            e.returnValue = true;
+            
+
+
 
             
             // if (!(
