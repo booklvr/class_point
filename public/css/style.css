@@ -103,6 +103,9 @@ main {
         flex: 1; }
       main .optionsContainer .options .submit {
         flex: 2; }
+      main .optionsContainer .options .refresh-gameBtn,
+      main .optionsContainer .options .save-gameBtn {
+        display: none; }
   main .game__container {
     width: 19rem; }
     main .game__container .buttons {
@@ -167,6 +170,8 @@ main {
           align-items: center; }
       main .game__container .teams .teamPoint .add {
         border: 1px solid #000; }
+      main .game__container .teams .teamPoint .teamPointValue {
+        font-size: 3rem; }
     main .game__container .teams .teamList {
       list-style-type: none;
       display: flex;
@@ -176,8 +181,6 @@ main {
       main .game__container .teams .teamList .currentTitle {
         font-size: 1.5rem;
         color: #2ecc71;
-        display: none; }
-      main .game__container .teams .teamList .nextTitle {
         display: none; }
       main .game__container .teams .teamList .student {
         width: 100%;
@@ -300,6 +303,9 @@ main {
         flex: 1; }
       main .optionsContainer .options .submit {
         flex: 2; }
+      main .optionsContainer .options .refresh-gameBtn,
+      main .optionsContainer .options .save-gameBtn {
+        display: none; }
   main .game__container {
     width: 19rem; }
     main .game__container .buttons {
@@ -364,6 +370,8 @@ main {
           align-items: center; }
       main .game__container .teams .teamPoint .add {
         border: 1px solid #000; }
+      main .game__container .teams .teamPoint .teamPointValue {
+        font-size: 3rem; }
     main .game__container .teams .teamList {
       list-style-type: none;
       display: flex;
@@ -373,8 +381,6 @@ main {
       main .game__container .teams .teamList .currentTitle {
         font-size: 1.5rem;
         color: #2ecc71;
-        display: none; }
-      main .game__container .teams .teamList .nextTitle {
         display: none; }
       main .game__container .teams .teamList .student {
         width: 100%;
