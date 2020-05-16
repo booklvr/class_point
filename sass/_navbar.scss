@@ -1,14 +1,15 @@
 .navbar {
-
-    // font-family: $font-main;
-    font-style: italic;
-
-    
     width: 100vw;
+    height: 8rem;
 
+    background-color: $color-white;
+    border: 1px solid $color-light-grey;
 
-    font-size: 1.5rem;
     &__container {
+
+        height: 100%;
+        margin: 0 12rem;
+        
         display: flex;
         flex-direction: row;
         justify-content: space-between;
@@ -16,17 +17,16 @@
     }
     
     &__brand {
-        margin: 0 1.25rem;;
+       
         text-decoration: none;
+        font-weight: 800;
+        font-size: 2.4rem;
+        color: $color-primary-girl;
+        text-transform: uppercase;
+    }
 
-        &:hover {
-            // color: $color-primary;
-            transform: scale(1.2);
-        }
-        &:active {
-            // color: $color-primary;
-            transform: scale(1.1);
-        }
+    &__brand .text-style-1 {
+        color: $color-primary-boy;
     }
 
     &__links {
@@ -34,16 +34,17 @@
         display: flex;
         flex-direction: row;
 
+        font-weight: 300;
+        font-size: 1.8rem;
+        color: $color-black;
         li {
-
-            margin: 0 1.25rem;
-            // &:not(:last-of-type) {
-            //     margin-right: 25px;
-            // }
-
             .navbar__link {
                 text-decoration: none;
                 
+                &:visited {
+                    color: $color-black;
+                    text-decoration: none;
+                }
 
                 &:hover {
                     // color: $color-primary;
@@ -52,6 +53,9 @@
                 &:active {
                     transform: scale(1.1);
                 }
+            }
+            &:not(:last-of-type) {
+                margin-right: 6.3rem;
             }
         }
     }

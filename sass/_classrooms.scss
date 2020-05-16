@@ -1,0 +1,131 @@
+header {
+    .addClassBtn {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        top: 15.6rem;
+        right: 12rem;
+        font-size: 2rem;
+        width: 5.5rem;
+        height: 5.5rem;
+        border-radius: 2.25em;
+        color: $color-white;
+        background-color: $color-primary-boy;
+        
+
+        a {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            i {
+                color: $color-white;
+                font-size: 3rem;
+            }
+        }
+    }
+}
+
+.classrooms__container {
+    // background-color: pink;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: space-between;
+    overflow: auto;
+    height: 100%;
+    position: relative;
+    margin-bottom: 2rem;
+
+    width: 100vw;
+    padding: 0 12rem;
+
+    
+    
+    
+    .class__container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        width: 27.8rem;
+        position: relative;
+        border: 1px solid $color-light-grey;
+        // padding: .2rem;
+        margin: 0 1.4rem 3.5rem 0;
+
+        &:nth-child(4n) {
+            margin-right: 0;
+        }
+        
+
+        .trashBtn {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            font-size: 1.5rem;
+            display: none;
+
+            a {
+                color: red;
+            }
+        }
+
+        .class {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding-bottom: 2rem;
+            font-family: $font-secondary;
+            font-weight: 600;
+
+            li {
+                list-style: none;
+                
+                a {
+                    text-decoration: none;
+                }
+            }
+
+            .class-title {
+                margin-top: 3.9rem;
+                font-size: 2rem;
+                
+
+                a {
+                    
+                    color: $color-primary-boy;
+                }
+            }
+
+            .game-link {
+                font-size: 1.8rem;
+                color: $color-black;
+                margin: 1.25rem;
+
+               
+                
+                &:not(:last-of-type) {
+                    padding-bottom: 2rem;
+                    border-bottom: 2px solid $color-light-grey;
+                }
+
+                a {
+                    text-decoration: none;
+                    color: black;
+                }
+            }
+        }
+
+        &:hover .trashBtn {
+            display: block;
+        }
+    } 
+
+}
