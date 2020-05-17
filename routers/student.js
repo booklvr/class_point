@@ -81,8 +81,6 @@ router.get('/delete/:id', isLoggedIn, async (req, res) => {
     }
 })
 
-router.post('/updatePoints', async (req, res) => {
-    console.log('req.body', req.body);
-})
+
         
 module.exports = router;

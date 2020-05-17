@@ -16,7 +16,7 @@ var controller = (function(UI) {
             refreshStudentsBtn: document.querySelector(DOMStrings.refreshStudentsBtn),
             shuffleStudentsBtn: document.querySelector(DOMStrings.shuffleStudentsBtn),
             refreshGameBtn: document.querySelector(DOMStrings.refreshGameBtn),
-            // saveGameBtn: document.querySelector(DOMStrings.saveGameBtn),
+            saveGameBtn: document.querySelector(DOMStrings.saveGameBtn),
             // options: document.querySelector(DOMStrings.options),
             // gameForm: document.querySelector(DOMStrings.gameForm),
         };
@@ -39,7 +39,7 @@ var controller = (function(UI) {
         DOM.refreshGameBtn.addEventListener('click', UI.refreshScores);
         DOM.refreshStudentsBtn.addEventListener('click', UI.refreshStudents);
         DOM.shuffleStudentsBtn.addEventListener('click', UI.shufflePreview);
-        // DOM.saveGameBtn.addEventListener('click', UI.saveGame);
+        DOM.saveGameBtn.addEventListener('click', UI.saveGame);
     }
 
     return {

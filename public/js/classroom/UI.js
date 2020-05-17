@@ -42,7 +42,8 @@ var classroomUI = (function() {
             if(e.target.classList.contains('updateStudent')) {
                 
                 console.log('hello there');
-                const formTarget = e.target.parentElement.parentElement.parentElement.parentElement.nextElementSibling;
+                const formTarget = e.target.parentElement.parentElement.parentElement.parentElement.querySelector('.update__form');
+                console.log(formTarget);
 
                 formTarget.classList.toggle('hide');                
             }

@@ -143,6 +143,162 @@ footer {
   padding: 1rem 0;
   text-transform: uppercase; }
 
+.title__container {
+  width: 100vw;
+  text-align: center; }
+  .title__container h2 {
+    font-size: 2rem; }
+  .title__container h3 {
+    font-size: 1.5rem; }
+
+main {
+  font-family: "Gilroy", sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }
+  main .optionsContainer {
+    width: 19rem; }
+    main .optionsContainer .gameForm {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      border: 1px solid #000; }
+      main .optionsContainer .gameForm label {
+        flex: 1;
+        text-align: center;
+        font-size: 1.2rem; }
+      main .optionsContainer .gameForm input[type=number] {
+        width: 5rem;
+        padding-left: .75rem;
+        font-size: 1.2rem; }
+    main .optionsContainer .options {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between; }
+      main .optionsContainer .options .shuffle-studentsBtn,
+      main .optionsContainer .options .refresh-studentsBtn,
+      main .optionsContainer .options .save-gameBtn,
+      main .optionsContainer .options .refresh-gameBtn {
+        font-size: 2rem;
+        flex: 1; }
+      main .optionsContainer .options .submit {
+        flex: 2; }
+  main .game__container {
+    width: 19rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center; }
+    main .game__container .buttons {
+      background-color: pink;
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      justify-content: stretch; }
+      main .game__container .buttons .next,
+      main .game__container .buttons .previous {
+        flex: 1;
+        height: 3rem;
+        padding-top: .5rem; }
+    main .game__container .teams,
+    main .game__container .preview__teams {
+      width: 19rem;
+      margin-top: .5rem;
+      font-size: 1.2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.5rem; }
+      main .game__container .teams .team,
+      main .game__container .preview__teams .team {
+        width: 100%;
+        border: 1px solid #000; }
+        main .game__container .teams .team:first-of-type,
+        main .game__container .preview__teams .team:first-of-type {
+          font-size: 2.5rem; }
+        main .game__container .teams .team:not(:last-of-type),
+        main .game__container .preview__teams .team:not(:last-of-type) {
+          margin-bottom: .5rem; }
+        main .game__container .teams .team .teamName,
+        main .game__container .preview__teams .team .teamName {
+          text-align: center; }
+        main .game__container .teams .team .teamList,
+        main .game__container .preview__teams .team .teamList {
+          list-style: none; }
+    main .game__container .preview__teams .team .teamList {
+      font-size: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center; }
+      main .game__container .preview__teams .team .teamList .student {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly; }
+    main .game__container .teams .teamName {
+      display: inline-block;
+      font-size: 2rem; }
+    main .game__container .teams .teamPoint {
+      display: inline-block; }
+      main .game__container .teams .teamPoint button {
+        margin: 0 .5rem; }
+        main .game__container .teams .teamPoint button i {
+          width: 2rem;
+          height: 2rem;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center; }
+      main .game__container .teams .teamPoint .add {
+        border: 1px solid #000; }
+      main .game__container .teams .teamPoint .teamPointValue {
+        font-size: 3rem; }
+    main .game__container .teams .teamList {
+      list-style-type: none;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center; }
+      main .game__container .teams .teamList .currentTitle {
+        font-size: 1.5rem;
+        color: #2ecc71;
+        display: none; }
+      main .game__container .teams .teamList .nextTitle {
+        display: none; }
+      main .game__container .teams .teamList .currentStudent {
+        font-size: 2.5rem;
+        color: #2ecc71;
+        margin-bottom: 1rem; }
+      main .game__container .teams .teamList .nextStudent {
+        font-size: 2rem;
+        color: #e74c3c; }
+      main .game__container .teams .teamList .student {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center; }
+        main .game__container .teams .teamList .student .name {
+          flex: 3; }
+        main .game__container .teams .teamList .student button {
+          flex: 1;
+          margin: 0 .3rem;
+          width: 3rem;
+          min-height: 3rem; }
+          main .game__container .teams .teamList .student button i {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 2rem; }
+        main .game__container .teams .teamList .student .points {
+          width: 3.5rem;
+          align-self: end;
+          text-align: right;
+          padding-right: .5rem; }
+
 .form__container {
   width: 100vw;
   display: flex;
@@ -272,3 +428,159 @@ header .addClassBtn {
           color: black; }
     .classrooms__container .class__container:hover .trashBtn {
       display: block; }
+
+.title__container {
+  width: 100vw;
+  text-align: center; }
+  .title__container h2 {
+    font-size: 2rem; }
+  .title__container h3 {
+    font-size: 1.5rem; }
+
+main {
+  font-family: "Gilroy", sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }
+  main .optionsContainer {
+    width: 19rem; }
+    main .optionsContainer .gameForm {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      border: 1px solid #000; }
+      main .optionsContainer .gameForm label {
+        flex: 1;
+        text-align: center;
+        font-size: 1.2rem; }
+      main .optionsContainer .gameForm input[type=number] {
+        width: 5rem;
+        padding-left: .75rem;
+        font-size: 1.2rem; }
+    main .optionsContainer .options {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between; }
+      main .optionsContainer .options .shuffle-studentsBtn,
+      main .optionsContainer .options .refresh-studentsBtn,
+      main .optionsContainer .options .save-gameBtn,
+      main .optionsContainer .options .refresh-gameBtn {
+        font-size: 2rem;
+        flex: 1; }
+      main .optionsContainer .options .submit {
+        flex: 2; }
+  main .game__container {
+    width: 19rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center; }
+    main .game__container .buttons {
+      background-color: pink;
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      justify-content: stretch; }
+      main .game__container .buttons .next,
+      main .game__container .buttons .previous {
+        flex: 1;
+        height: 3rem;
+        padding-top: .5rem; }
+    main .game__container .teams,
+    main .game__container .preview__teams {
+      width: 19rem;
+      margin-top: .5rem;
+      font-size: 1.2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.5rem; }
+      main .game__container .teams .team,
+      main .game__container .preview__teams .team {
+        width: 100%;
+        border: 1px solid #000; }
+        main .game__container .teams .team:first-of-type,
+        main .game__container .preview__teams .team:first-of-type {
+          font-size: 2.5rem; }
+        main .game__container .teams .team:not(:last-of-type),
+        main .game__container .preview__teams .team:not(:last-of-type) {
+          margin-bottom: .5rem; }
+        main .game__container .teams .team .teamName,
+        main .game__container .preview__teams .team .teamName {
+          text-align: center; }
+        main .game__container .teams .team .teamList,
+        main .game__container .preview__teams .team .teamList {
+          list-style: none; }
+    main .game__container .preview__teams .team .teamList {
+      font-size: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center; }
+      main .game__container .preview__teams .team .teamList .student {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly; }
+    main .game__container .teams .teamName {
+      display: inline-block;
+      font-size: 2rem; }
+    main .game__container .teams .teamPoint {
+      display: inline-block; }
+      main .game__container .teams .teamPoint button {
+        margin: 0 .5rem; }
+        main .game__container .teams .teamPoint button i {
+          width: 2rem;
+          height: 2rem;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center; }
+      main .game__container .teams .teamPoint .add {
+        border: 1px solid #000; }
+      main .game__container .teams .teamPoint .teamPointValue {
+        font-size: 3rem; }
+    main .game__container .teams .teamList {
+      list-style-type: none;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center; }
+      main .game__container .teams .teamList .currentTitle {
+        font-size: 1.5rem;
+        color: #2ecc71;
+        display: none; }
+      main .game__container .teams .teamList .nextTitle {
+        display: none; }
+      main .game__container .teams .teamList .currentStudent {
+        font-size: 2.5rem;
+        color: #2ecc71;
+        margin-bottom: 1rem; }
+      main .game__container .teams .teamList .nextStudent {
+        font-size: 2rem;
+        color: #e74c3c; }
+      main .game__container .teams .teamList .student {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center; }
+        main .game__container .teams .teamList .student .name {
+          flex: 3; }
+        main .game__container .teams .teamList .student button {
+          flex: 1;
+          margin: 0 .3rem;
+          width: 3rem;
+          min-height: 3rem; }
+          main .game__container .teams .teamList .student button i {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 2rem; }
+        main .game__container .teams .teamList .student .points {
+          width: 3.5rem;
+          align-self: end;
+          text-align: right;
+          padding-right: .5rem; }

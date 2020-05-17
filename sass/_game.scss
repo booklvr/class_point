@@ -1,285 +1,288 @@
-// .title__container {
-//     // margin-top: 1rem;
-//     width: 100vw;
-//     text-align: center;
+.title__container {
+    // margin-top: 1rem;
+    width: 100vw;
+    text-align: center;
     
-//     h2 {
-//         font-size: 2rem;
-//     }
+    h2 {
+        font-size: 2rem;
+    }
 
-//     h3 {
-//         font-size: 1.5rem;
-//     }
-// }
+    h3 {
+        font-size: 1.5rem;
+    }
+}
 
 
-// main {
+main {
     
-//     // font-family: $font-main;
-//     display: flex;
-//     flex-direction: column;
-//     // justify-content: flex-end;
-//     align-items: center;
+    font-family: $font-main;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
    
     
     
-//     .errors {
+    .errors {
 
-//     }
-//     .optionsContainer {
-//         // background-color: yellow;
+    }
+    .optionsContainer {
+        // background-color: yellow;
         
-//         width: 19rem;
+        width: 19rem;
 
-//         .gameForm {
+        .gameForm {
             
-//             display: flex;
-//             flex-direction: row;
-//             justify-content: space-between;
-//             align-items: center;
-//             // background-color: blue;
-//             border: 1px solid #000;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            // background-color: blue;
+            border: 1px solid #000;
 
-//             label {
-//                 flex: 1;
-//                 // background-color: green;
-//                 text-align: center;
-//                 font-size: 1.2rem;
+            label {
+                flex: 1;
+                // background-color: green;
+                text-align: center;
+                font-size: 1.2rem;
                 
-//             }
+            }
             
-//             input[type=number] {
-//                 // background-color: orange;
-//                 width: 5rem;
-//                 padding-left: .75rem;
-//                 font-size: 1.2rem;
-//             }
-//         }
+            input[type=number] {
+                // background-color: orange;
+                width: 5rem;
+                padding-left: .75rem;
+                font-size: 1.2rem;
+            }
+        }
 
-//         .options {
+        .options {
             
-//             width: 100%;
-//             // background-color: orange;
-//             display: flex;
-//             flex-direction: row;
-//             justify-content: space-between;
+            width: 100%;
+            // background-color: orange;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
 
            
-//             .shuffle-studentsBtn,
-//             .refresh-studentsBtn,
-//             .save-gameBtn,
-//             .refresh-gameBtn {
-//                 font-size: 2rem;
-//                 flex: 1;
-//             }
-//             .submit {
-//                 flex: 2;
-//             }
+            .shuffle-studentsBtn,
+            .refresh-studentsBtn,
+            .save-gameBtn,
+            .refresh-gameBtn {
+                font-size: 2rem;
+                flex: 1;
+            }
+            .submit {
+                flex: 2;
+            }
 
-//             // // just for quick play 
-//             // .refresh-gameBtn,
-//             // .save-gameBtn {
-//             //     display: none;
-//             // }
+            // // just for quick play 
+            // .refresh-gameBtn,
+            // .save-gameBtn {
+            //     display: none;
+            // }
            
-//         }
+        }
     
-//     }
+    }
     
 
     
-//     .game__container {
-//         width: 19rem;
-//         // background-color: yellow;
+    .game__container {
+        width: 19rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        // background-color: yellow;
 
-//         // background-color: yellow;
-//         .buttons {
-//             background-color: pink;
-//             width: 100%;
+        // background-color: yellow;
+        .buttons {
+            background-color: pink;
+            width: 100%;
 
-//             display: flex;
-//             flex-direction: row;
-//             justify-content: stretch;
+            display: flex;
+            flex-direction: row;
+            justify-content: stretch;
 
-//             .next,
-//             .previous {
-//                 flex: 1;
-//                 height: 3rem;
-//                 padding-top: .5rem;
-//             }
-//         }
+            .next,
+            .previous {
+                flex: 1;
+                height: 3rem;
+                padding-top: .5rem;
+            }
+        }
 
-//         .teams,
-//         .preview__teams {
-//             width: 19rem;
-//             margin-top: .5rem;
-//             font-size: 1.2rem;
-//             display: flex;
-//             flex-direction: column;
-//             justify-content: center;
-//             align-items: center;
-//             font-size: 1.5rem;
+        .teams,
+        .preview__teams {
+            width: 19rem;
+            margin-top: .5rem;
+            font-size: 1.2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
             
 
-//             // background-color: yellow;
-//             // background-color: skyblue;
-//             .team {
-//                 width: 100%;
-//                 border: 1px solid #000;
+            // background-color: yellow;
+            // background-color: skyblue;
+            .team {
+                width: 100%;
+                border: 1px solid #000;
 
-//                 &:first-of-type {
-//                     font-size: 2.5rem;
-//                 }
+                &:first-of-type {
+                    font-size: 2.5rem;
+                }
 
 
-//                 &:not(:last-of-type) {
-//                     margin-bottom: .5rem;
-//                 }
-//                 .teamName {
-//                     text-align: center;
-//                     // font-size: 3rem;
+                &:not(:last-of-type) {
+                    margin-bottom: .5rem;
+                }
+                .teamName {
+                    text-align: center;
+                    // font-size: 3rem;
                     
-//                 }
+                }
 
-//                 .teamList {
-//                     list-style: none;
-//                 }
+                .teamList {
+                    list-style: none;
+                }
 
                 
                 
-//             }
-//         }
-//         .preview__teams {
-//             // background-color: yellow;
-//             .team {
+            }
+        }
+        .preview__teams {
+            // background-color: yellow;
+            .team {
                 
 
-//                 .teamList {
-//                     // justify-content: space-around;
-//                     font-size: 1.75rem;
-//                     display: flex;
-//                     flex-direction: column;
-//                     justify-content: center;
-//                     align-items: center;
+                .teamList {
+                    // justify-content: space-around;
+                    font-size: 1.75rem;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
 
-//                     .student {
+                    .student {
                         
-//                         display: flex;
-//                         flex-direction: row;
-//                         justify-content: space-evenly;
-//                     }
-//                 }
-//             }
-//         }
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: space-evenly;
+                    }
+                }
+            }
+        }
 
 
-//         .teams{
+        .teams{
             
-//             .teamName {
-//                 display: inline-block;
-//                 font-size: 2rem;
-//             }
+            .teamName {
+                display: inline-block;
+                font-size: 2rem;
+            }
 
-//             .teamPoint {
-//                 display: inline-block;
-//                 button {
-//                     // background-color: purple;
-//                     margin: 0 .5rem;
-//                     i {
-//                         width: 2rem;
-//                         height: 2rem;
+            .teamPoint {
+                display: inline-block;
+                button {
+                    // background-color: purple;
+                    margin: 0 .5rem;
+                    i {
+                        width: 2rem;
+                        height: 2rem;
                         
 
-//                         display: flex;
-//                         flex-direction: column;
-//                         justify-content: center;
-//                         align-items: center;
-//                     }
-//                 }
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        align-items: center;
+                    }
+                }
 
-//                 .add {
-//                     border: 1px solid #000;
-//                 }
+                .add {
+                    border: 1px solid #000;
+                }
 
-//                 .minus {
+                .minus {
 
-//                 }
+                }
 
-//                 .teamPointValue {
-//                     font-size: 3rem;
-//                 }
-//             }
+                .teamPointValue {
+                    font-size: 3rem;
+                }
+            }
 
-//             .teamList {
+            .teamList {
 
-//                 list-style-type: none;
-//                 display: flex;
-//                 flex-direction: column;
-//                 justify-content: center;
-//                 align-items: center;
+                list-style-type: none;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
 
-//                 .currentTitle {
-//                     font-size: 1.5rem;
-//                     color: $color-success;
-//                     display: none;
-//                 }
+                .currentTitle {
+                    font-size: 1.5rem;
+                    color: $color-success;
+                    display: none;
+                }
 
-//                 .nextTitle {
-//                     display: none;
-//                 }
+                .nextTitle {
+                    display: none;
+                }
 
-//                 .currentStudent {
-//                     font-size: 2.5rem;
-//                     color: $color-success;
-//                     margin-bottom: 1rem;
-//                     // border-bottom: 1px solid #000;
-//                 }
+                .currentStudent {
+                    font-size: 2.5rem;
+                    color: $color-success;
+                    margin-bottom: 1rem;
+                    // border-bottom: 1px solid #000;
+                }
 
-//                 .nextStudent {
-//                     font-size: 2rem;
-//                     color: $color-error;
-//                 }
+                .nextStudent {
+                    font-size: 2rem;
+                    color: $color-error;
+                }
 
-//                 .student {
-//                     width: 100%;
-//                     display: flex;
-//                     flex-direction: row;
-//                     align-items: center;
+                .student {
+                    width: 100%;
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
                     
                     
                     
-//                     .name {
-//                         flex: 3;
+                    .name {
+                        flex: 3;
                         
-//                     }
+                    }
 
-//                     button {
-//                         flex: 1;
-//                         margin: 0 .3rem;
-//                         width: 3rem;
-//                         min-height: 3rem;
+                    button {
+                        flex: 1;
+                        margin: 0 .3rem;
+                        width: 3rem;
+                        min-height: 3rem;
 
-//                         i {
-//                             display: flex;
-//                             flex-direction: column;
-//                             justify-content: center;
-//                             align-items: center;
-//                             height: 2rem;
-//                         }
-//                     }
+                        i {
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: center;
+                            align-items: center;
+                            height: 2rem;
+                        }
+                    }
 
-//                     .points {
-//                         width: 3.5rem;
-//                         align-self: end;
-//                         text-align: right;
-//                         padding-right: .5rem;
-//                     }
-
-
-//                 }// background-color: red;
-//             }
-//         }
-//     }
+                    .points {
+                        width: 3.5rem;
+                        align-self: end;
+                        text-align: right;
+                        padding-right: .5rem;
+                    }
 
 
-// }
+                }// background-color: red;
+            }
+        }
+    }
+
+
+}

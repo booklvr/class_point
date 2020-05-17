@@ -279,6 +279,54 @@ var commonFunctions = (function() {
         
         clearInput: function() {
             DOM.numberOfTeams.value = 1;
+        },
+
+        removeOptions: function () {
+            DOM.options.remove();
+        },
+
+        addWinningTeam: function (array) {
+            console.log(array);
+            const winningTeamScore = Math.max.apply(Math, array.map(o => o.totalPoints));
+            const winningTeams = array.filter(o => o.totalPoints == winningTeamScore);
+            console.log(winningTeams);
+
+            const winningTeamContainer = document.createElement('div');
+
+            winningTeamContainer.classList += 'winningStudentContainer';
+            winningTeamContainer.innerHTML = `
+                <h3 class="winningStudentTitle">${winningTeams.length === 1 ? 'First Place Team' : 'Tied for First'}</h3> 
+            `;
+            winningTeams.forEach(team => {
+                winningTeamContainer.innerHTML += `
+                    <div class="firstPlace">
+                        <p class="winnerName">${team.name} <span class="winnerPoints">${team.totalPoints}</span></p>
+                    </div>
+                `;
+            })
+            DOM.gameContainer.appendChild(winningTeamContainer);
+        },
+
+        addWinningStudent: function (array) {
+
+            const winningStudentScore = Math.max.apply(Math, array.map(o => o.points))
+            const winningStudents = array.filter(o => o.points == winningStudentScore);
+            console.log(winningStudents);
+
+            const winningStudentContainer = document.createElement('div');
+
+            winningStudentContainer.classList += 'winningStudentContainer';
+            winningStudentContainer.innerHTML = `
+                <h3 class="winningStudentTitle">${winningStudents.length === 1 ? 'First Place Student' : 'Tied for First'}</h3> 
+            `;
+            winningStudents.forEach(student => {
+                winningStudentContainer.innerHTML += `
+                    <div class="firstPlace">
+                        <p class="winnerName">${student.name} <span class="winnerPoints">${student.points}</span></p>
+                    </div>
+                `;
+            })
+            DOM.gameContainer.appendChild(winningStudentContainer);
         }
     } 
 })();

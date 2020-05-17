@@ -306,25 +306,29 @@ var boysVsGirlsUI = (function() {
             addPreviewToDOM_Individual();
         },
 
-        saveGame: function (e) {
+        saveGame: async function (e) {
             console.log('save this mother fucker');
 
-            console.log(studentsArray);
+            CF.clearDOM();
+            CF.removeOptions();
 
-            const url = "/student/updatePoints";
+            CF.addWinningStudent(studentsArray);
+
+            const url = "/game/updatePoints";
              
-            fetch(url, {
+            await fetch(url, {
                 method: 'post',
                 
                 headers: {
                     'Content-Type': 'application/json',
+                    'Accept': 'application/json'
                 },
                 // credentials: 'same-origin',
-                body: studentsArray
-            }).then(res => res.json)
+                body: JSON.stringify(studentsArray),
+            }).then(res => res)
             .then(text => console.log('final result', text))
             
-            // console.log('clasroom data', DOM.gameFormClassroomData.dataset.classroom_id);
+            
             // window.location.href = `/game/teams/${DOM.gameFormClassroomData.dataset.classroom_id}`;
         }
     };

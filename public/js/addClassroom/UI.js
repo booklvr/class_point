@@ -2,15 +2,33 @@ var addClassroomUI = (function() {
     var DOMStrings = {
         file: '.file',
         className: '.className',
-        submit: '.submit',
-        or: '.or'
+        submitBtn: '.submit',
+       
     };
 
-    // var DOM = {
-    //     file = document.querySelector(DOMStrings.file),
-    //     className = document.querySelector(DOMStrings.className),
-    //     submit = document.querySelector(DOMStrings.submit),
-    // }
+    var DOM = {
+        className: document.querySelector(DOMStrings.className),
+        or: document.querySelector(DOMStrings.or),
+        submitBtn: document.querySelector(DOMStrings.submitBtn),
+        file: document.querySelector(DOMStrings.file),
+    }
+
+    //HELPER FUNCTIONS
+    const isCSVfile = function(fileUploadPath) {
+        if (fileUploadPath != '') {
+            const extension = fileUploadPath.substring(fileUploadPath.lastIndexOf('.') + 1).toLowerCase();
+
+            if (extension === 'csv') {
+                return true;
+            }
+            else {
+                alert('You can only upload CSV files.')
+                DOM.file.type = '';
+                DOM.file.type = 'file';
+                return false;
+            }
+        }
+    }
 
     return {
         getDOMStrings: function() {
@@ -18,17 +36,25 @@ var addClassroomUI = (function() {
         },
         checkForClassName: function() {
             // get elements
-            const className = document.querySelector(DOMStrings.className)
-            const or = document.querySelector(DOMStrings.or);
-            const submitBtn = document.querySelector(DOMStrings.submit);
+            console.log("AHHHHHHH FUCK")
+            const fileUploadPath = DOM.file.value;
             
-            if(className.value !== '') {
-                return event.target.closest('form').submit();
+            if (isCSVfile(fileUploadPath)) {
+                if(DOM.className.value !== '') {
+                    return event.target.closest('form').submit();
+                } else {
+                    DOM.submitBtn.innerText = 'Upload File';
+                    
+                    return alert('Please enter the class name first.');
+                }
             } else {
-                submitBtn.innerText = 'Upload File';
-                or.remove();
-                return alert('Please enter the class name first.');
+                console.log('it is not a csv file')
             }
+            
+            
+
+
+           
         },
         
 

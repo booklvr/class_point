@@ -23,30 +23,6 @@ router.get('/individual/:id', async (req, res) => {
     
 });
 
-// router.get('/individual/data/:id', async (req, res) => {
-//     console.log('fetch data for individual game');
-
-//     try {
-//         const classroom = await Classroom.findById(req.params.id);
-
-//         await classroom.populate({
-//             path: 'students'
-//         }).execPopulate();
-
-//         students = classroom.students;
-//         // console.log('students:', students);
-
-//         studentsShuffled = gameHelper.shuffleArray(students);
-        
-//         // console.log('shuffledStudents:', studentsShuffled);
-//         // res.send(students);
-//         res.send(studentsShuffled);
-//     } catch (err) {
-//         console.log(err);
-//         res.status(500).send(err);
-//     }
-// })
-
 // get the boysVsGirls game
 // * id = classroom._id
 router.get('/boysVsGirls/:id', async (req, res) => {
@@ -61,57 +37,12 @@ router.get('/boysVsGirls/:id', async (req, res) => {
     }
 })
 
-// router.get('/boysVsGirls/data/:id', async (req, res) => {
-//     console.log('get the boys Vs girls data');
-
-//     try {
-//         const classroom = await Classroom.findById(req.params.id);
-
-//         await classroom.populate({
-//             path: 'students'
-//         }).execPopulate();
-
-//         const students = classroom.students;
-//         // console.log(students);
-
-//         // ****** FOR DEVELOPEMNT DONT" SHUFFLE
-
-//         const shuffledStudents = gameHelper.shuffleArray(students);
-
-//         //shuffle the array for different game play
-//         const boys = shuffledStudents.filter(student => student.sex === 'male');
-
-//         // *** for developemnt
-//         // boys = students.filter(student => student.sex === 'male');
-//         // girls = students.filter(student => student.sex === 'female');
-
-//         // console.log('boys', boys);
-
-//         const girls = shuffledStudents.filter(student => student.sex === 'female');
-//         // console.log('girls', girls);
-
-//         res.send({girls, boys});
-        
-//     } catch (err) {
-//         console.log(err);
-//         res.status(404).send(err);
-//     }
-// })
-
 // GET THE GAME FORM
 router.get('/teamForm/:id', async (req, res) => {
     console.log('rendering game form');
 
     try {
         const classroom = await Classroom.findById(req.params.id);
-        // console.log(classroom)
-
-        // await classroom.populate({
-        //     path: 'students'
-        // }).execPopulate();
-
-        // students = classroom.students;
-        // console.log(students);
 
         res.render('pages/team', {classroom})
     } catch (err) {
@@ -142,5 +73,45 @@ router.get("/classData/:id", async( req, res) => {
     } 
 })
 
+router.post('/updatePoints', async (req, res) => {
+    console.log("LET's UPDATE SOME FUCKING POINTS")
+    students = req.body 
+
+    console.log('students', students)
+
+    // students.forEach( (student) => {
+    //     try {
+    //         const query = { _id: student._id};
+           
+        
+    //         const update = {
+    //             totalPoints: 
+    //         }
+        
+    //         const options = {
+    //             new: true,
+    //         }
+
+    //         Student.findOneAndUpdate(query,  {
+    //             $inc: {
+    //                 totalPoints: student.points,
+    //             }
+    //         })
+    //     } catch (err) {
+    //         console.log(err);
+    //     }
+    // })
+
+    // try {
+    //     await Promise.all(students.forEach(async (student) => {
+    //         
+    //     }))
+    // } catch (err) {
+    //     console.log(err);
+    //     res.status(500).send(err);
+    // }
+    
+
+})
 
 module.exports = router;

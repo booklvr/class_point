@@ -29,11 +29,11 @@
         </form>
     </div>
     
-    <div class="student__list">
+    <ul class="student__list">
         <% students.forEach(function(student) { %> 
-            <div class="student">
-                <div class="student__name"><%= student.name %></div>
-                <div class="right">
+            <li class="studentContainer">
+                <div class="student">
+                    <div class="student__name"><%= student.name %></div>
                     <% if (student.sex === 'male') { %> 
                         <div class="student__gender">
                             <i class="male fas fa-child"></i>
@@ -43,27 +43,31 @@
                             <i class="female fas fa-child"></i>
                         </div>
                     <% } %>
+                    <div class="studentTotalPoints">
+                        <p><%= student.totalPoints %></p>
+                    </div>
                     <div class="students__update">
                         <a><i class="updateStudent fas fa-sync-alt"></i></a>
                         <a href="/student/delete/<%= student._id %>"><i class="fas fa-trash-alt"></i></a>
-                    </div>
+                    </div> 
                 </div>
-            </div>
-            <div class="update__form hide">
-                <form action="/student/update/<%= student._id %>" class="form__update" method="post">
-                    <input class="update__name" type="text" name="name" value="<%= student.name %>" onfocus="this.setSelectionRange(this.value.length, this.value.length);"/>
-                    
-                    <label for="editRadio-male" class="">male</label>
-                    <input class="" id="editRadio-male" type="radio" name="sex" value="male">
-                    
-                    <label for="editRadio-female" class="">female</label>
-                    <input class=""id="editRadio-female" type="radio" name="sex" value="female">
-                    
-                    <button class="update__submit--btn"><i class="fas fa-check"></i></button>
-                </form>
-            </div>
+                <div class="update__form hide">
+                    <form action="/student/update/<%= student._id %>" class="form__update" method="post">
+                        <input class="update__name" type="text" name="name" value="<%= student.name %>" onfocus="this.setSelectionRange(this.value.length, this.value.length);"/>
+                        
+                        <label for="editRadio-male" class="">male</label>
+                        <input class="" id="editRadio-male" type="radio" name="sex" value="male">
+                        
+                        <label for="editRadio-female" class="">female</label>
+                        <input class=""id="editRadio-female" type="radio" name="sex" value="female">
+                        
+                        <button class="update__submit--btn"><i class="fas fa-check"></i></button>
+                    </form>
+                </div>
+            </li>
+           
         <% }) %>
-    </div>
+        </ul>
 </main>
 <%- include ('../partials/footer'); %>
 <script type="module" src="/public/js/classroom/controller.js"></script>

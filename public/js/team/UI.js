@@ -15,7 +15,7 @@ var gameFormUI = (function(CF) {
         refreshStudentsBtn: '.refresh-studentsBtn',
         refreshGameBtn: '.refresh-gameBtn',
         shuffleStudentsBtn: '.shuffle-studentsBtn',
-        // saveGameBtn: '.save-gameBtn', // not yet
+        saveGameBtn: '.save-gameBtn', // not yet
         // options: '.options'
     };
 
@@ -247,7 +247,35 @@ var gameFormUI = (function(CF) {
             const teamsSize = numberOfTeams.value;
             createTeams(teamsSize);
             CF.addPreviewToDOM(teamsArray);
-        }
+        },
+
+        saveGame: async function (e) {
+            console.log('save this mother fucker');
+
+            CF.clearDOM();
+            CF.removeOptions();
+
+            CF.addWinningTeam(teamsArray);
+
+            CF.addWinningStudent(studentsArray);
+
+
+            const url = "/game/updatePoints";
+             
+            await fetch(url, {
+                method: 'post',
+                
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                // credentials: 'same-origin',
+                body: JSON.stringify(studentsArray),
+            }).then(res => res)
+            .then(text => console.log('final result', text))
+            
+
+        },
     };
 })(CF);
 
