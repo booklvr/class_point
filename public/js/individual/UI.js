@@ -3,7 +3,7 @@ import { commonFunctions as CF } from '../commonFunctions.js';
 var boysVsGirlsUI = (function() {
     var DOMStrings = {
         // BY CLASS
-        submit: '.submit',
+        
         gameContainer: '.game__container',
         classroomData: '.classroomData',
         teams: '.teams',  
@@ -11,9 +11,12 @@ var boysVsGirlsUI = (function() {
         titleContainer: '.title__container',
         title: '.title',
         refreshStudentsBtn: '.refresh-studentsBtn',
-        shuffleStudentsBtn: '.shuffle-studentsBtn',
         refreshGameBtn: '.refresh-gameBtn',
+        shuffleStudentsBtn: '.shuffle-studentsBtn',
         saveGameBtn: '.save-gameBtn', // not yet
+        goToClassroomBtn: '.goToClassroomBtn',
+        playAgainBtn: '.playAgainBtn',
+        playGameBtn: '.playGameBtn',
     };
 
     var DOM = {
@@ -21,7 +24,7 @@ var boysVsGirlsUI = (function() {
         gameContainer: document.querySelector(DOMStrings.gameContainer),
         teams: document.querySelector(DOMStrings.teams),
         previewTeams: document.querySelector(DOMStrings.previewTeams),
-        submit: document.querySelector(DOMStrings.submit),
+        
         titleContainer: document.querySelector(DOMStrings.titleContainer),
         title: document.querySelector(DOMStrings.title),
 
@@ -229,7 +232,7 @@ var boysVsGirlsUI = (function() {
 
         //////////////////////////////////////////////////////////////////
         // *** functions for game play ***
-        submitEvent: function (e) {
+        startGame: function (e) {
             // posting teams to teamGame
             e.preventDefault();
             console.log("let's play")
@@ -310,7 +313,7 @@ var boysVsGirlsUI = (function() {
             console.log('save this mother fucker');
 
             CF.clearDOM();
-            CF.removeOptions();
+            CF.endGameOptions();
 
             CF.addWinningStudent(studentsArray);
 
@@ -327,9 +330,12 @@ var boysVsGirlsUI = (function() {
                 body: JSON.stringify(studentsArray),
             }).then(res => res)
             .then(text => console.log('final result', text))
-            
-            
-            // window.location.href = `/game/teams/${DOM.gameFormClassroomData.dataset.classroom_id}`;
+        },
+        playAgain: function() {
+            window.location.reload(false);
+        },
+        goToClassroom: function () {
+             window.location.href = `/classroom/class/${DOM.classroomData.dataset.classroom_id}`;
         }
     };
 })(CF);

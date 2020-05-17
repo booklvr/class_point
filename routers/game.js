@@ -74,37 +74,35 @@ router.get("/classData/:id", async( req, res) => {
 })
 
 router.post('/updatePoints', async (req, res) => {
-    console.log("LET's UPDATE SOME FUCKING POINTS")
     students = req.body 
 
-    console.log('students', students)
-
-    // students.forEach( (student) => {
-    //     try {
-    //         const query = { _id: student._id};
+    students.forEach( (student) => {
+        console.log('student.points', student.points)
+        try {
+            const query = { _id: student._id};
            
+            const update = {
+                totalPoints: student.points
+            }
         
-    //         const update = {
-    //             totalPoints: 
-    //         }
-        
-    //         const options = {
-    //             new: true,
-    //         }
+            const options = {
+                new: false,
+            }
 
-    //         Student.findOneAndUpdate(query,  {
-    //             $inc: {
-    //                 totalPoints: student.points,
-    //             }
-    //         })
-    //     } catch (err) {
-    //         console.log(err);
-    //     }
+            Student.findOneAndUpdate(query,  {
+                $inc: {
+                    totalPoints: student.points,
+                }
+            }).then(res => console.log('RESULT', res));
+        } catch (err) {
+            console.log(err);
+        }
+    })
     // })
 
     // try {
     //     await Promise.all(students.forEach(async (student) => {
-    //         
+            
     //     }))
     // } catch (err) {
     //     console.log(err);

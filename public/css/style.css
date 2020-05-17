@@ -184,7 +184,7 @@ main {
       main .optionsContainer .options .refresh-gameBtn {
         font-size: 2rem;
         flex: 1; }
-      main .optionsContainer .options .submit {
+      main .optionsContainer .options .playGameBtn {
         flex: 2; }
   main .game__container {
     width: 19rem;
@@ -470,7 +470,7 @@ main {
       main .optionsContainer .options .refresh-gameBtn {
         font-size: 2rem;
         flex: 1; }
-      main .optionsContainer .options .submit {
+      main .optionsContainer .options .playGameBtn {
         flex: 2; }
   main .game__container {
     width: 19rem;

@@ -7,7 +7,6 @@ var controller = (function(UI) {
 
         var DOM = {
             gameContainer: document.querySelector(DOMStrings.gameContainer),
-            submit: document.querySelector(DOMStrings.submit),
             numberOfTeams: document.querySelector(DOMStrings.numberOfTeams),
             gameFormClassroomData: document.querySelector(DOMStrings.gameFormClassroomData),
             previewTeams: document.querySelector(DOMStrings.previewTeams),
@@ -15,16 +14,17 @@ var controller = (function(UI) {
             titleContainer: document.querySelector(DOMStrings.titleContainer),
             refreshStudentsBtn: document.querySelector(DOMStrings.refreshStudentsBtn),
             shuffleStudentsBtn: document.querySelector(DOMStrings.shuffleStudentsBtn),
+            playGameBtn: document.querySelector(DOMStrings.playGameBtn),
             refreshGameBtn: document.querySelector(DOMStrings.refreshGameBtn),
             saveGameBtn: document.querySelector(DOMStrings.saveGameBtn),
-            // options: document.querySelector(DOMStrings.options),
-            // gameForm: document.querySelector(DOMStrings.gameForm),
+            goToClassroomBtn: document.querySelector(DOMStrings.goToClassroomBtn),
+            playAgainBtn: document.querySelector(DOMStrings.playAgainBtn),
         };
         
 
         //EVENT LISTENERS
         // submit event -> go to game
-        DOM.submit.addEventListener('click', UI.submitEvent);
+        
         // DOM.gameForm.addEventListener('submit', UI.submitEvent)
 
         // create teams on change of number input
@@ -38,8 +38,11 @@ var controller = (function(UI) {
         DOM.gameContainer.addEventListener('click', UI.goToNext);
         DOM.refreshGameBtn.addEventListener('click', UI.refreshScores);
         DOM.refreshStudentsBtn.addEventListener('click', UI.refreshStudents);
+        DOM.playGameBtn.addEventListener('click', UI.startGame);
         DOM.shuffleStudentsBtn.addEventListener('click', UI.shufflePreview);
         DOM.saveGameBtn.addEventListener('click', UI.saveGame);
+        DOM.goToClassroomBtn.addEventListener('click', UI.goToClassroom);
+        DOM.playAgainBtn.addEventListener('click', UI.playAgain);
     }
 
     return {

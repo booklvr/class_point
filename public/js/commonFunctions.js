@@ -16,7 +16,12 @@ var commonFunctions = (function() {
         titleContainer: '.title__container',
         title: '.title',
         refreshStudentsBtn: '.refresh-studentsBtn',
-        // save
+        refreshGameBtn: '.refresh-gameBtn',
+        playGameBtn: '.playGameBtn',
+        shuffleStudentsBtn: '.shuffle-studentsBtn',
+        saveGameBtn: '.save-gameBtn', // not yet
+        goToClassroomBtn: '.goToClassroomBtn',
+        playAgainBtn: '.playAgainBtn',
         options: '.options'
     };
 
@@ -31,8 +36,13 @@ var commonFunctions = (function() {
         previewTeams: document.querySelector(DOMStrings.previewTeams),
         titleContainer: document.querySelector(DOMStrings.titleContainer),
         title: document.querySelector(DOMStrings.title),
-        // refreshStudentsBtn: document.querySelector(DOMStrings.refreshStudentsBtn),
-        options: document.querySelector(DOMStrings.options),
+        refreshStudentsBtn: document.querySelector(DOMStrings.refreshStudentsBtn),
+        shuffleStudentsBtn: document.querySelector(DOMStrings.shuffleStudentsBtn),
+        playGameBtn: document.querySelector(DOMStrings.playGameBtn),
+        refreshGameBtn: document.querySelector(DOMStrings.refreshGameBtn),
+        saveGameBtn: document.querySelector(DOMStrings.saveGameBtn),
+        goToClassroomBtn: document.querySelector(DOMStrings.goToClassroomBtn),
+        playAgainBtn: document.querySelector(DOMStrings.playAgainBtn),
     } 
     
 
@@ -124,10 +134,21 @@ var commonFunctions = (function() {
             DOM.previewTeams.remove();
             DOM.teams.innerHTML = '';
 
-            console.log(DOM.options.children)
-            for (let i = 0; i < DOM.options.children.length; i++) {
-                DOM.options.children[i].classList.toggle('hide');
-            }            
+            DOM.refreshStudentsBtn.remove();
+            DOM.shuffleStudentsBtn.remove();
+            DOM.playGameBtn.remove();
+            DOM.refreshGameBtn.classList.toggle('hide');
+            DOM.saveGameBtn.classList.toggle('hide');
+
+            // console.log(DOM.options.children)
+            // DOM.options.innerHTML = `
+            //     <button class="refresh-gameBtn hide">Restart</button>
+            //     <button class="save-gameBtn hide">End Game</i></button>
+            // `
+
+            // for (let i = 0; i < DOM.options.children.length; i++) {
+            //     DOM.options.children[i].classList.toggle('hide');
+            // }            
         },
 
         addTeamsToDom: function (teamsArray) {
@@ -281,8 +302,11 @@ var commonFunctions = (function() {
             DOM.numberOfTeams.value = 1;
         },
 
-        removeOptions: function () {
-            DOM.options.remove();
+        endGameOptions: function () {
+            DOM.refreshGameBtn.remove();
+            DOM.saveGameBtn.remove();
+            DOM.goToClassroomBtn.classList.toggle('hide');
+            DOM.playAgainBtn.classList.toggle('hide');
         },
 
         addWinningTeam: function (array) {

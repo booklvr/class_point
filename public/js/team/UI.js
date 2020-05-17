@@ -6,7 +6,6 @@ var gameFormUI = (function(CF) {
         numberOfTeams: '#numberOfTeams',
         
         // CLASSES
-        submit: '.submit',
         gameContainer: '.game__container',
         classroomData: '.classroomData',
         teams: '.teams',
@@ -16,7 +15,10 @@ var gameFormUI = (function(CF) {
         refreshGameBtn: '.refresh-gameBtn',
         shuffleStudentsBtn: '.shuffle-studentsBtn',
         saveGameBtn: '.save-gameBtn', // not yet
-        // options: '.options'
+        goToClassroomBtn: '.goToClassroomBtn',
+        playAgainBtn: '.playAgainBtn',
+        playGameBtn: '.playGameBtn',
+        
     };
 
     var DOM = {
@@ -137,7 +139,7 @@ var gameFormUI = (function(CF) {
         // * START THE GAME
         // * clear the preview from the dom
         // * add tems to the dom for game play 
-        submitEvent: function (e) {
+        startGame: function (e) {
             // posting teams to teamGame
             e.preventDefault();
 
@@ -239,7 +241,6 @@ var gameFormUI = (function(CF) {
             createTeams(1);
             CF.addPreviewToDOM(teamsArray);
         },
-        
         shufflePreview: function () {
             console.log('shuffle these students around');
             CF.shuffleArray(studentsArray);
@@ -248,12 +249,11 @@ var gameFormUI = (function(CF) {
             createTeams(teamsSize);
             CF.addPreviewToDOM(teamsArray);
         },
-
         saveGame: async function (e) {
             console.log('save this mother fucker');
 
             CF.clearDOM();
-            CF.removeOptions();
+            CF.endGameOptions();
 
             CF.addWinningTeam(teamsArray);
 
@@ -273,9 +273,13 @@ var gameFormUI = (function(CF) {
                 body: JSON.stringify(studentsArray),
             }).then(res => res)
             .then(text => console.log('final result', text))
-            
-
         },
+        playAgain: function() {
+            window.location.reload(false);
+        },
+        goToClassroom: function () {
+             window.location.href = `/classroom/class/${DOM.classroomData.dataset.classroom_id}`;
+        }
     };
 })(CF);
 
