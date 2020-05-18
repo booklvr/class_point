@@ -1,0 +1,160 @@
+.form__container {
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+    .form-main {
+        .inputs__container {
+
+            display: flex;
+            flex-direction: row;
+    
+            &-small {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: flex-start;
+        
+                // width: 36rem;
+        
+        
+                .form-control {
+                    display: flex;
+                    flex-direction: column;
+                    
+                    align-items: flex-start;
+                    
+                    label {
+                        margin-left: 1.5rem;
+                        margin-bottom: .9rem;
+        
+                        font-family: $font-secondary;
+                        font-size: 1.4rem;
+                        font-weight: 600;
+                        text-transform: uppercase;
+                        
+                    }
+        
+                    input {
+                        height: 5rem;
+                        width: 36rem;
+                        border-radius: 2.5rem;
+                        border: 1px solid $color-light-grey;
+                        padding-left: 2rem;
+                        font-size: 2rem;
+    
+                    
+        
+                    }
+        
+                    .error-message {
+                        display: none;
+                    }
+        
+                    &:not(:last-of-type) {
+                        margin-bottom: 3.6rem;
+                    }
+                }
+    
+                &:not(:last-of-type) {
+                    margin-right: 8.1rem;
+                }
+            }
+        }
+        .form-change-route {
+            color: $color-grey;
+            font-family: $font-secondary;
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-top: 2.3rem;
+    
+        }
+    }
+
+    .form-secondary {
+        width: 43.5rem;
+        // background-color: pink;
+        .form-control {
+
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 4rem;
+
+            // &:not(:last-f-type) {
+            //     margin-bottom: 4rem;
+            // }
+            
+            label {
+                
+                font-family: $font-secondary;
+                font-size: 2rem;
+                font-weight: bold;
+                color: $color-primary-boy;
+            }
+
+            .addClassName {
+                width: 26rem;
+                height: 4rem;
+                border: none;
+                font-size: $font-secondary;
+                font-weight: bold;
+                font-size: 2rem;
+                color: $color-grey;
+                padding-left: 1rem;
+                border-bottom: 1px solid $color-light-grey;
+                
+            }
+
+            .addStudentsLabel {
+                align-self: flex-start;
+                margin-top: 1.4rem;
+            }
+
+            .addClass {
+                
+                width: 26rem;
+                display: flex;
+                flex-direction: column;
+                align-items: stretch;
+
+        
+
+                .formBtn {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    font-family: $font-secondary;
+                    font-size: 1.8rem;
+                    font-weight: bold;
+                    color: $color-grey;
+                    border: 1px solid $color-light-grey;
+                    height: 5.5rem;
+                    width: 100%;
+                    background-color: white;
+                    margin-bottom: 3rem;
+
+                }
+
+                .fileValue {
+                    display: none;
+                    margin-bottom: 3rem;
+                }
+
+                .fileInput {
+                    display: none;
+                }
+
+                button {
+
+                }
+            }
+        }
+    }
+
+    
+}

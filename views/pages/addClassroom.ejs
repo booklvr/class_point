@@ -2,19 +2,36 @@
 
     <header>
         <%- include ('../partials/navbar'); %>
-        <h1>Add A Classroom</h1>
+        
     </header>
 
     
+    
     <main>
-        <form action="/classroom/add" method="POST" enctype="multipart/form-data" id="addClassroom" class="" autocomplete="off">
-            <label for="name">Class Name</label>
-            <input class="className" type="text" id="className" name="className" placeholder="Class Name" required/><br/>
-            <!-- <label class="" for="file">CSV File</label> -->
-            <input class="file" id="file" name="csvfile" type="file" placeholder="upload csv file"/>
-               
-            <button class="submit" type="submit">Add Students Manually</button>
-        </form>
+
+        <div class="title1__container">
+            <h1 class="title-1">Add A Classroom</h1>
+            <div class="rectangle"></div>
+        </div>
+
+        <div class="form__container">
+            <form action="/classroom/add" method="POST" enctype="multipart/form-data" id="addClassroom" class="form-secondary" autocomplete="off">
+                <div class="form-control">
+                    <label for="name">Class Name</label>
+                    <input class="addClassName" type="text" id="className" name="className"required/>
+                </div>
+                <div class="form-control">
+                    <label class="addStudentsLabel" for="file">Add Students</label>
+                    <div class="addClass">
+                        <input class="fileInput" id="file" name="csvfile" type="file" title=" ">
+                        <span class="formBtn">Add CSV File</span>
+                        <span class="fileValue"></span>
+                        <button class="submit formBtn" type="submit">Add Students Manually</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        
 
     </main>
     <%- include ('../partials/footer'); %>

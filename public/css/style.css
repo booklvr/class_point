@@ -305,44 +305,94 @@ main {
   flex-direction: column;
   align-items: center;
   text-align: center; }
-  .form__container .inputs__container {
+  .form__container .form-main .inputs__container {
     display: flex;
     flex-direction: row; }
-    .form__container .inputs__container-small {
+    .form__container .form-main .inputs__container-small {
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: flex-start; }
-      .form__container .inputs__container-small .form-control {
+      .form__container .form-main .inputs__container-small .form-control {
         display: flex;
         flex-direction: column;
         align-items: flex-start; }
-        .form__container .inputs__container-small .form-control label {
+        .form__container .form-main .inputs__container-small .form-control label {
           margin-left: 1.5rem;
           margin-bottom: .9rem;
           font-family: "Open Sans";
           font-size: 1.4rem;
           font-weight: 600;
           text-transform: uppercase; }
-        .form__container .inputs__container-small .form-control input {
+        .form__container .form-main .inputs__container-small .form-control input {
           height: 5rem;
           width: 36rem;
           border-radius: 2.5rem;
           border: 1px solid #eaeaea;
           padding-left: 2rem;
           font-size: 2rem; }
-        .form__container .inputs__container-small .form-control .error-message {
+        .form__container .form-main .inputs__container-small .form-control .error-message {
           display: none; }
-        .form__container .inputs__container-small .form-control:not(:last-of-type) {
+        .form__container .form-main .inputs__container-small .form-control:not(:last-of-type) {
           margin-bottom: 3.6rem; }
-      .form__container .inputs__container-small:not(:last-of-type) {
+      .form__container .form-main .inputs__container-small:not(:last-of-type) {
         margin-right: 8.1rem; }
-  .form__container .form-change-route {
+  .form__container .form-main .form-change-route {
     color: #bdbdbd;
     font-family: "Open Sans";
     font-size: 1.4rem;
     font-weight: 600;
     margin-top: 2.3rem; }
+  .form__container .form-secondary {
+    width: 43.5rem; }
+    .form__container .form-secondary .form-control {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 4rem; }
+      .form__container .form-secondary .form-control label {
+        font-family: "Open Sans";
+        font-size: 2rem;
+        font-weight: bold;
+        color: #7bc0bd; }
+      .form__container .form-secondary .form-control .addClassName {
+        width: 26rem;
+        height: 4rem;
+        border: none;
+        font-size: "Open Sans";
+        font-weight: bold;
+        font-size: 2rem;
+        color: #bdbdbd;
+        padding-left: 1rem;
+        border-bottom: 1px solid #eaeaea; }
+      .form__container .form-secondary .form-control .addStudentsLabel {
+        align-self: flex-start;
+        margin-top: 1.4rem; }
+      .form__container .form-secondary .form-control .addClass {
+        width: 26rem;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch; }
+        .form__container .form-secondary .form-control .addClass .formBtn {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          font-family: "Open Sans";
+          font-size: 1.8rem;
+          font-weight: bold;
+          color: #bdbdbd;
+          border: 1px solid #eaeaea;
+          height: 5.5rem;
+          width: 100%;
+          background-color: white;
+          margin-bottom: 3rem; }
+        .form__container .form-secondary .form-control .addClass .fileValue {
+          display: none;
+          margin-bottom: 3rem; }
+        .form__container .form-secondary .form-control .addClass .fileInput {
+          display: none; }
 
 header .addClassBtn {
   position: absolute;

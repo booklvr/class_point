@@ -3,6 +3,9 @@ var addClassroomUI = (function() {
         file: '.file',
         className: '.className',
         submitBtn: '.submit',
+        formBtn: '.formBtn',
+        fileInput: '.fileInput',
+        fileValue: '.fileValue',
        
     };
 
@@ -11,6 +14,8 @@ var addClassroomUI = (function() {
         or: document.querySelector(DOMStrings.or),
         submitBtn: document.querySelector(DOMStrings.submitBtn),
         file: document.querySelector(DOMStrings.file),
+        fileInput: document.querySelector(DOMStrings.fileInput),
+        fileValue: document.querySelector(DOMStrings.fileValue),
     }
 
     //HELPER FUNCTIONS
@@ -36,8 +41,12 @@ var addClassroomUI = (function() {
         },
         checkForClassName: function() {
             // get elements
-            console.log("AHHHHHHH FUCK")
+            
             const fileUploadPath = DOM.file.value;
+            fileValue.text = fileUploadPath;
+            fileValue.style.display = 'block';
+            
+
             
             if (isCSVfile(fileUploadPath)) {
                 if(DOM.className.value !== '') {
@@ -50,12 +59,12 @@ var addClassroomUI = (function() {
             } else {
                 console.log('it is not a csv file')
             }
-            
-            
-
-
-           
         },
+
+        clickAddFile: function() {
+            console.log('FUCCKKKKKKKKK')
+            fileInput.trigger('click');
+        }
         
 
     };
