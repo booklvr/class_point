@@ -6,14 +6,15 @@ var controller = (function(UI) {
         var DOMStrings = UI.getDOMStrings();
 
         var DOM = {
-            file: document.querySelector(DOMStrings.file),
-            formBtn: document.querySelector(DOMStrings.fileBtn)
+            fileInput: document.querySelector(DOMStrings.fileInput),
+            formBtn: document.querySelector(DOMStrings.formBtn)
         };
 
 
         // EVENT LISTENERS
-        DOM.file.addEventListener('change', UI.checkForClassName);
+        DOM.fileInput.addEventListener('change', UI.checkForClassName);
         DOM.formBtn.addEventListener('click', UI.clickAddFile);
+        
     }
 
     return {

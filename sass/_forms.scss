@@ -89,14 +89,13 @@
             // }
             
             label {
-                
                 font-family: $font-secondary;
                 font-size: 2rem;
                 font-weight: bold;
                 color: $color-primary-boy;
             }
 
-            .addClassName {
+            .add-class-name {
                 width: 26rem;
                 height: 4rem;
                 border: none;
@@ -106,15 +105,14 @@
                 color: $color-grey;
                 padding-left: 1rem;
                 border-bottom: 1px solid $color-light-grey;
-                
             }
 
-            .addStudentsLabel {
+            .add-students-label {
                 align-self: flex-start;
                 margin-top: 1.4rem;
             }
 
-            .addClass {
+            .add-class {
                 
                 width: 26rem;
                 display: flex;
@@ -123,7 +121,7 @@
 
         
 
-                .formBtn {
+                .form-btn {
                     display: flex;
                     flex-direction: column;
                     justify-content: center;
@@ -137,23 +135,122 @@
                     width: 100%;
                     background-color: white;
                     margin-bottom: 3rem;
+                    cursor: pointer;
 
                 }
 
-                .fileValue {
+                .file-value {
                     display: none;
+                    font-family: $font-secondary;
+                    font-size: 2rem;
+                    font-weight: bold;
+                    color: $color-grey;
                     margin-bottom: 3rem;
+                    border-bottom: 1px solid $color-light-grey;
                 }
 
-                .fileInput {
+                .file-input {
                     display: none;
                 }
 
-                button {
-
+                .form-btn.upload-file {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    font-family: $font-main;
+                    font-size: 2rem;
+                    font-weight: 800;
+                    color: $color-white;
+                    background-color: $color-primary-girl;
+                    background-color: pink;
+                    border: none;
+                    border-radius: 2.5rem;
+                    height: 5rem;
+                    width: 100%;
+                    cursor: pointer;
                 }
             }
         }
+    }
+    .form__add-student {
+        width: 79rem;
+        height: 7rem;
+
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+
+        border: 1px solid $color-light-grey;
+        font-size: 2rem;
+        font-weight: bold;
+        color: $color-primary-boy;
+        margin-bottom: 6.3rem;
+
+        .form-control {
+
+            .addStudentName {
+                padding-left: 4.1rem;
+                padding-right: 1rem;
+            }
+
+            .addStudentName-input {
+                width: 19.9rem;
+                color: $color-grey;
+                font-family: $font-secondary;
+                font-size: 2rem;
+                border: none;
+                border-bottom: 1px solid $color-light-grey;
+                padding-left: 1rem;
+            }
+
+        }
+
+        .form-control-radios {
+            display: flex;
+            flex-direction: row;
+            justify-self: start;
+            align-items: center;
+           
+
+            h3 {
+                font-size: 2rem;
+            }
+
+            .radio-control  {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                margin-left: 3rem;
+
+                .gender-radio-label {
+                    padding-left: 1.5rem;
+                    color: $color-grey;
+                }
+    
+                .genger-radio {
+    
+                }
+
+            }
+
+            
+        }
+
+        .update__submit--btn {
+            margin-right: 3rem;
+            height: 3.6rem;
+            width: 3.6rem;
+            border-radius: 1.8rem;
+            background-color: $color-primary-boy;
+
+            i {
+                font-size: 2rem;
+                color: white;
+            }
+        }
+
     }
 
     

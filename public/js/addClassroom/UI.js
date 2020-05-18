@@ -1,11 +1,11 @@
 var addClassroomUI = (function() {
     var DOMStrings = {
-        file: '.file',
-        className: '.className',
+        
+        className: '.add-class-name',
         submitBtn: '.submit',
-        formBtn: '.formBtn',
-        fileInput: '.fileInput',
-        fileValue: '.fileValue',
+        formBtn: '.form-btn',
+        fileInput: '.file-input',
+        fileValue: '.file-value',
        
     };
 
@@ -13,7 +13,6 @@ var addClassroomUI = (function() {
         className: document.querySelector(DOMStrings.className),
         or: document.querySelector(DOMStrings.or),
         submitBtn: document.querySelector(DOMStrings.submitBtn),
-        file: document.querySelector(DOMStrings.file),
         fileInput: document.querySelector(DOMStrings.fileInput),
         fileValue: document.querySelector(DOMStrings.fileValue),
     }
@@ -41,18 +40,21 @@ var addClassroomUI = (function() {
         },
         checkForClassName: function() {
             // get elements
-            
-            const fileUploadPath = DOM.file.value;
-            fileValue.text = fileUploadPath;
-            fileValue.style.display = 'block';
+            const fileName = this.value.replace(/C:\\fakepath\\/i, '');
+            DOM.fileValue.innerHTML = fileName;
+            // const fileUploadPath = DOM.fileInput.value;
+            // console.log(fileUploadPath)
+            // DOM.fileValue.text = fileUploadPath;
+            DOM.fileValue.style.display = 'block';
             
 
             
-            if (isCSVfile(fileUploadPath)) {
+            if (isCSVfile(fileName)) {
                 if(DOM.className.value !== '') {
                     return event.target.closest('form').submit();
                 } else {
                     DOM.submitBtn.innerText = 'Upload File';
+                    DOM.submitBtn.classList += ' upload-file';
                     
                     return alert('Please enter the class name first.');
                 }
@@ -62,8 +64,11 @@ var addClassroomUI = (function() {
         },
 
         clickAddFile: function() {
-            console.log('FUCCKKKKKKKKK')
-            fileInput.trigger('click');
+            console.log('FUCCKKKKKKKKK');
+
+            
+            // console.log(DOM.fileInput);
+            // DOM.fileInput.trigger('click');
         }
         
 

@@ -2,30 +2,49 @@
 
 <header>
     <%- include ('../partials/navbar'); %>
-    <h2><%= classroom.className %></h2>
-
-    
 </header>
 <main>
-    <ul>
-        <li>
+
+    <div class="title1__container">
+        <h1 class="title-1"><%= classroom.className %></h1>
+        <div class="rectangle"></div>
+    </div>
+
+    <ul class="choose-game">
+        <li class="choose-game-button">
             <a data-class_size="<%= students.length %>" class="checkTeams" href="/game/individual/<%= classroom._id %>">Individual Game</a>
+        </li>
+        <li class="choose-game-button">
             <a data-class_size="<%= students.length %>" class="checkTeams" href="/game/boysVsGirls/<%= classroom._id %>">Girls Vs Boys</a>
+        </li>
+        <li class="choose-game-button">
             <a data-class_size="<%= students.length %>" class="checkTeams" href="game/teamForm/<%= classroom._id %>">Team Game</a>
         </li>
     </ul>
 
     <div class="errors"></div>
     <div class="form__container">
-        <h3>Add A Student</h3>
-        <form action="/student/<%= classroom._id %>" class="form__update" method="post">
-            <label for="addStudentName" class="">Name</label>
-            <input class="" type="text" name="name" auto>
-            <label for="addRadio-male" class="">male</label>
-            <input class="" id="addRadio-male" type="radio" name="sex" value="male">
-            <label for="addRadio-female" class="">female</label>
-            <input class=""id="addRadio-female" type="radio" name="sex" value="female">
-            <button class="update__submit--btn"><i class="fas fa-check"></i></button>
+        
+        <form action="/student/<%= classroom._id %>" class="form__add-student" method="post">
+            <div class="form-control">
+                <label for="name" class="addStudentName">Name</label>
+                <input class="addStudentName-input" type="text" name="name" auto>
+            </div>
+            <div class="form-control-radios">
+                <h3>Gender</h3>
+                
+                <div class="radio-control">
+                    <input class="gender-radio" id="addRadio-male" type="radio" name="sex" value="male">
+                    <label class="gender-radio-label" for="addRadio-male">boy</label>
+                </div>
+                
+                <div class="radio-control">
+                    <input class="gender-radio"id="addRadio-female" type="radio" name="sex" value="female">
+                    <label class="gender-radio-label" for="addRadio-female">girl</label>
+                </div>
+                
+            </div>
+            <button class="update__submit--btn"><i class="fas fa-plus"></i></button>
         </form>
     </div>
     
@@ -34,32 +53,39 @@
             <li class="studentContainer">
                 <div class="student">
                     <div class="student__name"><%= student.name %></div>
-                    <% if (student.sex === 'male') { %> 
-                        <div class="student__gender">
-                            <i class="male fas fa-child"></i>
-                        </div>
-                    <% } else { %>
-                        <div class="student__gender">
-                            <i class="female fas fa-child"></i>
-                        </div>
-                    <% } %>
+                    
                     <div class="studentTotalPoints">
-                        <p><%= student.totalPoints %></p>
+                        <p class="pointsLabel">total score<span class="totalPoints"><%= student.totalPoints %></span></p>
                     </div>
-                    <div class="students__update">
-                        <a><i class="updateStudent fas fa-sync-alt"></i></a>
-                        <a href="/student/delete/<%= student._id %>"><i class="fas fa-trash-alt"></i></a>
+                    <div class="student-edit">
+                        <div class="student-edit-button student-edit-button-edit"><i class="updateStudent fas fa-edit"></i></div>
+                        <a class="student-edit-button student-edit-button-delete" href="/student/delete/<%= student._id %>"><i class="fas fa-minus"></i></a>
                     </div> 
                 </div>
                 <div class="update__form hide">
                     <form action="/student/update/<%= student._id %>" class="form__update" method="post">
-                        <input class="update__name" type="text" name="name" value="<%= student.name %>" onfocus="this.setSelectionRange(this.value.length, this.value.length);"/>
+                        <div class="form-control">
+                            <input class="update__name" type="text" name="name" value="<%= student.name %>" onfocus="this.setSelectionRange(this.value.length, this.value.length);"/>
+                        </div>
                         
-                        <label for="editRadio-male" class="">male</label>
-                        <input class="" id="editRadio-male" type="radio" name="sex" value="male">
-                        
-                        <label for="editRadio-female" class="">female</label>
-                        <input class=""id="editRadio-female" type="radio" name="sex" value="female">
+
+                        <div class="form-control-radios">                            
+                            <div class="radio-control">
+                                <input class="gender-radio" id="addRadio-male" type="radio" name="sex" value="male">
+                                <label class="gender-radio-label" for="addRadio-male">boy</label>
+                            </div>
+                            
+                            <div class="radio-control">
+                                <input class="gender-radio"id="addRadio-female" type="radio" name="sex" value="female">
+                                <label class="gender-radio-label" for="addRadio-female">girl</label>
+                            </div>
+                            
+                        </div>
+                            
+                        <div class="form-control-number">
+                            <label class="pointsLabel" for="totalPoints" class="totalPoints">score</label>
+                            <input class="pointsInput" id="totalPoints" name="totalPoints" type="number">
+                        </div>
                         
                         <button class="update__submit--btn"><i class="fas fa-check"></i></button>
                     </form>

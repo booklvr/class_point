@@ -97,7 +97,7 @@ router.get('/class/:id', async (req,res) => {
 })
 
 // GET ADD CLASSROOM FORM 
-router.get('/add', isLoggedIn, (req, res) => {
+router.get('/add', (req, res) => {
     console.log('get addClassroom form');
 
     res.render('pages/addClassroom');

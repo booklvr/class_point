@@ -356,7 +356,7 @@ main {
         font-size: 2rem;
         font-weight: bold;
         color: #7bc0bd; }
-      .form__container .form-secondary .form-control .addClassName {
+      .form__container .form-secondary .form-control .add-class-name {
         width: 26rem;
         height: 4rem;
         border: none;
@@ -366,15 +366,15 @@ main {
         color: #bdbdbd;
         padding-left: 1rem;
         border-bottom: 1px solid #eaeaea; }
-      .form__container .form-secondary .form-control .addStudentsLabel {
+      .form__container .form-secondary .form-control .add-students-label {
         align-self: flex-start;
         margin-top: 1.4rem; }
-      .form__container .form-secondary .form-control .addClass {
+      .form__container .form-secondary .form-control .add-class {
         width: 26rem;
         display: flex;
         flex-direction: column;
         align-items: stretch; }
-        .form__container .form-secondary .form-control .addClass .formBtn {
+        .form__container .form-secondary .form-control .add-class .form-btn {
           display: flex;
           flex-direction: column;
           justify-content: center;
@@ -387,12 +387,81 @@ main {
           height: 5.5rem;
           width: 100%;
           background-color: white;
-          margin-bottom: 3rem; }
-        .form__container .form-secondary .form-control .addClass .fileValue {
+          margin-bottom: 3rem;
+          cursor: pointer; }
+        .form__container .form-secondary .form-control .add-class .file-value {
           display: none;
-          margin-bottom: 3rem; }
-        .form__container .form-secondary .form-control .addClass .fileInput {
+          font-family: "Open Sans";
+          font-size: 2rem;
+          font-weight: bold;
+          color: #bdbdbd;
+          margin-bottom: 3rem;
+          border-bottom: 1px solid #eaeaea; }
+        .form__container .form-secondary .form-control .add-class .file-input {
           display: none; }
+        .form__container .form-secondary .form-control .add-class .form-btn.upload-file {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          font-family: "Gilroy", sans-serif;
+          font-size: 2rem;
+          font-weight: 800;
+          color: #fff;
+          background-color: #4b3d6d;
+          background-color: pink;
+          border: none;
+          border-radius: 2.5rem;
+          height: 5rem;
+          width: 100%;
+          cursor: pointer; }
+  .form__container .form__add-student {
+    width: 79rem;
+    height: 7rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid #eaeaea;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #7bc0bd;
+    margin-bottom: 6.3rem; }
+    .form__container .form__add-student .form-control .addStudentName {
+      padding-left: 4.1rem;
+      padding-right: 1rem; }
+    .form__container .form__add-student .form-control .addStudentName-input {
+      width: 19.9rem;
+      color: #bdbdbd;
+      font-family: "Open Sans";
+      font-size: 2rem;
+      border: none;
+      border-bottom: 1px solid #eaeaea;
+      padding-left: 1rem; }
+    .form__container .form__add-student .form-control-radios {
+      display: flex;
+      flex-direction: row;
+      justify-self: start;
+      align-items: center; }
+      .form__container .form__add-student .form-control-radios h3 {
+        font-size: 2rem; }
+      .form__container .form__add-student .form-control-radios .radio-control {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin-left: 3rem; }
+        .form__container .form__add-student .form-control-radios .radio-control .gender-radio-label {
+          padding-left: 1.5rem;
+          color: #bdbdbd; }
+    .form__container .form__add-student .update__submit--btn {
+      margin-right: 3rem;
+      height: 3.6rem;
+      width: 3.6rem;
+      border-radius: 1.8rem;
+      background-color: #7bc0bd; }
+      .form__container .form__add-student .update__submit--btn i {
+        font-size: 2rem;
+        color: white; }
 
 header .addClassBtn {
   position: absolute;
@@ -478,6 +547,133 @@ header .addClassBtn {
           color: black; }
     .classrooms__container .class__container:hover .trashBtn {
       display: block; }
+
+.choose-game {
+  width: 79rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  list-style: none;
+  font-family: "Gilroy", sans-serif;
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 6.3rem; }
+  .choose-game-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    width: 24rem;
+    height: 4.9rem;
+    border-radius: 2.45rem;
+    background-color: #f0f0fb; }
+    .choose-game-button:not(:last-of-type) {
+      margin-right: 3.7rem; }
+    .choose-game-button a {
+      text-decoration: none;
+      color: #4b3d6d; }
+
+.student__list {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  list-style: none;
+  width: 99.3rem; }
+  .student__list .studentContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    width: 48.2rem;
+    border-bottom: 1px solid #eaeaea; }
+    .student__list .studentContainer .student {
+      width: 100%;
+      height: 5rem;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      font-family: "Open Sans";
+      font-size: 1.8rem;
+      color: #302929; }
+      .student__list .studentContainer .student .student__name {
+        flex: 1; }
+      .student__list .studentContainer .student .studentTotalPoints .pointsLabel {
+        font-size: 1.4rem;
+        color: #bdbdbd; }
+      .student__list .studentContainer .student .studentTotalPoints .totalPoints {
+        margin-right: 2rem;
+        margin-left: 1.7rem;
+        font-size: 1.8rem;
+        color: #302929; }
+      .student__list .studentContainer .student .student-edit {
+        display: none;
+        margin-right: 2rem; }
+        .student__list .studentContainer .student .student-edit .student-edit-button {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 2.4rem;
+          width: 2.4rem;
+          font-size: 1.2rem;
+          border-radius: 1.2rem;
+          color: #fff; }
+          .student__list .studentContainer .student .student-edit .student-edit-button-edit {
+            background-color: #4b3d6d;
+            margin-right: 1rem; }
+          .student__list .studentContainer .student .student-edit .student-edit-button-delete {
+            background-color: #e27488;
+            text-decoration: none; }
+      .student__list .studentContainer .student:hover .student-edit {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between; }
+    .student__list .studentContainer .update__form {
+      font-size: 1.8rem;
+      background-color: rgba(234, 234, 234, 0.4); }
+      .student__list .studentContainer .update__form .form__update {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between; }
+        .student__list .studentContainer .update__form .form__update .form-control {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          justify-content: space-between; }
+          .student__list .studentContainer .update__form .form__update .form-control .update__name {
+            border: none;
+            font-size: 1.8rem;
+            color: #302929;
+            width: 8.6rem; }
+        .student__list .studentContainer .update__form .form__update .form-control-number .pointsInput {
+          font-size: 1.8rem;
+          margin-left: 2rem;
+          width: 3rem;
+          border: none; }
+        .student__list .studentContainer .update__form .form__update .form-control-radios {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          justify-content: space-between; }
+          .student__list .studentContainer .update__form .form__update .form-control-radios .radio-control {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between; }
+            .student__list .studentContainer .update__form .form__update .form-control-radios .radio-control .gender-radio-label {
+              margin-left: 2rem; }
+        .student__list .studentContainer .update__form .form__update .update__submit--btn {
+          height: 2.4rem;
+          width: 2.4rem;
+          margin-right: 2rem;
+          border-radius: 1.2rem;
+          background-color: #7bc0bd;
+          color: #fff; }
 
 .title__container {
   width: 100vw;
