@@ -28,7 +28,6 @@ var controller = (function(UI) {
         DOM.teams.addEventListener('click', UI.changePointStudent);
         DOM.gameContainer.addEventListener('click', UI.goToNext);
         DOM.gameContainer.addEventListener('click', UI.goToPrevious);
-        DOM.titleContainer.addEventListener('click', UI.refreshScores);
         DOM.refreshGameBtn.addEventListener('click', UI.refreshScores);
         DOM.refreshStudentsBtn.addEventListener('click', UI.refreshStudents);
         DOM.playGameBtn.addEventListener('click', UI.startGame);

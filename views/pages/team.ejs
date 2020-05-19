@@ -11,24 +11,23 @@
         <h1 class="title title-1">Remove Absent Students</h1>
         <div class="rectangle"></div>
     </div>
-    <h2 class="title-2"><%= classroom.className%></h2>
+    <h2 class="title-2 m-b-s"><%= classroom.className%></h2>
 
     <div class="errors"></div>
        
     <div class="optionsContainer">
         <div class=gameForm>
-            <label for="numberOfTeams">Number of Teams</label>
-            <input id="numberOfTeams" type="number" name="numberOfTeams" value="1">
+            <label class="team_number_label" for="numberOfTeams">Number of Teams</label>
+            <input class="team_number" id="numberOfTeams" type="number" name="numberOfTeams" value="1">
         </div>
         <div class="options">
-            <button class="refresh-studentsBtn"><i class="fas fa-sync-alt"></i></button>
-            <button class="shuffle-studentsBtn"><i class="fas fa-random"></i></button>
-            <button class="refresh-gameBtn hide">Refresh</button>
-            <button class="save-gameBtn hide">End Game</i></button>
-            <button class="playGameBtn">Play</button>
-            <button class="playAgainBtn hide">Play Again</button>
-            <button class="goToClassroomBtn hide">Classroom</button>
-            
+            <button class="game-Btn shuffle-studentsBtn"><i class="fas fa-random"></i></button>
+            <button class="game-Btn refresh-studentsBtn"><i class="fas fa-sync-alt"></i></button>
+            <button class="game-Btn refresh-gameBtn hide"><i class="fas fa-sync-alt"></i></button>
+            <button class="game-Btn save-gameBtn hide"><i class="fas fa-power-off"></i></button>
+            <button class="game-Btn playGameBtn"><i class="fas fa-play"></i></button>
+            <button class="game-Btn playAgainBtn hide">Play Again</button>
+            <button class="game-Btn goToClassroomBtn hide">Classroom</button>
         </div>
 </div>
        

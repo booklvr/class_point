@@ -27,6 +27,11 @@ main {
     justify-content: flex-start;
 }
 
+.align-right {
+    margin-right: 5rem;
+    align-items: flex-end;
+}
+
 header {
     // background-color: orangered;
     display: flex;

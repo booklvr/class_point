@@ -72,8 +72,8 @@ var commonFunctions = (function() {
                     newStudent.className += 'student';
                     newStudent.innerHTML = `
                         <span class="student-name">${student.name}</span>
-                        <i class="${'fas fa-child icon-' + student.sex}"></i>
-                        <i id="${student._id}" class="deleteStudent fas fa-trash-alt"></i></a>
+                        <span class="student-gender">${student.sex === 'male' ? 'boy' : 'girl'}</span>
+                        <i id="${student._id}" class="deleteStudent fas fa-minus"></i></a>
                     `;
                     teamList.appendChild(newStudent);
                 })
@@ -171,11 +171,15 @@ var commonFunctions = (function() {
                 // console.log('newTeam', newTeam)
                 
                 //add title
-    
+                
+                const teamInfo = document.createElement('div');
+                teamInfo.className += 'team-info';
+
                 const teamName = document.createElement('h3');
                 teamName.className += 'teamName';
                 teamName.innerHTML = team.name;
-                newTeam.appendChild(teamName);
+                
+                teamInfo.appendChild(teamName);
                 let teamPoint = document.createElement('div');
                 teamPoint.className += 'teamPoint';
                 teamPoint.innerHTML = `
@@ -183,7 +187,9 @@ var commonFunctions = (function() {
                     <button class="add add__team"><i class="fas fa-plus"></i></button>
                     <span class="teamPointValue">${team.totalPoints}</span>
                 `;
-                newTeam.appendChild(teamPoint);
+                
+                teamInfo.appendChild(teamPoint);
+                newTeam.appendChild(teamInfo);
     
                 let teamList = document.createElement('ul');
                 teamList.className += 'teamList';
@@ -195,26 +201,26 @@ var commonFunctions = (function() {
                     newStudent.setAttribute('id', student._id);
                     newStudent.innerHTML = `
                         <span class=name>${student.name}</span>
-                        <button class="minus minus__student"><i class="fas fa-minus"></i></button>
-                        <button class="add add__student"><i class="fas fa-plus"></i></button>
+                        <button class="add-plus-btn minus minus__student"><i class="fas fa-minus"></i></button>
+                        <button class="add-plus-btn add add__student"><i class="fas fa-plus"></i></button>
                         <span class="points">${student.points}</span>
                     `;
                     teamList.appendChild(newStudent);
                     // create current student
                     if (teamIndex === 0 && studentIndex === 0) {
-                        const currentTitle = document.createElement('h3');
-                        currentTitle.classList += 'currentTitle';
-                        currentTitle.innerHTML = 'Current Student';
-                        teamList.insertBefore(currentTitle, teamList.firstChild);
-                        console.log('current student');
+                        // const currentTitle = document.createElement('h3');
+                        // currentTitle.classList += 'currentTitle';
+                        // currentTitle.innerHTML = 'Current Student';
+                        // teamList.insertBefore(currentTitle, teamList.firstChild);
+                        // console.log('current student');
                         newStudent.className += ' currentStudent';
                     // create next student
                     } else if (teamIndex === 1 && studentIndex === 0) {
-                        const nextTitle = document.createElement('h3');
-                        nextTitle.classList += 'nextTitle';
-                        nextTitle.innerHTML = 'Upcoming Student';
-                        teamList.insertBefore(nextTitle, teamList.firstChild);
-                        console.log('current student');
+                        // const nextTitle = document.createElement('h3');
+                        // nextTitle.classList += 'nextTitle';
+                        // nextTitle.innerHTML = 'Upcoming Student';
+                        // teamList.insertBefore(nextTitle, teamList.firstChild);
+                        // console.log('current student');
                         newStudent.className += ' nextStudent';
                     }
                 })
