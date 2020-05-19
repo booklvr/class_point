@@ -4,6 +4,11 @@ var classroomUI = (function() {
         checkTeams: '.checkTeams',
         errors: '.errors',
         studentList: '.student__list',
+        addStudentBtn: '.addStudentBtn',
+        nameInput: '.addStudentName-input',
+        addStudentForm: '.form__add-student',
+        genderRadio: '.gender-radio',
+        
 
        // BY ID
         
@@ -12,14 +17,26 @@ var classroomUI = (function() {
     var DOM = {
         checkTeams: document.querySelectorAll(DOMStrings.checkTeams),
         errors: document.querySelector(DOMStrings.errors),
+        radios: document.querySelector(DOMStrings.addStudentForm).querySelectorAll(DOMStrings.genderRadio),
+        // radios: document.querySelectorAll(DOMStrings.addStudentForm.DOMStrings.genderRadio),
+        nameInput: document.querySelector(DOMStrings.nameInput),
     }
 
-    const addErrorMessage = function () {
-        DOM.errors.innerHTML = "Class is too small, please add students";
+    // HELPER FUNCTIONS
+
+    const addErrorMessage = function (message) {
+        DOM.errors.style.display = 'block',
+        DOM.errors.innerHTML = message;
 
         setTimeout(() => {
             DOM.errors.innerHTML = "";
+            DOM.errors.style.display = 'none';
         }, 3000);
+    }
+
+    const radioIsChecked = function (radioNodeList) {
+        // returns true if radio is checked or false if radio not checked
+        return [].some.call(radioNodeList, (radioNode) => radioNode.checked === true)
     }
 
     return {
@@ -33,7 +50,7 @@ var classroomUI = (function() {
                 console.log('classSize', e.target.dataset.class_size);
                 e.preventDefault();
                 console.log('class too small for game');
-                addErrorMessage();
+                addErrorMessage('Sorry, you need to add some students before you can play a game.');
                 
             }
         },
@@ -46,6 +63,22 @@ var classroomUI = (function() {
                 console.log(formTarget);
 
                 formTarget.classList.toggle('hide');                
+            }
+        }, 
+        addStudent: function(e) {
+            // e.preventDefault();
+            // console.log("let's add the fucker")
+            // console.log('radio is checked', radioIsChecked(DOM.radios))
+            
+            if (DOM.nameInput.value === '') {
+                e.preventDefault();
+                console.log('no name input');
+                addErrorMessage('Please include a student name.');
+            }
+            else if (!radioIsChecked(DOM.radios)) {
+                e.preventDefault();
+                addErrorMessage('Please choose a gender.');
+                console.log('You need to include a gender');
             }
         }
 

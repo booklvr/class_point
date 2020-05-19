@@ -67,8 +67,8 @@ var boysVsGirlsUI = (function() {
             newStudent.className += 'student';
             newStudent.innerHTML = `
                 <span class="student-name">${student.name}</span>
-                <i class="${'fas fa-child icon-' + student.sex}"></i>
-                <i id="${student._id}" class="deleteStudent fas fa-trash-alt"></i></a>
+                <span class="student-gender">${student.sex === 'male' ? 'boy' : 'girl'}</span>
+                <i id="${student._id}" class="deleteStudent fas fa-minus"></i></a>
             `;
             teamList.appendChild(newStudent);
         })

@@ -17,6 +17,7 @@
         align-items: center;
 
         list-style: none;
+        cursor: pointer;
         
         width: 24rem;
         height: 4.9rem;
@@ -24,6 +25,14 @@
 
         
         background-color: $color-grey-secondary;
+
+        &:hover {
+            background-color: $color-primary-girl;
+
+            a {
+                color: $color-white;
+            }
+        }
 
         &:not(:last-of-type) {
             margin-right: 3.7rem;
@@ -34,6 +43,11 @@
             color: $color-primary-girl;
         }
     }
+}
+
+.errors {
+    font-size: 2rem;
+    color: $color-primary-pink;
 }
 
 .student__list {

@@ -2,23 +2,27 @@
 
 <header>
     <%- include ('../partials/navbar'); %>
-    <div class="title__container">
-        <h2 class="title">Remove Absent Students</h2>
-        <h3><%= classroom.className %></h3>
-    </div>
 </header>
 
 <main class="classroomData" data-classroom_id="<%= classroom._id %>">
+
+    <div class="title1__container m-b-s">
+        <h1 class="title title-1">Remove Absent Students</h1>
+        <div class="rectangle"></div>
+    </div>
+    <h2 class="title-2 m-b-xl"><%= classroom.className%></h2>
+
+    <div class="errors"></div>
     
     <div class="optionsContainer">
         <div class="options">
-            <button class="refresh-studentsBtn"><i class="fas fa-sync-alt"></i></button>
-            <button class="shuffle-studentsBtn"><i class="fas fa-random"></i></button>
-            <button class="refresh-gameBtn hide">Refresh</button>
-            <button class="save-gameBtn hide">End Game</i></button>
-            <button class="playGameBtn">Play</button>
-            <button class="playAgainBtn hide">Play Again</button>
-            <button class="goToClassroomBtn hide">Classroom</button>
+            <button class="game-Btn shuffle-studentsBtn"><i class="fas fa-random"></i></button>
+            <button class="game-Btn refresh-studentsBtn"><i class="fas fa-sync-alt"></i></button>
+            <button class="game-Btn refresh-gameBtn hide">Refresh</button>
+            <button class="game-Btn save-gameBtn hide">End Game</i></button>
+            <button class="game-Btn playGameBtn"><i class="fas fa-play"></i></button>
+            <button class="game-Btn playAgainBtn hide">Play Again</button>
+            <button class="game-Btn goToClassroomBtn hide">Classroom</button>
         </div>
     </div>
     

@@ -43,10 +43,7 @@
                         border-radius: 2.5rem;
                         border: 1px solid $color-light-grey;
                         padding-left: 2rem;
-                        font-size: 2rem;
-    
-                    
-        
+                        font-size: 2rem;        
                     }
         
                     .error-message {
@@ -69,7 +66,6 @@
             font-size: 1.4rem;
             font-weight: 600;
             margin-top: 2.3rem;
-    
         }
     }
 
@@ -84,9 +80,6 @@
             align-items: center;
             margin-bottom: 4rem;
 
-            // &:not(:last-f-type) {
-            //     margin-bottom: 4rem;
-            // }
             
             label {
                 font-family: $font-secondary;
@@ -229,8 +222,8 @@
                     color: $color-grey;
                 }
     
-                .genger-radio {
-    
+                .gender-radio {
+                    cursor: pointer;
                 }
 
             }
@@ -238,14 +231,21 @@
             
         }
 
-        .update__submit--btn {
+        .add__submit--btn {
             margin-right: 3rem;
             height: 3.6rem;
             width: 3.6rem;
             border-radius: 1.8rem;
+            border: none;
             background-color: $color-primary-boy;
-
+            
+            
             i {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 100%;
+                height: 100%;
                 font-size: 2rem;
                 color: white;
             }

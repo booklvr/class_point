@@ -8,11 +8,13 @@ var controller = (function(UI) {
 
         var DOM = {
             checkTeams: document.querySelectorAll(DOMStrings.checkTeams),
-            studentList: document.querySelector(DOMStrings.studentList)
+            studentList: document.querySelector(DOMStrings.studentList),
+            addStudentBtn: document.querySelector(DOMStrings.addStudentBtn),
         };
 
         DOM.checkTeams.forEach(checkTeam => checkTeam.addEventListener('click', UI.checkTeamSize));
-        DOM.studentList.addEventListener('click', UI.updateStudent)
+        DOM.studentList.addEventListener('click', UI.updateStudent);
+        DOM.addStudentBtn.addEventListener('click', UI.addStudent);
     }
 
     return {
