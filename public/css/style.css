@@ -639,34 +639,54 @@ header .addClassBtn {
         display: flex;
         flex-direction: row;
         align-items: center;
-        justify-content: space-between; }
-        .student__list .studentContainer .update__form .form__update .form-control {
-          display: flex;
-          flex-direction: row;
-          align-items: center;
-          justify-content: space-between; }
-          .student__list .studentContainer .update__form .form__update .form-control .update__name {
-            border: none;
-            font-size: 1.8rem;
-            color: #302929;
-            width: 8.6rem; }
-        .student__list .studentContainer .update__form .form__update .form-control-number .pointsInput {
+        justify-content: flex-end;
+        height: 5rem; }
+        .student__list .studentContainer .update__form .form__update .update__name {
+          margin-right: auto;
+          border: none;
           font-size: 1.8rem;
-          margin-left: 2rem;
-          width: 3rem;
-          border: none; }
+          color: #302929;
+          max-width: 14rem;
+          height: 100%;
+          background-color: inherit; }
         .student__list .studentContainer .update__form .form__update .form-control-radios {
           display: flex;
           flex-direction: row;
           align-items: center;
-          justify-content: space-between; }
+          justify-content: end;
+          margin-right: 3.1rem; }
           .student__list .studentContainer .update__form .form__update .form-control-radios .radio-control {
             display: flex;
             flex-direction: row;
             align-items: center;
             justify-content: space-between; }
+            .student__list .studentContainer .update__form .form__update .form-control-radios .radio-control:not(:last-of-type) {
+              margin-right: 1.3rem; }
             .student__list .studentContainer .update__form .form__update .form-control-radios .radio-control .gender-radio-label {
-              margin-left: 2rem; }
+              margin-left: 2rem;
+              font-family: "Open Sans";
+              font-size: 1.8rem;
+              color: #bdbdbd; }
+        .student__list .studentContainer .update__form .form__update .form-control-number {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          justify-content: end; }
+          .student__list .studentContainer .update__form .form__update .form-control-number .pointsLabel {
+            font-family: "Open Sans";
+            font-size: 1.4rem;
+            color: #bdbdbd; }
+          .student__list .studentContainer .update__form .form__update .form-control-number .pointsInput {
+            font-size: 1.8rem;
+            margin-right: 2rem;
+            border: none;
+            width: 6.7rem;
+            height: 5rem;
+            color: #302929;
+            padding-left: 2rem;
+            background-color: inherit; }
+            .student__list .studentContainer .update__form .form__update .form-control-number .pointsInput:focus {
+              background-color: inherit; }
         .student__list .studentContainer .update__form .form__update .update__submit--btn {
           height: 2.4rem;
           width: 2.4rem;

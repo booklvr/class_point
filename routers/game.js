@@ -80,10 +80,6 @@ router.post('/updatePoints', async (req, res) => {
         console.log('student.points', student.points)
         try {
             const query = { _id: student._id};
-           
-            const update = {
-                totalPoints: student.points
-            }
         
             const options = {
                 new: false,

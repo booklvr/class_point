@@ -128,6 +128,7 @@
         }
 
         .update__form {
+            // height: 5rem;
             font-size: 1.8rem;
             background-color: rgba(234, 234, 234, 0.4);
 
@@ -136,43 +137,29 @@
                 display: flex;
                 flex-direction: row;
                 align-items: center;
-                justify-content: space-between;
+                justify-content: flex-end;
+                height: 5rem;
 
-                .form-control {
-                    display: flex;
-                    flex-direction: row;
-                    align-items: center;
-                    justify-content: space-between;
+                
 
-                    .update__name {
-                        border: none;
-                        font-size: 1.8rem;
-                        color: $color-black;
-                        width: 8.6rem;
-
-                    }
-                }
-                .form-control-number {
-                    
-
-                    .pointsLabel {
-
-                    }
-
-                    .pointsInput {
-                        font-size: 1.8rem;
-                        margin-left: 2rem;
-                        width: 3rem;
-                        border: none;
-                        
-                    }
-                }
+                .update__name {
+                    margin-right: auto;
+                    border: none;
+                    font-size: 1.8rem;
+                    color: $color-black;
+                    max-width: 14rem;
+                    height: 100%;
+                    background-color: inherit;
+                }    
+                
+                
 
                 .form-control-radios {
                     display: flex;
                     flex-direction: row;
                     align-items: center;
-                    justify-content: space-between;
+                    justify-content: end;
+                    margin-right: 3.1rem;
 
                     .radio-control {
                         display: flex;
@@ -180,11 +167,46 @@
                         align-items: center;
                         justify-content: space-between;
 
+                        &:not(:last-of-type) {
+                            margin-right: 1.3rem;
+                        }
+
                         .gender-radio {
                         }
 
                         .gender-radio-label {
-                            margin-left: 2rem;;
+                            margin-left: 2rem;
+                            font-family: $font-secondary;
+                            font-size: 1.8rem;
+                            color: $color-grey;
+                        }
+                    }
+                }
+
+                .form-control-number {
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    justify-content: end;
+
+                    .pointsLabel {
+                        font-family: $font-secondary;
+                        font-size: 1.4rem;
+                        color: $color-grey;
+                    }
+
+                    .pointsInput {
+                        font-size: 1.8rem;
+                        margin-right: 2rem;
+                        border: none;
+                        width: 6.7rem;
+                        height: 5rem;
+                        color: $color-black;
+                        padding-left: 2rem;
+                        background-color: inherit;
+
+                        &:focus {
+                            background-color: inherit;
                         }
                     }
                 }

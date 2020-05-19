@@ -81,7 +81,7 @@ router.get('/class/:id', async (req,res) => {
             path: 'students'
         }).execPopulate();
 
-        console.log(classroom.students);
+        // console.log(classroom.students);
 
         // console.log(classroom.students);
 

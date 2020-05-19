@@ -27,10 +27,10 @@ router.post('/:id', isLoggedIn, async (req, res) => {
     }
 })
 
-router.post('/update/:id', isLoggedIn, async (req, res) => {
+router.post('/update/:id', async (req, res) => {
     const updates = Object.keys(req.body) // returns list of keys from req.body,
 
-    const allowedUpdates = ['name', 'sex'];
+    const allowedUpdates = ['name', 'sex', 'totalPoints'];
     const isValidOperation = updates.every(update => allowedUpdates.includes(update));
 
     if (!isValidOperation) {
@@ -45,16 +45,15 @@ router.post('/update/:id', isLoggedIn, async (req, res) => {
         ...req.body,
     }
 
-    const options = {
-        new: true,
-    }
-
+    delete update.totalPoints;
 
     try {
-        
+        const options = {
+            new: true,
+        }
 
         const student = await Student.findOneAndUpdate(query, update, options);
-        console.log(student);
+        // console.log(student);
         if(!student) throw "Can't add student";
         
         // await student.save();
@@ -63,6 +62,42 @@ router.post('/update/:id', isLoggedIn, async (req, res) => {
         console.log(err);
         res.status(500).send(err);
     }
+
+    const {totalPoints} = req.body;
+    
+    if (totalPoints !== '') {
+
+        try {
+        
+            const options = {
+                new: false,
+            }
+
+            Student.findOneAndUpdate(query,  {
+                $inc: {
+                    totalPoints: totalPoints,
+                }
+            }).then(res => console.log('RESULT', res));
+        } catch (err) {
+            console.log(err);
+        }
+        
+    } else {
+        
+    }
+
+
+
+
+
+    // if (update.totalPoints === '') {
+    //     console.log('totalPoints are empty');
+    // }
+
+
+    
+
+    
 })
 
 router.get('/delete/:id', isLoggedIn, async (req, res) => {
