@@ -206,11 +206,13 @@ footer {
   .optionsContainer .options .shuffle-studentsBtn {
     background-color: #4b3d6d; }
   .optionsContainer .options .refresh-studentsBtn,
-  .optionsContainer .options .refresh-gameBtn {
+  .optionsContainer .options .refresh-gameBtn,
+  .optionsContainer .options .playAgainBtn {
     background-color: #e27488; }
   .optionsContainer .options .playGameBtn {
     background-color: #7bc0bd; }
-  .optionsContainer .options .save-gameBtn {
+  .optionsContainer .options .save-gameBtn,
+  .optionsContainer .options .goToClassroomBtn {
     background-color: #302929; }
 
 .game__container .buttons {
@@ -227,7 +229,8 @@ footer {
     margin-bottom: 1rem;
     font-size: 2rem;
     font-family: "Open Sans";
-    font-weight: bold; }
+    font-weight: bold;
+    border: none; }
 
 .game__container .teams,
 .game__container .preview__teams {
@@ -305,7 +308,8 @@ footer {
       height: 3rem;
       border-radius: 1.5rem;
       background-color: #302929;
-      margin-right: .5rem; }
+      margin-right: .5rem;
+      border: none; }
       .game__container .teams .team-info .teamPoint button i {
         display: flex;
         align-items: center;
@@ -341,7 +345,8 @@ footer {
     height: 3rem;
     border-radius: 1.5rem;
     background-color: #bdbdbd;
-    margin-right: .5rem; }
+    margin-right: .5rem;
+    border: none; }
     .game__container .teams .teamList .student button i {
       color: #fff;
       height: 100%;
@@ -355,6 +360,19 @@ footer {
     font-weight: bold;
     width: 2rem;
     text-align: right; }
+
+.game__container .winningStudentContainer {
+  width: 27.8 rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; }
+  .game__container .winningStudentContainer .winningStudentTitle {
+    font-size: 2rem;
+    color: #7bc0bd; }
+  .game__container .winningStudentContainer .firstPlace .winnerName {
+    font-size: 2rem;
+    color: #302929; }
 
 .form__container {
   width: 100vw;
@@ -806,11 +824,13 @@ footer {
   .optionsContainer .options .shuffle-studentsBtn {
     background-color: #4b3d6d; }
   .optionsContainer .options .refresh-studentsBtn,
-  .optionsContainer .options .refresh-gameBtn {
+  .optionsContainer .options .refresh-gameBtn,
+  .optionsContainer .options .playAgainBtn {
     background-color: #e27488; }
   .optionsContainer .options .playGameBtn {
     background-color: #7bc0bd; }
-  .optionsContainer .options .save-gameBtn {
+  .optionsContainer .options .save-gameBtn,
+  .optionsContainer .options .goToClassroomBtn {
     background-color: #302929; }
 
 .game__container .buttons {
@@ -827,7 +847,8 @@ footer {
     margin-bottom: 1rem;
     font-size: 2rem;
     font-family: "Open Sans";
-    font-weight: bold; }
+    font-weight: bold;
+    border: none; }
 
 .game__container .teams,
 .game__container .preview__teams {
@@ -905,7 +926,8 @@ footer {
       height: 3rem;
       border-radius: 1.5rem;
       background-color: #302929;
-      margin-right: .5rem; }
+      margin-right: .5rem;
+      border: none; }
       .game__container .teams .team-info .teamPoint button i {
         display: flex;
         align-items: center;
@@ -941,7 +963,8 @@ footer {
     height: 3rem;
     border-radius: 1.5rem;
     background-color: #bdbdbd;
-    margin-right: .5rem; }
+    margin-right: .5rem;
+    border: none; }
     .game__container .teams .teamList .student button i {
       color: #fff;
       height: 100%;
@@ -955,3 +978,16 @@ footer {
     font-weight: bold;
     width: 2rem;
     text-align: right; }
+
+.game__container .winningStudentContainer {
+  width: 27.8 rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; }
+  .game__container .winningStudentContainer .winningStudentTitle {
+    font-size: 2rem;
+    color: #7bc0bd; }
+  .game__container .winningStudentContainer .firstPlace .winnerName {
+    font-size: 2rem;
+    color: #302929; }
