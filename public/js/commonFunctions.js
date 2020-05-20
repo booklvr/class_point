@@ -138,17 +138,7 @@ var commonFunctions = (function() {
             DOM.shuffleStudentsBtn.remove();
             DOM.playGameBtn.remove();
             DOM.refreshGameBtn.classList.toggle('hide');
-            DOM.saveGameBtn.classList.toggle('hide');
-
-            // console.log(DOM.options.children)
-            // DOM.options.innerHTML = `
-            //     <button class="refresh-gameBtn hide">Restart</button>
-            //     <button class="save-gameBtn hide">End Game</i></button>
-            // `
-
-            // for (let i = 0; i < DOM.options.children.length; i++) {
-            //     DOM.options.children[i].classList.toggle('hide');
-            // }            
+            DOM.saveGameBtn.classList.toggle('hide');    
         },
 
         addTeamsToDom: function (teamsArray) {

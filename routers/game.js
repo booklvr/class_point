@@ -36,6 +36,17 @@ router.get('/boysVsGirls/:id', async (req, res) => {
         res.status(404).send(err);
     }
 })
+router.get('/participation/:id', async (req, res) => {
+    console.log('made it to the class participation score page');
+    
+    try {
+        const classroom = await Classroom.findById(req.params.id);
+        res.render('pages/participation', {classroom})
+    } catch {
+        console.log(err);
+        res.status(404).send(err);
+    }
+});
 
 // GET THE GAME FORM
 router.get('/teamForm/:id', async (req, res) => {

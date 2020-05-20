@@ -1,6 +1,6 @@
 import { commonFunctions as CF } from '../commonFunctions.js';
 
-var individualUI = (function() {
+var participationUI = (function() {
     var DOMStrings = {
         // BY CLASS
         
@@ -79,13 +79,13 @@ var individualUI = (function() {
    
     const addIndividualsToDom = function () {
         // add button to the DOM
-        const buttons = document.createElement('div');
-        buttons.classList += 'buttons';
-        buttons.innerHTML = `
-            <button class="previous">Previous</button>
-            <button class="next">Next</button>
-        `
-        DOM.gameContainer.insertBefore(buttons, DOM.gameContainer.firstChild);
+        // const buttons = document.createElement('div');
+        // buttons.classList += 'buttons';
+        // buttons.innerHTML = `
+        //     <button class="previous">Previous</button>
+        //     <button class="next">Next</button>
+        // `
+        // DOM.gameContainer.insertBefore(buttons, DOM.gameContainer.firstChild);
 
         // add teams to the dom
         
@@ -115,23 +115,8 @@ var individualUI = (function() {
                     <span class="points">${student.points}</span>
                 `;
                 teamList.appendChild(newStudent);
-                // create current student
-                if (studentIndex === 0) {
-                    // const currentTitle = document.createElement('h3');
-                    // currentTitle.classList += 'currentTitle';
-                    // currentTitle.innerHTML = 'Current Student';
-                    // teamList.insertBefore(currentTitle, teamList.firstChild);
-                    // // console.log('current student');
-                    newStudent.className += ' currentStudent';
-                // create next student
-                } else if (studentIndex === 1) {
-                    // const nextTitle = document.createElement('h3');
-                    // nextTitle.classList += 'nextTitle';
-                    // nextTitle.innerHTML = 'Upcoming Student';
-                    // teamList.insertBefore(nextTitle, teamList.children[2]);
-                    // console.log('next student');
-                    newStudent.className += ' nextStudent';
-                }
+                
+                
             })
             newTeam.appendChild(teamList);
             DOM.teams.appendChild(newTeam);
@@ -235,7 +220,7 @@ var individualUI = (function() {
         startGame: function (e) {
             // posting teams to teamGame
             e.preventDefault();
-            console.log("let's play")
+            console.log("Classroom Participation")
 
             CF.startGame();
 
@@ -340,7 +325,7 @@ var individualUI = (function() {
     };
 })(CF);
 
-export{individualUI};
+export{participationUI};
 
 
 

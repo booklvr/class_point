@@ -1,4 +1,4 @@
-import { individualUI as UI } from './UI.js';
+import { participationUI as UI } from './UI.js';
 
 var controller = (function(UI) {
     var setupEventListeners = function() {
@@ -42,6 +42,8 @@ var controller = (function(UI) {
             
             UI.createPreviewDOM();
             setupEventListeners();
+
+
         }
     }
 })(UI);
