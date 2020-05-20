@@ -271,13 +271,14 @@
                 
 
                 .name {
-                    color: $color-primary-girl !important; 
+                    color: $color-primary-pink !important; 
                 }
             }
 
             .nextStudent {
                 .name {
-                    color: $color-primary-pink !important;
+                    text-decoration: underline;
+                    text-decoration-color: $color-primary-pink;
                 }
             }
 

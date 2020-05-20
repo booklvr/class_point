@@ -1,9 +1,9 @@
 .choose-game {
-    width: 79rem;
+    width: 120rem;
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     list-style: none;
     font-family: $font-main;
     font-size: 2rem;
@@ -60,7 +60,7 @@
 }
 
 .student__list {
-    width: 100%;
+    width: 120rem;
     
     display: flex;
     flex-direction: row;
@@ -68,15 +68,14 @@
     align-items: flex-start;
     flex-wrap: wrap;
     list-style: none;
-    width: 99.3rem;
+    
     
 
     .studentContainer {
-        width: 100%;
+        width: 58.5rem;
         
         display: flex;
         flex-direction: column;
-        width: 48.2rem;
         border-bottom: 1px solid $color-light-grey;
 
         // &:not(:nth-child(2n)) {

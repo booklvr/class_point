@@ -25,7 +25,7 @@ body {
   align-items: center; }
 
 main {
-  margin: 0 12rem;
+  width: 120rem;
   flex: 1;
   position: relative;
   display: flex;
@@ -52,10 +52,14 @@ header {
   width: 100vw;
   height: 8rem;
   background-color: #fff;
-  border: 1px solid #eaeaea; }
+  border: 1px solid #eaeaea;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center; }
   .navbar__container {
     height: 100%;
-    margin: 0 12rem;
+    width: 120rem;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -325,10 +329,11 @@ footer {
       text-align: right; }
 
 .game__container .teams .teamList .currentStudent .name {
-  color: #4b3d6d !important; }
+  color: #e27488 !important; }
 
 .game__container .teams .teamList .nextStudent .name {
-  color: #e27488 !important; }
+  text-decoration: underline;
+  text-decoration-color: #e27488; }
 
 .game__container .teams .teamList .student {
   display: flex;
@@ -491,7 +496,7 @@ footer {
           width: 100%;
           cursor: pointer; }
   .form__container .form__add-student {
-    width: 79rem;
+    width: 120rem;
     height: 7rem;
     display: flex;
     flex-direction: row;
@@ -506,7 +511,7 @@ footer {
       padding-left: 4.1rem;
       padding-right: 1rem; }
     .form__container .form__add-student .form-control .addStudentName-input {
-      width: 19.9rem;
+      width: 35.7rem;
       color: #bdbdbd;
       font-family: "Open Sans";
       font-size: 2rem;
@@ -632,11 +637,11 @@ footer {
       display: block; }
 
 .choose-game {
-  width: 79rem;
+  width: 120rem;
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   list-style: none;
   font-family: "Gilroy", sans-serif;
   font-size: 2rem;
@@ -675,19 +680,17 @@ footer {
   color: #e27488; }
 
 .student__list {
-  width: 100%;
+  width: 120rem;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: flex-start;
   flex-wrap: wrap;
-  list-style: none;
-  width: 99.3rem; }
+  list-style: none; }
   .student__list .studentContainer {
-    width: 100%;
+    width: 58.5rem;
     display: flex;
     flex-direction: column;
-    width: 48.2rem;
     border-bottom: 1px solid #eaeaea; }
     .student__list .studentContainer .student {
       width: 100%;
@@ -951,10 +954,11 @@ footer {
       text-align: right; }
 
 .game__container .teams .teamList .currentStudent .name {
-  color: #4b3d6d !important; }
+  color: #e27488 !important; }
 
 .game__container .teams .teamList .nextStudent .name {
-  color: #e27488 !important; }
+  text-decoration: underline;
+  text-decoration-color: #e27488; }
 
 .game__container .teams .teamList .student {
   display: flex;
