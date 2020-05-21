@@ -139,17 +139,21 @@ var boysVsGirlsUI = (function() {
         },
 
         changeTeamPoints: function(e) {
+            
 
             const target = e.target.parentElement;
             const pointDiv = target.parentElement;
             
             if (pointDiv.classList.contains('teamPoint')) {
                 
-                const team = pointDiv.parentElement;
+                
+                const team = pointDiv.parentElement.parentElement;
                 // const pointValue = pointDiv.lastElementChild;
                 
 
                 let action = CF.plusOrMinus(target);
+
+               
 
                 // change points in teamsArray
                 CF.updatePointsArrayTeam(teamsArray, team.id, action)
@@ -192,7 +196,7 @@ var boysVsGirlsUI = (function() {
         },
 
         saveGame: async function (e) {
-            console.log('save this mother fucker');
+            
 
             CF.clearDOM();
             CF.endGameOptions();

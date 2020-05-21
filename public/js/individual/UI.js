@@ -310,8 +310,6 @@ var individualUI = (function() {
         },
 
         saveGame: async function (e) {
-            console.log('save this mother fucker');
-
             CF.clearDOM();
             CF.endGameOptions();
 

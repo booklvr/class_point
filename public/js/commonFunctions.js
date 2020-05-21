@@ -256,7 +256,10 @@ var commonFunctions = (function() {
         updatePointsArrayTeam: function (teamsArray, teamID, action) {  
             // iterate over teams array
             // add or minus point to teamPoints
+            
             teamsArray.forEach(team => {
+                console.log('team.teamID', team.teamID);
+                console.log('teamID', teamID);
                 if (team.teamID === teamID) {
                     
                     console.log("its a match :) ")

@@ -10,29 +10,31 @@
         <h1 class="title title-1">Remove Absent Students</h1>
         <div class="rectangle"></div>
     </div>
-    <h2 class="title-2 m-b-s"><%= classroom.className%></h2>
+    <h2 class="title-2 m-b-s"><a href="/classroom/class/<%= classroom._id %>"><%= classroom.className%></a></h2>
 
     <div class="errors"></div>
-    
-    <div class="optionsContainer">
-        <div class="options">
-            <button class="game-Btn shuffle-studentsBtn"><i class="fas fa-random"></i></button>
-            <button class="game-Btn refresh-studentsBtn"><i class="fas fa-sync-alt"></i></button>
-            <button class="game-Btn refresh-gameBtn hide"><i class="fas fa-sync-alt"></i></button>
-            <button class="game-Btn save-gameBtn hide"><i class="fas fa-power-off"></i></button>
-            <button class="game-Btn playGameBtn"><i class="fas fa-play"></i></button>
-            <button class="game-Btn playAgainBtn hide"><i class="fas fa-sync-alt"></i></button>
-            <button class="game-Btn goToClassroomBtn hide"><i class="fas fa-home"></i></button>
+
+    <div class="game-container-outer">
+
+        <div class="optionsContainer">
+            <div class="options">
+                <button class="game-Btn shuffle-studentsBtn"><i class="fas fa-random"></i></button>
+                <button class="game-Btn refresh-studentsBtn"><i class="fas fa-sync-alt"></i></button>
+                <button class="game-Btn refresh-gameBtn hide"><i class="fas fa-sync-alt"></i></button>
+                <button class="game-Btn save-gameBtn hide"><i class="fas fa-power-off"></i></button>
+                <button class="game-Btn playGameBtn"><i class="fas fa-play"></i></button>
+                <button class="game-Btn playAgainBtn hide"><i class="fas fa-sync-alt"></i></button>
+                <button class="game-Btn goToClassroomBtn hide"><i class="fas fa-home"></i></button>
+            </div>
         </div>
-    </div>
-    
-    <div class="game__container">
         
-        <div class="preview__teams"></div>
-        <div class="teams"></div>
-            
+        <div class="game__container">
+            <div class="preview__teams"></div>
+            <div class="teams"></div>
         </div>
     </div>
+    
+    
     
     
 </main>

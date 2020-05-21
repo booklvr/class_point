@@ -182,6 +182,12 @@
         margin-bottom: 6.3rem;
 
         .form-control {
+            width: 50%;
+            
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: flex-start;
 
             .addStudentName {
                 padding-left: 4.1rem;
@@ -196,11 +202,19 @@
                 border: none;
                 border-bottom: 1px solid $color-light-grey;
                 padding-left: 1rem;
+                cursor: pointer;
+
+                &:focus {
+                    outline: 1px solid $color-primary-boy;
+                }
             }
 
         }
 
         .form-control-radios {
+            flex: 1;
+            margin-left: 2rem;
+
             display: flex;
             flex-direction: row;
             justify-self: start;
@@ -223,12 +237,39 @@
                 }
     
                 .gender-radio {
-                    cursor: pointer;
+                    // cursor: pointer;
+                    position: absolute;
+                    top: auto;
+                    overflow: hidden;
+                    clip: rect (1px, 1px, 1px, 1px);
+                    width: 1px;
+                    height: 1px;
+                    white-space: nowrap;
                 }
 
-            }
+                .gender-radio + .gender-radio-label::before {
+                    content: '';
+                    background-color: #fff;
+                    border: .3rem solid $color-light-grey;
+                    border-radius: 100%;
+                    display: block;
+                    box-sizing: border-box;
+                    float: left;
+                    width: 2.4rem;
+                    height: 2.4rem;
+                    margin-left: -1.5em;
+                    margin-top: .15em;
+                    vertical-align: top;
+                    cursor: pointer;
+                    text-align: center;
+                    transition: all .12s ease-out;
+                }
 
-            
+                .gender-radio:checked + label::before {
+                    background-color: $color-primary-boy;
+                    box-shadow: inset 0 0 0 .15em $color-primary-boy;
+                }
+            }
         }
 
         .add__submit--btn {
@@ -238,6 +279,7 @@
             border-radius: 1.8rem;
             border: none;
             background-color: $color-primary-boy;
+            cursor: pointer;
             
             
             i {

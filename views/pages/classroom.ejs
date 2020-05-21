@@ -57,8 +57,19 @@
                 <div class="student">
                     <div class="student__name"><%= student.name %></div>
                     
-                    <div class="studentTotalPoints">
-                        <p class="pointsLabel">total score<span class="totalPoints"><%= student.totalPoints %></span></p>
+                    <div class="studentPoints">
+                        <p class="pointsLabel">
+                            <span>Class</span>
+                            <span>Points</span>
+                        </p>
+                        <p class="points"><%= student.totalPoints %></p>
+                    </div>
+                    <div class="studentPoints">
+                        <p class="pointsLabel">
+                            <span>Game</span>
+                            <span>Points</span>
+                        </p>
+                        <p class="points"><%= student.totalPoints %></p>
                     </div>
                     <div class="student-edit">
                         <div class="student-edit-button student-edit-button-edit"><i class="updateStudent fas fa-edit"></i></div>

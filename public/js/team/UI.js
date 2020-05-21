@@ -146,25 +146,6 @@ var gameFormUI = (function(CF) {
             CF.startGame();
             
             CF.addTeamsToDom(teamsArray);
-            
-
-            // console.log(teamsArray);
-
-            // const url = "/game/team";
-             
-            // fetch(url, {
-            //     method: 'post',
-            //     // redirect: 'follow',
-            //     headers: {
-            //         'Content-Type': 'application/json',
-            //     },
-            //     // credentials: 'same-origin',
-            //     body: JSON.stringify(teamsArray)
-            // }).then(res => res.json())
-            // .then(text => console.log('final result', text))
-            
-            // // console.log('clasroom data', DOM.gameFormClassroomData.dataset.classroom_id);
-            // window.location.href = `/game/teams/${DOM.gameFormClassroomData.dataset.classroom_id}`;
         },
         
         // *************************************
@@ -195,12 +176,13 @@ var gameFormUI = (function(CF) {
         // * change team points in DOM
         // * cange team points in teams points array
         changeTeamPoints: function(e) {
+            console.log('change team points')
 
             const target = e.target.parentElement;
             const pointDiv = target.parentElement;
             
             if (pointDiv.classList.contains('teamPoint')) {
-                const team = pointDiv.parentElement;
+                const team = pointDiv.parentElement.parentElement;
                 // const pointValue = pointDiv.lastElementChild;
 
                 let action = CF.plusOrMinus(target);
@@ -250,7 +232,7 @@ var gameFormUI = (function(CF) {
             CF.addPreviewToDOM(teamsArray);
         },
         saveGame: async function (e) {
-            console.log('save this mother fucker');
+
 
             CF.clearDOM();
             CF.endGameOptions();

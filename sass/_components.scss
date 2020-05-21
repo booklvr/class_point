@@ -48,6 +48,10 @@
     color: $color-primary-boy;
     // margin-bottom: 5rem;
     align-self: center;
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
 }
 
 .submitBtn {

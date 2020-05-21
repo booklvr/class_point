@@ -96,24 +96,7 @@ var registerUI = (function() {
         return input.id.charAt(0).toUpperCase() + input.id.slice(1);
     }
 
-    function checkAllFields() {
-        console.log("helloo there mother fucker");
-        e.preventDefault()
-        // if (!(
-        //     checkRequired([DOM.name, DOM.email, DOM.password, DOM.password2]) &&
-        //     checkLength(DOM.name, 3, 15) &&
-        //     checkLength(DOM.password, 6, 20) &&
-        //     checkEmail(DOM.email) &&
-        //     checkPasswordsMatch(DOM.password, DOM.password2)
-        // )) {
-        //     return false;
-        // } else {
-        //     return true;
-        // }
-        
-    }
-      
-    
+
     return {
         getDOMStrings: function() {
             return DOMStrings;

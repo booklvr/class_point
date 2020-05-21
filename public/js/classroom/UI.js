@@ -66,9 +66,6 @@ var classroomUI = (function() {
             }
         }, 
         addStudent: function(e) {
-            // e.preventDefault();
-            // console.log("let's add the fucker")
-            // console.log('radio is checked', radioIsChecked(DOM.radios))
             
             if (DOM.nameInput.value === '') {
                 e.preventDefault();
