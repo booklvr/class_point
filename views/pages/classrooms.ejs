@@ -30,9 +30,13 @@
                 
                 <ul class="class">
                     <li class="class-title"><a href="/classroom/class/<%= classroom._id %>"><%= classroom.className %></a></li> 
+                    <li class="game-link"><a data-class_size="<%= classroom.classSize %>" class="goToGame" href="game/participation/<%= classroom._id %>">Class Participation</a></li>
                     <li class="game-link"><a data-class_size="<%= classroom.classSize %>" class="goToGame" href="/game/individual/<%= classroom._id %>">Individual Game</a></li>
                     <li class="game-link"><a data-class_size="<%= classroom.classSize %>" class="goToGame" href="/game/boysVsGirls/<%= classroom._id%>">Girls Vs Boys</a></li>
                     <li class="game-link"><a data-class_size="<%= classroom.classSize %>" class="goToGame" href="game/teamForm/<%= classroom._id %>">Team Game</a></li>
+                    
+                    
+                    
                 </ul>
             </div>
         <% }) %>
