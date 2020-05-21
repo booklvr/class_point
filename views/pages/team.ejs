@@ -19,7 +19,11 @@
     <div class="optionsContainer">
         <div class=gameForm>
             <label class="team_number_label" for="numberOfTeams">Number of Teams</label>
-            <input class="team_number" id="numberOfTeams" type="number" name="numberOfTeams" value="1">
+            <input class="team_number" id="numberOfTeams" type="number" name="numberOfTeams" min='1' value="1">
+            <div class="increment-buttons">
+                <button class="increment-button increment" type="button"><i class="fas fa-caret-up"></i></button>
+                <button class="increment-button decrement" type="button"><i class="fas fa-caret-down"></i></button>
+            </div>
         </div>
         <%- include ('../partials/options'); %>
 </div>

@@ -61,17 +61,7 @@ var addClassroomUI = (function() {
             } else {
                 console.log('it is not a csv file')
             }
-        },
-
-        clickAddFile: function() {
-            console.log('FUCCKKKKKKKKK');
-
-            
-            // console.log(DOM.fileInput);
-            // DOM.fileInput.trigger('click');
         }
-        
-
     };
 })();
 

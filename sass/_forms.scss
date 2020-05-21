@@ -232,19 +232,20 @@
                 margin-left: 3rem;
 
                 .gender-radio-label {
-                    padding-left: 1.5rem;
+                    padding-left: 2rem;
                     color: $color-grey;
                 }
     
                 .gender-radio {
                     // cursor: pointer;
-                    position: absolute;
-                    top: auto;
-                    overflow: hidden;
-                    clip: rect (1px, 1px, 1px, 1px);
-                    width: 1px;
-                    height: 1px;
-                    white-space: nowrap;
+                    // position: absolute;
+                    visibility: hidden;
+                    // top: auto;
+                    // overflow: hidden;
+                    // clip: rect (1px, 1px, 1px, 1px);
+                    // width: 1px;
+                    // height: 1px;
+                    // white-space: nowrap;
                 }
 
                 .gender-radio + .gender-radio-label::before {

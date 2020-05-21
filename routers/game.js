@@ -105,18 +105,29 @@ router.post('/updatePoints', async (req, res) => {
             console.log(err);
         }
     })
-    // })
+})
 
-    // try {
-    //     await Promise.all(students.forEach(async (student) => {
-            
-    //     }))
-    // } catch (err) {
-    //     console.log(err);
-    //     res.status(500).send(err);
-    // }
-    
+router.post('/updateParticipation', async (req, res) => {
+    students = req.body 
 
+    students.forEach( (student) => {
+        console.log('student.points', student.points)
+        try {
+            const query = { _id: student._id};
+        
+            const options = {
+                new: false,
+            }
+
+            Student.findOneAndUpdate(query,  {
+                $inc: {
+                    participationPoints: student.points,
+                }
+            }).then(res => console.log('RESULT', res));
+        } catch (err) {
+            console.log(err);
+        }
+    })
 })
 
 module.exports = router;

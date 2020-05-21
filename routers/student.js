@@ -30,7 +30,7 @@ router.post('/:id', isLoggedIn, async (req, res) => {
 router.post('/update/:id', async (req, res) => {
     const updates = Object.keys(req.body) // returns list of keys from req.body,
 
-    const allowedUpdates = ['name', 'sex', 'totalPoints'];
+    const allowedUpdates = ['name', 'sex', 'totalPoints', 'participationPoints'];
     const isValidOperation = updates.every(update => allowedUpdates.includes(update));
 
     if (!isValidOperation) {
@@ -45,7 +45,8 @@ router.post('/update/:id', async (req, res) => {
         ...req.body,
     }
 
-    delete update.totalPoints;
+    // delete update.totalPoints;
+    // delete update.participationPoints;
 
     try {
         const options = {
@@ -63,28 +64,45 @@ router.post('/update/:id', async (req, res) => {
         res.status(500).send(err);
     }
 
-    const {totalPoints} = req.body;
+    // const {totalPoints} = req.body;
     
-    if (totalPoints !== '') {
+    // if (totalPoints !== '') {
 
-        try {
+    //     try {
         
-            const options = {
-                new: false,
-            }
+    //         const options = {
+    //             new: false,
+    //         }
 
-            Student.findOneAndUpdate(query,  {
-                $inc: {
-                    totalPoints: totalPoints,
-                }
-            }).then(res => console.log('RESULT', res));
-        } catch (err) {
-            console.log(err);
-        }
+    //         Student.findOneAndUpdate(query,  {
+    //             $inc: {
+    //                 totalPoints: totalPoints,
+    //             }
+    //         }).then(res => console.log('RESULT', res));
+    //     } catch (err) {
+    //         console.log(err);
+    //     }
+    // } 
+
+
+    // if (participationPoints !== '') {
+
+    //     try {
         
-    } else {
-        
-    }
+    //         const options = {
+    //             new: false,
+    //         }
+
+    //         Student.findOneAndUpdate(query,  {
+    //             $inc: {
+    //                 participationPoints: participationPoints,
+    //             }
+    //         }).then(res => console.log('RESULT', res));
+    //     } catch (err) {
+    //         console.log(err);
+    //     }
+    // } 
+
 
 
 

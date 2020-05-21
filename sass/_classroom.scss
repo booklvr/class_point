@@ -94,6 +94,8 @@
             font-size: 1.8rem;
             color: $color-black;
             // margin: 0 2rem;
+
+            
             
             .student__name {
                 flex: 1;
@@ -124,7 +126,11 @@
                 }
 
                 .points {
-                    display: block;
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    justify-content: end;
+
                     width: 10rem;
                     margin-right: 2rem;
                     margin-left: 1.7rem;
@@ -136,6 +142,8 @@
             .student-edit {
                 display: none;
                 margin-right: 2rem;
+                
+                
 
                 .student-edit-button {
                     display: flex;
@@ -178,6 +186,7 @@
 
 
             .form__update {
+                position: relative;
                 display: flex;
                 flex-direction: row;
                 align-items: center;
@@ -188,6 +197,7 @@
 
                 .update__name {
                     margin-right: auto;
+                    margin-left: 2rem;
                     border: none;
                     font-size: 1.8rem;
                     color: $color-black;
@@ -203,6 +213,12 @@
                     align-items: center;
                     justify-content: end;
                     margin-right: 3.1rem;
+                    height: 5rem;
+                    padding: 1rem;
+
+                    &:hover {
+                        border: 2px solid $color-primary-boy;
+                    }
 
                     .radio-control {
                         display: flex;
@@ -215,14 +231,39 @@
                         }
 
                         .gender-radio {
-
+                            visibility: hidden;
                         }
 
                         .gender-radio-label {
-                            margin-left: 2rem;
+                            padding-left: 2rem;
+                            color: $color-grey;
+                            // margin-left: 2rem;
                             font-family: $font-secondary;
                             font-size: 1.8rem;
                             color: $color-grey;
+                        }
+
+                        .gender-radio + .gender-radio-label::before {
+                            content: '';
+                            background-color: #fff;
+                            border: .3rem solid $color-light-grey;
+                            border-radius: 100%;
+                            display: block;
+                            box-sizing: border-box;
+                            float: left;
+                            width: 2.4rem;
+                            height: 2.4rem;
+                            margin-left: -1.5em;
+                            margin-top: .15em;
+                            vertical-align: top;
+                            cursor: pointer;
+                            text-align: center;
+                            transition: all .12s ease-out;
+                        }
+        
+                        .gender-radio:checked + label::before {
+                            background-color: $color-primary-boy;
+                            box-shadow: inset 0 0 0 .15em $color-primary-boy;
                         }
                     }
                 }
@@ -231,34 +272,94 @@
                     display: flex;
                     flex-direction: row;
                     align-items: center;
-                    justify-content: end;
+                    justify-content: space-between;
+                    // width: 7rem;
+                    // margin: 0 2rem;
+                    padding: 0rem 0.5rem;
+                    
+                    &:not(:nth-child(2n)) {
+                        margin-right: 2.1rem;
+                    }
+
+                    &:focus-within,
+                    &:hover {
+                        border: 2px solid $color-primary-boy;
+                        border-radius: 2px;
+                    }
 
                     .pointsLabel {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: flex-start;
+                        justify-content: center;
                         font-family: $font-secondary;
-                        font-size: 1.4rem;
+                        font-size: 1rem;
+                        text-transform: uppercase;
+                        font-weight: 600;
+                        letter-spacing: 0.5px;
+                        line-height: 1;
                         color: $color-grey;
                     }
 
                     .pointsInput {
+                        width: 4.5rem;
+                        // padding-right: .5rem;
                         font-size: 1.8rem;
-                        margin-right: 2rem;
                         border: none;
-                        width: 6.7rem;
                         height: 5rem;
                         color: $color-black;
-                        padding-left: 2rem;
                         background-color: inherit;
+                        text-align: right;
 
                         &:focus {
                             background-color: inherit;
+                            outline: none;
+                        }
+
+                        &::-webkit-outer-spin-button,
+                        &::-webkit-inner-spin-button {
+                            -webkit-appearance: none;
+                            -moz-appearance: none;
+                            appearance: none;
+                            margin: 0;
+                        }
+                    }
+
+                    .increment-buttons {
+                        z-index: 1000;
+                        // position: absolute;
+                        // right: 7rem;
+                        // top: 50%;
+                        // transform: translateY(-50%);
+            
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        justify-content: center;
+                        border: none;
+                        
+                        
+                        .increment-button {
+                            border: none;
+                            background-color: inherit;
+                            outline: none;
+            
+                            i {
+                                font-size: 2rem;
+                                color: $color-grey;
+                            }
                         }
                     }
                 }
 
                 .update__submit--btn {
+                    position: absolute;
+                    right: -2.5rem;
+                    top: 50%;
+                    transform: translateY(-50%);
                     height: 2.4rem;
                     width: 2.4rem;
-                    margin-right: 2rem;
+                    // margin-right: 2rem;
                     // margin-left: 2rem;
                     border-radius: 1.2rem;
                     background-color: $color-primary-boy;

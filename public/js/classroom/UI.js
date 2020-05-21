@@ -8,11 +8,17 @@ var classroomUI = (function() {
         nameInput: '.addStudentName-input',
         addStudentForm: '.form__add-student',
         genderRadio: '.gender-radio',
+        increment: '.increment',
+        decrement: '.decrement'
+
+        
         
 
        // BY ID
         
     };
+
+    
 
     var DOM = {
         checkTeams: document.querySelectorAll(DOMStrings.checkTeams),
@@ -77,6 +83,23 @@ var classroomUI = (function() {
                 addErrorMessage('Please choose a gender.');
                 console.log('You need to include a gender');
             }
+        },
+        increment: function (e) {
+            // console.log(e.target.parentElement)
+            if (e.target.parentElement.classList.contains('increment')) {
+                e.target.parentElement.parentNode.parentNode.querySelector('.pointsInput').stepUp();
+            }
+            
+        },
+        decrement: function (e) {
+            // console.log(e.target.parentElement)
+            if (e.target.parentElement.classList.contains('decrement')) {
+                // this.parentNode.querySelector('.team_number').stepDown();
+                
+                e.target.parentElement.parentNode.parentNode.querySelector('.pointsInput').stepDown();
+            }
+            
+            
         }
 
     };

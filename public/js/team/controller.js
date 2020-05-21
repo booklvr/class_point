@@ -19,6 +19,8 @@ var controller = (function(UI) {
             saveGameBtn: document.querySelector(DOMStrings.saveGameBtn),
             goToClassroomBtn: document.querySelector(DOMStrings.goToClassroomBtn),
             playAgainBtn: document.querySelector(DOMStrings.playAgainBtn),
+            increment: document.querySelector(DOMStrings.increment),
+            decrement: document.querySelector(DOMStrings.decrement),
         };
         
 
@@ -43,6 +45,8 @@ var controller = (function(UI) {
         DOM.saveGameBtn.addEventListener('click', UI.saveGame);
         DOM.goToClassroomBtn.addEventListener('click', UI.goToClassroom);
         DOM.playAgainBtn.addEventListener('click', UI.playAgain);
+        DOM.increment.addEventListener('click', UI.increment);
+        DOM.decrement.addEventListener('click', UI.decrement);
     }
 
     return {

@@ -24,6 +24,10 @@ const studentSchema = new mongoose.Schema({
     totalPoints: {
         type: Number,
         default: 0
+    },
+    participationPoints: {
+        type: Number,
+        default: 0
     }
 }, {
     timestamps: true

@@ -300,7 +300,7 @@ var participationUI = (function() {
 
             CF.addWinningStudent(studentsArray);
 
-            const url = "/game/updatePoints";
+            const url = "/game/updateParticipation";
              
             await fetch(url, {
                 method: 'post',

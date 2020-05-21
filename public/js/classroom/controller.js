@@ -10,11 +10,21 @@ var controller = (function(UI) {
             checkTeams: document.querySelectorAll(DOMStrings.checkTeams),
             studentList: document.querySelector(DOMStrings.studentList),
             addStudentBtn: document.querySelector(DOMStrings.addStudentBtn),
+            increment: document.querySelector(DOMStrings.increment),
+            decrement: document.querySelector(DOMStrings.decrement),
         };
+        console.log("FUCCKKKKKKK")
+        console.log(DOM.increment, DOM.decrement)
 
+        DOM.increment.addEventListener('click', UI.increment);
+        DOM.decrement.addEventListener('click', UI.decrement);
         DOM.checkTeams.forEach(checkTeam => checkTeam.addEventListener('click', UI.checkTeamSize));
         DOM.studentList.addEventListener('click', UI.updateStudent);
         DOM.addStudentBtn.addEventListener('click', UI.addStudent);
+        DOM.studentList.addEventListener('click', UI.increment);
+        DOM.studentList.addEventListener('click', UI.decrement);
+
+        
     }
 
     return {

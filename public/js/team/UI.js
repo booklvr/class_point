@@ -18,6 +18,8 @@ var gameFormUI = (function(CF) {
         goToClassroomBtn: '.goToClassroomBtn',
         playAgainBtn: '.playAgainBtn',
         playGameBtn: '.playGameBtn',
+        increment: '.increment',
+        decrement: '.decrement'
         
     };
 
@@ -261,6 +263,32 @@ var gameFormUI = (function(CF) {
         },
         goToClassroom: function () {
              window.location.href = `/classroom/class/${DOM.classroomData.dataset.classroom_id}`;
+        },
+        increment: function () {
+            this.parentNode.parentNode.querySelector('.team_number').stepUp();
+
+            const teamSize = this.parentNode.parentNode.querySelector('.team_number').value;
+            if (tooManyTeams(teamSize)) {
+                console.log('Too many teams, not enough students');
+                return CF.addErrorMessage('There are not enough students for that many teams');
+            }
+
+            createTeams(teamSize);
+            CF.addPreviewToDOM(teamsArray);
+
+        },
+        decrement: function () {
+            this.parentNode.parentNode.querySelector('.team_number').stepDown();
+
+            const teamSize = this.parentNode.parentNode.querySelector('.team_number').value;
+            if (tooManyTeams(teamSize)) {
+                console.log('Too many teams, not enough students');
+                return CF.addErrorMessage('There are not enough students for that many teams');
+            }
+
+            createTeams(teamSize);
+            CF.addPreviewToDOM(teamsArray);
+
         }
     };
 })(CF);
