@@ -203,6 +203,8 @@ footer {
       font-size: 2rem;
       font-weight: bold;
       text-align: center; }
+      .optionsContainer .gameForm .team_number:hover {
+        border: 2px solid #7bc0bd; }
       .optionsContainer .gameForm .team_number::-webkit-outer-spin-button, .optionsContainer .gameForm .team_number::-webkit-inner-spin-button {
         -webkit-appearance: none;
         -moz-appearance: none;
@@ -220,10 +222,13 @@ footer {
       border: none; }
       .optionsContainer .gameForm .increment-buttons .increment-button {
         border: none;
-        background-color: inherit; }
+        background-color: inherit;
+        cursor: pointer; }
         .optionsContainer .gameForm .increment-buttons .increment-button i {
           font-size: 2rem;
           color: #bdbdbd; }
+    .optionsContainer .gameForm .increment-buttons:hover ~ .team_number {
+      border: 2px solid #7bc0bd; }
   .optionsContainer .options .game-Btn {
     height: 4.8rem;
     width: 4.8rem;
@@ -615,7 +620,7 @@ footer {
   align-items: center;
   justify-content: center;
   top: 7.6rem;
-  right: 12rem;
+  right: 0rem;
   font-size: 2rem;
   width: 5.5rem;
   height: 5.5rem;
@@ -642,8 +647,7 @@ footer {
   height: 100%;
   position: relative;
   margin-bottom: 2rem;
-  width: 100vw;
-  padding: 0 12rem; }
+  width: 120rem; }
   .classrooms__container .class__container {
     display: flex;
     flex-direction: column;
@@ -970,6 +974,8 @@ footer {
       font-size: 2rem;
       font-weight: bold;
       text-align: center; }
+      .optionsContainer .gameForm .team_number:hover {
+        border: 2px solid #7bc0bd; }
       .optionsContainer .gameForm .team_number::-webkit-outer-spin-button, .optionsContainer .gameForm .team_number::-webkit-inner-spin-button {
         -webkit-appearance: none;
         -moz-appearance: none;
@@ -987,10 +993,13 @@ footer {
       border: none; }
       .optionsContainer .gameForm .increment-buttons .increment-button {
         border: none;
-        background-color: inherit; }
+        background-color: inherit;
+        cursor: pointer; }
         .optionsContainer .gameForm .increment-buttons .increment-button i {
           font-size: 2rem;
           color: #bdbdbd; }
+    .optionsContainer .gameForm .increment-buttons:hover ~ .team_number {
+      border: 2px solid #7bc0bd; }
   .optionsContainer .options .game-Btn {
     height: 4.8rem;
     width: 4.8rem;

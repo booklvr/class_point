@@ -18,6 +18,8 @@
         padding-right: 5.4rem;
 
         
+
+        
         
         .team_number_label {
             // width: 18rem;
@@ -36,6 +38,10 @@
             font-size: 2rem;
             font-weight: bold;
             text-align: center;
+
+            &:hover {
+                border: 2px solid $color-primary-boy;
+            }
 
             &::-webkit-outer-spin-button,
             &::-webkit-inner-spin-button {
@@ -59,15 +65,21 @@
             border: none;
             
             
+            
             .increment-button {
                 border: none;
                 background-color: inherit;
+                cursor: pointer;
 
                 i {
                     font-size: 2rem;
                     color: $color-grey;
                 }
             }
+        }
+
+        .increment-buttons:hover ~ .team_number {
+            border: 2px solid $color-primary-boy;
         }
     }
 
