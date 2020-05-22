@@ -54,20 +54,32 @@
     }
 }
 
-.submitBtn {
+.submitBtn,
+.cta__button {
     height: 5rem;
     width: 13.6rem;
     margin-top: 6.4rem;
     font-family: $font-main;
     font-size: 2rem;
     font-weight: 800;
-    color: white;
+    color: $color-white;
     background-color: $color-primary-boy;
     border-radius: 2.5rem;
     border: none;
 }
 
+.cta__button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
 
+    a {
+        text-decoration: none;
+        color: $color-white;
+    }
+}
 
 .student {
     

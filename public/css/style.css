@@ -48,6 +48,16 @@ header {
   align-items: center;
   position: relative; }
 
+.info__paragraph {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; }
+  .info__paragraph > * {
+    margin-bottom: 3rem;
+    font-size: 2rem;
+    text-align: center; }
+
 .navbar {
   width: 100vw;
   height: 8rem;
@@ -133,17 +143,28 @@ header {
     text-decoration: none;
     color: inherit; }
 
-.submitBtn {
+.submitBtn,
+.cta__button {
   height: 5rem;
   width: 13.6rem;
   margin-top: 6.4rem;
   font-family: "Gilroy", sans-serif;
   font-size: 2rem;
   font-weight: 800;
-  color: white;
+  color: #fff;
   background-color: #7bc0bd;
   border-radius: 2.5rem;
   border: none; }
+
+.cta__button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer; }
+  .cta__button a {
+    text-decoration: none;
+    color: #fff; }
 
 .student__gender .male {
   color: skyblue; }
@@ -448,12 +469,14 @@ footer {
           margin-bottom: 3.6rem; }
       .form__container .form-main .inputs__container-small:not(:last-of-type) {
         margin-right: 8.1rem; }
-  .form__container .form-main .form-change-route {
+  .form__container .form-change-route {
     color: #bdbdbd;
     font-family: "Open Sans";
     font-size: 1.4rem;
     font-weight: 600;
-    margin-top: 2.3rem; }
+    margin-top: 3rem; }
+    .form__container .form-change-route a {
+      color: #4b3d6d; }
   .form__container .form-secondary {
     width: 43.5rem; }
     .form__container .form-secondary .form-control {
@@ -638,27 +661,27 @@ footer {
       font-size: 3rem; }
 
 .classrooms__container {
+  width: 120rem;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: space-between;
   overflow: auto;
   height: 100%;
   position: relative;
-  margin-bottom: 2rem;
-  width: 120rem; }
+  margin-bottom: 2rem; }
   .classrooms__container .class__container {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 27.8rem;
+    width: 27.75rem;
     position: relative;
     border: 1px solid #eaeaea;
-    margin: 0 1.4rem 3.5rem 0; }
-    .classrooms__container .class__container:nth-child(4n) {
-      margin-right: 0; }
+    margin-bottom: 3rem; }
+    .classrooms__container .class__container:not(:nth-child(4n)) {
+      margin-right: 3rem; }
     .classrooms__container .class__container .trashBtn {
       position: absolute;
       top: 2rem;
@@ -667,6 +690,15 @@ footer {
       display: none; }
       .classrooms__container .class__container .trashBtn a {
         color: red; }
+    .classrooms__container .class__container .class-title {
+      margin-top: 4.1rem;
+      margin-bottom: 2.8rem;
+      font-size: 2rem;
+      font-weight: bold;
+      font-family: "Open Sans"; }
+      .classrooms__container .class__container .class-title a {
+        text-decoration: none;
+        color: #7bc0bd; }
     .classrooms__container .class__container .class {
       display: flex;
       flex-direction: column;
@@ -676,14 +708,11 @@ footer {
       font-family: "Open Sans";
       font-weight: 600; }
       .classrooms__container .class__container .class li {
-        list-style: none; }
+        list-style: none;
+        width: 21.33rem;
+        text-align: center; }
         .classrooms__container .class__container .class li a {
           text-decoration: none; }
-      .classrooms__container .class__container .class .class-title {
-        margin-top: 3.9rem;
-        font-size: 2rem; }
-        .classrooms__container .class__container .class .class-title a {
-          color: #7bc0bd; }
       .classrooms__container .class__container .class .game-link {
         font-size: 1.8rem;
         color: #302929;

@@ -30,18 +30,18 @@
 }
 
 .classrooms__container {
-    // background-color: pink;
+    width: 120rem;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: space-between;
     overflow: auto;
     height: 100%;
     position: relative;
     margin-bottom: 2rem;
 
-    width: 120rem;
+    
    
 
     
@@ -53,15 +53,17 @@
         align-items: center;
         justify-content: center;
 
-        width: 27.8rem;
+        width: 27.75rem;
         position: relative;
         border: 1px solid $color-light-grey;
-        // padding: .2rem;
-        margin: 0 1.4rem 3.5rem 0;
-
-        &:nth-child(4n) {
-            margin-right: 0;
+        margin-bottom: 3rem;
+        &:not(:nth-child(4n)) {
+            margin-right: 3rem;
         }
+
+        // &:nth-child(4n) {
+        //     margin-right: 0;
+        // }
         
 
         .trashBtn {
@@ -76,6 +78,19 @@
             }
         }
 
+        .class-title {
+            margin-top: 4.1rem;
+            margin-bottom: 2.8rem;
+            font-size: 2rem;
+            font-weight: bold;
+            font-family: $font-secondary;
+            a {
+                text-decoration: none;
+                color: $color-primary-boy;
+            }
+         
+        }
+
         .class {
             display: flex;
             flex-direction: column;
@@ -85,24 +100,18 @@
             font-family: $font-secondary;
             font-weight: 600;
 
+            
+
             li {
                 list-style: none;
-                
+                width: 21.33rem;
+                text-align: center;
                 a {
                     text-decoration: none;
                 }
             }
 
-            .class-title {
-                margin-top: 3.9rem;
-                font-size: 2rem;
-                
-
-                a {
-                    
-                    color: $color-primary-boy;
-                }
-            }
+           
 
             .game-link {
                 font-size: 1.8rem;

@@ -60,12 +60,17 @@
                 }
             }
         }
-        .form-change-route {
-            color: $color-grey;
-            font-family: $font-secondary;
-            font-size: 1.4rem;
-            font-weight: 600;
-            margin-top: 2.3rem;
+        
+    }
+    .form-change-route {
+        color: $color-grey;
+        font-family: $font-secondary;
+        font-size: 1.4rem;
+        font-weight: 600;
+        margin-top: 3rem;
+
+        a {
+            color: $color-primary-girl;
         }
     }
 
