@@ -154,12 +154,12 @@ var commonFunctions = (function() {
 
         addTeamsToDom: function (teamsArray) {
             // add button to the DOM
-            const buttons = document.createElement('div');
-            buttons.classList += 'buttons';
-            buttons.innerHTML = `
-                <button class="next">Next</button>
-            `
-            DOM.gameContainer.insertBefore(buttons, DOM.gameContainer.firstChild);
+            // const buttons = document.createElement('div');
+            // buttons.classList += 'buttons';
+            // buttons.innerHTML = `
+            //     <button class="next">Next</button>
+            // `
+            // DOM.gameContainer.insertBefore(buttons, DOM.gameContainer.firstChild);
     
             // add teams to the dom
             
@@ -296,6 +296,12 @@ var commonFunctions = (function() {
             console.log("shift array");
             array[0].students.push(array[0].students.shift())
             array.push(array.shift());
+        },
+
+        unShiftTeamsAndStudentArray: function (array) {
+            console.log('unshift array');
+            array.unshift(array.pop());
+            array[0].students.unshift(array[0].students.pop());
         },
 
         deleteScores: function (teamsArray) {

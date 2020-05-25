@@ -41,7 +41,7 @@ var controller = (function(UI) {
         DOM.previewTeams.addEventListener('click', UI.deleteStudent);
         DOM.teams.addEventListener('click', UI.changePointStudent);
         DOM.teams.addEventListener('click', UI.changeTeamPoints);
-        DOM.gameContainer.addEventListener('click', UI.goToNext);
+        // DOM.gameContainer.addEventListener('click', UI.goToNext);
         DOM.refreshGameBtn.addEventListener('click', UI.refreshScores);
         DOM.refreshStudentsBtn.addEventListener('click', UI.refreshStudents);
         DOM.playGameBtn.addEventListener('click', UI.startGame);
@@ -49,6 +49,11 @@ var controller = (function(UI) {
         DOM.saveGameBtn.addEventListener('click', UI.saveGame);
         DOM.goToClassroomBtn.addEventListener('click', UI.goToClassroom);
         DOM.playAgainBtn.addEventListener('click', UI.playAgain);
+        DOM.playAgainBtn.addEventListener('click', UI.playAgain);
+        DOM.previous.addEventListener('click', UI.goToPrevious);
+        DOM.previousStudent.addEventListener('click', UI.goToPreviousStudent);
+        DOM.nextStudent.addEventListener('click', UI.goToNextStudent);
+        DOM.next.addEventListener('click', UI.goToNext);
         DOM.increment.addEventListener('click', UI.increment);
         DOM.decrement.addEventListener('click', UI.decrement);
     }

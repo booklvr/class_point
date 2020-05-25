@@ -200,18 +200,50 @@ var gameFormUI = (function(CF) {
             }
         },
 
+        
+
+        goToPrevious: function(e) {
+            console.log('gotoprevious')
+
+            CF.clearDOM();
+                
+            // shift arrays 
+            CF.unShiftTeamsAndStudentArray(teamsArray);
+            
+            
+            // console.log('teamArray-post-shift', teamsArray);
+            CF.addTeamsToDom(teamsArray);
+        },
+
+        goToPreviousStudent: function(e) {
+            console.log('goToPreviousStudent')
+
+            
+
+        },
+
+        goToNextStudent: function(e) {
+            console.log('goToNextStudent')
+
+            // CF.clearDOM();
+                
+            // // shift arrays 
+            // shiftStudentsArray(studentsArray);
+            // // console.log('teamArray-post-shift', teamsArray);
+            // addIndividualsToDom();
+        },
+
         // *************************************
         // * GO TO THE NEXT TEAMS TURN
         goToNext: function(e) {
-            if(e.target.classList.contains('next')) {
-                console.log('go to next')
-
+            
                 CF.clearDOM();
                 // shift arrays 
                 CF.shiftTeamsAndStudentArray(teamsArray);
                 CF.addTeamsToDom(teamsArray);
-            }
+            
         },
+
 
         // *************************************
         // * START A NEW GAME
