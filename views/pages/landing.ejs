@@ -25,8 +25,13 @@
 
     <div class="cta__container m-b-xl">
         <ul class="navbar__links">
-            <li class="cta__button"><a href="/users/login">Login</a></li>
-            <li class="cta__button"><a href="/users/">SignUp</a></li>
+            <% if(currentUser){ %>
+                <li class="cta__button"><a href="/classroom">Classes</a></li>
+            <% }  else { %>
+                <li class="cta__button"><a href="/users/login">Login</a></li>
+                <li class="cta__button"><a href="/users/">SignUp</a></li>
+            <% } %>    
+            
         </ul>
     </div>
 

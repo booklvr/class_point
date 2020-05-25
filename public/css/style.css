@@ -796,14 +796,16 @@ footer {
       color: #302929; }
       .student__list .studentContainer .student .student__name {
         flex: 1;
-        margin-left: 2rem; }
+        margin-left: 4rem; }
       .student__list .studentContainer .student .studentPoints {
         display: flex;
         flex-direction: row;
         align-items: center;
         justify-content: space-between;
         width: 7rem;
-        margin: 0 2rem; }
+        margin-right: 4rem; }
+        .student__list .studentContainer .student .studentPoints:not(:nth-child(2n)) {
+          margin-right: 5rem; }
         .student__list .studentContainer .student .studentPoints .pointsLabel {
           display: flex;
           flex-direction: column;
@@ -860,24 +862,21 @@ footer {
         justify-content: flex-end;
         height: 5rem; }
         .student__list .studentContainer .update__form .form__update .update__name {
-          margin-right: auto;
-          margin-left: 2rem;
           border: none;
           font-size: 1.8rem;
           color: #302929;
           max-width: 14rem;
           height: 100%;
-          background-color: inherit; }
+          background-color: inherit;
+          margin-right: auto;
+          margin-left: 4rem; }
         .student__list .studentContainer .update__form .form__update .form-control-radios {
           display: flex;
           flex-direction: row;
           align-items: center;
           justify-content: end;
-          margin-right: 3.1rem;
           height: 5rem;
-          padding: 1rem; }
-          .student__list .studentContainer .update__form .form__update .form-control-radios:hover {
-            border: 2px solid #7bc0bd; }
+          margin-right: 2rem; }
           .student__list .studentContainer .update__form .form__update .form-control-radios .radio-control {
             display: flex;
             flex-direction: row;
@@ -919,10 +918,7 @@ footer {
           justify-content: space-between;
           padding: 0rem 0.5rem; }
           .student__list .studentContainer .update__form .form__update .form-control-number:not(:nth-child(2n)) {
-            margin-right: 2.1rem; }
-          .student__list .studentContainer .update__form .form__update .form-control-number:focus-within, .student__list .studentContainer .update__form .form__update .form-control-number:hover {
-            border: 2px solid #7bc0bd;
-            border-radius: 2px; }
+            margin-right: .25rem; }
           .student__list .studentContainer .update__form .form__update .form-control-number .pointsLabel {
             display: flex;
             flex-direction: column;
@@ -936,14 +932,15 @@ footer {
             line-height: 1;
             color: #bdbdbd; }
           .student__list .studentContainer .update__form .form__update .form-control-number .pointsInput {
-            width: 4.5rem;
+            width: 5rem;
             font-size: 1.8rem;
             border: none;
             height: 5rem;
             color: #302929;
             background-color: inherit;
-            text-align: right; }
-            .student__list .studentContainer .update__form .form__update .form-control-number .pointsInput:focus {
+            text-align: left;
+            padding-left: 1.7rem .student__list .studentContainer .update__form .form__update .form-control-number .pointsInput; }
+            .student__list .studentContainer .update__form .form__update .form-control-number .pointsInput :focus {
               background-color: inherit;
               outline: none; }
             .student__list .studentContainer .update__form .form__update .form-control-number .pointsInput::-webkit-outer-spin-button, .student__list .studentContainer .update__form .form__update .form-control-number .pointsInput::-webkit-inner-spin-button {
@@ -952,12 +949,12 @@ footer {
               appearance: none;
               margin: 0; }
           .student__list .studentContainer .update__form .form__update .form-control-number .increment-buttons {
-            z-index: 1000;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            border: none; }
+            border: none;
+            margin-right: .5rem; }
             .student__list .studentContainer .update__form .form__update .form-control-number .increment-buttons .increment-button {
               border: none;
               background-color: inherit;
@@ -973,6 +970,7 @@ footer {
           height: 2.4rem;
           width: 2.4rem;
           border-radius: 1.2rem;
+          border: none;
           background-color: #7bc0bd;
           color: #fff; }
 

@@ -99,7 +99,7 @@
             
             .student__name {
                 flex: 1;
-                margin-left: 2rem;
+                margin-left: 4rem;
             }
 
             .studentPoints {
@@ -109,7 +109,13 @@
                 align-items: center;
                 justify-content: space-between;
                 width: 7rem;
-                margin: 0 2rem;
+                margin-right: 4rem;
+
+                &:not(:nth-child(2n)) {
+                    margin-right: 5rem;
+                }
+
+
                
                 .pointsLabel {
                     display: flex;
@@ -196,14 +202,16 @@
                 
 
                 .update__name {
-                    margin-right: auto;
-                    margin-left: 2rem;
                     border: none;
                     font-size: 1.8rem;
                     color: $color-black;
                     max-width: 14rem;
                     height: 100%;
                     background-color: inherit;
+                    
+                    margin-right: auto;
+                    margin-left: 4rem;
+                    
                 }    
                 
 
@@ -212,13 +220,8 @@
                     flex-direction: row;
                     align-items: center;
                     justify-content: end;
-                    margin-right: 3.1rem;
                     height: 5rem;
-                    padding: 1rem;
-
-                    &:hover {
-                        border: 2px solid $color-primary-boy;
-                    }
+                    margin-right: 2rem;
 
                     .radio-control {
                         display: flex;
@@ -278,13 +281,7 @@
                     padding: 0rem 0.5rem;
                     
                     &:not(:nth-child(2n)) {
-                        margin-right: 2.1rem;
-                    }
-
-                    &:focus-within,
-                    &:hover {
-                        border: 2px solid $color-primary-boy;
-                        border-radius: 2px;
+                        margin-right: .25rem;//
                     }
 
                     .pointsLabel {
@@ -299,17 +296,20 @@
                         letter-spacing: 0.5px;
                         line-height: 1;
                         color: $color-grey;
+                        
                     }
 
                     .pointsInput {
-                        width: 4.5rem;
-                        // padding-right: .5rem;
+                        width: 5rem;
                         font-size: 1.8rem;
                         border: none;
                         height: 5rem;
                         color: $color-black;
                         background-color: inherit;
-                        text-align: right;
+                        text-align: left;
+                        padding-left: 1.7rem
+                        
+                       
 
                         &:focus {
                             background-color: inherit;
@@ -326,17 +326,13 @@
                     }
 
                     .increment-buttons {
-                        z-index: 1000;
-                        // position: absolute;
-                        // right: 7rem;
-                        // top: 50%;
-                        // transform: translateY(-50%);
-            
                         display: flex;
                         flex-direction: column;
                         align-items: center;
                         justify-content: center;
                         border: none;
+                        margin-right: .5rem;
+                        
                         
                         
                         .increment-button {
@@ -362,6 +358,7 @@
                     // margin-right: 2rem;
                     // margin-left: 2rem;
                     border-radius: 1.2rem;
+                    border: none;
                     background-color: $color-primary-boy;
                     color: $color-white;
                 }
