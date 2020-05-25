@@ -17,6 +17,10 @@ var controller = (function(UI) {
             saveGameBtn: document.querySelector(DOMStrings.saveGameBtn),
             goToClassroomBtn: document.querySelector(DOMStrings.goToClassroomBtn),
             playAgainBtn: document.querySelector(DOMStrings.playAgainBtn),
+            // next: document.querySelector(DOMStrings.next),
+            nextStudent: document.querySelector(DOMStrings.nextStudent),
+            previousStudent: document.querySelector(DOMStrings.previousStudent),
+            // previous: document.querySelector(DOMStrings.previous),
         };
 
         //EVENT LISTENERS
@@ -24,7 +28,7 @@ var controller = (function(UI) {
        
         DOM.previewTeams.addEventListener('click', UI.deleteStudent);
         DOM.teams.addEventListener('click', UI.changePointStudent);
-        DOM.gameContainer.addEventListener('click', UI.goToNext);
+        // DOM.gameContainer.addEventListener('click', UI.goToNext);
         DOM.gameContainer.addEventListener('click', UI.goToPrevious);
         DOM.refreshGameBtn.addEventListener('click', UI.refreshScores);
         DOM.refreshStudentsBtn.addEventListener('click', UI.refreshStudents);
@@ -33,6 +37,11 @@ var controller = (function(UI) {
         DOM.saveGameBtn.addEventListener('click', UI.saveGame);
         DOM.goToClassroomBtn.addEventListener('click', UI.goToClassroom);
         DOM.playAgainBtn.addEventListener('click', UI.playAgain);
+        // DOM.previous.addEventListener('click', UI.goToPrevious);
+        DOM.previousStudent.addEventListener('click', UI.goToPreviousStudent);
+        DOM.nextStudent.addEventListener('click', UI.goToNextStudent);
+        // DOM.next.addEventListener('click', UI.goToNext);
+        
     }
 
     return {

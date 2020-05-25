@@ -22,6 +22,10 @@ var commonFunctions = (function() {
         saveGameBtn: '.save-gameBtn', // not yet
         goToClassroomBtn: '.goToClassroomBtn',
         playAgainBtn: '.playAgainBtn',
+        previous: '.previous',
+        previousStudent: '.previous-student',
+        nextStudent: '.next-student',
+        next: '.next',
         options: '.options'
     };
 
@@ -43,6 +47,10 @@ var commonFunctions = (function() {
         saveGameBtn: document.querySelector(DOMStrings.saveGameBtn),
         goToClassroomBtn: document.querySelector(DOMStrings.goToClassroomBtn),
         playAgainBtn: document.querySelector(DOMStrings.playAgainBtn),
+        next: document.querySelector(DOMStrings.next),
+        nextStudent: document.querySelector(DOMStrings.nextStudent),
+        previousStudent: document.querySelector(DOMStrings.previousStudent),
+        previous: document.querySelector(DOMStrings.previous),
     } 
     
 
@@ -133,12 +141,15 @@ var commonFunctions = (function() {
             
             DOM.previewTeams.remove();
             DOM.teams.innerHTML = '';
-
             DOM.refreshStudentsBtn.remove();
             DOM.shuffleStudentsBtn.remove();
             DOM.playGameBtn.remove();
             DOM.refreshGameBtn.classList.toggle('hide');
-            DOM.saveGameBtn.classList.toggle('hide');    
+            DOM.saveGameBtn.classList.toggle('hide');
+            DOM.previous.classList.toggle('hide');
+            DOM.nextStudent.classList.toggle('hide');
+            DOM.previousStudent.classList.toggle('hide');
+            DOM.next.classList.toggle('hide');
         },
 
         addTeamsToDom: function (teamsArray) {
@@ -278,7 +289,7 @@ var commonFunctions = (function() {
 
         clearDOM: function () {
             DOM.teams.innerHTML = '';
-            DOM.gameContainer.firstChild.remove();
+            // DOM.gameContainer.firstChild.remove();
         },
 
         shiftTeamsAndStudentArray: function (array) {
@@ -304,6 +315,11 @@ var commonFunctions = (function() {
         endGameOptions: function () {
             DOM.refreshGameBtn.remove();
             DOM.saveGameBtn.remove();
+            DOM.previous.remove();
+            DOM.previousStudent.remove();
+            DOM.nextStudent.remove();
+            DOM.next.remove();
+
             DOM.goToClassroomBtn.classList.toggle('hide');
             DOM.playAgainBtn.classList.toggle('hide');
         },

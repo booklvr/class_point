@@ -17,6 +17,10 @@ var boysVsGirlsUI = (function() {
         goToClassroomBtn: '.goToClassroomBtn',
         playAgainBtn: '.playAgainBtn',
         playGameBtn: '.playGameBtn',
+        previous: '.previous',
+        previousStudent: '.previous-student',
+        nextStudent: '.next-student',
+        next: '.next',
     };
 
     var DOM = {

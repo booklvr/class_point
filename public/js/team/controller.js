@@ -19,6 +19,10 @@ var controller = (function(UI) {
             saveGameBtn: document.querySelector(DOMStrings.saveGameBtn),
             goToClassroomBtn: document.querySelector(DOMStrings.goToClassroomBtn),
             playAgainBtn: document.querySelector(DOMStrings.playAgainBtn),
+            next: document.querySelector(DOMStrings.next),
+            nextStudent: document.querySelector(DOMStrings.nextStudent),
+            previousStudent: document.querySelector(DOMStrings.previousStudent),
+            previous: document.querySelector(DOMStrings.previous),
             increment: document.querySelector(DOMStrings.increment),
             decrement: document.querySelector(DOMStrings.decrement),
         };

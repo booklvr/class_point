@@ -17,6 +17,10 @@ var individualUI = (function() {
         goToClassroomBtn: '.goToClassroomBtn',
         playAgainBtn: '.playAgainBtn',
         playGameBtn: '.playGameBtn',
+        previous: '.previous',
+        previousStudent: '.previous-student',
+        nextStudent: '.next-student',
+        next: '.next',
     };
 
     var DOM = {
@@ -24,7 +28,13 @@ var individualUI = (function() {
         gameContainer: document.querySelector(DOMStrings.gameContainer),
         teams: document.querySelector(DOMStrings.teams),
         previewTeams: document.querySelector(DOMStrings.previewTeams),
-        
+        refreshStudentsBtn: document.querySelector(DOMStrings.refreshStudentsBtn),
+        shuffleStudentsBtn: document.querySelector(DOMStrings.shuffleStudentsBtn),
+        refreshGameBtn: document.querySelector(DOMStrings.refreshGameBtn),
+        saveGameBtn: document.querySelector(DOMStrings.saveGameBtn),
+        playGameBtn: document.querySelector(DOMStrings.playGameBtn),
+        nextStudent: document.querySelector(DOMStrings.nextStudent),
+        previousStudent: document.querySelector(DOMStrings.previousStudent),
         titleContainer: document.querySelector(DOMStrings.titleContainer),
         title: document.querySelector(DOMStrings.title),
 
@@ -79,13 +89,13 @@ var individualUI = (function() {
    
     const addIndividualsToDom = function () {
         // add button to the DOM
-        const buttons = document.createElement('div');
-        buttons.classList += 'buttons';
-        buttons.innerHTML = `
-            <button class="previous">Previous</button>
-            <button class="next">Next</button>
-        `
-        DOM.gameContainer.insertBefore(buttons, DOM.gameContainer.firstChild);
+        // const buttons = document.createElement('div');
+        // buttons.classList += 'buttons';
+        // buttons.innerHTML = `
+        //     <button class="previous">Previous</button>
+        //     <button class="next">Next</button>
+        // `
+        // DOM.gameContainer.insertBefore(buttons, DOM.gameContainer.firstChild);
 
         // add teams to the dom
         
@@ -237,7 +247,23 @@ var individualUI = (function() {
             e.preventDefault();
             console.log("let's play")
 
-            CF.startGame();
+            
+
+            DOM.title.innerHTML = "Let's Play";
+            if (DOM.gameForm) {
+                DOM.gameForm.remove();
+            }
+
+            
+            DOM.previewTeams.remove();
+            DOM.teams.innerHTML = '';
+            DOM.refreshStudentsBtn.remove();
+            DOM.shuffleStudentsBtn.remove();
+            DOM.playGameBtn.remove();
+            DOM.refreshGameBtn.classList.toggle('hide');
+            DOM.saveGameBtn.classList.toggle('hide');
+            DOM.nextStudent.classList.toggle('hide');
+            DOM.previousStudent.classList.toggle('hide');
 
             shuffleArray(studentsArray);
             
@@ -258,32 +284,40 @@ var individualUI = (function() {
             }
         },
 
-        goToNext: function(e) {
-            if(e.target.classList.contains('next')) {
-                console.log('go to next')
+        // goToPrevious: function(e) {
+        //     console.log('gotoprevious')
+        // },
+
+        goToPreviousStudent: function(e) {
+            console.log('goToPreviousStudent')
+
+            CF.clearDOM();
                 
-                CF.clearDOM();
-                
-                // shift arrays 
-                shiftStudentsArray(studentsArray);
-                // console.log('teamArray-post-shift', teamsArray);
-                addIndividualsToDom();
-            }
+            // shift arrays 
+            unShiftStudentsArray(studentsArray);
+            
+            
+            // console.log('teamArray-post-shift', teamsArray);
+            addIndividualsToDom();
+
         },
-        goToPrevious: function(e) {
-            if(e.target.classList.contains('previous')) {
-                console.log('go to next')
+
+        goToNextStudent: function(e) {
+            console.log('goToNextStudent')
+
+            CF.clearDOM();
                 
-                CF.clearDOM();
-                
-                // shift arrays 
-                unShiftStudentsArray(studentsArray);
-                
-                
-                // console.log('teamArray-post-shift', teamsArray);
-                addIndividualsToDom();
-            }
+            // shift arrays 
+            shiftStudentsArray(studentsArray);
+            // console.log('teamArray-post-shift', teamsArray);
+            addIndividualsToDom();
         },
+
+        // goToNext: function(e) {
+        //     console.log('goToNext')
+        // },
+        
+
         refreshScores: function(e) {
             
             deleteScoresIndividual();

@@ -265,28 +265,15 @@ footer {
   .optionsContainer .options .refresh-gameBtn,
   .optionsContainer .options .playAgainBtn {
     background-color: #e27488; }
-  .optionsContainer .options .playGameBtn {
+  .optionsContainer .options .playGameBtn,
+  .optionsContainer .options .previous,
+  .optionsContainer .options .previous-student,
+  .optionsContainer .options .next-student,
+  .optionsContainer .options .next {
     background-color: #7bc0bd; }
   .optionsContainer .options .save-gameBtn,
   .optionsContainer .options .goToClassroomBtn {
     background-color: #302929; }
-
-.game__container .buttons {
-  display: flex;
-  flex-direction: row;
-  margin: 0 3.5rem; }
-  .game__container .buttons .next,
-  .game__container .buttons .previous {
-    flex: 1;
-    height: 4.8rem;
-    border-radius: 2.4rem;
-    background-color: #7bc0bd;
-    color: #fff;
-    margin-bottom: 1rem;
-    font-size: 2rem;
-    font-family: "Open Sans";
-    font-weight: bold;
-    border: none; }
 
 .game__container .teams,
 .game__container .preview__teams {
@@ -1042,28 +1029,15 @@ footer {
   .optionsContainer .options .refresh-gameBtn,
   .optionsContainer .options .playAgainBtn {
     background-color: #e27488; }
-  .optionsContainer .options .playGameBtn {
+  .optionsContainer .options .playGameBtn,
+  .optionsContainer .options .previous,
+  .optionsContainer .options .previous-student,
+  .optionsContainer .options .next-student,
+  .optionsContainer .options .next {
     background-color: #7bc0bd; }
   .optionsContainer .options .save-gameBtn,
   .optionsContainer .options .goToClassroomBtn {
     background-color: #302929; }
-
-.game__container .buttons {
-  display: flex;
-  flex-direction: row;
-  margin: 0 3.5rem; }
-  .game__container .buttons .next,
-  .game__container .buttons .previous {
-    flex: 1;
-    height: 4.8rem;
-    border-radius: 2.4rem;
-    background-color: #7bc0bd;
-    color: #fff;
-    margin-bottom: 1rem;
-    font-size: 2rem;
-    font-family: "Open Sans";
-    font-weight: bold;
-    border: none; }
 
 .game__container .teams,
 .game__container .preview__teams {

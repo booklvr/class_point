@@ -18,9 +18,12 @@ var gameFormUI = (function(CF) {
         goToClassroomBtn: '.goToClassroomBtn',
         playAgainBtn: '.playAgainBtn',
         playGameBtn: '.playGameBtn',
+        previous: '.previous',
+        previousStudent: '.previous-student',
+        nextStudent: '.next-student',
+        next: '.next',
         increment: '.increment',
         decrement: '.decrement'
-        
     };
 
     var DOM = {
