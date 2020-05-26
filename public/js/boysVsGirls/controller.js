@@ -30,7 +30,7 @@ var controller = (function(UI) {
         DOM.previewTeams.addEventListener('click', UI.deleteStudent);
         DOM.teams.addEventListener('click', UI.changePointStudent);
         DOM.teams.addEventListener('click', UI.changeTeamPoints);
-        DOM.gameContainer.addEventListener('click', UI.goToNext);
+        // DOM.gameContainer.addEventListener('click', UI.goToNext);
         // DOM.titleContainer.addEventListener('click', UI.refreshScores);
         DOM.refreshGameBtn.addEventListener('click', UI.refreshScores);
         DOM.refreshStudentsBtn.addEventListener('click', UI.refreshStudents);

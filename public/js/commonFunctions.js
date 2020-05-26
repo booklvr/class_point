@@ -295,8 +295,11 @@ var commonFunctions = (function() {
 
         shiftTeamsAndStudentArray: function (array) {
             console.log("shift array");
+            console.log(array);
             array[0].students.push(array[0].students.shift())
+            console.log(array);
             array.push(array.shift());
+            console.log(array);
         },
 
         unShiftTeamsAndStudentArray: function (array) {

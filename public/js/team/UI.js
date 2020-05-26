@@ -23,12 +23,16 @@ var gameFormUI = (function(CF) {
         nextStudent: '.next-student',
         next: '.next',
         increment: '.increment',
-        decrement: '.decrement'
+        decrement: '.decrement',
+        title2: '.title-2',
+        gameFormContainer: '.game__form__container',
     };
 
     var DOM = {
         
         classroomData: document.querySelector(DOMStrings.classroomData),
+        title2: document.querySelector(DOMStrings.title2),
+        gameFormContainer: document.querySelector(DOMStrings.gameFormContainer)
         // refreshStudentsBtn: document.querySelector(DOMStrings.refreshStudentsBtn),
     } 
     // CREATE STUDENTS AND TEAMS ARRAY
@@ -149,6 +153,9 @@ var gameFormUI = (function(CF) {
             e.preventDefault();
 
             CF.startGame();
+
+            DOM.title2.classList.toggle('hide');
+            DOM.gameFormContainer.remove();
             
             CF.addTeamsToDom(teamsArray);
         },
@@ -243,7 +250,6 @@ var gameFormUI = (function(CF) {
                 // shift arrays 
                 CF.shiftTeamsAndStudentArray(teamsArray);
                 CF.addTeamsToDom(teamsArray);
-            
         },
 
 

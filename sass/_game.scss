@@ -56,12 +56,13 @@
     .game__form__container {
         // background-color: yellow;
         align-self: flex-end;
-        width: 100%;
+        width: 30rem;
         display: flex;
         flex-direction: row;
-        align-items: flex-end;
-        justify-content: flex-end;
-        margin: 2rem 0;
+        align-items: center;
+        justify-content: flex-start;
+        // background-color: yellow;
+        // margin: 2rem 0;
         
         .gameForm {
             display: flex;
@@ -75,7 +76,7 @@
                 font-size: 2rem;
                 font-weight: bold;
                 color: $color-primary-boy;
-                padding-right: 1.5rem;
+                // padding-right: 1.5rem;
             }
     
             .team_number {
@@ -86,6 +87,8 @@
                 font-size: 2rem;
                 font-weight: bold;
                 text-align: center;
+                outline: none;
+                border: none;
     
                 // &:hover {
                 //     border: 2px solid $color-primary-boy;
@@ -123,21 +126,9 @@
                     }
                 }
             }
-    
-            .increment-buttons:hover ~ .team_number {
-                border: 2px solid $color-primary-boy;
-            }
         }   
     }
 }
-
-
-
-
-
-
-
-    
 
 .game__container {
     
@@ -147,7 +138,7 @@
     flex-direction: row;
     justify-content: flex-end;
     align-items: end;
-    background-color: lightgrey;
+    // background-color: lightgrey;
 
     .line {
         // display: block;
@@ -213,7 +204,6 @@
             // background-color: lightblue;
             .teamName {
                 margin-bottom: 1rem;
-                
             }
 
             .teamList {
@@ -232,8 +222,6 @@
         
 
         .team {
-
-            
 
             .teamName {
                 margin-top: 2rem;

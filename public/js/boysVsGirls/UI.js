@@ -200,15 +200,13 @@ var boysVsGirlsUI = (function() {
             CF.addTeamsToDom(teamsArray);
         },
 
-        // *************************************
-        // * GO TO THE NEXT TEAMS TURN
+    
         goToNext: function(e) {
             
-                CF.clearDOM();
-                // shift arrays 
-                CF.shiftTeamsAndStudentArray(teamsArray);
-                CF.addTeamsToDom(teamsArray);
-            
+            CF.clearDOM();
+            // shift arrays 
+            CF.shiftTeamsAndStudentArray(teamsArray);
+            CF.addTeamsToDom(teamsArray);
         },
         
         refreshScores: function(e) {

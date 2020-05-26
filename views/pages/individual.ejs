@@ -4,20 +4,38 @@
     <%- include ('../partials/navbar'); %>
 </header>
 
-<main class="classroomData" data-classroom_id="<%= classroom._id %>">
+<main class="classroomData align-right" data-classroom_id="<%= classroom._id %>">
 
-    <div class="title1__container m-b-s">
-        <h1 class="title title-1">Remove Absent Students</h1>
-        <div class="rectangle"></div>
+    <div class="game-header">
+        <%- include ('../partials/options'); %>
+        <h2 class="title-2"><a href="/classroom/class/<%= classroom._id %>"><%= classroom.className%></a></h2>
     </div>
-    <h2 class="title-2 m-b-s"><a href="/classroom/class/<%= classroom._id %>"><%= classroom.className%></a></h2>
 
     <div class="errors"></div>
 
-    <div class="game-container-outer">
+    <div class="game__container">
+        <div class="title3__container">
+            <h2 class="title title-3">
+                Remove Absent Students
+            </h2>
+        </div>
+        <div class="line"></div>
+        <div class="game-options">
+            <button class="game-Btn playGameBtn"><i class="fas fa-play"></i></button>
+            <button class="game-Btn next hide"><i class="fas fa-angle-double-right"></i></button>
+            <button class="game-Btn next-student hide"><i class="fas fa-angle-right"></i></button>
+            <button class="game-Btn previous-student hide"><i class="fas fa-angle-left"></i></button>
+            <button class="game-Btn previous hide"><i class="fas fa-angle-double-left"></i></button>
+        </div>
+        <div class="preview__teams"></div>
+        <div class="teams hide"></div>
+    </div>
+
+
+    <!-- <div class="game-container-outer">
 
         <div class="optionsContainer">
-            <%- include ('../partials/options'); %>
+           
         </div>
         
         <div class="game__container">
@@ -25,7 +43,7 @@
             <div class="teams"></div>
         </div>
     </div>
-    
+     -->
     
     
     

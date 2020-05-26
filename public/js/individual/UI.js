@@ -257,6 +257,7 @@ var individualUI = (function() {
             
             DOM.previewTeams.remove();
             DOM.teams.innerHTML = '';
+            DOM.teams.classList.toggle('hide');
             DOM.refreshStudentsBtn.remove();
             DOM.shuffleStudentsBtn.remove();
             DOM.playGameBtn.remove();

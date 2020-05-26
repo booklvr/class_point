@@ -36,44 +36,58 @@
 }
 
 .title3__container {
-    z-index: 100;
-    transform: rotate(270deg);
-    transform-origin: center top;
+    margin-right: 1rem;
     
-    position: absolute;
-    
-    // background-color: pink;
-    
-    top: 49.25rem;
-    width: calc(100vh - 8rem);
-    right: -4.5rem;
-    
-
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-
 
     .title-3 {
-        // position: relative;
+        writing-mode: tb-rl;
         font-family: $font-main;
         font-size: 3.2rem;
         font-weight: 800;
         color: $color-primary-girl;
-        z-index: 2;
     }
-    // &:before {
-    //     content: "";
-    //     border-top: 1.2rem solid $color-primary-boy;
-    //     width: 100vh;
-    //     position: absolute;
-       
-    //     right: 0;
-    //     bottom: 0;
-    // }
+
 }
+
+// .title3__container {
+//     z-index: 100;
+//     transform: rotate(270deg);
+//     transform-origin: center top;
+    
+//     position: absolute;
+    
+//     // background-color: pink;
+    
+//     top: 49.25rem;
+//     width: calc(100vh - 8rem);
+//     right: -4.5rem;
+    
+
+
+//     display: flex;
+//     flex-direction: column;
+//     align-items: center;
+//     justify-content: space-between;
+
+
+//     .title-3 {
+//         // position: relative;
+//         font-family: $font-main;
+//         font-size: 3.2rem;
+//         font-weight: 800;
+//         color: $color-primary-girl;
+//         z-index: 2;
+//     }
+//     &:before {
+//         content: "";
+//         border-top: 1.2rem solid $color-primary-boy;
+//         width: 100vh;
+//         position: absolute;
+       
+//         right: 0;
+//         bottom: 0;
+//     }
+// }
 
 
 .m-b-xl {
