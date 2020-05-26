@@ -4,7 +4,7 @@
     <%- include ('../partials/navbar'); %>
     
 </header>
-<main class="classroomData score-page" data-classroom_id="<%= classroom._id %>">
+<main class="classroomData align-right" data-classroom_id="<%= classroom._id %>">
 
     <div class="errors"></div>
        
@@ -17,17 +17,18 @@
                 <button class="increment-button decrement" type="button"><i class="fas fa-caret-down"></i></button>
             </div>
         </div>
-        
     </div>
        
         
-        
+    <!-- <h2 class="title-2 m-b-s"><a href="/classroom/class/<%= classroom._id %>"><%= classroom.className%></a></h2> -->
    
     <div class="page__container">
 
+         
+
         <div class="title__container">
 
-            <h2 class="title-2 m-b-s"><a href="/classroom/class/<%= classroom._id %>"><%= classroom.className%></a></h2>
+           
 
 
             <div class="title3__container">
@@ -35,14 +36,14 @@
                 <div class="rectangle"></div>
             </div>
         </div>
-        
+        <%- include ('../partials/options'); %>
 
 
         <div class="game__container">
             <div class="preview__teams"></div>
             <div class="teams"></div>
         </div>
-        <%- include ('../partials/options'); %>
+        
     </div>
     
     

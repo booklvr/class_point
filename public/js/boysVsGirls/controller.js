@@ -5,7 +5,6 @@ var controller = (function(UI) {
         console.log('setup event listeners')
         var DOMStrings = UI.getDOMStrings();
 
-
         var DOM = {
             teams: document.querySelector(DOMStrings.teams),
             submit: document.querySelector(DOMStrings.submit),
@@ -39,10 +38,10 @@ var controller = (function(UI) {
         DOM.saveGameBtn.addEventListener('click', UI.saveGame);
         DOM.goToClassroomBtn.addEventListener('click', UI.goToClassroom);
         DOM.playAgainBtn.addEventListener('click', UI.playAgain);
-        DOM.previous.addEventListener('click', UI.goToPrevious),
-        DOM.previousStudent.addEventListener('click', UI.goToPreviousStudent),
-        DOM.nextStudent.addEventListener('click', UI.goToNextStudent),
-        DOM.next.addEventListener('click', UI.goToNext),
+        DOM.previous.addEventListener('click', UI.goToPrevious);
+        DOM.previousStudent.addEventListener('click', UI.goToPreviousStudent);
+        DOM.nextStudent.addEventListener('click', UI.goToNextStudent);
+        DOM.next.addEventListener('click', UI.goToNext);
     }
 
     return {

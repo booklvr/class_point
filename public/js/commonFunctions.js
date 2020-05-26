@@ -150,6 +150,7 @@ var commonFunctions = (function() {
             DOM.nextStudent.classList.toggle('hide');
             DOM.previousStudent.classList.toggle('hide');
             DOM.next.classList.toggle('hide');
+            DOM.teams.classList.toggle('hide');
         },
 
         addTeamsToDom: function (teamsArray) {

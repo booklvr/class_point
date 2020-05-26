@@ -30,7 +30,7 @@ var boysVsGirlsUI = (function() {
         previewTeams: document.querySelector(DOMStrings.previewTeams),
         submit: document.querySelector(DOMStrings.submit),
         titleContainer: document.querySelector(DOMStrings.titleContainer),
-        title: document.querySelector(DOMStrings.title),
+        title: document.querySelector(DOMStrings.title)
     }
 
     //persistent data
@@ -167,18 +167,50 @@ var boysVsGirlsUI = (function() {
             }
         },
 
+        goToPrevious: function(e) {
+            console.log('gotoprevious')
+
+            CF.clearDOM();
+                
+            // shift arrays 
+            CF.unShiftTeamsAndStudentArray(teamsArray);
+            
+            
+            // console.log('teamArray-post-shift', teamsArray);
+            CF.addTeamsToDom(teamsArray);
+        },
+
+        goToPreviousStudent: function(e) {
+            console.log('goToPreviousStudent')
+
+            CF.clearDOM();
+            CF.unShiftStudentsArray(teamsArray[0].students);
+            CF.addTeamsToDom(teamsArray);
+
+
+        },
+
+        goToNextStudent: function(e) {
+            console.log('goToNextStudent')
+
+            // CF.clearDOM();
+                
+            CF.clearDOM();
+            CF.shiftStudentsArray(teamsArray[0].students);
+            CF.addTeamsToDom(teamsArray);
+        },
+
+        // *************************************
+        // * GO TO THE NEXT TEAMS TURN
         goToNext: function(e) {
-            if(e.target.classList.contains('next')) {
-                console.log('go to next')
-                
+            
                 CF.clearDOM();
-                
                 // shift arrays 
                 CF.shiftTeamsAndStudentArray(teamsArray);
-                // console.log('teamArray-post-shift', teamsArray);
                 CF.addTeamsToDom(teamsArray);
-            }
+            
         },
+        
         refreshScores: function(e) {
             CF.deleteScores(teamsArray);
             CF.clearDOM();
