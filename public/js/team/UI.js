@@ -218,7 +218,10 @@ var gameFormUI = (function(CF) {
         goToPreviousStudent: function(e) {
             console.log('goToPreviousStudent')
 
-            
+            CF.clearDOM();
+            CF.unShiftStudentsArray(teamsArray[0].students);
+            CF.addTeamsToDom(teamsArray);
+
 
         },
 
@@ -227,10 +230,9 @@ var gameFormUI = (function(CF) {
 
             // CF.clearDOM();
                 
-            // // shift arrays 
-            // shiftStudentsArray(studentsArray);
-            // // console.log('teamArray-post-shift', teamsArray);
-            // addIndividualsToDom();
+            CF.clearDOM();
+            CF.shiftStudentsArray(teamsArray[0].students);
+            CF.addTeamsToDom(teamsArray);
         },
 
         // *************************************

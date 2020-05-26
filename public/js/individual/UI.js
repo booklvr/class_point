@@ -177,17 +177,17 @@ var individualUI = (function() {
     //     DOM.gameContainer.firstChild.remove();
     // }
 
-    const shiftStudentsArray = function (array) {
-        console.log("shift array");
-        array.push(array.shift());
-    }
+    // const shiftStudentsArray = function (array) {
+    //     console.log("shift array");
+    //     array.push(array.shift());
+    // }
 
-    const unShiftStudentsArray = function (array) {
-        console.log("unShift array");
-        array.unshift(array.pop());
-        // array.push(studentsArray.pop());
-        // console.log('arrayAfter', array)
-    }
+    // const unShiftStudentsArray = function (array) {
+    //     console.log("unShift array");
+    //     array.unshift(array.pop());
+    //     // array.push(studentsArray.pop());
+    //     // console.log('arrayAfter', array)
+    // }
 
     const deleteScoresIndividual = function () {
         studentsArray.forEach(student => {
@@ -294,7 +294,7 @@ var individualUI = (function() {
             CF.clearDOM();
                 
             // shift arrays 
-            unShiftStudentsArray(studentsArray);
+            CF.unShiftStudentsArray(studentsArray);
             
             
             // console.log('teamArray-post-shift', teamsArray);
@@ -308,7 +308,7 @@ var individualUI = (function() {
             CF.clearDOM();
                 
             // shift arrays 
-            shiftStudentsArray(studentsArray);
+            CF.shiftStudentsArray(studentsArray);
             // console.log('teamArray-post-shift', teamsArray);
             addIndividualsToDom();
         },

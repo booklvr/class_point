@@ -304,6 +304,16 @@ var commonFunctions = (function() {
             array[0].students.unshift(array[0].students.pop());
         },
 
+        unShiftStudentsArray: function (array) {
+            console.log("unShift array");
+            array.unshift(array.pop());
+        },
+
+        shiftStudentsArray: function (array) {
+            console.log("shift array");
+            array.push(array.shift());
+        },
+
         deleteScores: function (teamsArray) {
             teamsArray.forEach(team => {
                 team.totalPoints = 0;

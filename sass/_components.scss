@@ -23,6 +23,37 @@
     }
 }
 
+.title3__container {
+    -webkit-transform: rotate(270deg);
+    -moz-transform: rotate(270deg);
+    -o-transform: rotate(270deg);
+    -ms-transform: rotate(270deg);
+    transform: rotate(270deg);
+
+    height: 50rem;
+    position: relative;
+    z-index: 1;
+
+    .title-3 {
+        position: relative;
+        font-family: $font-main;
+        font-size: 3.2rem;
+        font-weight: 800;
+        color: $color-primary-girl;
+        z-index: 2;
+    }
+    &:before {
+        content: "";
+        border-top: 1.2rem solid $color-primary-boy;
+        width: 120%;
+        position: absolute;
+        top: 50%;
+        left: -10%; 
+        right: 0;
+        bottom: 0;
+    }
+}
+
 .m-b-xl {
     margin-bottom: 8.7rem;
 }
@@ -53,6 +84,8 @@
         color: inherit;
     }
 }
+
+
 
 .submitBtn,
 .cta__button {

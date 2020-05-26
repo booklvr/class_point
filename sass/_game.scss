@@ -2,7 +2,7 @@
 
 
 
-.optionsContainer {
+.game__form__container {
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -83,7 +83,36 @@
         }
     }
 
+    
+}
+
+.page__container {
+
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+
+    .title__container {
+       
+
+        // width: 100%;
+        height: 100vh;
+        width: 10rem;
+
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+    }
+
+
     .options {
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-left: 2rem;
 
         .game-Btn {
             height: 4.8rem;
@@ -94,8 +123,8 @@
             font-size: 2rem;
 
 
-            &:not(:first-of-type) {
-                margin-left: 1.2rem;
+            &:not(:last-of-type) {
+                margin-bottom: 1.2rem;
             }
 
             i {
@@ -124,280 +153,264 @@
             background-color: $color-black;
         }
     }
-}
 
-.game__container {
-    
-    // .buttons {
-    //     display: flex;
-    //     flex-direction: row;
-    //     margin: 0 3.5rem;
 
-    //     .next,
-    //     .previous {
-    //         flex: 1;
-    //         height: 4.8rem;
-    //         border-radius: 2.4rem;
-    //         background-color: $color-primary-boy;
-    //         color: $color-white;
-    //         margin-bottom: 1rem;
-    //         font-size: 2rem;
-    //         font-family: $font-secondary;
-    //         font-weight: bold;
-    //         border: none;
-    //     }
-    // }
+    .game__container {
 
-    .teams,
-    .preview__teams {
-        width: 27.8rem;
-        margin-bottom: 3rem;
-    
-        .team {
-            margin-bottom: 1rem;
-            border: 1px solid $color-light-grey;
-            
-            .teamName {
-                
-                
-            }
-
-            .teamList {
-                list-style: none;
-                font-family: $font-secondary;
-                font-size: 1.8rem;
-                padding: 0 3.5rem;
-            }
-
-            
-            
-        }
-    }
-    .preview__teams {
+        .teams,
+        .preview__teams {
+            width: 27.8rem;
+            margin-bottom: 3rem;
         
-
-        .team {
-
-            
-
-            .teamName {
-                margin-top: 2rem;
-                width: 100%;
-                text-align: center;
-                color: $color-primary-boy;
-                font-size: $font-secondary;
-                font-size: 2rem;
-                font-weight: bold;
+            .team {
+                margin-bottom: 1rem;
+                border: 1px solid $color-light-grey;
                 
-            }
-            
-
-            .teamList {
-                
-                
-
-                .student {
-                    display: flex;
-                    flex-direction: row;
-                    align-items: center;
-                    justify-content: flex-end;
-                    height: 4rem;
-                    padding: 0 1rem;
+                .teamName {
                     
-                    .student-name {
-                        flex: 1;
-                        color: $color-black;
-                    }
-                    .student-gender {
-                        color: $color-grey;
-                        font-weight: 600;
-                        padding: 0 1rem;
-                    }
-                    .deleteStudent {
-                        
-                        display: none;
-                        flex-direction: column;
-                        align-items: center;
-                        justify-content: center;
-                        width: 2.4rem;
-                        height: 2.4rem;
-                        border-radius: 1.2rem;
-                        background-color: $color-primary-pink;
-                    }
-
-                    &:hover {
-                        background-color: $color-very-light-grey;
-                        .deleteStudent {
-                            display: flex;
-                            
-                        }
-                    }
                     
                 }
+    
+                .teamList {
+                    list-style: none;
+                    font-family: $font-secondary;
+                    font-size: 1.8rem;
+                    padding: 0 3.5rem;
+                }
+    
+                
+                
             }
         }
-    }
-
-
-    .teams{
-
-
-        
-        .team-info {
+        .preview__teams {
             
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content: flex-end;
-            height: 5rem;
-            padding: 0 3.5rem;
-            background-color: $color-very-light-grey;
-
-            .teamName {
+    
+            .team {
+    
                 
-                width: 100%;
-                margin: 0;
-                color: $color-primary-boy;
-                font-size: $font-secondary;
-                font-size: 2rem;
-                font-weight: bold;
-        }
-
-        .teamPoint {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-
-
-
-            button {
-                width: 3rem;
-                height: 3rem;
-                border-radius: 1.5rem;
-                background-color: $color-black;
-                margin-right: .5rem;
-                border: none;
-                
-                i {
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    color: $color-white;
+    
+                .teamName {
+                    margin-top: 2rem;
                     width: 100%;
-                    height: 100%;
+                    text-align: center;
+                    color: $color-primary-boy;
+                    font-size: $font-secondary;
+                    font-size: 2rem;
+                    font-weight: bold;
+                    
+                }
+                
+    
+                .teamList {
+                    
+                    
+    
+                    .student {
+                        display: flex;
+                        flex-direction: row;
+                        align-items: center;
+                        justify-content: flex-end;
+                        height: 4rem;
+                        padding: 0 1rem;
+                        
+                        .student-name {
+                            flex: 1;
+                            color: $color-black;
+                        }
+                        .student-gender {
+                            color: $color-grey;
+                            font-weight: 600;
+                            padding: 0 1rem;
+                        }
+                        .deleteStudent {
+                            
+                            display: none;
+                            flex-direction: column;
+                            align-items: center;
+                            justify-content: center;
+                            width: 2.4rem;
+                            height: 2.4rem;
+                            border-radius: 1.2rem;
+                            background-color: $color-primary-pink;
+                        }
+    
+                        &:hover {
+                            background-color: $color-very-light-grey;
+                            .deleteStudent {
+                                display: flex;
+                                
+                            }
+                        }
+                        
+                    }
                 }
             }
-
-           
-            .add {
-                
-
-
-            }
-
-            .minus {
-
-            }
-
-            .teamPointValue {
-                font-size: 3rem;
-                font-family: $font-secondary;
-                font-weight: bold;
-                width: 2rem;
-                text-align: right;
-            }
         }
-        }
-        
-
-        .teamList {
-
+    
+    
+        .teams{
+    
+    
             
-
-            .currentStudent {
-                
-
-                .name {
-                    color: $color-primary-pink !important; 
-                }
-            }
-
-            .nextStudent {
-                .name {
-                    text-decoration: underline;
-                    text-decoration-color: $color-primary-pink;
-                }
-            }
-
-            .student {
+            .team-info {
                 
                 display: flex;
                 flex-direction: row;
                 align-items: center;
                 justify-content: flex-end;
-                height: 4rem;
-                
-                
-                .name {
-                    flex: 1;
-                    color: $color-black;
-                    text-align-last: left;
+                height: 5rem;
+                padding: 0 3.5rem;
+                background-color: $color-very-light-grey;
+    
+                .teamName {
                     
-                }
-
+                    width: 100%;
+                    margin: 0;
+                    color: $color-primary-boy;
+                    font-size: $font-secondary;
+                    font-size: 2rem;
+                    font-weight: bold;
+            }
+    
+            .teamPoint {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+    
+    
+    
                 button {
-                    width: 2.5rem;
-                    height: 2.5rem;
+                    width: 3rem;
+                    height: 3rem;
                     border-radius: 1.5rem;
-                    background-color: $color-grey;
-                    margin-right: .85rem;
+                    background-color: $color-black;
+                    margin-right: .5rem;
                     border: none;
-
+                    
                     i {
-                        color: $color-white;
-                        height: 100%;
-                        width: 100%;
                         display: flex;
                         align-items: center;
                         justify-content: center;
+                        color: $color-white;
+                        width: 100%;
+                        height: 100%;
                     }
                 }
-
-                .points {
+    
+               
+                .add {
+                    
+    
+    
+                }
+    
+                .minus {
+    
+                }
+    
+                .teamPointValue {
                     font-size: 3rem;
                     font-family: $font-secondary;
                     font-weight: bold;
                     width: 2rem;
                     text-align: right;
                 }
-
-
+            }
+            }
+            
+    
+            .teamList {
+    
+                
+    
+                .currentStudent {
+                    
+    
+                    .name {
+                        color: $color-primary-pink !important; 
+                    }
+                }
+    
+                .nextStudent {
+                    .name {
+                        text-decoration: underline;
+                        text-decoration-color: $color-primary-pink;
+                    }
+                }
+    
+                .student {
+                    
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    justify-content: flex-end;
+                    height: 4rem;
+                    
+                    
+                    .name {
+                        flex: 1;
+                        color: $color-black;
+                        text-align-last: left;
+                        
+                    }
+    
+                    button {
+                        width: 2.5rem;
+                        height: 2.5rem;
+                        border-radius: 1.5rem;
+                        background-color: $color-grey;
+                        margin-right: .85rem;
+                        border: none;
+    
+                        i {
+                            color: $color-white;
+                            height: 100%;
+                            width: 100%;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                        }
+                    }
+    
+                    .points {
+                        font-size: 3rem;
+                        font-family: $font-secondary;
+                        font-weight: bold;
+                        width: 2rem;
+                        text-align: right;
+                    }
+    
+    
+                }
             }
         }
-    }
-
-    .winningStudentContainer {
-        width: 27.8 rem;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-
-        .winningStudentTitle {
-            font-size: 2rem;
-            color: $color-primary-boy;
-        }
-
-        .firstPlace {
-
-            .winnerName {
+    
+        .winningStudentContainer {
+            width: 27.8 rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+    
+            .winningStudentTitle {
                 font-size: 2rem;
-                color: $color-black;
+                color: $color-primary-boy;
+            }
+    
+            .firstPlace {
+    
+                .winnerName {
+                    font-size: 2rem;
+                    color: $color-black;
+                }
             }
         }
+    
     }
 
 
 }
+
+
 
 

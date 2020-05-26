@@ -4,19 +4,11 @@
     <%- include ('../partials/navbar'); %>
     
 </header>
-<main class="classroomData align-top" data-classroom_id="<%= classroom._id %>">
-    
-
-    <div class="title1__container">
-        <h1 class="title title-1">Remove Absent Students</h1>
-        <div class="rectangle"></div>
-    </div>
-
-    <h2 class="title-2 m-b-s"><a href="/classroom/class/<%= classroom._id %>"><%= classroom.className%></a></h2>
+<main class="classroomData score-page" data-classroom_id="<%= classroom._id %>">
 
     <div class="errors"></div>
        
-    <div class="optionsContainer">
+    <div class="game__form__container">
         <div class=gameForm>
             <label class="team_number_label" for="numberOfTeams">Number of Teams</label>
             <input class="team_number" id="numberOfTeams" type="number" name="numberOfTeams" min='1' value="1">
@@ -25,18 +17,34 @@
                 <button class="increment-button decrement" type="button"><i class="fas fa-caret-down"></i></button>
             </div>
         </div>
-        <%- include ('../partials/options'); %>
-</div>
+        
+    </div>
        
         
         
    
+    <div class="page__container">
 
-    <div class="game__container">
-        <div class="preview__teams"></div>
-        <div class="teams"></div>
+        <div class="title__container">
+
+            <h2 class="title-2 m-b-s"><a href="/classroom/class/<%= classroom._id %>"><%= classroom.className%></a></h2>
+
+
+            <div class="title3__container">
+                <h1 class="title title-3">Remove Absent Students</h1>
+                <div class="rectangle"></div>
+            </div>
+        </div>
+        
+
+
+        <div class="game__container">
+            <div class="preview__teams"></div>
+            <div class="teams"></div>
+        </div>
+        <%- include ('../partials/options'); %>
     </div>
-
+    
     
     
 </main>
