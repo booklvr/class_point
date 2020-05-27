@@ -333,6 +333,7 @@ var commonFunctions = (function() {
         },
 
         endGameOptions: function () {
+            DOM.teams.innerHTML = '';
             DOM.refreshGameBtn.remove();
             DOM.saveGameBtn.remove();
             DOM.previous.remove();
@@ -363,7 +364,7 @@ var commonFunctions = (function() {
                     </div>
                 `;
             })
-            DOM.gameContainer.appendChild(winningTeamContainer);
+            DOM.teams.appendChild(winningTeamContainer);
         },
 
         addWinningStudent: function (array) {
@@ -385,7 +386,7 @@ var commonFunctions = (function() {
                     </div>
                 `;
             })
-            DOM.gameContainer.appendChild(winningStudentContainer);
+            DOM.teams.appendChild(winningStudentContainer);
         }
     } 
 })();

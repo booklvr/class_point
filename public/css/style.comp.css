@@ -1,3 +1,9 @@
+/*
+1150px +  (normal) 
+700px - 1150px 
+700px - 
+
+*/
 * {
   margin: 0;
   padding: 0; }
@@ -14,8 +20,8 @@ html {
 body {
   font-weight: 400;
   line-height: 1.6;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  min-height: 100vh;
   font-family: "Gilroy", sans-serif; }
 
 body {
@@ -25,13 +31,32 @@ body {
   align-items: center; }
 
 main {
-  margin: 0 12rem;
+  width: 120rem;
   flex: 1;
   position: relative;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center; }
+  @media (max-width: 800px) {
+    main {
+      background-color: yellow; } }
+  @media (max-width: 1150) {
+    main {
+      background-color: red; } }
+
+.align-middle {
   justify-content: center; }
+
+.align-top {
+  justify-content: flex-start; }
+
+.align-right {
+  padding-right: 3rem;
+  align-self: flex-end;
+  align-items: flex-end;
+  justify-content: end;
+  width: 50rem;
+  position: relative; }
 
 header {
   display: flex;
@@ -39,14 +64,31 @@ header {
   align-items: center;
   position: relative; }
 
+footer {
+  align-self: flex-end; }
+
+.info__paragraph {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; }
+  .info__paragraph > * {
+    margin-bottom: 3rem;
+    font-size: 2rem;
+    text-align: center; }
+
 .navbar {
   width: 100vw;
   height: 8rem;
   background-color: #fff;
-  border: 1px solid #eaeaea; }
+  border: 1px solid #eaeaea;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center; }
   .navbar__container {
     height: 100%;
-    margin: 0 12rem;
+    width: 120rem;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -79,7 +121,7 @@ header {
       margin-right: 6.3rem; }
 
 .title1__container {
-  margin: 7.6rem 0;
+  margin-top: 7.6rem;
   position: relative;
   z-index: 1; }
   .title1__container .title-1 {
@@ -103,18 +145,54 @@ header {
   font-size: 3.2rem;
   font-weight: 800;
   color: #7bc0bd;
-  margin-bottom: 5rem; }
+  align-self: center; }
+  .title-2 a {
+    text-decoration: none;
+    color: inherit; }
 
-.submitBtn {
+.title3__container {
+  margin-right: 1rem; }
+  .title3__container .title-3 {
+    writing-mode: tb-rl;
+    font-family: "Gilroy", sans-serif;
+    font-size: 3.2rem;
+    font-weight: 800;
+    color: #4b3d6d; }
+
+.m-b-xl {
+  margin-bottom: 8.7rem; }
+
+.m-b-l {
+  margin-bottom: 7.9rem; }
+
+.m-b-m {
+  margin-bottom: 6rem; }
+
+.m-b-s {
+  margin-bottom: 1.6rem; }
+
+.submitBtn,
+.cta__button {
   height: 5rem;
   width: 13.6rem;
   margin-top: 6.4rem;
   font-family: "Gilroy", sans-serif;
   font-size: 2rem;
   font-weight: 800;
-  color: white;
+  color: #fff;
   background-color: #7bc0bd;
-  border-radius: 2.5rem; }
+  border-radius: 2.5rem;
+  border: none; }
+
+.cta__button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer; }
+  .cta__button a {
+    text-decoration: none;
+    color: #fff; }
 
 .student__gender .male {
   color: skyblue; }
@@ -131,6 +209,10 @@ header {
 .icon-female {
   color: pink; }
 
+.errors {
+  font-size: 2rem;
+  color: #e27488; }
+
 footer {
   display: flex;
   flex-direction: row;
@@ -143,98 +225,514 @@ footer {
   padding: 1rem 0;
   text-transform: uppercase; }
 
+.game-header {
+  width: 100%;
+  height: 7rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1rem solid #4b3d6d;
+  margin-bottom: 2rem; }
+  .game-header .options {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 100%; }
+    .game-header .options .option-Btn {
+      height: 3.8rem;
+      width: 3.8rem;
+      border-radius: 1.9rem;
+      border: none;
+      color: #fff;
+      font-size: 2rem; }
+      .game-header .options .option-Btn:not(:last-of-type) {
+        margin-right: 1rem; }
+    .game-header .options .shuffle-studentsBtn {
+      background-color: #4b3d6d; }
+    .game-header .options .refresh-studentsBtn,
+    .game-header .options .refresh-gameBtn,
+    .game-header .options .playAgainBtn {
+      background-color: #e27488; }
+    .game-header .options .save-gameBtn,
+    .game-header .options .goToClassroomBtn {
+      background-color: #302929; }
+  .game-header .game__form__container {
+    align-self: flex-end;
+    width: 30rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start; }
+    .game-header .game__form__container .gameForm {
+      display: flex;
+      position: relative;
+      flex-direction: row;
+      align-items: center; }
+      .game-header .game__form__container .gameForm .team_number_label {
+        font-family: "Open Sans";
+        font-size: 2rem;
+        font-weight: bold;
+        color: #7bc0bd; }
+      .game-header .game__form__container .gameForm .team_number {
+        width: 9.5rem;
+        padding: 1rem;
+        font-family: "Open Sans";
+        color: #302929;
+        font-size: 2rem;
+        font-weight: bold;
+        text-align: center;
+        outline: none;
+        border: none; }
+        .game-header .game__form__container .gameForm .team_number::-webkit-outer-spin-button, .game-header .game__form__container .gameForm .team_number::-webkit-inner-spin-button {
+          -webkit-appearance: none;
+          -moz-appearance: none;
+          appearance: none;
+          margin: 0; }
+      .game-header .game__form__container .gameForm .increment-buttons {
+        position: absolute;
+        right: 7rem;
+        top: 50%;
+        transform: translateY(-50%);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        border: none; }
+        .game-header .game__form__container .gameForm .increment-buttons .increment-button {
+          border: none;
+          background-color: inherit;
+          cursor: pointer; }
+          .game-header .game__form__container .gameForm .increment-buttons .increment-button i {
+            font-size: 2rem;
+            color: #bdbdbd; }
+
+.game__container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: end; }
+  .game__container .line {
+    position: relative;
+    min-height: 150%;
+    width: 1.2rem;
+    align-self: stretch;
+    border-left: 1.2rem solid #7bc0bd;
+    top: -8rem; }
+  .game__container .game-options {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 6.5rem; }
+    .game__container .game-options .game-Btn {
+      height: 3.8rem;
+      width: 3.8rem;
+      border-radius: 1.9rem;
+      border: none;
+      color: #fff;
+      font-size: 2rem;
+      margin-bottom: 1rem; }
+    .game__container .game-options .playGameBtn,
+    .game__container .game-options .previous,
+    .game__container .game-options .previous-student,
+    .game__container .game-options .next-student,
+    .game__container .game-options .next {
+      background-color: #7bc0bd; }
+  .game__container .teams,
+  .game__container .preview__teams {
+    width: 30rem; }
+    .game__container .teams .team,
+    .game__container .preview__teams .team {
+      margin-bottom: 1.5rem;
+      border: 1px solid #eaeaea; }
+      .game__container .teams .team .teamName,
+      .game__container .preview__teams .team .teamName {
+        margin-bottom: 1rem; }
+      .game__container .teams .team .teamList,
+      .game__container .preview__teams .team .teamList {
+        list-style: none;
+        font-family: "Open Sans";
+        font-size: 1.8rem;
+        padding: 0 3.5rem; }
+  .game__container .preview__teams .team .teamName {
+    margin-top: 2rem;
+    width: 100%;
+    text-align: center;
+    color: #7bc0bd;
+    font-size: "Open Sans";
+    font-size: 2rem;
+    font-weight: bold; }
+  .game__container .preview__teams .team .teamList .student {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    height: 4rem;
+    padding: 0 1rem; }
+    .game__container .preview__teams .team .teamList .student .student-name {
+      flex: 1;
+      color: #302929; }
+    .game__container .preview__teams .team .teamList .student .student-gender {
+      color: #bdbdbd;
+      font-weight: 600;
+      padding: 0 1rem; }
+    .game__container .preview__teams .team .teamList .student .deleteStudent {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 2.4rem;
+      height: 2.4rem;
+      border-radius: 1.2rem;
+      background-color: #e27488; }
+    .game__container .preview__teams .team .teamList .student:hover {
+      background-color: rgba(234, 234, 234, 0.4); }
+      .game__container .preview__teams .team .teamList .student:hover .deleteStudent {
+        display: flex; }
+  .game__container .teams .team-info {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    height: 5rem;
+    padding: 0 3.5rem;
+    background-color: rgba(234, 234, 234, 0.4); }
+    .game__container .teams .team-info .teamName {
+      width: 100%;
+      margin: 0;
+      color: #7bc0bd;
+      font-size: "Open Sans";
+      font-size: 2rem;
+      font-weight: bold; }
+    .game__container .teams .team-info .teamPoint {
+      display: flex;
+      flex-direction: row;
+      align-items: center; }
+      .game__container .teams .team-info .teamPoint button {
+        width: 3rem;
+        height: 3rem;
+        border-radius: 1.5rem;
+        background-color: #302929;
+        margin-right: .5rem;
+        border: none; }
+        .game__container .teams .team-info .teamPoint button i {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: #fff;
+          width: 100%;
+          height: 100%; }
+      .game__container .teams .team-info .teamPoint .teamPointValue {
+        font-size: 3rem;
+        font-family: "Open Sans";
+        font-weight: bold;
+        width: 2rem;
+        text-align: right; }
+  .game__container .teams .teamList .currentStudent .name {
+    color: #e27488 !important; }
+  .game__container .teams .teamList .nextStudent .name {
+    text-decoration: underline;
+    text-decoration-color: #e27488; }
+  .game__container .teams .teamList .student {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    height: 4rem; }
+    .game__container .teams .teamList .student .name {
+      flex: 1;
+      color: #302929;
+      text-align-last: left; }
+    .game__container .teams .teamList .student button {
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 1.5rem;
+      background-color: #bdbdbd;
+      margin-right: .85rem;
+      border: none; }
+      .game__container .teams .teamList .student button i {
+        color: #fff;
+        height: 100%;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center; }
+    .game__container .teams .teamList .student .points {
+      font-size: 3rem;
+      font-family: "Open Sans";
+      font-weight: bold;
+      width: 2rem;
+      text-align: right; }
+  .game__container .winningStudentContainer {
+    min-width: 30rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #eaeaea;
+    margin-bottom: 2rem; }
+    .game__container .winningStudentContainer .winningStudentTitle {
+      font-size: 2rem;
+      color: #7bc0bd; }
+    .game__container .winningStudentContainer .firstPlace .winnerName {
+      font-size: 2rem;
+      color: #302929; }
+
 .form__container {
   width: 100vw;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center; }
-  .form__container .inputs__container {
+  .form__container .form-main .inputs__container {
     display: flex;
     flex-direction: row; }
-    .form__container .inputs__container-small {
+    .form__container .form-main .inputs__container-small {
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: flex-start; }
-      .form__container .inputs__container-small .form-control {
+      .form__container .form-main .inputs__container-small .form-control {
         display: flex;
         flex-direction: column;
         align-items: flex-start; }
-        .form__container .inputs__container-small .form-control label {
+        .form__container .form-main .inputs__container-small .form-control label {
           margin-left: 1.5rem;
           margin-bottom: .9rem;
           font-family: "Open Sans";
           font-size: 1.4rem;
           font-weight: 600;
           text-transform: uppercase; }
-        .form__container .inputs__container-small .form-control input {
+        .form__container .form-main .inputs__container-small .form-control input {
           height: 5rem;
           width: 36rem;
           border-radius: 2.5rem;
           border: 1px solid #eaeaea;
           padding-left: 2rem;
           font-size: 2rem; }
-        .form__container .inputs__container-small .form-control .error-message {
+        .form__container .form-main .inputs__container-small .form-control .error-message {
           display: none; }
-        .form__container .inputs__container-small .form-control:not(:last-of-type) {
+        .form__container .form-main .inputs__container-small .form-control:not(:last-of-type) {
           margin-bottom: 3.6rem; }
-      .form__container .inputs__container-small:not(:last-of-type) {
+      .form__container .form-main .inputs__container-small:not(:last-of-type) {
         margin-right: 8.1rem; }
   .form__container .form-change-route {
     color: #bdbdbd;
     font-family: "Open Sans";
     font-size: 1.4rem;
     font-weight: 600;
-    margin-top: 2.3rem; }
+    margin-top: 3rem; }
+    .form__container .form-change-route a {
+      color: #4b3d6d; }
+  .form__container .form-secondary {
+    width: 43.5rem; }
+    .form__container .form-secondary .form-control {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 4rem; }
+      .form__container .form-secondary .form-control label {
+        font-family: "Open Sans";
+        font-size: 2rem;
+        font-weight: bold;
+        color: #7bc0bd; }
+      .form__container .form-secondary .form-control .add-class-name {
+        width: 26rem;
+        height: 4rem;
+        border: none;
+        font-size: "Open Sans";
+        font-weight: bold;
+        font-size: 2rem;
+        color: #bdbdbd;
+        padding-left: 1rem;
+        border-bottom: 1px solid #eaeaea; }
+      .form__container .form-secondary .form-control .add-students-label {
+        align-self: flex-start;
+        margin-top: 1.4rem; }
+      .form__container .form-secondary .form-control .add-class {
+        width: 26rem;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch; }
+        .form__container .form-secondary .form-control .add-class .form-btn {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          font-family: "Open Sans";
+          font-size: 1.8rem;
+          font-weight: bold;
+          color: #bdbdbd;
+          border: 1px solid #eaeaea;
+          height: 5.5rem;
+          width: 100%;
+          background-color: white;
+          margin-bottom: 3rem;
+          cursor: pointer; }
+        .form__container .form-secondary .form-control .add-class .file-value {
+          display: none;
+          font-family: "Open Sans";
+          font-size: 2rem;
+          font-weight: bold;
+          color: #bdbdbd;
+          margin-bottom: 3rem;
+          border-bottom: 1px solid #eaeaea; }
+        .form__container .form-secondary .form-control .add-class .file-input {
+          display: none; }
+        .form__container .form-secondary .form-control .add-class .form-btn.upload-file {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          font-family: "Gilroy", sans-serif;
+          font-size: 2rem;
+          font-weight: 800;
+          color: #fff;
+          background-color: #4b3d6d;
+          background-color: pink;
+          border: none;
+          border-radius: 2.5rem;
+          height: 5rem;
+          width: 100%;
+          cursor: pointer; }
+  .form__container .form__add-student {
+    width: 120rem;
+    height: 7rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid #eaeaea;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #7bc0bd;
+    margin-bottom: 6.3rem; }
+    .form__container .form__add-student .form-control {
+      width: 50%;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-start; }
+      .form__container .form__add-student .form-control .addStudentName {
+        padding-left: 4.1rem;
+        padding-right: 1rem; }
+      .form__container .form__add-student .form-control .addStudentName-input {
+        width: 35.7rem;
+        color: #bdbdbd;
+        font-family: "Open Sans";
+        font-size: 2rem;
+        border: none;
+        border-bottom: 1px solid #eaeaea;
+        padding-left: 1rem;
+        cursor: pointer; }
+        .form__container .form__add-student .form-control .addStudentName-input:focus {
+          outline: 1px solid #7bc0bd; }
+    .form__container .form__add-student .form-control-radios {
+      flex: 1;
+      margin-left: 2rem;
+      display: flex;
+      flex-direction: row;
+      justify-self: start;
+      align-items: center; }
+      .form__container .form__add-student .form-control-radios h3 {
+        font-size: 2rem; }
+      .form__container .form__add-student .form-control-radios .radio-control {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin-left: 3rem; }
+        .form__container .form__add-student .form-control-radios .radio-control .gender-radio-label {
+          padding-left: 2rem;
+          color: #bdbdbd; }
+        .form__container .form__add-student .form-control-radios .radio-control .gender-radio {
+          visibility: hidden; }
+        .form__container .form__add-student .form-control-radios .radio-control .gender-radio + .gender-radio-label::before {
+          content: '';
+          background-color: #fff;
+          border: 0.3rem solid #eaeaea;
+          border-radius: 100%;
+          display: block;
+          box-sizing: border-box;
+          float: left;
+          width: 2.4rem;
+          height: 2.4rem;
+          margin-left: -1.5em;
+          margin-top: .15em;
+          vertical-align: top;
+          cursor: pointer;
+          text-align: center;
+          transition: all .12s ease-out; }
+        .form__container .form__add-student .form-control-radios .radio-control .gender-radio:checked + label::before {
+          background-color: #7bc0bd;
+          box-shadow: inset 0 0 0 0.15em #7bc0bd; }
+    .form__container .form__add-student .add__submit--btn {
+      margin-right: 3rem;
+      height: 3.6rem;
+      width: 3.6rem;
+      border-radius: 1.8rem;
+      border: none;
+      background-color: #7bc0bd;
+      cursor: pointer; }
+      .form__container .form__add-student .add__submit--btn i {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        font-size: 2rem;
+        color: white; }
 
-header .addClassBtn {
+.addClassBtn {
   position: absolute;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  top: 15.6rem;
-  right: 12rem;
+  top: 7.6rem;
+  right: 0rem;
   font-size: 2rem;
   width: 5.5rem;
   height: 5.5rem;
   border-radius: 2.25em;
   color: #fff;
   background-color: #7bc0bd; }
-  header .addClassBtn a {
+  .addClassBtn a {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-decoration: none; }
-    header .addClassBtn a i {
+    .addClassBtn a i {
       color: #fff;
       font-size: 3rem; }
 
 .classrooms__container {
+  width: 120rem;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: space-between;
   overflow: auto;
   height: 100%;
   position: relative;
-  margin-bottom: 2rem;
-  width: 100vw;
-  padding: 0 12rem; }
+  margin-bottom: 2rem; }
   .classrooms__container .class__container {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 27.8rem;
+    width: 27.75rem;
     position: relative;
     border: 1px solid #eaeaea;
-    margin: 0 1.4rem 3.5rem 0; }
-    .classrooms__container .class__container:nth-child(4n) {
-      margin-right: 0; }
+    margin-bottom: 3rem; }
+    .classrooms__container .class__container:not(:nth-child(4n)) {
+      margin-right: 3rem; }
     .classrooms__container .class__container .trashBtn {
       position: absolute;
       top: 2rem;
@@ -243,6 +741,15 @@ header .addClassBtn {
       display: none; }
       .classrooms__container .class__container .trashBtn a {
         color: red; }
+    .classrooms__container .class__container .class-title {
+      margin-top: 4.1rem;
+      margin-bottom: 2.8rem;
+      font-size: 2rem;
+      font-weight: bold;
+      font-family: "Open Sans"; }
+      .classrooms__container .class__container .class-title a {
+        text-decoration: none;
+        color: #7bc0bd; }
     .classrooms__container .class__container .class {
       display: flex;
       flex-direction: column;
@@ -252,14 +759,11 @@ header .addClassBtn {
       font-family: "Open Sans";
       font-weight: 600; }
       .classrooms__container .class__container .class li {
-        list-style: none; }
+        list-style: none;
+        width: 21.33rem;
+        text-align: center; }
         .classrooms__container .class__container .class li a {
           text-decoration: none; }
-      .classrooms__container .class__container .class .class-title {
-        margin-top: 3.9rem;
-        font-size: 2rem; }
-        .classrooms__container .class__container .class .class-title a {
-          color: #7bc0bd; }
       .classrooms__container .class__container .class .game-link {
         font-size: 1.8rem;
         color: #302929;
@@ -272,3 +776,508 @@ header .addClassBtn {
           color: black; }
     .classrooms__container .class__container:hover .trashBtn {
       display: block; }
+
+.choose-game {
+  width: 120rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  list-style: none;
+  font-family: "Gilroy", sans-serif;
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 6.3rem; }
+  .choose-game-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    cursor: pointer;
+    width: 24rem;
+    height: 4.9rem;
+    border-radius: 2.45rem;
+    background-color: #f0f0fb; }
+    .choose-game-button:hover {
+      background-color: #4b3d6d; }
+      .choose-game-button:hover a {
+        color: #fff; }
+    .choose-game-button:not(:last-of-type) {
+      margin-right: 3.7rem; }
+    .choose-game-button a {
+      text-decoration: none;
+      color: #4b3d6d; }
+
+.class-participation {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center; }
+
+.errors {
+  font-size: 2rem;
+  color: #e27488; }
+
+.student__list {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  list-style: none; }
+  .student__list .studentContainer {
+    width: 58.5rem;
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid #eaeaea; }
+    .student__list .studentContainer:not(:nth-child(2n)) {
+      margin-right: 3rem; }
+    .student__list .studentContainer .student {
+      width: 100%;
+      height: 5rem;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      font-family: "Open Sans";
+      font-size: 1.8rem;
+      color: #302929; }
+      .student__list .studentContainer .student .student__name {
+        flex: 1;
+        margin-left: 4rem; }
+      .student__list .studentContainer .student .studentPoints {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        width: 7rem;
+        margin-right: 4rem; }
+        .student__list .studentContainer .student .studentPoints:not(:nth-child(2n)) {
+          margin-right: 5rem; }
+        .student__list .studentContainer .student .studentPoints .pointsLabel {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          justify-content: center;
+          font-family: "Open Sans";
+          font-size: 1rem;
+          text-transform: uppercase;
+          font-weight: 600;
+          letter-spacing: 0.5px;
+          line-height: 1;
+          color: #bdbdbd; }
+        .student__list .studentContainer .student .studentPoints .points {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          justify-content: end;
+          width: 10rem;
+          margin-right: 2rem;
+          margin-left: 1.7rem;
+          font-size: 1.8rem;
+          color: #302929; }
+      .student__list .studentContainer .student .student-edit {
+        display: none;
+        margin-right: 2rem; }
+        .student__list .studentContainer .student .student-edit .student-edit-button {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 2.4rem;
+          width: 2.4rem;
+          font-size: 1.2rem;
+          border-radius: 1.2rem;
+          color: #fff; }
+          .student__list .studentContainer .student .student-edit .student-edit-button-edit {
+            background-color: #4b3d6d;
+            margin-right: 1rem; }
+          .student__list .studentContainer .student .student-edit .student-edit-button-delete {
+            background-color: #e27488;
+            text-decoration: none; }
+      .student__list .studentContainer .student:hover .student-edit {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between; }
+    .student__list .studentContainer .update__form {
+      font-size: 1.8rem;
+      background-color: rgba(234, 234, 234, 0.4); }
+      .student__list .studentContainer .update__form .form__update {
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-end;
+        height: 5rem; }
+        .student__list .studentContainer .update__form .form__update .update__name {
+          border: none;
+          font-size: 1.8rem;
+          color: #302929;
+          max-width: 14rem;
+          height: 100%;
+          background-color: inherit;
+          margin-right: auto;
+          margin-left: 4rem; }
+        .student__list .studentContainer .update__form .form__update .form-control-radios {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          justify-content: end;
+          height: 5rem;
+          margin-right: 2rem; }
+          .student__list .studentContainer .update__form .form__update .form-control-radios .radio-control {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between; }
+            .student__list .studentContainer .update__form .form__update .form-control-radios .radio-control:not(:last-of-type) {
+              margin-right: 1.3rem; }
+            .student__list .studentContainer .update__form .form__update .form-control-radios .radio-control .gender-radio {
+              visibility: hidden; }
+            .student__list .studentContainer .update__form .form__update .form-control-radios .radio-control .gender-radio-label {
+              padding-left: 2rem;
+              color: #bdbdbd;
+              font-family: "Open Sans";
+              font-size: 1.8rem;
+              color: #bdbdbd; }
+            .student__list .studentContainer .update__form .form__update .form-control-radios .radio-control .gender-radio + .gender-radio-label::before {
+              content: '';
+              background-color: #fff;
+              border: 0.3rem solid #eaeaea;
+              border-radius: 100%;
+              display: block;
+              box-sizing: border-box;
+              float: left;
+              width: 2.4rem;
+              height: 2.4rem;
+              margin-left: -1.5em;
+              margin-top: .15em;
+              vertical-align: top;
+              cursor: pointer;
+              text-align: center;
+              transition: all .12s ease-out; }
+            .student__list .studentContainer .update__form .form__update .form-control-radios .radio-control .gender-radio:checked + label::before {
+              background-color: #7bc0bd;
+              box-shadow: inset 0 0 0 0.15em #7bc0bd; }
+        .student__list .studentContainer .update__form .form__update .form-control-number {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          justify-content: space-between;
+          padding: 0rem 0.5rem; }
+          .student__list .studentContainer .update__form .form__update .form-control-number:not(:nth-child(2n)) {
+            margin-right: .25rem; }
+          .student__list .studentContainer .update__form .form__update .form-control-number .pointsLabel {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+            font-family: "Open Sans";
+            font-size: 1rem;
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            line-height: 1;
+            color: #bdbdbd; }
+          .student__list .studentContainer .update__form .form__update .form-control-number .pointsInput {
+            width: 5rem;
+            font-size: 1.8rem;
+            border: none;
+            height: 5rem;
+            color: #302929;
+            background-color: inherit;
+            text-align: left;
+            padding-left: 1.7rem .student__list .studentContainer .update__form .form__update .form-control-number .pointsInput; }
+            .student__list .studentContainer .update__form .form__update .form-control-number .pointsInput :focus {
+              background-color: inherit;
+              outline: none; }
+            .student__list .studentContainer .update__form .form__update .form-control-number .pointsInput::-webkit-outer-spin-button, .student__list .studentContainer .update__form .form__update .form-control-number .pointsInput::-webkit-inner-spin-button {
+              -webkit-appearance: none;
+              -moz-appearance: none;
+              appearance: none;
+              margin: 0; }
+          .student__list .studentContainer .update__form .form__update .form-control-number .increment-buttons {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border: none;
+            margin-right: .5rem; }
+            .student__list .studentContainer .update__form .form__update .form-control-number .increment-buttons .increment-button {
+              border: none;
+              background-color: inherit;
+              outline: none; }
+              .student__list .studentContainer .update__form .form__update .form-control-number .increment-buttons .increment-button i {
+                font-size: 2rem;
+                color: #bdbdbd; }
+        .student__list .studentContainer .update__form .form__update .update__submit--btn {
+          position: absolute;
+          right: -2.5rem;
+          top: 50%;
+          transform: translateY(-50%);
+          height: 2.4rem;
+          width: 2.4rem;
+          border-radius: 1.2rem;
+          border: none;
+          background-color: #7bc0bd;
+          color: #fff; }
+
+.game-header {
+  width: 100%;
+  height: 7rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1rem solid #4b3d6d;
+  margin-bottom: 2rem; }
+  .game-header .options {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 100%; }
+    .game-header .options .option-Btn {
+      height: 3.8rem;
+      width: 3.8rem;
+      border-radius: 1.9rem;
+      border: none;
+      color: #fff;
+      font-size: 2rem; }
+      .game-header .options .option-Btn:not(:last-of-type) {
+        margin-right: 1rem; }
+    .game-header .options .shuffle-studentsBtn {
+      background-color: #4b3d6d; }
+    .game-header .options .refresh-studentsBtn,
+    .game-header .options .refresh-gameBtn,
+    .game-header .options .playAgainBtn {
+      background-color: #e27488; }
+    .game-header .options .save-gameBtn,
+    .game-header .options .goToClassroomBtn {
+      background-color: #302929; }
+  .game-header .game__form__container {
+    align-self: flex-end;
+    width: 30rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start; }
+    .game-header .game__form__container .gameForm {
+      display: flex;
+      position: relative;
+      flex-direction: row;
+      align-items: center; }
+      .game-header .game__form__container .gameForm .team_number_label {
+        font-family: "Open Sans";
+        font-size: 2rem;
+        font-weight: bold;
+        color: #7bc0bd; }
+      .game-header .game__form__container .gameForm .team_number {
+        width: 9.5rem;
+        padding: 1rem;
+        font-family: "Open Sans";
+        color: #302929;
+        font-size: 2rem;
+        font-weight: bold;
+        text-align: center;
+        outline: none;
+        border: none; }
+        .game-header .game__form__container .gameForm .team_number::-webkit-outer-spin-button, .game-header .game__form__container .gameForm .team_number::-webkit-inner-spin-button {
+          -webkit-appearance: none;
+          -moz-appearance: none;
+          appearance: none;
+          margin: 0; }
+      .game-header .game__form__container .gameForm .increment-buttons {
+        position: absolute;
+        right: 7rem;
+        top: 50%;
+        transform: translateY(-50%);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        border: none; }
+        .game-header .game__form__container .gameForm .increment-buttons .increment-button {
+          border: none;
+          background-color: inherit;
+          cursor: pointer; }
+          .game-header .game__form__container .gameForm .increment-buttons .increment-button i {
+            font-size: 2rem;
+            color: #bdbdbd; }
+
+.game__container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: end; }
+  .game__container .line {
+    position: relative;
+    min-height: 150%;
+    width: 1.2rem;
+    align-self: stretch;
+    border-left: 1.2rem solid #7bc0bd;
+    top: -8rem; }
+  .game__container .game-options {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 6.5rem; }
+    .game__container .game-options .game-Btn {
+      height: 3.8rem;
+      width: 3.8rem;
+      border-radius: 1.9rem;
+      border: none;
+      color: #fff;
+      font-size: 2rem;
+      margin-bottom: 1rem; }
+    .game__container .game-options .playGameBtn,
+    .game__container .game-options .previous,
+    .game__container .game-options .previous-student,
+    .game__container .game-options .next-student,
+    .game__container .game-options .next {
+      background-color: #7bc0bd; }
+  .game__container .teams,
+  .game__container .preview__teams {
+    width: 30rem; }
+    .game__container .teams .team,
+    .game__container .preview__teams .team {
+      margin-bottom: 1.5rem;
+      border: 1px solid #eaeaea; }
+      .game__container .teams .team .teamName,
+      .game__container .preview__teams .team .teamName {
+        margin-bottom: 1rem; }
+      .game__container .teams .team .teamList,
+      .game__container .preview__teams .team .teamList {
+        list-style: none;
+        font-family: "Open Sans";
+        font-size: 1.8rem;
+        padding: 0 3.5rem; }
+  .game__container .preview__teams .team .teamName {
+    margin-top: 2rem;
+    width: 100%;
+    text-align: center;
+    color: #7bc0bd;
+    font-size: "Open Sans";
+    font-size: 2rem;
+    font-weight: bold; }
+  .game__container .preview__teams .team .teamList .student {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    height: 4rem;
+    padding: 0 1rem; }
+    .game__container .preview__teams .team .teamList .student .student-name {
+      flex: 1;
+      color: #302929; }
+    .game__container .preview__teams .team .teamList .student .student-gender {
+      color: #bdbdbd;
+      font-weight: 600;
+      padding: 0 1rem; }
+    .game__container .preview__teams .team .teamList .student .deleteStudent {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 2.4rem;
+      height: 2.4rem;
+      border-radius: 1.2rem;
+      background-color: #e27488; }
+    .game__container .preview__teams .team .teamList .student:hover {
+      background-color: rgba(234, 234, 234, 0.4); }
+      .game__container .preview__teams .team .teamList .student:hover .deleteStudent {
+        display: flex; }
+  .game__container .teams .team-info {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    height: 5rem;
+    padding: 0 3.5rem;
+    background-color: rgba(234, 234, 234, 0.4); }
+    .game__container .teams .team-info .teamName {
+      width: 100%;
+      margin: 0;
+      color: #7bc0bd;
+      font-size: "Open Sans";
+      font-size: 2rem;
+      font-weight: bold; }
+    .game__container .teams .team-info .teamPoint {
+      display: flex;
+      flex-direction: row;
+      align-items: center; }
+      .game__container .teams .team-info .teamPoint button {
+        width: 3rem;
+        height: 3rem;
+        border-radius: 1.5rem;
+        background-color: #302929;
+        margin-right: .5rem;
+        border: none; }
+        .game__container .teams .team-info .teamPoint button i {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: #fff;
+          width: 100%;
+          height: 100%; }
+      .game__container .teams .team-info .teamPoint .teamPointValue {
+        font-size: 3rem;
+        font-family: "Open Sans";
+        font-weight: bold;
+        width: 2rem;
+        text-align: right; }
+  .game__container .teams .teamList .currentStudent .name {
+    color: #e27488 !important; }
+  .game__container .teams .teamList .nextStudent .name {
+    text-decoration: underline;
+    text-decoration-color: #e27488; }
+  .game__container .teams .teamList .student {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    height: 4rem; }
+    .game__container .teams .teamList .student .name {
+      flex: 1;
+      color: #302929;
+      text-align-last: left; }
+    .game__container .teams .teamList .student button {
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 1.5rem;
+      background-color: #bdbdbd;
+      margin-right: .85rem;
+      border: none; }
+      .game__container .teams .teamList .student button i {
+        color: #fff;
+        height: 100%;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center; }
+    .game__container .teams .teamList .student .points {
+      font-size: 3rem;
+      font-family: "Open Sans";
+      font-weight: bold;
+      width: 2rem;
+      text-align: right; }
+  .game__container .winningStudentContainer {
+    min-width: 30rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #eaeaea;
+    margin-bottom: 2rem; }
+    .game__container .winningStudentContainer .winningStudentTitle {
+      font-size: 2rem;
+      color: #7bc0bd; }
+    .game__container .winningStudentContainer .firstPlace .winnerName {
+      font-size: 2rem;
+      color: #302929; }

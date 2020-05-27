@@ -17,6 +17,10 @@ var participationUI = (function() {
         goToClassroomBtn: '.goToClassroomBtn',
         playAgainBtn: '.playAgainBtn',
         playGameBtn: '.playGameBtn',
+        previous: '.previous',
+        previousStudent: '.previous-student',
+        nextStudent: '.next-student',
+        next: '.next',   
     };
 
     var DOM = {
@@ -27,6 +31,10 @@ var participationUI = (function() {
         
         titleContainer: document.querySelector(DOMStrings.titleContainer),
         title: document.querySelector(DOMStrings.title),
+        next: document.querySelector(DOMStrings.next),
+        nextStudent: document.querySelector(DOMStrings.nextStudent),
+        previousStudent: document.querySelector(DOMStrings.previousStudent),
+        previous: document.querySelector(DOMStrings.previous),
 
     }
 
@@ -222,7 +230,16 @@ var participationUI = (function() {
             e.preventDefault();
             console.log("Classroom Participation")
 
+            
             CF.startGame();
+            DOM.title.innerHTML = "Let's Participate";
+            DOM.next.remove();
+            DOM.previous.remove();
+            DOM.nextStudent.remove();
+            DOM.previousStudent.remove();
+            console.log(DOM.teams);
+
+            DOM.teams.classList.remove('hide');
 
             shuffleArray(studentsArray);
             

@@ -13,7 +13,7 @@ var controller = (function(UI) {
             increment: document.querySelector(DOMStrings.increment),
             decrement: document.querySelector(DOMStrings.decrement),
         };
-        console.log("FUCCKKKKKKK")
+        
         console.log(DOM.increment, DOM.decrement)
 
         DOM.increment.addEventListener('click', UI.increment);

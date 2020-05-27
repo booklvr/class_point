@@ -1,3 +1,14 @@
+/*
+1150px +  (normal) 
+700px - 1150px 
+700px - 
+
+*/
+/*
+ breakpoint argument choices
+- small-screen
+- game-mode
+*/
 * {
   margin: 0;
   padding: 0; }
@@ -52,6 +63,9 @@ header {
   flex-direction: column;
   align-items: center;
   position: relative; }
+
+footer {
+  align-self: flex-end; }
 
 .info__paragraph {
   display: flex;
@@ -306,14 +320,14 @@ footer {
     width: 1.2rem;
     align-self: stretch;
     border-left: 1.2rem solid #7bc0bd;
-    top: -8rem;
-    margin-right: 1rem; }
+    top: -8rem; }
   .game__container .game-options {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
-    height: 100%; }
+    justify-content: center;
+    height: 100%;
+    width: 6.5rem; }
     .game__container .game-options .game-Btn {
       height: 3.8rem;
       width: 3.8rem;
@@ -321,7 +335,6 @@ footer {
       border: none;
       color: #fff;
       font-size: 2rem;
-      margin-right: 1rem;
       margin-bottom: 1rem; }
     .game__container .game-options .playGameBtn,
     .game__container .game-options .previous,
@@ -455,7 +468,7 @@ footer {
       width: 2rem;
       text-align: right; }
   .game__container .winningStudentContainer {
-    width: 27.8 rem;
+    min-width: 30rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1107,14 +1120,14 @@ footer {
     width: 1.2rem;
     align-self: stretch;
     border-left: 1.2rem solid #7bc0bd;
-    top: -8rem;
-    margin-right: 1rem; }
+    top: -8rem; }
   .game__container .game-options {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
-    height: 100%; }
+    justify-content: center;
+    height: 100%;
+    width: 6.5rem; }
     .game__container .game-options .game-Btn {
       height: 3.8rem;
       width: 3.8rem;
@@ -1122,7 +1135,6 @@ footer {
       border: none;
       color: #fff;
       font-size: 2rem;
-      margin-right: 1rem;
       margin-bottom: 1rem; }
     .game__container .game-options .playGameBtn,
     .game__container .game-options .previous,
@@ -1256,7 +1268,7 @@ footer {
       width: 2rem;
       text-align: right; }
   .game__container .winningStudentContainer {
-    width: 27.8 rem;
+    min-width: 30rem;
     display: flex;
     flex-direction: column;
     align-items: center;
