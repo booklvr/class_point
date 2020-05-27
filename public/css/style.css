@@ -26,14 +26,16 @@ body {
   font-weight: 400;
   line-height: 1.6;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   font-family: "Gilroy", sans-serif;
-  overflow: auto; }
+  overflow: auto;
+  margin: 0;
+  padding: 0; }
 
 body {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center; }
 
 main {
@@ -43,6 +45,18 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center; }
+  @media (max-width: 1050px) {
+    main {
+      width: 100%; } }
+  @media (max-width: 1100px) {
+    main {
+      width: 100%; } }
+  @media (max-width: 1200px) {
+    main {
+      width: 100%; } }
+  @media (max-width: 1300px) {
+    main {
+      width: 100%; } }
 
 .align-middle {
   justify-content: center; }
@@ -62,7 +76,8 @@ header {
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: relative; }
+  position: relative;
+  background-color: pink; }
 
 footer {
   align-self: flex-end; }
@@ -80,8 +95,6 @@ footer {
 .navbar {
   width: 100vw;
   height: 8rem;
-  background-color: #fff;
-  border: 1px solid #eaeaea;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -93,6 +106,54 @@ footer {
     flex-direction: row;
     justify-content: space-between;
     align-items: center; }
+    @media (max-width: 1050px) {
+      .navbar__container {
+        width: 100%;
+        margin: 0 10rem; } }
+    @media (max-width: 1100px) {
+      .navbar__container {
+        width: 100%;
+        margin: 0 10rem; } }
+    @media (max-width: 1200px) {
+      .navbar__container {
+        width: 100%;
+        margin: 0 10rem; } }
+    @media (max-width: 1300px) {
+      .navbar__container {
+        width: 100%;
+        margin: 0 10rem; } }
+    @media (max-width: 1050px) {
+      .navbar__container {
+        width: 100%;
+        margin: 0 10rem; } }
+    @media (max-width: 1100px) {
+      .navbar__container {
+        width: 100%;
+        margin: 0 10rem; } }
+    @media (max-width: 1200px) {
+      .navbar__container {
+        width: 100%;
+        margin: 0 10rem; } }
+    @media (max-width: 1300px) {
+      .navbar__container {
+        width: 100%;
+        margin: 0 10rem; } }
+    @media (max-width: 1050px) {
+      .navbar__container {
+        width: 100%;
+        margin: 0 10rem; } }
+    @media (max-width: 1100px) {
+      .navbar__container {
+        width: 100%;
+        margin: 0 10rem; } }
+    @media (max-width: 1200px) {
+      .navbar__container {
+        width: 100%;
+        margin: 0 10rem; } }
+    @media (max-width: 1300px) {
+      .navbar__container {
+        width: 100%;
+        margin: 0 10rem; } }
   .navbar__brand {
     text-decoration: none;
     font-weight: 800;
@@ -716,12 +777,28 @@ footer {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: space-between;
   overflow: auto;
   height: 100%;
   position: relative;
   margin-bottom: 2rem; }
+  @media (max-width: 1050px) {
+    .classrooms__container {
+      width: 100%;
+      padding: 0 10rem; } }
+  @media (max-width: 1100px) {
+    .classrooms__container {
+      width: 100%;
+      padding: 0 10rem; } }
+  @media (max-width: 1200px) {
+    .classrooms__container {
+      width: 100%;
+      padding: 0 10rem; } }
+  @media (max-width: 1300px) {
+    .classrooms__container {
+      width: 100%;
+      padding: 0 10rem; } }
   .classrooms__container .class__container {
     display: flex;
     flex-direction: column;
@@ -731,8 +808,27 @@ footer {
     position: relative;
     border: 1px solid #eaeaea;
     margin-bottom: 3rem; }
-    .classrooms__container .class__container:not(:nth-child(4n)) {
-      margin-right: 3rem; }
+    @media (max-width: 1050px) {
+      .classrooms__container .class__container {
+        width: 32rem; } }
+    @media (max-width: 1100px) {
+      .classrooms__container .class__container {
+        width: 32rem; } }
+    @media (max-width: 1200px) {
+      .classrooms__container .class__container {
+        width: 32rem; } }
+    @media (max-width: 1300px) {
+      .classrooms__container .class__container {
+        width: 32rem; } }
+    @media (max-width: 1050px) {
+      .classrooms__container .class__container {
+        width: 27.8rem; } }
+    @media (max-width: 1100px) {
+      .classrooms__container .class__container {
+        width: 27.8rem; } }
+    @media (max-width: 1200px) {
+      .classrooms__container .class__container {
+        width: 27.8rem; } }
     .classrooms__container .class__container .trashBtn {
       position: absolute;
       top: 2rem;
