@@ -48,12 +48,6 @@ main {
   @media (max-width: 1050px) {
     main {
       width: 100%; } }
-  @media (max-width: 1100px) {
-    main {
-      width: 100%; } }
-  @media (max-width: 1200px) {
-    main {
-      width: 100%; } }
   @media (max-width: 1300px) {
     main {
       width: 100%; } }
@@ -76,8 +70,7 @@ header {
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: relative;
-  background-color: pink; }
+  position: relative; }
 
 footer {
   align-self: flex-end; }
@@ -107,46 +100,6 @@ footer {
     justify-content: space-between;
     align-items: center; }
     @media (max-width: 1050px) {
-      .navbar__container {
-        width: 100%;
-        margin: 0 10rem; } }
-    @media (max-width: 1100px) {
-      .navbar__container {
-        width: 100%;
-        margin: 0 10rem; } }
-    @media (max-width: 1200px) {
-      .navbar__container {
-        width: 100%;
-        margin: 0 10rem; } }
-    @media (max-width: 1300px) {
-      .navbar__container {
-        width: 100%;
-        margin: 0 10rem; } }
-    @media (max-width: 1050px) {
-      .navbar__container {
-        width: 100%;
-        margin: 0 10rem; } }
-    @media (max-width: 1100px) {
-      .navbar__container {
-        width: 100%;
-        margin: 0 10rem; } }
-    @media (max-width: 1200px) {
-      .navbar__container {
-        width: 100%;
-        margin: 0 10rem; } }
-    @media (max-width: 1300px) {
-      .navbar__container {
-        width: 100%;
-        margin: 0 10rem; } }
-    @media (max-width: 1050px) {
-      .navbar__container {
-        width: 100%;
-        margin: 0 10rem; } }
-    @media (max-width: 1100px) {
-      .navbar__container {
-        width: 100%;
-        margin: 0 10rem; } }
-    @media (max-width: 1200px) {
       .navbar__container {
         width: 100%;
         margin: 0 10rem; } }
@@ -762,6 +715,9 @@ footer {
   border-radius: 2.25em;
   color: #fff;
   background-color: #7bc0bd; }
+  @media (max-width: 1050px) {
+    .addClassBtn {
+      align-items: stretch; } }
   .addClassBtn a {
     display: flex;
     flex-direction: column;
@@ -779,19 +735,10 @@ footer {
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: space-between;
-  overflow: auto;
   height: 100%;
   position: relative;
   margin-bottom: 2rem; }
   @media (max-width: 1050px) {
-    .classrooms__container {
-      width: 100%;
-      padding: 0 10rem; } }
-  @media (max-width: 1100px) {
-    .classrooms__container {
-      width: 100%;
-      padding: 0 10rem; } }
-  @media (max-width: 1200px) {
     .classrooms__container {
       width: 100%;
       padding: 0 10rem; } }
@@ -810,25 +757,16 @@ footer {
     margin-bottom: 3rem; }
     @media (max-width: 1050px) {
       .classrooms__container .class__container {
-        width: 32rem; } }
-    @media (max-width: 1100px) {
-      .classrooms__container .class__container {
-        width: 32rem; } }
-    @media (max-width: 1200px) {
-      .classrooms__container .class__container {
-        width: 32rem; } }
+        background-color: yellow; } }
     @media (max-width: 1300px) {
       .classrooms__container .class__container {
-        width: 32rem; } }
+        background-color: yellow; } }
     @media (max-width: 1050px) {
       .classrooms__container .class__container {
-        width: 27.8rem; } }
-    @media (max-width: 1100px) {
+        background-color: pink; } }
+    @media (max-width: 1050px) {
       .classrooms__container .class__container {
-        width: 27.8rem; } }
-    @media (max-width: 1200px) {
-      .classrooms__container .class__container {
-        width: 27.8rem; } }
+        background-color: red; } }
     .classrooms__container .class__container .trashBtn {
       position: absolute;
       top: 2rem;
