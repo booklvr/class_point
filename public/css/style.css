@@ -45,9 +45,6 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center; }
-  @media (max-width: 1050px) {
-    main {
-      width: 100%; } }
   @media (max-width: 1300px) {
     main {
       width: 100%; } }
@@ -99,10 +96,6 @@ footer {
     flex-direction: row;
     justify-content: space-between;
     align-items: center; }
-    @media (max-width: 1050px) {
-      .navbar__container {
-        width: 100%;
-        margin: 0 10rem; } }
     @media (max-width: 1300px) {
       .navbar__container {
         width: 100%;
@@ -715,7 +708,7 @@ footer {
   border-radius: 2.25em;
   color: #fff;
   background-color: #7bc0bd; }
-  @media (max-width: 1050px) {
+  @media (max-width: 750px) {
     .addClassBtn {
       align-items: stretch; } }
   .addClassBtn a {
@@ -738,10 +731,6 @@ footer {
   height: 100%;
   position: relative;
   margin-bottom: 2rem; }
-  @media (max-width: 1050px) {
-    .classrooms__container {
-      width: 100%;
-      padding: 0 10rem; } }
   @media (max-width: 1300px) {
     .classrooms__container {
       width: 100%;
@@ -755,18 +744,32 @@ footer {
     position: relative;
     border: 1px solid #eaeaea;
     margin-bottom: 3rem; }
-    @media (max-width: 1050px) {
-      .classrooms__container .class__container {
-        background-color: yellow; } }
     @media (max-width: 1300px) {
       .classrooms__container .class__container {
-        background-color: yellow; } }
-    @media (max-width: 1050px) {
+        min-width: calc((100% - 6rem) / 3);
+        background-color: yellow; }
+        .classrooms__container .class__container:not(:nth-child(3n)) {
+          margin-right: 3rem; } }
+    @media (max-width: 1100px) {
       .classrooms__container .class__container {
-        background-color: pink; } }
-    @media (max-width: 1050px) {
+        background-color: blue; } }
+    @media (max-width: 1100px) {
       .classrooms__container .class__container {
-        background-color: red; } }
+        min-width: calc((100% - 3rem) / 2);
+        background-color: pink;
+        font-size: .2rem; }
+        .classrooms__container .class__container:not(:nth-child(3n)) {
+          margin-right: 0; }
+        .classrooms__container .class__container:not(:nth-child(2n)) {
+          margin-right: 3rem; } }
+    @media (max-width: 750px) {
+      .classrooms__container .class__container {
+        min-width: 100%;
+        background-color: red; }
+        .classrooms__container .class__container:not(:nth-child(3n)) {
+          margin-right: 0; }
+        .classrooms__container .class__container:not(:nth-child(2n)) {
+          margin-right: 0rem; } }
     .classrooms__container .class__container .trashBtn {
       position: absolute;
       top: 2rem;
