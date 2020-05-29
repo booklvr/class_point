@@ -23,14 +23,17 @@
 */
 
 @mixin respond ($breakpoint) {
-//    @if $breakpoint == game-mode {
-//         @media (max-width: 600px) { @content };
-//    }
-
-   @if $breakpoint == px785 {
-     @media (max-width: 750px) { @content };
+   @if $breakpoint == game-mode {
+        @media (max-width: 500px) { @content };
    }
 
+   @if $breakpoint == px788 {
+     @media (max-width: 788px) { @content };
+   }
+
+   @if $breakpoint == px950 {
+     @media (max-width: 950px) { @content };
+   }
 
    @if $breakpoint == px1050 {
        @media (max-width: 1050px) { @content };

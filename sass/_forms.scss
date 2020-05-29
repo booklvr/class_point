@@ -4,7 +4,7 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
-
+   
     .form-main {
         .inputs__container {
 
@@ -179,12 +179,23 @@
         flex-direction: row;
         align-items: center;
         justify-content: space-between;
+        flex-wrap: wrap;
 
         border: 1px solid $color-light-grey;
         font-size: 2rem;
         font-weight: bold;
         color: $color-primary-boy;
         margin-bottom: 6.3rem;
+
+        @include respond(px1300) {
+            width: calc(100% - 20rem);
+        }
+
+        @include respond(px950) {
+            width: 50rem;
+            height: 13rem;
+            justify-content: center;
+        }
 
         .form-control {
             width: 50%;
@@ -193,10 +204,21 @@
             flex-direction: row;
             align-items: center;
             justify-content: flex-start;
+            
+
+            @include respond(px950) {
+                width: 75%;
+                margin: 2rem 0;
+                align-items: flex-start;
+            }
 
             .addStudentName {
                 padding-left: 4.1rem;
                 padding-right: 1rem;
+
+                @include respond(px950) {
+                    padding-left: 0;
+                }
             }
 
             .addStudentName-input {
@@ -208,6 +230,8 @@
                 border-bottom: 1px solid $color-light-grey;
                 padding-left: 1rem;
                 cursor: pointer;
+
+                
 
                 &:focus {
                     outline: 1px solid $color-primary-boy;
@@ -225,6 +249,11 @@
             justify-self: start;
             align-items: center;
            
+            @include respond(px950) {
+                max-width: 75%;
+                margin-bottom: 2rem;
+                margin-left: 0;
+            }
 
             h3 {
                 font-size: 2rem;
@@ -279,6 +308,8 @@
         }
 
         .add__submit--btn {
+            align-self: flex-end;
+            margin-left: auto;
             margin-right: 3rem;
             height: 3.6rem;
             width: 3.6rem;
@@ -286,6 +317,10 @@
             border: none;
             background-color: $color-primary-boy;
             cursor: pointer;
+
+            @include respond(px950) {
+                margin-right: 0;
+            }
             
             
             i {

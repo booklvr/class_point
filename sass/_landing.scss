@@ -3,6 +3,14 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+
+    @include respond(px1300) {
+        padding: 0 10rem;
+    }
+
+    @include respond(game-mode) {
+        padding: 0 5rem;
+    }
     
 
     & > * {

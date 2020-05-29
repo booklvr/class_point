@@ -77,6 +77,12 @@ footer {
   flex-direction: column;
   align-items: center;
   justify-content: center; }
+  @media (max-width: 1300px) {
+    .info__paragraph {
+      padding: 0 10rem; } }
+  @media (max-width: 500px) {
+    .info__paragraph {
+      padding: 0 5rem; } }
   .info__paragraph > * {
     margin-bottom: 3rem;
     font-size: 2rem;
@@ -100,6 +106,9 @@ footer {
       .navbar__container {
         width: 100%;
         margin: 0 10rem; } }
+    @media (max-width: 500px) {
+      .navbar__container {
+        margin: 0 5rem; } }
   .navbar__brand {
     text-decoration: none;
     font-weight: 800;
@@ -125,10 +134,10 @@ footer {
       .navbar__links li .navbar__link:active {
         transform: scale(1.1); }
     .navbar__links li:not(:last-of-type) {
-      margin-right: 6.3rem; }
+      margin-right: 2rem; }
 
 .title1__container {
-  margin-top: 7.6rem;
+  margin: 7.6rem 0;
   position: relative;
   z-index: 1; }
   .title1__container .title-1 {
@@ -147,6 +156,9 @@ footer {
     left: -10%;
     right: 0;
     bottom: 0; }
+  @media (max-width: 500px) {
+    .title1__container {
+      margin: 3rem 0; } }
 
 .title-2 {
   font-size: 3.2rem;
@@ -614,20 +626,37 @@ footer {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    flex-wrap: wrap;
     border: 1px solid #eaeaea;
     font-size: 2rem;
     font-weight: bold;
     color: #7bc0bd;
     margin-bottom: 6.3rem; }
+    @media (max-width: 1300px) {
+      .form__container .form__add-student {
+        width: calc(100% - 20rem); } }
+    @media (max-width: 950px) {
+      .form__container .form__add-student {
+        width: 50rem;
+        height: 13rem;
+        justify-content: center; } }
     .form__container .form__add-student .form-control {
       width: 50%;
       display: flex;
       flex-direction: row;
       align-items: center;
       justify-content: flex-start; }
+      @media (max-width: 950px) {
+        .form__container .form__add-student .form-control {
+          width: 75%;
+          margin: 2rem 0;
+          align-items: flex-start; } }
       .form__container .form__add-student .form-control .addStudentName {
         padding-left: 4.1rem;
         padding-right: 1rem; }
+        @media (max-width: 950px) {
+          .form__container .form__add-student .form-control .addStudentName {
+            padding-left: 0; } }
       .form__container .form__add-student .form-control .addStudentName-input {
         width: 35.7rem;
         color: #bdbdbd;
@@ -646,6 +675,11 @@ footer {
       flex-direction: row;
       justify-self: start;
       align-items: center; }
+      @media (max-width: 950px) {
+        .form__container .form__add-student .form-control-radios {
+          max-width: 75%;
+          margin-bottom: 2rem;
+          margin-left: 0; } }
       .form__container .form__add-student .form-control-radios h3 {
         font-size: 2rem; }
       .form__container .form__add-student .form-control-radios .radio-control {
@@ -678,6 +712,8 @@ footer {
           background-color: #7bc0bd;
           box-shadow: inset 0 0 0 0.15em #7bc0bd; }
     .form__container .form__add-student .add__submit--btn {
+      align-self: flex-end;
+      margin-left: auto;
       margin-right: 3rem;
       height: 3.6rem;
       width: 3.6rem;
@@ -685,6 +721,9 @@ footer {
       border: none;
       background-color: #7bc0bd;
       cursor: pointer; }
+      @media (max-width: 950px) {
+        .form__container .form__add-student .add__submit--btn {
+          margin-right: 0; } }
       .form__container .form__add-student .add__submit--btn i {
         display: flex;
         align-items: center;
@@ -708,9 +747,14 @@ footer {
   border-radius: 2.25em;
   color: #fff;
   background-color: #7bc0bd; }
-  @media (max-width: 750px) {
+  @media (max-width: 1300px) {
     .addClassBtn {
-      align-items: stretch; } }
+      right: 10rem; } }
+  @media (max-width: 500px) {
+    .addClassBtn {
+      position: static;
+      top: 0;
+      margin: 0rem 0 3rem; } }
   .addClassBtn a {
     display: flex;
     flex-direction: column;
@@ -746,28 +790,20 @@ footer {
     margin-bottom: 3rem; }
     @media (max-width: 1300px) {
       .classrooms__container .class__container {
-        min-width: calc((100% - 6rem) / 3);
-        background-color: yellow; }
+        min-width: calc((100% - 6rem) / 3); }
         .classrooms__container .class__container:not(:nth-child(3n)) {
           margin-right: 3rem; } }
     @media (max-width: 1100px) {
       .classrooms__container .class__container {
-        background-color: blue; } }
-    @media (max-width: 1100px) {
-      .classrooms__container .class__container {
         min-width: calc((100% - 3rem) / 2);
-        background-color: pink;
         font-size: .2rem; }
         .classrooms__container .class__container:not(:nth-child(3n)) {
           margin-right: 0; }
         .classrooms__container .class__container:not(:nth-child(2n)) {
           margin-right: 3rem; } }
-    @media (max-width: 750px) {
+    @media (max-width: 788px) {
       .classrooms__container .class__container {
-        min-width: 100%;
-        background-color: red; }
-        .classrooms__container .class__container:not(:nth-child(3n)) {
-          margin-right: 0; }
+        min-width: 100%; }
         .classrooms__container .class__container:not(:nth-child(2n)) {
           margin-right: 0rem; } }
     .classrooms__container .class__container .trashBtn {
@@ -825,8 +861,22 @@ footer {
   font-size: 2rem;
   font-weight: 800;
   margin-bottom: 6.3rem; }
+  @media (max-width: 1300px) {
+    .choose-game {
+      width: 100%;
+      padding: 0 10rem; } }
+  @media (max-width: 1200px) {
+    .choose-game {
+      width: 75rem;
+      flex-wrap: wrap; } }
+  @media (max-width: 500px) {
+    .choose-game {
+      width: 100%;
+      padding: 0 5rem;
+      margin-bottom: 2rem; } }
   .choose-game-button {
     display: flex;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
     list-style: none;
@@ -835,12 +885,24 @@ footer {
     height: 4.9rem;
     border-radius: 2.45rem;
     background-color: #f0f0fb; }
+    @media (max-width: 1300px) {
+      .choose-game-button {
+        min-width: 24rem;
+        margin-bottom: 4rem; } }
+    @media (max-width: 500px) {
+      .choose-game-button {
+        max-width: 19rem;
+        min-width: 19rem;
+        font-size: 1.6rem; } }
     .choose-game-button:hover {
       background-color: #4b3d6d; }
       .choose-game-button:hover a {
         color: #fff; }
     .choose-game-button:not(:last-of-type) {
       margin-right: 3.7rem; }
+      @media (max-width: 1300px) {
+        .choose-game-button:not(:last-of-type) {
+          margin-right: 0; } }
     .choose-game-button a {
       text-decoration: none;
       color: #4b3d6d; }
@@ -865,6 +927,9 @@ footer {
   align-items: flex-start;
   flex-wrap: wrap;
   list-style: none; }
+  @media (max-width: 1200px) {
+    .student__list {
+      justify-content: center; } }
   .student__list .studentContainer {
     width: 58.5rem;
     display: flex;
@@ -872,6 +937,9 @@ footer {
     border-bottom: 1px solid #eaeaea; }
     .student__list .studentContainer:not(:nth-child(2n)) {
       margin-right: 3rem; }
+      @media (max-width: 1200px) {
+        .student__list .studentContainer:not(:nth-child(2n)) {
+          margin-right: 0; } }
     .student__list .studentContainer .student {
       width: 100%;
       height: 5rem;

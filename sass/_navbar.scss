@@ -28,13 +28,9 @@
             margin: 0 10rem;
         }
 
-        // @include respond(px1050) {
-        //     width: 90rem;
-        // }
-
-        // @include respond(px900) {
-        //     min-width: 100%;
-        // }
+        @include respond(game-mode) {
+            margin: 0 5rem;
+        }
 
         
 
@@ -80,7 +76,7 @@
                 }
             }
             &:not(:last-of-type) {
-                margin-right: 6.3rem;
+                margin-right: 2rem;
             }
         }
     }
