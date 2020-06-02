@@ -19,6 +19,8 @@
         right: 10rem;
     }
 
+
+
     @include respond(game-mode) {
         position: static;
         top: 0;
@@ -55,6 +57,14 @@
     @include respond(px1300) {
         width: 100%;
         padding: 0 10rem;
+    }
+
+    @include respond(px788) {
+        padding: 0 5rem;
+    }
+
+    @include respond(px650) {
+        justify-content: center;
     }
 
 
@@ -100,12 +110,20 @@
             }
         }
 
-        @include respond(px788) {
-            min-width: 100%;
-            
+        @include respond(px650) {
+            min-width: 30rem;
+
             &:not(:nth-child(2n)) {
                 margin-right: 0rem;
             }
+        }
+
+        @include respond(px788) {
+            max-width: 25rem; 
+        }
+
+        @include respond(game-mode) {
+            min-width: 23rem;
         }
         
         .trashBtn {
@@ -130,6 +148,11 @@
                 text-decoration: none;
                 color: $color-primary-boy;
             }
+
+            @include respond(px788) { 
+                margin-top: 2.5rem;
+                margin-bottom: .75rem;
+            }
          
         }
 
@@ -141,8 +164,7 @@
             padding-bottom: 2rem;
             font-family: $font-secondary;
             font-weight: 600;
-
-            
+                
 
             li {
                 list-style: none;
@@ -160,7 +182,9 @@
                 color: $color-black;
                 margin: 1.25rem;
 
-               
+                @include respond(game-mode) {
+                    margin: .5rem;
+                }               
                 
                 &:not(:last-of-type) {
                     padding-bottom: 2rem;

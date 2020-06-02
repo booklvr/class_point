@@ -18,6 +18,8 @@ main {
     @include respond(px1300) {
         width: 100%;
     } 
+
+    
     
 }
 
@@ -51,4 +53,7 @@ header {
 footer {
     align-self: flex-end;
     margin-top: 5rem;
+    p {
+        font-family: $font-secondary;
+    }
 }

@@ -3,6 +3,10 @@
     position: relative;
     z-index: 1;
 
+    @include respond(px950) {
+        margin: 5rem 0;
+    }
+
     .title-1 {
         position: relative;
         font-family: $font-main;
@@ -60,6 +64,10 @@
 
 .m-b-l {
     margin-bottom: 7.9rem;
+
+    @include respond(px950) {
+        margin-bottom: 5rem;
+    }
 }
 
 .m-b-m {

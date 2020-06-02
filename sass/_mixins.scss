@@ -27,6 +27,10 @@
         @media (max-width: 500px) { @content };
    }
 
+   @if $breakpoint == px650 {
+     @media (max-width: 650px) { @content };
+   }
+
    @if $breakpoint == px788 {
      @media (max-width: 788px) { @content };
    }
