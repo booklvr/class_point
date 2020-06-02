@@ -6,133 +6,135 @@
 <main>
     
 
-    <div class="title1__container m-b-l">
-        <h1 class="title-1"><%= classroom.className %></h1>
-        <div class="rectangle"></div>
-    </div>
 
-    <ul class="choose-game">
-        <li class="choose-game-button">
-            <a data-class_size="<%= students.length %>" class="checkTeams" href="/game/individual/<%= classroom._id %>">Individual Game</a>
-        </li>
-        <li class="choose-game-button">
-            <a data-class_size="<%= students.length %>" class="checkTeams" href="/game/boysVsGirls/<%= classroom._id %>">Girls Vs Boys</a>
-        </li>
-        <li class="choose-game-button">
-            <a data-class_size="<%= students.length %>" class="checkTeams" href="game/teamForm/<%= classroom._id %>">Team Game</a>
-        </li>
-        <li class="choose-game-button">
-            <a data-class_size="<%= students.length %>" class="checkTeams" href="/game/participation/<%= classroom._id %>">Class Participation</a>
-        </li>
-    </ul>
-        
-    
-    <div class="errors"></div>
-    <div class="form__container">
-        
-        <form action="/student/<%= classroom._id %>" class="form__add-student" method="post">
-            <div class="form-control">
-                <label for="name" class="addStudentName">Name</label>
-                <input class="addStudentName-input" type="text" name="name" auto>
-            </div>
-            <div class="form-control-radios">
-                <h3>Gender</h3>
-                
-                <div class="radio-control">
-                    <input class="gender-radio" id="addRadio-male" type="radio" name="sex" value="male">
-                    <label class="gender-radio-label" for="addRadio-male">boy</label>
-                </div>
-                
-                <div class="radio-control">
-                    <input class="gender-radio"id="addRadio-female" type="radio" name="sex" value="female">
-                    <label class="gender-radio-label" for="addRadio-female">girl</label>
-                </div>
-                <button class="add__submit--btn"><i class="addStudentBtn fas fa-plus"></i></button>
-            </div>
-            
-        </form>
-    </div>
+        <div class="title1__container m-b-l">
+            <h1 class="title-1"><%= classroom.className %></h1>
+            <div class="rectangle"></div>
+        </div>
 
-   
-    
-    <ul class="student__list">
-        
-        <% students.forEach(function(student) { %> 
+        <ul class="choose-game">
+            <li class="choose-game-button">
+                <a data-class_size="<%= students.length %>" class="checkTeams" href="/game/individual/<%= classroom._id %>">Individual Game</a>
+            </li>
+            <li class="choose-game-button">
+                <a data-class_size="<%= students.length %>" class="checkTeams" href="/game/boysVsGirls/<%= classroom._id %>">Girls Vs Boys</a>
+            </li>
+            <li class="choose-game-button">
+                <a data-class_size="<%= students.length %>" class="checkTeams" href="game/teamForm/<%= classroom._id %>">Team Game</a>
+            </li>
+            <li class="choose-game-button">
+                <a data-class_size="<%= students.length %>" class="checkTeams" href="/game/participation/<%= classroom._id %>">Class Participation</a>
+            </li>
+        </ul>
             
-            <li class="studentContainer">
-                <div class="student">
-                    <div class="student__name"><%= student.name %></div>
+        
+        <div class="errors"></div>
+        <div class="form__container">
+            
+            <form action="/student/<%= classroom._id %>" class="form__add-student" method="post">
+                <div class="form-control">
+                    <label for="name" class="addStudentName">Name</label>
+                    <input class="addStudentName-input" type="text" name="name" auto>
+                </div>
+                <div class="form-control-radios">
+                    <h3>Gender</h3>
                     
-                    <div class="studentPoints">
-                        <p class="pointsLabel">
-                            <span>Class</span>
-                            <span>Points</span>
-                        </p>
-                        <p class="points"><%= student.participationPoints %></p>
+                    <div class="radio-control">
+                        <input class="gender-radio" id="addRadio-male" type="radio" name="sex" value="male">
+                        <label class="gender-radio-label" for="addRadio-male">boy</label>
                     </div>
-                    <div class="studentPoints">
-                        <p class="pointsLabel">
-                            <span>Game</span>
-                            <span>Points</span>
-                        </p>
-                        <p class="points"><%= student.totalPoints %></p>
+                    
+                    <div class="radio-control">
+                        <input class="gender-radio"id="addRadio-female" type="radio" name="sex" value="female">
+                        <label class="gender-radio-label" for="addRadio-female">girl</label>
                     </div>
-                    <div class="student-edit">
-                        <div class="student-edit-button student-edit-button-edit"><i class="updateStudent fas fa-edit"></i></div>
-                        <a class="student-edit-button student-edit-button-delete" href="/student/delete/<%= student._id %>"><i class="fas fa-minus"></i></a>
-                    </div> 
+                    <button class="add__submit--btn"><i class="addStudentBtn fas fa-plus"></i></button>
                 </div>
-                <div class="update__form hide">
-                    <form action="/student/update/<%= student._id %>" class="form__update" method="post">
-                        
-                        <input class="update__name" type="text" name="name" value="<%= student.name %>" onfocus="this.setSelectionRange(this.value.length, this.value.length);"/>
+                
+            </form>
+        </div>
 
-                        <div class="form-control-radios">                            
-                            <div class="radio-control">
-                                <input class="gender-radio" id="addRadio-male-<%= student._id %>" type="radio" name="sex" value="male">
-                                <label class="gender-radio-label" for="addRadio-male-<%= student._id %>">boy</label>
-                            </div>
-                            
-                            <div class="radio-control">
-                                <input class="gender-radio"id="addRadio-female-<%= student._id %>" type="radio" name="sex" value="female">
-                                <label class="gender-radio-label" for="addRadio-female-<%= student._id %>">girl</label>
-                            </div>
-                            
-                        </div>
-                            
-                        <div class="form-control-number">
-                            <label class="pointsLabel" for="totalPoints" class="totalPoints">
+    
+        
+        <ul class="student__list">
+            
+            <% students.forEach(function(student) { %> 
+                
+                <li class="studentContainer">
+                    <div class="student">
+                        <div class="student__name"><%= student.name %></div>
+                        
+                        <div class="studentPoints">
+                            <p class="pointsLabel">
                                 <span>Class</span>
                                 <span>Points</span>
-                            </label>
-                            <input class="pointsInput" id="totalPoints" name="participationPoints" type="number" value="<%= student.participationPoints %>">
-                            <div class="increment-buttons">
-                                <button class="increment-button increment" type="button"><i class="fas fa-caret-up"></i></button>
-                                <button class="increment-button decrement" type="button"><i class="fas fa-caret-down"></i></button>
-                            </div>
+                            </p>
+                            <p class="points"><%= student.participationPoints %></p>
                         </div>
-                        <div class="form-control-number">
-                            <label class="pointsLabel" for="totalPoints" class="totalPoints">
+                        <div class="studentPoints">
+                            <p class="pointsLabel">
                                 <span>Game</span>
                                 <span>Points</span>
-                            </label>
-                            <input class="pointsInput" id="totalPoints" name="totalPoints" type="number" value="<%= student.totalPoints %>">
-                            <div class="increment-buttons">
-                                <button class="increment-button increment" type="button"><i class="fas fa-caret-up"></i></button>
-                                <button class="increment-button decrement" type="button"><i class="fas fa-caret-down"></i></button>
-                            </div>
+                            </p>
+                            <p class="points"><%= student.totalPoints %></p>
                         </div>
+                        <div class="student-edit">
+                            <div class="student-edit-button student-edit-button-edit"><i class="updateStudent fas fa-edit"></i></div>
+                            <a class="student-edit-button student-edit-button-delete" href="/student/delete/<%= student._id %>"><i class="fas fa-minus"></i></a>
+                        </div> 
+                    </div>
+                    <div class="update__form hide">
+                        <form action="/student/update/<%= student._id %>" class="form__update" method="post">
+                            
+                            <input class="update__name" type="text" name="name" value="<%= student.name %>" onfocus="this.setSelectionRange(this.value.length, this.value.length);"/>
+
+                            <div class="form-control-radios">                            
+                                <div class="radio-control">
+                                    <input class="gender-radio" id="addRadio-male-<%= student._id %>" type="radio" name="sex" value="male">
+                                    <label class="gender-radio-label" for="addRadio-male-<%= student._id %>">boy</label>
+                                </div>
+                                
+                                <div class="radio-control">
+                                    <input class="gender-radio"id="addRadio-female-<%= student._id %>" type="radio" name="sex" value="female">
+                                    <label class="gender-radio-label" for="addRadio-female-<%= student._id %>">girl</label>
+                                </div>
+                                
+                            </div>
+                                
+                            <div class="form-control-number">
+                                <label class="pointsLabel" for="totalPoints" class="totalPoints">
+                                    <span>Class</span>
+                                    <span>Points</span>
+                                </label>
+                                <input class="pointsInput" id="totalPoints" name="participationPoints" type="number" value="<%= student.participationPoints %>">
+                                <div class="increment-buttons">
+                                    <button class="increment-button increment" type="button"><i class="fas fa-caret-up"></i></button>
+                                    <button class="increment-button decrement" type="button"><i class="fas fa-caret-down"></i></button>
+                                </div>
+                            </div>
+                            <div class="form-control-number">
+                                <label class="pointsLabel" for="totalPoints" class="totalPoints">
+                                    <span>Game</span>
+                                    <span>Points</span>
+                                </label>
+                                <input class="pointsInput" id="totalPoints" name="totalPoints" type="number" value="<%= student.totalPoints %>">
+                                <div class="increment-buttons">
+                                    <button class="increment-button increment" type="button"><i class="fas fa-caret-up"></i></button>
+                                    <button class="increment-button decrement" type="button"><i class="fas fa-caret-down"></i></button>
+                                </div>
+                            </div>
+                            
+                            
+                            <button type="submit" class="update__submit--btn"><i class="fas fa-check"></i></button>
+                        </form>
                         
-                        
-                        <button type="submit" class="update__submit--btn"><i class="fas fa-check"></i></button>
-                    </form>
+                    </div>
                     
-                </div>
-                
-            </li>
-           
-        <% }) %>
+                </li>
+            
+            <% }) %>
         </ul>
+    
         
 </main>
 <%- include ('../partials/footer'); %>

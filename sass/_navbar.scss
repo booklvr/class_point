@@ -9,6 +9,8 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
+
+    
     
 
     &__container {
@@ -21,20 +23,20 @@
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
-       
-        
+
         @include respond(px1300) {
             width: 100%;
             margin: 0 10rem;
         }
 
-        @include respond(game-mode) {
+        @include respond(px1050) {
             margin: 0 5rem;
         }
 
-        
-
-        
+        @include respond(game-mode) {
+            margin: 0 2.5rem;
+        }
+       
     }
     
     &__brand {

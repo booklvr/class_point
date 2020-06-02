@@ -30,14 +30,13 @@ main {
 }
 
 .align-right {
-    padding-right: 3rem;
+    padding-right: 2.5rem;
     align-self: flex-end;
     align-items: flex-end;
     justify-content: end;
     width: 50rem;
     position: relative;
 }
-
 
 
 header {
@@ -51,4 +50,5 @@ header {
 
 footer {
     align-self: flex-end;
+    margin-top: 5rem;
 }

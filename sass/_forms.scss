@@ -197,6 +197,10 @@
             justify-content: center;
         }
 
+        @include respond(game-mode) {
+            width: calc(100% - 5rem)
+        }
+
         .form-control {
             width: 50%;
             

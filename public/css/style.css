@@ -56,7 +56,7 @@ main {
   justify-content: flex-start; }
 
 .align-right {
-  padding-right: 3rem;
+  padding-right: 2.5rem;
   align-self: flex-end;
   align-items: flex-end;
   justify-content: end;
@@ -70,7 +70,8 @@ header {
   position: relative; }
 
 footer {
-  align-self: flex-end; }
+  align-self: flex-end;
+  margin-top: 5rem; }
 
 .info__paragraph {
   display: flex;
@@ -106,9 +107,12 @@ footer {
       .navbar__container {
         width: 100%;
         margin: 0 10rem; } }
-    @media (max-width: 500px) {
+    @media (max-width: 1050px) {
       .navbar__container {
         margin: 0 5rem; } }
+    @media (max-width: 500px) {
+      .navbar__container {
+        margin: 0 2.5rem; } }
   .navbar__brand {
     text-decoration: none;
     font-weight: 800;
@@ -640,6 +644,9 @@ footer {
         width: 50rem;
         height: 13rem;
         justify-content: center; } }
+    @media (max-width: 500px) {
+      .form__container .form__add-student {
+        width: calc(100% - 5rem); } }
     .form__container .form__add-student .form-control {
       width: 50%;
       display: flex;
@@ -855,7 +862,7 @@ footer {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
   list-style: none;
   font-family: "Gilroy", sans-serif;
   font-size: 2rem;
@@ -867,12 +874,15 @@ footer {
       padding: 0 10rem; } }
   @media (max-width: 1200px) {
     .choose-game {
-      width: 75rem;
       flex-wrap: wrap; } }
+  @media (max-width: 1050px) {
+    .choose-game {
+      width: 100%;
+      padding: 0 10rem; } }
   @media (max-width: 500px) {
     .choose-game {
       width: 100%;
-      padding: 0 5rem;
+      padding: 0 2.5rem;
       margin-bottom: 2rem; } }
   .choose-game-button {
     display: flex;
@@ -881,14 +891,26 @@ footer {
     align-items: center;
     list-style: none;
     cursor: pointer;
-    width: 24rem;
+    width: 25rem;
     height: 4.9rem;
     border-radius: 2.45rem;
     background-color: #f0f0fb; }
     @media (max-width: 1300px) {
       .choose-game-button {
-        min-width: 24rem;
         margin-bottom: 4rem; } }
+    @media (max-width: 1200px) {
+      .choose-game-button {
+        min-width: 38rem; } }
+    @media (max-width: 1050px) {
+      .choose-game-button {
+        font-size: 1.8rem;
+        min-width: 30rem; } }
+    @media (max-width: 950px) {
+      .choose-game-button {
+        min-width: 26rem; } }
+    @media (max-width: 788px) {
+      .choose-game-button {
+        min-width: 22rem; } }
     @media (max-width: 500px) {
       .choose-game-button {
         max-width: 19rem;
@@ -940,6 +962,9 @@ footer {
       @media (max-width: 1200px) {
         .student__list .studentContainer:not(:nth-child(2n)) {
           margin-right: 0; } }
+    @media (max-width: 500px) {
+      .student__list .studentContainer {
+        width: calc(100% - 5rem); } }
     .student__list .studentContainer .student {
       width: 100%;
       height: 5rem;
@@ -953,6 +978,9 @@ footer {
       .student__list .studentContainer .student .student__name {
         flex: 1;
         margin-left: 4rem; }
+        @media (max-width: 500px) {
+          .student__list .studentContainer .student .student__name {
+            margin-left: 2rem; } }
       .student__list .studentContainer .student .studentPoints {
         display: flex;
         flex-direction: row;
@@ -962,6 +990,12 @@ footer {
         margin-right: 4rem; }
         .student__list .studentContainer .student .studentPoints:not(:nth-child(2n)) {
           margin-right: 5rem; }
+          @media (max-width: 500px) {
+            .student__list .studentContainer .student .studentPoints:not(:nth-child(2n)) {
+              margin-right: 2.5rem; } }
+        @media (max-width: 500px) {
+          .student__list .studentContainer .student .studentPoints {
+            margin-right: 4rem; } }
         .student__list .studentContainer .student .studentPoints .pointsLabel {
           display: flex;
           flex-direction: column;
@@ -984,6 +1018,9 @@ footer {
           margin-left: 1.7rem;
           font-size: 1.8rem;
           color: #302929; }
+          @media (max-width: 500px) {
+            .student__list .studentContainer .student .studentPoints .points {
+              margin-right: 0; } }
       .student__list .studentContainer .student .student-edit {
         display: none;
         margin-right: 2rem; }
@@ -1017,12 +1054,15 @@ footer {
         align-items: center;
         justify-content: flex-end;
         height: 5rem; }
+        @media (max-width: 500px) {
+          .student__list .studentContainer .update__form .form__update {
+            flex-wrap: wrap;
+            height: 10rem; } }
         .student__list .studentContainer .update__form .form__update .update__name {
           border: none;
           font-size: 1.8rem;
           color: #302929;
           max-width: 14rem;
-          height: 100%;
           background-color: inherit;
           margin-right: auto;
           margin-left: 4rem; }
