@@ -1,24 +1,35 @@
-const   express =           require('express'),
-        cors =              require('cors'),
-        path =              require('path'),
+// const   express =           require('express'),
+        // cors =              require('cors'),
+        // path =              require('path'),
         bodyParser =        require('body-parser'),
         passport =          require('passport'),
         LocalStrategy =     require('passport-local'),
         flash =             require('connect-flash'),
-        userRouter =        require('./routers/user'),
-        classroomRouter =   require('./routers/classroom'),
-        studentRouter =     require('./routers/student'),
-        gameRouter =        require('./routers/game'),  
-        mainRouter =        require('./routers/main'),
-        User =           require('./db/models/user');
+        // userRouter =        require('./routers/user'),
+        // classroomRouter =   require('./routers/classroom'),
+        // studentRouter =     require('./routers/student'),
+        // gameRouter =        require('./routers/game'),  
+        // mainRouter =        require('./routers/main'),
+        User =           require('../db/models/user');
 
-const connectDB = require('./db/mongoose');
+const connectDB = require('../db/mongoose');
+
+import path     from 'path';
+import express  from 'express';
+import webpack  from 'webpack';
+import cors from 'cors';
+import config from '../webpack.dev.config.js';
+
+import routers from './routers';
 
 //Connect to database
 connectDB();
 
 const app = express(),
-      port = process.env.PORT;
+      port = process.env.PORT,
+      DIST_DIR = __dirname,
+      HTML_FILE = path.join(DIST_DIR, 'index.html'),
+      compiler = webpack(config);
 
 // Body parser
 app.use(express.json());
@@ -60,11 +71,11 @@ app.use((req, res, next) => {
     next();
 })
 
-app.use('/users', userRouter);
-app.use('/classroom', classroomRouter);
-app.use('/student', studentRouter);
-app.use('/game', gameRouter);
-app.use('/', mainRouter);
+app.use('/users', routers.user);
+app.use('/classroom', routers.classroom);
+app.use('/student', routers.student);
+app.use('/game', rotuers.game);
+app.use('/', routers.main);
 
 
 app.listen(port, () => console.log(`Server is up on port ${port}`));

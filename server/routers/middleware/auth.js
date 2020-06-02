@@ -1,5 +1,5 @@
-const   User =      require('../../db/models/user'),
-        Classroom =    require('../../db/models/classroom');
+const   User =      require('../../../db/models/user'),
+        Classroom =    require('../../../db/models/classroom');
 
 const middlewareObj = {};
 

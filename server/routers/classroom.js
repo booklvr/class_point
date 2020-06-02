@@ -2,9 +2,9 @@ const   express =           require('express'),
         url =               require('url'),
         multer =            require('multer'),
         upload =            require('./middleware/csv.multer'),
-        User  =             require('../db/models/user'),
-        Classroom =         require('../db/models/classroom'),
-        Student =           require('../db/models/student'),
+        User  =             require('../../db/models/user'),
+        Classroom =         require('../../db/models/classroom'),
+        Student =           require('../../db/models/student'),
         { isLoggedIn } =    require('./middleware/auth');
 
 const router = new express.Router();
