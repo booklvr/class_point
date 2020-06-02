@@ -64,29 +64,37 @@ module.exports = {
                     'sass-loader'
                 ]
             },
-            {
-                test: /\.(png|jpe?g|gif)$/i,
-                use: [
-                    {
-                        loader: 'file-loader'
-                    }
-                ]
-            },
-            {
-                test: /\.(eot|svg|ttf|woff)$/i,
-                use: [
-                    {
-                        loader: 'file-loader'
-                    }
-                ]
-            }
+            // {
+            //     test: /\.(png|jpe?g|gif)$/i,
+            //     use: [
+            //         {
+            //             loader: 'file-loader'
+            //         }
+            //     ]
+            // },
+            // {
+            //     test: /\.(eot|svg|ttf|woff)$/i,
+            //     use: [
+            //         {
+            //             loader: 'file-loader'
+            //         }
+            //     ]
+            // }
         ]
     },
     plugins: [
         new HtmlWebpackPlugin({
-            title: '500 Chance Encounters',
-            template: './src/html/index.html',
-            excludeChunks: [ 'server' ]
+            template: "!!raw-loader!src/html/index.ejs",
+            filename: "./index.ejs",
+            minify: {
+                removeComments: true,
+                collapseWhitespace: true,
+                conservativeCollapse: true
+            },
+            excludeChunks: ['server']
+        }),
+        new webpack.ProvidePlugin({
+            _: "underscore"
         }),
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NoEmitOnErrorsPlugin(),
