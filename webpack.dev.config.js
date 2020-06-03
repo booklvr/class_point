@@ -84,18 +84,25 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: "!!raw-loader!src/html/index.ejs",
-            filename: "./index.ejs",
+            template: "src/html/index.ejs",
             minify: {
                 removeComments: true,
-                collapseWhitespace: true,
-                conservativeCollapse: true
+				collapseWhitespace: true,
+				removeRedundantAttributes: true,
+				useShortDoctype: true,
+				removeEmptyAttributes: true,
+				removeStyleLinkTypeAttributes: true,
+				keepClosingSlash: true,
+				minifyJS: true,
+				minifyCSS: true,
+				minifyURLs: true
             },
-            excludeChunks: ['server']
+            inject: true,
+            ejsVarInject: {
+                api: '<%= api %>'
+            }
         }),
-        new webpack.ProvidePlugin({
-            _: "underscore"
-        }),
+       
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NoEmitOnErrorsPlugin(),
         // new MiniCssExtractPlugin({
