@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <base href="/">
+    <title>Class Point</title>
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"> -->
+    <link rel="stylesheet" href="https://cdn.rawgit.com/mfd/09b70eb47474836f25a21660282ce0fd/raw/e06a670afcb2b861ed2ac4a1ef752d062ef6b46b/Gilroy.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+    <!-- <link rel="stylesheet" type="text/css" href="/public/css/style.css"> -->
+</head>
+<body>
+
+<header>
+    <%- include ('../partials/navbar'); %>
+</header>
+
+<main>
+    <div class="title1__container m-b-xl">
+        <h1 class="title title-1">Class Point</h1>
+        <div class="rectangle"></div>
+    </div>
+
+    <div class="info__paragraph">
+        <p>
+            This site is dedicated to helping teachers keep track of classroom points for games, as well as tracking student participation.
+        </p>
+        <p>
+            After signing up you can save a class either by entering students manually or downloading a csv file.
+        </p>
+        <p>
+            Once your class is saved you can play <span>Individual Games</span>, where students compete against each other,
+            <span>Boy Vs Girl games,</span> or <span>Team Games,</span> where you can split your class into as many teams as you need. 
+        </p>
+    </div>
+
+    <div class="cta__container m-b-xl">
+        <ul class="navbar__links">
+            <% if(currentUser){ %>
+                <li class="cta__button"><a href="/classroom">Classes</a></li>
+            <% }  else { %>
+                <li class="cta__button"><a href="/users/login">Login</a></li>
+                <li class="cta__button"><a href="/users/">SignUp</a></li>
+            <% } %>    
+            
+        </ul>
+    </div>
+
+    
+</main>
+<footer>
+    <p>class point by Nick de Waal, copyright &#169 2020 all rights reserved</p>
+</footer>
+
+</body>
+</html>

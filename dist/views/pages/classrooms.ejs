@@ -1,0 +1,53 @@
+<%- include ('../partials/head'); %>
+
+<header>
+    <%- include ('../partials/navbar'); %>
+    
+   
+</header>
+
+<main>
+    <div class="title1__container">
+        <h1 class="title-1">Classrooms</h1>
+        <div class="rectangle"></div>
+    </div>
+
+    <div class="addClassBtn">
+        <a href="/classroom/add"><i class="fas fa-plus"></i></a>
+    </div>
+
+    <div class="classrooms__container">
+        <!--classrooms go here-->
+        <!-- <div class="errors"></div> -->
+        
+       
+
+        <% data.forEach(function(classroom) { %> 
+            <div class="class__container">
+                <div class="trashBtn">
+                    <a href="/classroom/delete/<%= classroom._id %>"><i class="far fa-trash-alt"></i></a>
+                </div>
+
+                <div class="class-title"><a href="/classroom/class/<%= classroom._id %>"><%= classroom.className %></a></div> 
+                
+                <ul class="class">
+                    <li class="game-link"><a data-class_size="<%= classroom.classSize %>" class="goToGame" href="game/participation/<%= classroom._id %>">Class Participation</a></li>
+                    <li class="game-link"><a data-class_size="<%= classroom.classSize %>" class="goToGame" href="/game/individual/<%= classroom._id %>">Individual Game</a></li>
+                    <li class="game-link"><a data-class_size="<%= classroom.classSize %>" class="goToGame" href="/game/boysVsGirls/<%= classroom._id%>">Girls Vs Boys</a></li>
+                    <li class="game-link"><a data-class_size="<%= classroom.classSize %>" class="goToGame" href="game/teamForm/<%= classroom._id %>">Team Game</a></li>
+                </ul>
+            </div>
+        <% }) %>
+    </div>
+     
+    
+    
+</main>
+<%- include ('../partials/footer'); %>
+<script type="module" src="../public/js/classrooms/controller.js"></script>
+<script src="/js/main.js"></script></body>
+</html>
+   
+    
+
+

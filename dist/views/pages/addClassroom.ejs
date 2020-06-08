@@ -1,0 +1,45 @@
+<%- include ('../partials/head'); %>
+
+    <header>
+        <%- include ('../partials/navbar'); %>
+        
+    </header>
+
+    
+    
+    <main class="align-middle">
+
+        <div class="title1__container">
+            <h1 class="title-1">Add A Classroom</h1>
+            <div class="rectangle"></div>
+        </div>
+
+        <div class="form__container">
+            <form action="/classroom/add" method="POST" enctype="multipart/form-data" id="addClassroom" class="form-secondary" autocomplete="off">
+                <div class="form-control">
+                    <label for="name">Class Name</label>
+                    <input class="add-class-name" type="text" id="className" name="className"required/>
+                </div>
+                <div class="form-control">
+                    <label class="add-students-label" for="add-class">Add Students</label>
+                    <div class="add-class" id="add-class">
+                        <label>
+                            <input class="file-input" id="file" name="csvfile" type="file" title=" ">
+                            <span class="form-btn">Add CSV File</span>
+                            <span class="file-value"></span>
+                        </label>
+                        
+                        <button class="submit form-btn" type="submit">Add Students Manually</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        
+
+    </main>
+    <%- include ('../partials/footer'); %>
+<script type="module" src="/public/js/addClassroom/controller.js"></script>
+
+
+<script src="/js/main.js"></script><script src="/js/addClassroom.js"></script></body>
+</html>
