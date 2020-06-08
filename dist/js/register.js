@@ -108,15 +108,7 @@ var registerUI = function () {
     email: '#email',
     password: '#password',
     password2: '#password2'
-  };
-  var DOM = {
-    name: document.querySelector(DOMStrings.name),
-    email: document.querySelector(DOMStrings.email),
-    password: document.querySelector(DOMStrings.password),
-    password2: document.querySelector(DOMStrings.password2) // formControl: document.querySelectorAll()
-
-  }; //persistent data
-  //HELPER FUNCTIONS
+  }; //HELPER FUNCTIONS
 
   const showError = function (input, msg) {
     const formControl = input.parentElement;
@@ -196,7 +188,7 @@ var registerUI = function () {
     },
     //////////////////////////////////////////////////////////////////
     // *** functions for game play ***
-    submitEvent: function (e) {}
+    submitEvent: function () {}
   };
 }();
 

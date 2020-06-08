@@ -14,7 +14,7 @@ var gameFormUI = (function(CF) {
         refreshStudentsBtn: '.refresh-studentsBtn',
         refreshGameBtn: '.refresh-gameBtn',
         shuffleStudentsBtn: '.shuffle-studentsBtn',
-        saveGameBtn: '.save-gameBtn', // not yet
+        saveGameBtn: '.save-gameBtn', 
         goToClassroomBtn: '.goToClassroomBtn',
         playAgainBtn: '.playAgainBtn',
         playGameBtn: '.playGameBtn',
@@ -29,11 +29,10 @@ var gameFormUI = (function(CF) {
     };
 
     var DOM = {
-        
         classroomData: document.querySelector(DOMStrings.classroomData),
         title2: document.querySelector(DOMStrings.title2),
-        gameFormContainer: document.querySelector(DOMStrings.gameFormContainer)
-        // refreshStudentsBtn: document.querySelector(DOMStrings.refreshStudentsBtn),
+        gameFormContainer: document.querySelector(DOMStrings.gameFormContainer),
+        numberOfTeams: document.querySelector(DOMStrings.numberOfTeams)
     } 
     // CREATE STUDENTS AND TEAMS ARRAY
     let studentsArray = [];
@@ -45,7 +44,6 @@ var gameFormUI = (function(CF) {
 
     ////////////////////////////////////////////////////////////////////////////
     // *** Functions for Game Form ***
-
     const tooManyTeams = function (teamSize) {
         console.log(studentsArray.length);
         console.log((( studentsArray.length + 1 ) / teamSize) < 2)
@@ -94,9 +92,7 @@ var gameFormUI = (function(CF) {
         // * ID used as search parameter stored on main dataset in html
         // * shuffle the returned data for unique gamepaly
         getClassroomData: async function () {
-            console.log('get classroom data')
             const classroomID = DOM.classroomData.dataset.classroom_id;
-            // console.log(classroomID)
 
             const response = await fetch(`/game/classData/${classroomID}`)
             
@@ -134,7 +130,6 @@ var gameFormUI = (function(CF) {
                 CF.removeStudentFromTeam(teamsArray, e.target.id);
                 studentsArray = CF.removeStudentfromArray(studentsArray, e.target.id)
                 //remove the student form the DOM
-                // console.log(e.target.parentElement);
                 let li = e.target.parentElement;
                 li.remove();
             }
@@ -195,11 +190,9 @@ var gameFormUI = (function(CF) {
             
             if (pointDiv.classList.contains('teamPoint')) {
                 const team = pointDiv.parentElement.parentElement;
-                // const pointValue = pointDiv.lastElementChild;
 
                 let action = CF.plusOrMinus(target);
 
-                // change points in teamsArray
                 CF.updatePointsArrayTeam(teamsArray, team.id, action)
 
                 //update DOM 
@@ -209,7 +202,7 @@ var gameFormUI = (function(CF) {
 
         
 
-        goToPrevious: function(e) {
+        goToPrevious: function() {
             console.log('gotoprevious')
 
             CF.clearDOM();
@@ -217,26 +210,18 @@ var gameFormUI = (function(CF) {
             // shift arrays 
             CF.unShiftTeamsAndStudentArray(teamsArray);
             
-            
-            // console.log('teamArray-post-shift', teamsArray);
             CF.addTeamsToDom(teamsArray);
         },
 
-        goToPreviousStudent: function(e) {
+        goToPreviousStudent: function() {
             console.log('goToPreviousStudent')
 
             CF.clearDOM();
             CF.unShiftStudentsArray(teamsArray[0].students);
             CF.addTeamsToDom(teamsArray);
-
-
         },
 
-        goToNextStudent: function(e) {
-            console.log('goToNextStudent')
-
-            // CF.clearDOM();
-                
+        goToNextStudent: function() {                
             CF.clearDOM();
             CF.shiftStudentsArray(teamsArray[0].students);
             CF.addTeamsToDom(teamsArray);
@@ -244,23 +229,21 @@ var gameFormUI = (function(CF) {
 
         // *************************************
         // * GO TO THE NEXT TEAMS TURN
-        goToNext: function(e) {
+        goToNext: function() {
             
                 CF.clearDOM();
-                // shift arrays 
                 CF.shiftTeamsAndStudentArray(teamsArray);
                 CF.addTeamsToDom(teamsArray);
         },
 
-
         // *************************************
         // * START A NEW GAME
-        refreshScores: function(e) {
+        refreshScores: function() {
             CF.deleteScores(teamsArray);
             CF.clearDOM();
             CF.addTeamsToDom(teamsArray);
         },
-        refreshStudents: function(e) {
+        refreshStudents: function() {
             console.log('refreshStudents');
             
             CF.clearInput();
@@ -272,11 +255,13 @@ var gameFormUI = (function(CF) {
             console.log('shuffle these students around');
             CF.shuffleArray(studentsArray);
 
-            const teamsSize = numberOfTeams.value;
+            const teamsSize = DOM.numberOfTeams.value;
             createTeams(teamsSize);
+            console.log('teamsSize', teamsSize)
+            console.log('shuffle preview and create teams function')
             CF.addPreviewToDOM(teamsArray);
         },
-        saveGame: async function (e) {
+        saveGame: async function () {
 
 
             CF.clearDOM();

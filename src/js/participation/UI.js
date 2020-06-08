@@ -86,62 +86,31 @@ var participationUI = (function() {
 
    
     const addIndividualsToDom = function () {
-        // add button to the DOM
-        // const buttons = document.createElement('div');
-        // buttons.classList += 'buttons';
-        // buttons.innerHTML = `
-        //     <button class="previous">Previous</button>
-        //     <button class="next">Next</button>
-        // `
-        // DOM.gameContainer.insertBefore(buttons, DOM.gameContainer.firstChild);
-
         // add teams to the dom
         
-            
-            //create new team div
-            const newTeam = document.createElement('div');
-            newTeam.className += 'team';
-            
-            //add title
-            // const teamName = document.createElement('h3');
-            // teamName.className += 'teamName';
-            // teamName.innerHTML = 'students';
-            // newTeam.appendChild(teamName);
+        //create new team div
+        const newTeam = document.createElement('div');
+        newTeam.className += 'team';
 
-            let teamList = document.createElement('ul');
-            teamList.className += 'teamList';
-            let totalPoints = 0;
-            studentsArray.forEach((student, studentIndex) => {
-                
-                let newStudent = document.createElement("li");
-                newStudent.className += 'student';
-                newStudent.setAttribute('id', student._id);
-                newStudent.innerHTML = `
-                    <span class=name>${student.name}</span>
-                    <button class="minus minus__student"><i class="fas fa-minus"></i></button>
-                    <button class="add add__student"><i class="fas fa-plus"></i></button>
-                    <span class="points">${student.points}</span>
-                `;
-                teamList.appendChild(newStudent);
-                
-                
-            })
-            newTeam.appendChild(teamList);
-            DOM.teams.appendChild(newTeam);
+        let teamList = document.createElement('ul');
+        teamList.className += 'teamList';
+        studentsArray.forEach((student) => {
+            
+            let newStudent = document.createElement("li");
+            newStudent.className += 'student';
+            newStudent.setAttribute('id', student._id);
+            newStudent.innerHTML = `
+                <span class=name>${student.name}</span>
+                <button class="minus minus__student"><i class="fas fa-minus"></i></button>
+                <button class="add add__student"><i class="fas fa-plus"></i></button>
+                <span class="points">${student.points}</span>
+            `;
+            teamList.appendChild(newStudent);
+        })
+        newTeam.appendChild(teamList);
+        DOM.teams.appendChild(newTeam);
         
     }
-
-    //is it an add or minus button;
-    const plusOrMinus = function (target) {
-        return target.classList.contains('add') ? 1 : -1;
-    };
-
-    // const updateStudentPointDom = function (target, action) {        
-    //     //find pointsDiv
-    //     const pointsDiv = target.parentElement.lastElementChild;
-    //     //update pointsDiv
-    //     pointsDiv.innerHTML = +pointsDiv.innerHTML + action;
-    // };
 
     const updateStudentsArrayPoints = function(student, action){        
         const studentID = student.id;
@@ -154,11 +123,6 @@ var participationUI = (function() {
             }
         })
     }
-
-    // const clearDOM = function() {
-    //     DOM.teams.innerHTML = '';
-    //     DOM.gameContainer.firstChild.remove();
-    // }
 
     const shiftStudentsArray = function (array) {
         console.log("shift array");
@@ -252,7 +216,6 @@ var participationUI = (function() {
             if (target.classList.contains('add__student') || target.classList.contains('minus__student')) {
                 const action = CF.plusOrMinus(target);
                 const student = target.parentElement;
-                const team = student.parentElement.parentElement;
 
                 CF.updateStudentPointDom(target, action);
 
@@ -265,28 +228,18 @@ var participationUI = (function() {
                 console.log('go to next')
                 
                 CF.clearDOM();
-                
-                // shift arrays 
                 shiftStudentsArray(studentsArray);
-                // console.log('teamArray-post-shift', teamsArray);
                 addIndividualsToDom();
             }
         },
         goToPrevious: function(e) {
             if(e.target.classList.contains('previous')) {
-                console.log('go to next')
-                
                 CF.clearDOM();
-                
-                // shift arrays 
                 unShiftStudentsArray(studentsArray);
-                
-                
-                // console.log('teamArray-post-shift', teamsArray);
                 addIndividualsToDom();
             }
         },
-        refreshScores: function(e) {
+        refreshScores: function() {
             
             deleteScoresIndividual();
             // shuffleArray(studentsArray);  // not sure best practice....
@@ -294,7 +247,7 @@ var participationUI = (function() {
             addIndividualsToDom();
         },
 
-        refreshStudents: function(e) {
+        refreshStudents: function() {
             
             console.log('refreshStudents');
             studentsArray = backupArray;
@@ -303,7 +256,7 @@ var participationUI = (function() {
         },
         
         
-        shufflePreview: function (e) {
+        shufflePreview: function() {
             console.log('shuffle these students around');
             CF.shuffleArray(studentsArray);
 
@@ -311,7 +264,7 @@ var participationUI = (function() {
             addPreviewToDOM_Individual();
         },
 
-        saveGame: async function (e) {
+        saveGame: async function() {
             CF.clearDOM();
             CF.endGameOptions();
 

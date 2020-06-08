@@ -63,7 +63,7 @@ var commonFunctions = (function() {
         addPreviewToDOM: function (teamsArray) {
             DOM.previewTeams.innerHTML = '';
             
-            teamsArray.forEach((team, index) => {
+            teamsArray.forEach((team) => {
                 //create new team div
                 const newTeam = document.createElement('div');
                 newTeam.className += 'team';
@@ -153,15 +153,7 @@ var commonFunctions = (function() {
             DOM.teams.classList.toggle('hide');
         },
 
-        addTeamsToDom: function (teamsArray) {
-            // add button to the DOM
-            // const buttons = document.createElement('div');
-            // buttons.classList += 'buttons';
-            // buttons.innerHTML = `
-            //     <button class="next">Next</button>
-            // `
-            // DOM.gameContainer.insertBefore(buttons, DOM.gameContainer.firstChild);
-    
+        addTeamsToDom: function (teamsArray) {    
             // add teams to the dom
             
             teamsArray.forEach((team, teamIndex) => {
@@ -169,9 +161,7 @@ var commonFunctions = (function() {
                 const newTeam = document.createElement('div');
                 newTeam.className += 'team';
                 
-                newTeam.setAttribute('id', team.teamID)
-                // console.log('newTeam', newTeam)
-                
+                newTeam.setAttribute('id', team.teamID)                
                 //add title
                 
                 const teamInfo = document.createElement('div');
@@ -195,7 +185,6 @@ var commonFunctions = (function() {
     
                 let teamList = document.createElement('ul');
                 teamList.className += 'teamList';
-                let totalPoints = 0;
                 team.students.forEach((student, studentIndex) => {
                     
                     let newStudent = document.createElement("li");

@@ -29,10 +29,6 @@ var controller = (function(UI) {
         
 
         //EVENT LISTENERS
-        // submit event -> go to game
-        
-        // DOM.gameForm.addEventListener('submit', UI.submitEvent)
-
         // create teams on change of number input
         DOM.numberOfTeams.addEventListener('change', (e) => {
             UI.createPreviewDOM(e.target.value);
@@ -41,7 +37,6 @@ var controller = (function(UI) {
         DOM.previewTeams.addEventListener('click', UI.deleteStudent);
         DOM.teams.addEventListener('click', UI.changePointStudent);
         DOM.teams.addEventListener('click', UI.changeTeamPoints);
-        // DOM.gameContainer.addEventListener('click', UI.goToNext);
         DOM.refreshGameBtn.addEventListener('click', UI.refreshScores);
         DOM.refreshStudentsBtn.addEventListener('click', UI.refreshStudents);
         DOM.playGameBtn.addEventListener('click', UI.startGame);
@@ -65,9 +60,7 @@ var controller = (function(UI) {
             
 
             UI.createPreviewDOM(1);
-            // UI.addTeamsToDOM();
             setupEventListeners();
-            
         }
     }
 })(UI);

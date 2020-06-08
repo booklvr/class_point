@@ -167,7 +167,7 @@ var boysVsGirlsUI = (function() {
             }
         },
 
-        goToPrevious: function(e) {
+        goToPrevious: function() {
             console.log('gotoprevious')
 
             CF.clearDOM();
@@ -180,7 +180,7 @@ var boysVsGirlsUI = (function() {
             CF.addTeamsToDom(teamsArray);
         },
 
-        goToPreviousStudent: function(e) {
+        goToPreviousStudent: function() {
             console.log('goToPreviousStudent')
 
             CF.clearDOM();
@@ -190,7 +190,7 @@ var boysVsGirlsUI = (function() {
 
         },
 
-        goToNextStudent: function(e) {
+        goToNextStudent: function() {
             console.log('goToNextStudent')
 
             // CF.clearDOM();
@@ -201,7 +201,7 @@ var boysVsGirlsUI = (function() {
         },
 
     
-        goToNext: function(e) {
+        goToNext: function() {
             
             CF.clearDOM();
             // shift arrays 
@@ -209,12 +209,12 @@ var boysVsGirlsUI = (function() {
             CF.addTeamsToDom(teamsArray);
         },
         
-        refreshScores: function(e) {
+        refreshScores: function() {
             CF.deleteScores(teamsArray);
             CF.clearDOM();
             CF.addTeamsToDom(teamsArray);
         },
-        refreshStudents: function(e) {
+        refreshStudents: function() {
             console.log('refreshStudents');
             
             studentsArray = backupArray;
@@ -229,7 +229,7 @@ var boysVsGirlsUI = (function() {
             CF.addPreviewToDOM(teamsArray);
         },
 
-        saveGame: async function (e) {
+        saveGame: async function () {
             
 
             CF.clearDOM();

@@ -154,7 +154,7 @@ var commonFunctions = function () {
     },
     addPreviewToDOM: function (teamsArray) {
       DOM.previewTeams.innerHTML = '';
-      teamsArray.forEach((team, index) => {
+      teamsArray.forEach(team => {
         //create new team div
         const newTeam = document.createElement('div');
         newTeam.className += 'team'; //add title
@@ -234,20 +234,12 @@ var commonFunctions = function () {
       DOM.teams.classList.toggle('hide');
     },
     addTeamsToDom: function (teamsArray) {
-      // add button to the DOM
-      // const buttons = document.createElement('div');
-      // buttons.classList += 'buttons';
-      // buttons.innerHTML = `
-      //     <button class="next">Next</button>
-      // `
-      // DOM.gameContainer.insertBefore(buttons, DOM.gameContainer.firstChild);
       // add teams to the dom
       teamsArray.forEach((team, teamIndex) => {
         //create new team div
         const newTeam = document.createElement('div');
         newTeam.className += 'team';
-        newTeam.setAttribute('id', team.teamID); // console.log('newTeam', newTeam)
-        //add title
+        newTeam.setAttribute('id', team.teamID); //add title
 
         const teamInfo = document.createElement('div');
         teamInfo.className += 'team-info';
@@ -266,7 +258,6 @@ var commonFunctions = function () {
         newTeam.appendChild(teamInfo);
         let teamList = document.createElement('ul');
         teamList.className += 'teamList';
-        let totalPoints = 0;
         team.students.forEach((student, studentIndex) => {
           let newStudent = document.createElement("li");
           newStudent.className += 'student';
@@ -527,52 +518,27 @@ var participationUI = function () {
   };
 
   const addIndividualsToDom = function () {
-    // add button to the DOM
-    // const buttons = document.createElement('div');
-    // buttons.classList += 'buttons';
-    // buttons.innerHTML = `
-    //     <button class="previous">Previous</button>
-    //     <button class="next">Next</button>
-    // `
-    // DOM.gameContainer.insertBefore(buttons, DOM.gameContainer.firstChild);
     // add teams to the dom
     //create new team div
     const newTeam = document.createElement('div');
-    newTeam.className += 'team'; //add title
-    // const teamName = document.createElement('h3');
-    // teamName.className += 'teamName';
-    // teamName.innerHTML = 'students';
-    // newTeam.appendChild(teamName);
-
+    newTeam.className += 'team';
     let teamList = document.createElement('ul');
     teamList.className += 'teamList';
-    let totalPoints = 0;
-    studentsArray.forEach((student, studentIndex) => {
+    studentsArray.forEach(student => {
       let newStudent = document.createElement("li");
       newStudent.className += 'student';
       newStudent.setAttribute('id', student._id);
       newStudent.innerHTML = `
-                    <span class=name>${student.name}</span>
-                    <button class="minus minus__student"><i class="fas fa-minus"></i></button>
-                    <button class="add add__student"><i class="fas fa-plus"></i></button>
-                    <span class="points">${student.points}</span>
-                `;
+                <span class=name>${student.name}</span>
+                <button class="minus minus__student"><i class="fas fa-minus"></i></button>
+                <button class="add add__student"><i class="fas fa-plus"></i></button>
+                <span class="points">${student.points}</span>
+            `;
       teamList.appendChild(newStudent);
     });
     newTeam.appendChild(teamList);
     DOM.teams.appendChild(newTeam);
-  }; //is it an add or minus button;
-
-
-  const plusOrMinus = function (target) {
-    return target.classList.contains('add') ? 1 : -1;
-  }; // const updateStudentPointDom = function (target, action) {        
-  //     //find pointsDiv
-  //     const pointsDiv = target.parentElement.lastElementChild;
-  //     //update pointsDiv
-  //     pointsDiv.innerHTML = +pointsDiv.innerHTML + action;
-  // };
-
+  };
 
   const updateStudentsArrayPoints = function (student, action) {
     const studentID = student.id;
@@ -582,11 +548,7 @@ var participationUI = function () {
         student.points += action;
       }
     });
-  }; // const clearDOM = function() {
-  //     DOM.teams.innerHTML = '';
-  //     DOM.gameContainer.firstChild.remove();
-  // }
-
+  };
 
   const shiftStudentsArray = function (array) {
     console.log("shift array");
@@ -657,7 +619,6 @@ var participationUI = function () {
       if (target.classList.contains('add__student') || target.classList.contains('minus__student')) {
         const action = _commonFunctions_js__WEBPACK_IMPORTED_MODULE_0__["commonFunctions"].plusOrMinus(target);
         const student = target.parentElement;
-        const team = student.parentElement.parentElement;
         _commonFunctions_js__WEBPACK_IMPORTED_MODULE_0__["commonFunctions"].updateStudentPointDom(target, action);
         updateStudentsArrayPoints(student, action);
       }
@@ -665,40 +626,35 @@ var participationUI = function () {
     goToNext: function (e) {
       if (e.target.classList.contains('next')) {
         console.log('go to next');
-        _commonFunctions_js__WEBPACK_IMPORTED_MODULE_0__["commonFunctions"].clearDOM(); // shift arrays 
-
-        shiftStudentsArray(studentsArray); // console.log('teamArray-post-shift', teamsArray);
-
+        _commonFunctions_js__WEBPACK_IMPORTED_MODULE_0__["commonFunctions"].clearDOM();
+        shiftStudentsArray(studentsArray);
         addIndividualsToDom();
       }
     },
     goToPrevious: function (e) {
       if (e.target.classList.contains('previous')) {
-        console.log('go to next');
-        _commonFunctions_js__WEBPACK_IMPORTED_MODULE_0__["commonFunctions"].clearDOM(); // shift arrays 
-
-        unShiftStudentsArray(studentsArray); // console.log('teamArray-post-shift', teamsArray);
-
+        _commonFunctions_js__WEBPACK_IMPORTED_MODULE_0__["commonFunctions"].clearDOM();
+        unShiftStudentsArray(studentsArray);
         addIndividualsToDom();
       }
     },
-    refreshScores: function (e) {
+    refreshScores: function () {
       deleteScoresIndividual(); // shuffleArray(studentsArray);  // not sure best practice....
 
       _commonFunctions_js__WEBPACK_IMPORTED_MODULE_0__["commonFunctions"].clearDOM();
       addIndividualsToDom();
     },
-    refreshStudents: function (e) {
+    refreshStudents: function () {
       console.log('refreshStudents');
       studentsArray = backupArray;
       addPreviewToDOM_Individual();
     },
-    shufflePreview: function (e) {
+    shufflePreview: function () {
       console.log('shuffle these students around');
       _commonFunctions_js__WEBPACK_IMPORTED_MODULE_0__["commonFunctions"].shuffleArray(studentsArray);
       addPreviewToDOM_Individual();
     },
-    saveGame: async function (e) {
+    saveGame: async function () {
       _commonFunctions_js__WEBPACK_IMPORTED_MODULE_0__["commonFunctions"].clearDOM();
       _commonFunctions_js__WEBPACK_IMPORTED_MODULE_0__["commonFunctions"].endGameOptions();
       _commonFunctions_js__WEBPACK_IMPORTED_MODULE_0__["commonFunctions"].addWinningStudent(studentsArray);

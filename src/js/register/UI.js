@@ -13,17 +13,6 @@ var registerUI = (function() {
         password2: '#password2',
     };
 
-    var DOM = {
-        name: document.querySelector(DOMStrings.name),
-        email: document.querySelector(DOMStrings.email),
-        password: document.querySelector(DOMStrings.password),
-        password2: document.querySelector(DOMStrings.password2),
-        // formControl: document.querySelectorAll()
-    }
-
-    //persistent data
-  
-
     //HELPER FUNCTIONS
     const showError = function(input, msg) {
         const formControl = input.parentElement;
@@ -101,12 +90,10 @@ var registerUI = (function() {
         getDOMStrings: function() {
             return DOMStrings;
         },
-      
-        
-
+    
         //////////////////////////////////////////////////////////////////
         // *** functions for game play ***
-        submitEvent: function (e) {
+        submitEvent: function () {
             
         },
     };

@@ -112,7 +112,6 @@ var individualUI = (function() {
 
             let teamList = document.createElement('ul');
             teamList.className += 'teamList';
-            let totalPoints = 0;
             studentsArray.forEach((student, studentIndex) => {
                 
                 let newStudent = document.createElement("li");
@@ -127,19 +126,10 @@ var individualUI = (function() {
                 teamList.appendChild(newStudent);
                 // create current student
                 if (studentIndex === 0) {
-                    // const currentTitle = document.createElement('h3');
-                    // currentTitle.classList += 'currentTitle';
-                    // currentTitle.innerHTML = 'Current Student';
-                    // teamList.insertBefore(currentTitle, teamList.firstChild);
-                    // // console.log('current student');
                     newStudent.className += ' currentStudent';
                 // create next student
                 } else if (studentIndex === 1) {
-                    // const nextTitle = document.createElement('h3');
-                    // nextTitle.classList += 'nextTitle';
-                    // nextTitle.innerHTML = 'Upcoming Student';
-                    // teamList.insertBefore(nextTitle, teamList.children[2]);
-                    // console.log('next student');
+                    
                     newStudent.className += ' nextStudent';
                 }
             })
@@ -147,18 +137,6 @@ var individualUI = (function() {
             DOM.teams.appendChild(newTeam);
         
     }
-
-    //is it an add or minus button;
-    const plusOrMinus = function (target) {
-        return target.classList.contains('add') ? 1 : -1;
-    };
-
-    // const updateStudentPointDom = function (target, action) {        
-    //     //find pointsDiv
-    //     const pointsDiv = target.parentElement.lastElementChild;
-    //     //update pointsDiv
-    //     pointsDiv.innerHTML = +pointsDiv.innerHTML + action;
-    // };
 
     const updateStudentsArrayPoints = function(student, action){        
         const studentID = student.id;
@@ -171,23 +149,6 @@ var individualUI = (function() {
             }
         })
     }
-
-    // const clearDOM = function() {
-    //     DOM.teams.innerHTML = '';
-    //     DOM.gameContainer.firstChild.remove();
-    // }
-
-    // const shiftStudentsArray = function (array) {
-    //     console.log("shift array");
-    //     array.push(array.shift());
-    // }
-
-    // const unShiftStudentsArray = function (array) {
-    //     console.log("unShift array");
-    //     array.unshift(array.pop());
-    //     // array.push(studentsArray.pop());
-    //     // console.log('arrayAfter', array)
-    // }
 
     const deleteScoresIndividual = function () {
         studentsArray.forEach(student => {
@@ -211,8 +172,6 @@ var individualUI = (function() {
 
             students.forEach(student => studentsArray.push(student));
 
-            //shuffle students array for different game play every time
-            // studentsArray = shuffleArray(studentsArray);
             backupArray = studentsArray;
             console.log(studentsArray);
         },
@@ -220,10 +179,6 @@ var individualUI = (function() {
         createPreviewDOM: function () {
             addPreviewToDOM_Individual();
         },
-
-        
-        
-        
 
         deleteStudent: function (e) {
             console.log(e.target);
@@ -237,7 +192,6 @@ var individualUI = (function() {
                 let li = e.target.parentElement;
                 li.remove();
             }
-        
         },
 
         //////////////////////////////////////////////////////////////////
@@ -246,8 +200,6 @@ var individualUI = (function() {
             // posting teams to teamGame
             e.preventDefault();
             console.log("let's play")
-
-            
 
             DOM.title.innerHTML = "Let's Play";
             if (DOM.gameForm) {
@@ -277,7 +229,6 @@ var individualUI = (function() {
             if (target.classList.contains('add__student') || target.classList.contains('minus__student')) {
                 const action = CF.plusOrMinus(target);
                 const student = target.parentElement;
-                const team = student.parentElement.parentElement;
 
                 CF.updateStudentPointDom(target, action);
 
@@ -285,11 +236,7 @@ var individualUI = (function() {
             }
         },
 
-        // goToPrevious: function(e) {
-        //     console.log('gotoprevious')
-        // },
-
-        goToPreviousStudent: function(e) {
+        goToPreviousStudent: function() {
             console.log('goToPreviousStudent')
 
             CF.clearDOM();
@@ -297,37 +244,28 @@ var individualUI = (function() {
             // shift arrays 
             CF.unShiftStudentsArray(studentsArray);
             
-            
-            // console.log('teamArray-post-shift', teamsArray);
             addIndividualsToDom();
-
         },
 
-        goToNextStudent: function(e) {
+        goToNextStudent: function() {
             console.log('goToNextStudent')
 
             CF.clearDOM();
                 
             // shift arrays 
             CF.shiftStudentsArray(studentsArray);
-            // console.log('teamArray-post-shift', teamsArray);
+
             addIndividualsToDom();
         },
 
-        // goToNext: function(e) {
-        //     console.log('goToNext')
-        // },
-        
-
-        refreshScores: function(e) {
+        refreshScores: function() {
             
             deleteScoresIndividual();
-            // shuffleArray(studentsArray);  // not sure best practice....
             CF.clearDOM();
             addIndividualsToDom();
         },
 
-        refreshStudents: function(e) {
+        refreshStudents: function() {
             
             console.log('refreshStudents');
             studentsArray = backupArray;
@@ -336,7 +274,7 @@ var individualUI = (function() {
         },
         
         
-        shufflePreview: function (e) {
+        shufflePreview: function () {
             console.log('shuffle these students around');
             CF.shuffleArray(studentsArray);
 
@@ -344,7 +282,7 @@ var individualUI = (function() {
             addPreviewToDOM_Individual();
         },
 
-        saveGame: async function (e) {
+        saveGame: async function () {
             CF.clearDOM();
             CF.endGameOptions();
 

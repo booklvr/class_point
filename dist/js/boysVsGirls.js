@@ -233,7 +233,7 @@ var boysVsGirlsUI = function () {
         _commonFunctions_js__WEBPACK_IMPORTED_MODULE_0__["commonFunctions"].updateTeamPointDom(team, action);
       }
     },
-    goToPrevious: function (e) {
+    goToPrevious: function () {
       console.log('gotoprevious');
       _commonFunctions_js__WEBPACK_IMPORTED_MODULE_0__["commonFunctions"].clearDOM(); // shift arrays 
 
@@ -241,31 +241,31 @@ var boysVsGirlsUI = function () {
 
       _commonFunctions_js__WEBPACK_IMPORTED_MODULE_0__["commonFunctions"].addTeamsToDom(teamsArray);
     },
-    goToPreviousStudent: function (e) {
+    goToPreviousStudent: function () {
       console.log('goToPreviousStudent');
       _commonFunctions_js__WEBPACK_IMPORTED_MODULE_0__["commonFunctions"].clearDOM();
       _commonFunctions_js__WEBPACK_IMPORTED_MODULE_0__["commonFunctions"].unShiftStudentsArray(teamsArray[0].students);
       _commonFunctions_js__WEBPACK_IMPORTED_MODULE_0__["commonFunctions"].addTeamsToDom(teamsArray);
     },
-    goToNextStudent: function (e) {
+    goToNextStudent: function () {
       console.log('goToNextStudent'); // CF.clearDOM();
 
       _commonFunctions_js__WEBPACK_IMPORTED_MODULE_0__["commonFunctions"].clearDOM();
       _commonFunctions_js__WEBPACK_IMPORTED_MODULE_0__["commonFunctions"].shiftStudentsArray(teamsArray[0].students);
       _commonFunctions_js__WEBPACK_IMPORTED_MODULE_0__["commonFunctions"].addTeamsToDom(teamsArray);
     },
-    goToNext: function (e) {
+    goToNext: function () {
       _commonFunctions_js__WEBPACK_IMPORTED_MODULE_0__["commonFunctions"].clearDOM(); // shift arrays 
 
       _commonFunctions_js__WEBPACK_IMPORTED_MODULE_0__["commonFunctions"].shiftTeamsAndStudentArray(teamsArray);
       _commonFunctions_js__WEBPACK_IMPORTED_MODULE_0__["commonFunctions"].addTeamsToDom(teamsArray);
     },
-    refreshScores: function (e) {
+    refreshScores: function () {
       _commonFunctions_js__WEBPACK_IMPORTED_MODULE_0__["commonFunctions"].deleteScores(teamsArray);
       _commonFunctions_js__WEBPACK_IMPORTED_MODULE_0__["commonFunctions"].clearDOM();
       _commonFunctions_js__WEBPACK_IMPORTED_MODULE_0__["commonFunctions"].addTeamsToDom(teamsArray);
     },
-    refreshStudents: function (e) {
+    refreshStudents: function () {
       console.log('refreshStudents');
       studentsArray = backupArray;
       createBoysGirlsTeams();
@@ -277,7 +277,7 @@ var boysVsGirlsUI = function () {
       createBoysGirlsTeams();
       _commonFunctions_js__WEBPACK_IMPORTED_MODULE_0__["commonFunctions"].addPreviewToDOM(teamsArray);
     },
-    saveGame: async function (e) {
+    saveGame: async function () {
       _commonFunctions_js__WEBPACK_IMPORTED_MODULE_0__["commonFunctions"].clearDOM();
       _commonFunctions_js__WEBPACK_IMPORTED_MODULE_0__["commonFunctions"].endGameOptions();
       _commonFunctions_js__WEBPACK_IMPORTED_MODULE_0__["commonFunctions"].addWinningTeam(teamsArray);
@@ -320,7 +320,6 @@ __webpack_require__.r(__webpack_exports__);
 
 var controller = function (UI) {
   var setupEventListeners = function () {
-    console.log('setup event listeners');
     var DOMStrings = UI.getDOMStrings();
     var DOM = {
       teams: document.querySelector(DOMStrings.teams),
@@ -441,7 +440,7 @@ var commonFunctions = function () {
     },
     addPreviewToDOM: function (teamsArray) {
       DOM.previewTeams.innerHTML = '';
-      teamsArray.forEach((team, index) => {
+      teamsArray.forEach(team => {
         //create new team div
         const newTeam = document.createElement('div');
         newTeam.className += 'team'; //add title
@@ -521,20 +520,12 @@ var commonFunctions = function () {
       DOM.teams.classList.toggle('hide');
     },
     addTeamsToDom: function (teamsArray) {
-      // add button to the DOM
-      // const buttons = document.createElement('div');
-      // buttons.classList += 'buttons';
-      // buttons.innerHTML = `
-      //     <button class="next">Next</button>
-      // `
-      // DOM.gameContainer.insertBefore(buttons, DOM.gameContainer.firstChild);
       // add teams to the dom
       teamsArray.forEach((team, teamIndex) => {
         //create new team div
         const newTeam = document.createElement('div');
         newTeam.className += 'team';
-        newTeam.setAttribute('id', team.teamID); // console.log('newTeam', newTeam)
-        //add title
+        newTeam.setAttribute('id', team.teamID); //add title
 
         const teamInfo = document.createElement('div');
         teamInfo.className += 'team-info';
@@ -553,7 +544,6 @@ var commonFunctions = function () {
         newTeam.appendChild(teamInfo);
         let teamList = document.createElement('ul');
         teamList.className += 'teamList';
-        let totalPoints = 0;
         team.students.forEach((student, studentIndex) => {
           let newStudent = document.createElement("li");
           newStudent.className += 'student';
