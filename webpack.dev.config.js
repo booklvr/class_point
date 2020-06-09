@@ -4,14 +4,14 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     entry: {
-        main: './src/index.js',    
-        addClassroom: './src/js/addClassroom/controller.js',
-        boysVsGirls: './src/js/boysVsGirls/controller.js',  
-        classroom: './src/js/classroom/controller.js',
-        individual: './src/js/individual/controller.js',    
-        participation: './src/js/participation/controller.js',
-        register: './src/js/register/controller.js',   
-        team: './src/js/team/controller.js',   
+        main: ['@babel/polyfill', './src/index.js'],    
+        addClassroom: ['@babel/polyfill', './src/js/addClassroom/controller.js'],
+        boysVsGirls: ['@babel/polyfill', './src/js/boysVsGirls/controller.js'],  
+        classroom: ['@babel/polyfill', './src/js/classroom/controller.js'],
+        individual: ['@babel/polyfill', './src/js/individual/controller.js'],    
+        participation: ['@babel/polyfill', './src/js/participation/controller.js'],
+        register: ['@babel/polyfill', './src/js/register/controller.js'],   
+        team: ['@babel/polyfill', './src/js/team/controller.js'],   
     },
     output: {
         path: path.join(__dirname, 'dist'),

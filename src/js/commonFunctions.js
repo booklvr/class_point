@@ -59,7 +59,7 @@ var commonFunctions = (function() {
         plusOrMinus: function (target) {
             return target.classList.contains('add') ? 1 : -1;
         },
-        
+
         addPreviewToDOM: function (teamsArray) {
             DOM.previewTeams.innerHTML = '';
             
@@ -224,10 +224,6 @@ var commonFunctions = (function() {
                 // const teamName = document.createElement('ul')
                 DOM.teams.appendChild(newTeam);
             })
-        },
-
-        plusOrMinus: function (target) {
-            return target.classList.contains('add') ? 1 : -1;
         },
 
         updateStudentPointDom: function (target, action) {

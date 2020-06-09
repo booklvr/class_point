@@ -22,7 +22,7 @@ import express  from 'express';
 import webpack  from 'webpack';
 import webpackDevMilddleWare from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
-import cors from 'cors';
+// import cors from 'cors';
 import config from '../../webpack.dev.config.js';
 // import bodyParser from 'body-parser';
 

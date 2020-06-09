@@ -74,6 +74,7 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: '!!raw-loader!src/views/pages/index.ejs',
             filename: 'views/pages/index.ejs',
+            chunks: ['main'],
         }),
         //addClassroom
         new HtmlWebpackPlugin({
@@ -155,7 +156,7 @@ module.exports = {
             chunks: []
         }),
         new MiniCssExtractPlugin({
-            filename: 'style.css',
+            filename: '[name].css',
             chunkFilename: '[id].css',
         })
     ]
