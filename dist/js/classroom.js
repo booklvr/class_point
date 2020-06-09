@@ -118,25 +118,27 @@ var classroomUI = function () {
     nameInput: document.querySelector(DOMStrings.nameInput)
   }; // HELPER FUNCTIONS
 
-  const addErrorMessage = function (message) {
+  var addErrorMessage = function addErrorMessage(message) {
     DOM.errors.style.display = 'block', DOM.errors.innerHTML = message;
-    setTimeout(() => {
+    setTimeout(function () {
       DOM.errors.innerHTML = "";
       DOM.errors.style.display = 'none';
     }, 3000);
   };
 
-  const radioIsChecked = function (radioNodeList) {
+  var radioIsChecked = function radioIsChecked(radioNodeList) {
     // returns true if radio is checked or false if radio not checked
-    return [].some.call(radioNodeList, radioNode => radioNode.checked === true);
+    return [].some.call(radioNodeList, function (radioNode) {
+      return radioNode.checked === true;
+    });
   };
 
   return {
-    getDOMStrings: function () {
+    getDOMStrings: function getDOMStrings() {
       return DOMStrings;
     },
     // OTHER FUNCTIONS
-    checkTeamSize: function (e) {
+    checkTeamSize: function checkTeamSize(e) {
       console.log(e.target.dataset.class_size);
 
       if (e.target.dataset.class_size < 2) {
@@ -146,16 +148,16 @@ var classroomUI = function () {
         addErrorMessage('Sorry, you need to add some students before you can play a game.');
       }
     },
-    updateStudent: function (e) {
+    updateStudent: function updateStudent(e) {
       // e.preventDefault();
       if (e.target.classList.contains('updateStudent')) {
         console.log('hello there');
-        const formTarget = e.target.parentElement.parentElement.parentElement.parentElement.querySelector('.update__form');
+        var formTarget = e.target.parentElement.parentElement.parentElement.parentElement.querySelector('.update__form');
         console.log(formTarget);
         formTarget.classList.toggle('hide');
       }
     },
-    addStudent: function (e) {
+    addStudent: function addStudent(e) {
       if (DOM.nameInput.value === '') {
         e.preventDefault();
         console.log('no name input');
@@ -166,13 +168,13 @@ var classroomUI = function () {
         console.log('You need to include a gender');
       }
     },
-    increment: function (e) {
+    increment: function increment(e) {
       // console.log(e.target.parentElement)
       if (e.target.parentElement.classList.contains('increment')) {
         e.target.parentElement.parentNode.parentNode.querySelector('.pointsInput').stepUp();
       }
     },
-    decrement: function (e) {
+    decrement: function decrement(e) {
       // console.log(e.target.parentElement)
       if (e.target.parentElement.classList.contains('decrement')) {
         // this.parentNode.querySelector('.team_number').stepDown();
@@ -199,7 +201,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var controller = function (UI) {
-  var setupEventListeners = function () {
+  var setupEventListeners = function setupEventListeners() {
     console.log('setup event listeners');
     var DOMStrings = UI.getDOMStrings();
     var DOM = {
@@ -212,7 +214,9 @@ var controller = function (UI) {
     console.log(DOM.increment, DOM.decrement);
     DOM.increment.addEventListener('click', UI.increment);
     DOM.decrement.addEventListener('click', UI.decrement);
-    DOM.checkTeams.forEach(checkTeam => checkTeam.addEventListener('click', UI.checkTeamSize));
+    DOM.checkTeams.forEach(function (checkTeam) {
+      return checkTeam.addEventListener('click', UI.checkTeamSize);
+    });
     DOM.studentList.addEventListener('click', UI.updateStudent);
     DOM.addStudentBtn.addEventListener('click', UI.addStudent);
     DOM.studentList.addEventListener('click', UI.increment);
@@ -220,7 +224,7 @@ var controller = function (UI) {
   };
 
   return {
-    init: function () {
+    init: function init() {
       console.log('You can now edit students, or play games');
       setupEventListeners();
     }

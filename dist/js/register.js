@@ -110,20 +110,20 @@ var registerUI = function () {
     password2: '#password2'
   }; //HELPER FUNCTIONS
 
-  const showError = function (input, msg) {
-    const formControl = input.parentElement;
+  var showError = function showError(input, msg) {
+    var formControl = input.parentElement;
     formControl.className = 'form-control error';
-    const small = formControl.querySelector('small');
+    var small = formControl.querySelector('small');
     small.innerText = msg;
   };
 
   function showSuccess(input) {
-    const formControl = input.parentElement;
+    var formControl = input.parentElement;
     formControl.className = 'form-control success';
   }
 
   function checkEmail(input) {
-    const re = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+    var re = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
 
     if (re.test(input.value.trim())) {
       showSuccess(input);
@@ -136,9 +136,9 @@ var registerUI = function () {
   }
 
   function checkRequired(inputArr) {
-    inputArr.forEach(input => {
+    inputArr.forEach(function (input) {
       if (input.value === '') {
-        showError(input, `${getFieldName(input)} is required`);
+        showError(input, "".concat(getFieldName(input), " is required"));
         return false;
       } else {
         showSuccess(input);
@@ -151,10 +151,10 @@ var registerUI = function () {
 
   function checkLength(input, min, max) {
     if (input.value.length < min) {
-      showError(input, `${getFieldName(input)} must be at least ${min}`);
+      showError(input, "".concat(getFieldName(input), " must be at least ").concat(min));
       return false;
     } else if (input.value.length > max) {
-      showError(input, `${getFieldName(input)} must be less than ${max}`);
+      showError(input, "".concat(getFieldName(input), " must be less than ").concat(max));
       return false;
     } else {
       showSuccess(input);
@@ -183,12 +183,12 @@ var registerUI = function () {
   }
 
   return {
-    getDOMStrings: function () {
+    getDOMStrings: function getDOMStrings() {
       return DOMStrings;
     },
     //////////////////////////////////////////////////////////////////
     // *** functions for game play ***
-    submitEvent: function () {}
+    submitEvent: function submitEvent() {}
   };
 }();
 
@@ -206,10 +206,14 @@ var registerUI = function () {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _UI_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./UI.js */ "./src/js/register/UI.js");
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
 
 
 var controller = function (UI) {
-  var setupEventListeners = function () {
+  var setupEventListeners = function setupEventListeners() {
     console.log('setup event listeners');
     var DOMStrings = UI.getDOMStrings();
     var DOM = {
@@ -220,10 +224,29 @@ var controller = function (UI) {
   };
 
   return {
-    init: async function () {
-      console.log('You can now register');
-      setupEventListeners();
-    }
+    init: function () {
+      var _init = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+        return regeneratorRuntime.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                console.log('You can now register');
+                setupEventListeners();
+
+              case 2:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }));
+
+      function init() {
+        return _init.apply(this, arguments);
+      }
+
+      return init;
+    }()
   };
 }(_UI_js__WEBPACK_IMPORTED_MODULE_0__["registerUI"]);
 

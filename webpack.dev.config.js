@@ -38,6 +38,8 @@ module.exports = {
                 test: /\.js$/,
                 exclude: /node_modules/,
                 loader: 'babel-loader',
+                
+                
             },
             // loads the javascript into html template provided.
             // entry point is et below in HtmlWebpackPlugin in Plugins
@@ -156,7 +158,7 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: '!!raw-loader!src/views/partials/head.ejs',
             filename: 'views/partials/head.ejs',
-            chunks: []
+            chunks: ['main']
         }),
         // options
         new HtmlWebpackPlugin({
@@ -166,7 +168,7 @@ module.exports = {
         }),
        
         // new webpack.HotModuleReplacementPlugin(),
-        new webpack.NoEmitOnErrorsPlugin(),
+        // new webpack.NoEmitOnErrorsPlugin(),
         // new MiniCssExtractPlugin({
         //     filename: 'style.css',
         //     chunkFilename: '[id].css',
