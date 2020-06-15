@@ -96,64 +96,79 @@
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addClassroomUI", function() { return addClassroomUI; });
-var addClassroomUI = function () {
-  var DOMStrings = {
-    className: '.add-class-name',
-    submitBtn: '.submit',
-    formBtn: '.form-btn',
-    fileInput: '.file-input',
-    fileValue: '.file-value'
-  };
-  var DOM = {
-    className: document.querySelector(DOMStrings.className),
-    or: document.querySelector(DOMStrings.or),
-    submitBtn: document.querySelector(DOMStrings.submitBtn),
-    fileInput: document.querySelector(DOMStrings.fileInput),
-    fileValue: document.querySelector(DOMStrings.fileValue)
-  }; //HELPER FUNCTIONS
+var addClassroomUI = (function() {
+    var DOMStrings = {
+        
+        className: '.add-class-name',
+        submitBtn: '.submit',
+        formBtn: '.form-btn',
+        fileInput: '.file-input',
+        fileValue: '.file-value',
+       
+    };
 
-  var isCSVfile = function isCSVfile(fileUploadPath) {
-    if (fileUploadPath != '') {
-      var extension = fileUploadPath.substring(fileUploadPath.lastIndexOf('.') + 1).toLowerCase();
-
-      if (extension === 'csv') {
-        return true;
-      } else {
-        alert('You can only upload CSV files.');
-        DOM.file.type = '';
-        DOM.file.type = 'file';
-        return false;
-      }
+    var DOM = {
+        className: document.querySelector(DOMStrings.className),
+        or: document.querySelector(DOMStrings.or),
+        submitBtn: document.querySelector(DOMStrings.submitBtn),
+        fileInput: document.querySelector(DOMStrings.fileInput),
+        fileValue: document.querySelector(DOMStrings.fileValue),
     }
-  };
 
-  return {
-    getDOMStrings: function getDOMStrings() {
-      return DOMStrings;
-    },
-    checkForClassName: function checkForClassName() {
-      // get elements
-      var fileName = this.value.replace(/C:\\fakepath\\/i, '');
-      DOM.fileValue.innerHTML = fileName; // const fileUploadPath = DOM.fileInput.value;
-      // console.log(fileUploadPath)
-      // DOM.fileValue.text = fileUploadPath;
+    //HELPER FUNCTIONS
+    const isCSVfile = function(fileUploadPath) {
+        if (fileUploadPath != '') {
+            const extension = fileUploadPath.substring(fileUploadPath.lastIndexOf('.') + 1).toLowerCase();
 
-      DOM.fileValue.style.display = 'block';
-
-      if (isCSVfile(fileName)) {
-        if (DOM.className.value !== '') {
-          return event.target.closest('form').submit();
-        } else {
-          DOM.submitBtn.innerText = 'Upload File';
-          DOM.submitBtn.classList += ' upload-file';
-          return alert('Please enter the class name first.');
+            if (extension === 'csv') {
+                return true;
+            }
+            else {
+                alert('You can only upload CSV files.')
+                DOM.file.type = '';
+                DOM.file.type = 'file';
+                return false;
+            }
         }
-      } else {
-        console.log('it is not a csv file');
-      }
     }
-  };
-}();
+
+    return {
+        getDOMStrings: function() {
+            return DOMStrings;
+        },
+        checkForClassName: function() {
+            // get elements
+            const fileName = this.value.replace(/C:\\fakepath\\/i, '');
+            DOM.fileValue.innerHTML = fileName;
+            // const fileUploadPath = DOM.fileInput.value;
+            // console.log(fileUploadPath)
+            // DOM.fileValue.text = fileUploadPath;
+            DOM.fileValue.style.display = 'block';
+            
+
+            
+            if (isCSVfile(fileName)) {
+                if(DOM.className.value !== '') {
+                    return event.target.closest('form').submit();
+                } else {
+                    DOM.submitBtn.innerText = 'Upload File';
+                    DOM.submitBtn.classList += ' upload-file';
+                    
+                    return alert('Please enter the class name first.');
+                }
+            } else {
+                console.log('it is not a csv file')
+            }
+        }
+    };
+})();
+
+
+
+
+
+
+
 
 
 
@@ -171,26 +186,30 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _UI_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./UI.js */ "./src/js/addClassroom/UI.js");
 
 
-var controller = function (UI) {
-  var setupEventListeners = function setupEventListeners() {
-    console.log('setup event listeners');
-    var DOMStrings = UI.getDOMStrings();
-    var DOM = {
-      fileInput: document.querySelector(DOMStrings.fileInput),
-      formBtn: document.querySelector(DOMStrings.formBtn)
-    }; // EVENT LISTENERS
+var controller = (function(UI) {
+    var setupEventListeners = function() {
+        console.log('setup event listeners')
+        var DOMStrings = UI.getDOMStrings();
 
-    DOM.fileInput.addEventListener('change', UI.checkForClassName);
-    DOM.formBtn.addEventListener('click', UI.clickAddFile);
-  };
+        var DOM = {
+            fileInput: document.querySelector(DOMStrings.fileInput),
+            formBtn: document.querySelector(DOMStrings.formBtn)
+        };
 
-  return {
-    init: function init() {
-      console.log('You can now add a class');
-      setupEventListeners();
+
+        // EVENT LISTENERS
+        DOM.fileInput.addEventListener('change', UI.checkForClassName);
+        DOM.formBtn.addEventListener('click', UI.clickAddFile);
+        
     }
-  };
-}(_UI_js__WEBPACK_IMPORTED_MODULE_0__["addClassroomUI"]);
+
+    return {
+        init: function () {
+            console.log('You can now add a class');
+            setupEventListeners();
+        }
+    }
+})(_UI_js__WEBPACK_IMPORTED_MODULE_0__["addClassroomUI"]);
 
 controller.init();
 

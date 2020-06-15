@@ -96,101 +96,113 @@
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "registerUI", function() { return registerUI; });
-var registerUI = function () {
-  var DOMStrings = {
-    // BY CLASS
-    btnSubmit: '.btnSubmit',
-    formControl: '.form-control',
-    refreshGameBtn: '.refresh-gameBtn',
-    // By ID
-    registerForm: '#registerForm',
-    name: '#name',
-    email: '#email',
-    password: '#password',
-    password2: '#password2'
-  }; //HELPER FUNCTIONS
+var registerUI = (function() {
+    var DOMStrings = {
+        // BY CLASS
+        btnSubmit: '.btnSubmit',
+        formControl: '.form-control',
+        refreshGameBtn: '.refresh-gameBtn',
+     
+        // By ID
+        registerForm: '#registerForm',
+        name: '#name',
+        email: '#email',
+        password: '#password',
+        password2: '#password2',
+    };
 
-  var showError = function showError(input, msg) {
-    var formControl = input.parentElement;
-    formControl.className = 'form-control error';
-    var small = formControl.querySelector('small');
-    small.innerText = msg;
-  };
-
-  function showSuccess(input) {
-    var formControl = input.parentElement;
-    formControl.className = 'form-control success';
-  }
-
-  function checkEmail(input) {
-    var re = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
-
-    if (re.test(input.value.trim())) {
-      showSuccess(input);
-      console.log('Email verified');
-      return true;
-    } else {
-      showError(input, "Email is not valid");
-      return false;
+    //HELPER FUNCTIONS
+    const showError = function(input, msg) {
+        const formControl = input.parentElement;
+        formControl.className = 'form-control error';
+        const small = formControl.querySelector('small');
+        small.innerText = msg;
     }
-  }
 
-  function checkRequired(inputArr) {
-    inputArr.forEach(function (input) {
-      if (input.value === '') {
-        showError(input, "".concat(getFieldName(input), " is required"));
-        return false;
-      } else {
-        showSuccess(input);
-        console.log('All fields filled, verified');
-        return true;
-      }
-    });
-  } // Check input length
-
-
-  function checkLength(input, min, max) {
-    if (input.value.length < min) {
-      showError(input, "".concat(getFieldName(input), " must be at least ").concat(min));
-      return false;
-    } else if (input.value.length > max) {
-      showError(input, "".concat(getFieldName(input), " must be less than ").concat(max));
-      return false;
-    } else {
-      showSuccess(input);
-      console.log('Length, verified');
-      return true;
+    function showSuccess(input) {
+        const formControl = input.parentElement;
+        formControl.className = 'form-control success';
     }
-  }
-
-  function checkPasswordsMatch(input1, input2) {
-    if (input1.value === input2.value) {
-      console.log('input1.value', input1.value);
-      console.log('input2.value', input2.value);
-      showSuccess(input2);
-      console.log('Passwords Match, verified');
-      return true;
-    } else {
-      console.log('input1.value', input1.value);
-      console.log('input2.value', input2.value);
-      showError(input2, 'Passwords do not match');
-      return false;
+    
+    function checkEmail(input) {
+        const re = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+        if(re.test(input.value.trim())) {
+          showSuccess(input);
+          console.log('Email verified');
+          return true;
+        } else {
+          showError(input, "Email is not valid");
+          return false;
+        }
     }
-  }
 
-  function getFieldName(input) {
-    return input.id.charAt(0).toUpperCase() + input.id.slice(1);
-  }
+    function checkRequired(inputArr) {
+        inputArr.forEach((input) => {
+          if (input.value === '') {
+            showError(input, `${getFieldName(input)} is required`);
+            return false;
+          } else {
+            showSuccess(input);
+            console.log('All fields filled, verified');
+            return true;
+          }
+        })
+    }
 
-  return {
-    getDOMStrings: function getDOMStrings() {
-      return DOMStrings;
-    },
-    //////////////////////////////////////////////////////////////////
-    // *** functions for game play ***
-    submitEvent: function submitEvent() {}
-  };
-}();
+    // Check input length
+    function checkLength(input, min, max) {
+        if(input.value.length < min) {
+            showError(input, `${getFieldName(input)} must be at least ${min}`)
+            return false;
+        } else if (input.value.length > max ) {
+            showError(input, `${getFieldName(input)} must be less than ${max}`)
+            return false;
+        } else {
+            showSuccess(input);
+            console.log('Length, verified');
+            return true;
+        }
+    }
+
+    function checkPasswordsMatch(input1, input2) {
+        if(input1.value === input2.value) {
+            console.log('input1.value', input1.value)
+            console.log('input2.value', input2.value)
+            showSuccess(input2);
+            console.log('Passwords Match, verified');
+            return true;
+        } else {
+            console.log('input1.value', input1.value)
+            console.log('input2.value', input2.value)
+            showError(input2, 'Passwords do not match');
+            return false;
+        }
+    }
+
+    function getFieldName(input) {
+        return input.id.charAt(0).toUpperCase() + input.id.slice(1);
+    }
+
+
+    return {
+        getDOMStrings: function() {
+            return DOMStrings;
+        },
+    
+        //////////////////////////////////////////////////////////////////
+        // *** functions for game play ***
+        submitEvent: function () {
+            
+        },
+    };
+})();
+
+
+
+
+
+
+
 
 
 
@@ -206,49 +218,33 @@ var registerUI = function () {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _UI_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./UI.js */ "./src/js/register/UI.js");
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
-
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
 
 
-var controller = function (UI) {
-  var setupEventListeners = function setupEventListeners() {
-    console.log('setup event listeners');
-    var DOMStrings = UI.getDOMStrings();
-    var DOM = {
-      btnSubmit: document.querySelector(DOMStrings.btnSubmit)
-    }; //EVENT LISTENERS
 
-    DOM.btnSubmit.addEventListener('click', UI.submitEvent);
-  };
+var controller = (function(UI) {
+    var setupEventListeners = function() {
+        console.log('setup event listeners')
+        var DOMStrings = UI.getDOMStrings();
 
-  return {
-    init: function () {
-      var _init = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-        return regeneratorRuntime.wrap(function _callee$(_context) {
-          while (1) {
-            switch (_context.prev = _context.next) {
-              case 0:
-                console.log('You can now register');
-                setupEventListeners();
 
-              case 2:
-              case "end":
-                return _context.stop();
-            }
-          }
-        }, _callee);
-      }));
+        var DOM = {
+            btnSubmit: document.querySelector(DOMStrings.btnSubmit),
+        };
 
-      function init() {
-        return _init.apply(this, arguments);
-      }
+        //EVENT LISTENERS
 
-      return init;
-    }()
-  };
-}(_UI_js__WEBPACK_IMPORTED_MODULE_0__["registerUI"]);
+        DOM.btnSubmit.addEventListener('click', UI.submitEvent);
+    }
+
+    return {
+        init: async function () { 
+            console.log('You can now register');
+            
+            setupEventListeners();
+        }
+    }
+})(_UI_js__WEBPACK_IMPORTED_MODULE_0__["registerUI"]);
 
 controller.init();
 

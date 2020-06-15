@@ -1,6 +1,8 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+// require("regenerator-runtime/runtime");
+
 
 module.exports = {
     entry: {
@@ -34,13 +36,14 @@ module.exports = {
                     failOnWarning: false,
                 }
             },
-            {
-                test: /\.js$/,
-                exclude: /node_modules/,
-                loader: 'babel-loader',
-                
-                
-            },
+            // {
+            //     test: /\.js$/,
+            //     exclude: /node_modules/,
+            //     loader: 'babel-loader',
+            //     query: {
+            //         presets:['@babel/preset-env']
+            //     }
+            // },
             // loads the javascript into html template provided.
             // entry point is et below in HtmlWebpackPlugin in Plugins
             {
