@@ -502,10 +502,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _sass_main_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_sass_main_scss__WEBPACK_IMPORTED_MODULE_0__);
 
 
-
 // if(typeof(module.hot) !== 'undefined') {
-//     module.hot.accept() 
+//     module.hot.accept()
 // }
+
 
 /***/ }),
 

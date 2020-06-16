@@ -21,7 +21,8 @@
   "homepage": "https://github.com/booklvr/class_point#readme",
   "devDependencies": {
     "@babel/core": "^7.10.2",
-    "@babel/polyfill": "^7.10.1",
+    "@babel/node": "^7.10.1",
+    "@babel/plugin-transform-runtime": "^7.10.1",
     "@babel/preset-env": "^7.10.2",
     "autoprefixer": "^9.7.6",
     "babel-eslint": "^10.1.0",
@@ -44,11 +45,10 @@
     "sass-loader": "^8.0.2",
     "style-loader": "^1.2.1",
     "uglifyjs-webpack-plugin": "^2.2.0",
-    "webpack-dev-middleware": "^3.7.2",
-    "webpack-dev-server": "^3.11.0",
-    "webpack-hot-middleware": "^2.25.0"
+    "webpack-dev-server": "^3.11.0"
   },
   "dependencies": {
+    "@babel/runtime": "^7.10.2",
     "body-parser": "^1.19.0",
     "connect-flash": "^0.1.1",
     "cors": "^2.8.5",

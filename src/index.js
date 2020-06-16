@@ -1,6 +1,5 @@
-import './sass/main.scss';
-
+import "./sass/main.scss";
 
 // if(typeof(module.hot) !== 'undefined') {
-//     module.hot.accept() 
+//     module.hot.accept()
 // }

@@ -386,3 +386,4 @@ var commonFunctions = (function () {
 })();
 
 export { commonFunctions };
+// export default commonFunctions;
