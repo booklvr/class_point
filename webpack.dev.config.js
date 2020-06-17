@@ -43,14 +43,14 @@ module.exports = {
           failOnWarning: false,
         },
       },
-      // {
-      //   test: /\.js$/,
-      //   exclude: /node_modules/,
-      //   loader: "babel-loader",
-      //   query: {
-      //     presets: ["@babel/preset-env"],
-      //   },
-      // },
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: "babel-loader",
+        query: {
+          presets: ["@babel/preset-env"],
+        },
+      },
       // loads the javascript into html template provided.
       // entry point is et below in HtmlWebpackPlugin in Plugins
       {

@@ -1,8 +1,13 @@
-const express = require("express"),
-  passport = require("passport"),
-  User = require("../../db/models/user"),
-  Classroom = require("../../db/models/classroom"),
-  { isLoggedIn } = require("./middleware/auth");
+// const express = require("express"),
+//   passport = require("passport"),
+//   User = require("../../db/models/user"),
+//   Classroom = require("../../db/models/classroom"),
+//   { isLoggedIn } = require("./middleware/auth");
+import express from "express";
+import passport from "passport";
+import User from "../../db/models/user";
+import Classroom from "../../db/models/classroom";
+import { isLoggedIn } from "./middleware/auth";
 
 const router = new express.Router();
 
@@ -128,6 +133,6 @@ router.get("/delete", isLoggedIn, async (req, res) => {
   res.send("test");
 });
 
-module.exports = router;
+// module.exports = router;
 // export { router };
-// export default router;
+export default router;

@@ -2,34 +2,38 @@
 // cors =              require('cors'),
 // path =              require('path'),
 
-const bodyParser = require("body-parser"),
-  passport = require("passport"),
-  LocalStrategy = require("passport-local"),
-  flash = require("connect-flash"),
-  userRouter = require("./routers/user"),
-  classroomRouter = require("./routers/classroom"),
-  studentRouter = require("./routers/student"),
-  gameRouter = require("./routers/game"),
-  mainRouter = require("./routers/main"),
-  User = require("../db/models/user");
+// const bodyParser = require("body-parser"),
+//   passport = require("passport"),
+//   LocalStrategy = require("passport-local"),
+//   flash = require("connect-flash");
 
-const connectDB = require("../db/mongoose");
+// userRouter = require("./routers/user"),
+// classroomRouter = require("./routers/classroom"),
+// studentRouter = require("./routers/student"),
+// gameRouter = require("./routers/game"),
+// mainRouter = require("./routers/main"),
+// User = require("../db/models/user");
 
-// import userRouter from "./routers/user";
-// import classroomRouter from "./routers/classroom";
-// import studentRouter from "./routers/student";
-// import gameRouter from "./routers/game";
-// import mainRouter from "./routers/main";
-// import User from "../db/models/user";
-// import connectDB from "../db/mongoose";
-
+// const connectDB = require("../db/mongoose");
 import path from "path";
 import "dotenv/config";
 import express from "express";
 import webpack from "webpack";
-
+import bodyParser from "body-parser";
 import cors from "cors";
 import config from "../../webpack.dev.config.js";
+import passport from "passport";
+import localStrategy from "passport-local";
+import flash from "connect-flash";
+import connectDB from "../db/mongoose";
+import userRouter from "./routers/user";
+import classroomRouter from "./routers/classroom";
+import studentRouter from "./routers/student";
+import gameRouter from "./routers/game";
+import mainRouter from "./routers/main";
+import User from "../db/models/user";
+// import connectDB from "../db/mongoose";
+
 // import bodyParser from 'body-parser';
 
 // import routers from 'routers';

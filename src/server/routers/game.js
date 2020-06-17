@@ -1,9 +1,16 @@
-const express = require("express"),
-  User = require("../../db/models/user"),
-  Classroom = require("../../db/models/classroom"),
-  Student = require("../../db/models/student"),
-  gameHelper = require("./helpers/gameHelper"),
-  { isLoggedIn } = require("./middleware/auth");
+// const express = require("express"),
+//   User = require("../../db/models/user"),
+//   Classroom = require("../../db/models/classroom"),
+//   Student = require("../../db/models/student"),
+//   gameHelper = require("./helpers/gameHelper"),
+//   { isLoggedIn } = require("./middleware/auth");
+
+import express from "express";
+import User from "../../db/models/user";
+import Classroom from "../../db/models/classroom";
+import Student from "../../db/models/student";
+import gameHelper from "./helpers/gameHelper";
+import { isLoggedIn } from "./middleware/auth";
 
 const router = new express.Router();
 
@@ -128,6 +135,6 @@ router.post("/updateParticipation", async (req, res) => {
   });
 });
 
-module.exports = router;
+// module.exports = router;
 // export { router };
-// export default router;
+export default router;

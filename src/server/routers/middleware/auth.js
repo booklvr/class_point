@@ -12,6 +12,6 @@ middlewareObj.isLoggedIn = (req, res, next) => {
   res.render("pages/login");
 };
 
-// module.exports = middlewareObj;
+module.exports = middlewareObj;
 // export { middlewareObj };
-export default middlewareObj;
+// export default middlewareObj;

@@ -21,6 +21,6 @@ const upload = multer({
   // inMemory: true,
 }).single("csvfile");
 
-// module.exports = upload;
+module.exports = upload;
 // export { upload };
-export default upload;
+// export default upload;

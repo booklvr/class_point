@@ -1,11 +1,20 @@
-const express = require("express"),
-  url = require("url"),
-  multer = require("multer"),
-  upload = require("./middleware/csv.multer"),
-  User = require("../../db/models/user"),
-  Classroom = require("../../db/models/classroom"),
-  Student = require("../../db/models/student"),
-  { isLoggedIn } = require("./middleware/auth");
+// const express = require("express"),
+//   url = require("url"),
+//   multer = require("multer"),
+//   upload = require("./middleware/csv.multer"),
+//   User = require("../../db/models/user"),
+//   Classroom = require("../../db/models/classroom"),
+//   Student = require("../../db/models/student"),
+//   { isLoggedIn } = require("./middleware/auth");
+
+import express from "express";
+import url from "url";
+import multer from "multer";
+import upload from "./middleware/csv.multer";
+import User from "../../db/models/user";
+import Classroom from "../../db/models/classroom";
+import Student from "../../db/models/student";
+import { isLoggedIn } from "./middleware/auth";
 
 const router = new express.Router();
 
@@ -24,7 +33,7 @@ router.get("/", isLoggedIn, async (req, res) => {
       })
       .execPopulate();
 
-    classrooms = user.classrooms;
+    const classrooms = user.classrooms;
 
     const data = [];
 
@@ -208,6 +217,6 @@ router.get("/delete/:id", isLoggedIn, async (req, res) => {
 //     }
 // })
 
-module.exports = router;
+// module.exports = router;
 // export { router };
-// export default router;
+export default router;
