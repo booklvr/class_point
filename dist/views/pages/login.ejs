@@ -1,0 +1,33 @@
+<%- include ('../partials/head'); %>
+
+<header>
+    <%- include ('../partials/navbar'); %>
+
+</header>
+
+<main class="align-middle">
+    <div class="form__container">
+        <h2 class="title-2">Login</h2>
+        <form action="/users/login" method="POST" id="registerForm" class="form-main" autocomplete="off">
+            <div class="inputs__container-small">
+                <div class="form-control">
+                    <label class="" for="email">Email</label>
+                    <input class="" id="email" name="email" type="email" autofocus required/>
+                </div>
+                <div class="form-control">
+                    <label class="" for="password" data-info="Enter a password longer than 7 characters">Password</label>
+                    <input class="" id="password" name="password" type="password" required/>
+                </div>
+            </div>
+
+            <button class="submitBtn" type="submit">Login</button>
+        </form>
+        <p class="form-change-route">
+            Don't have an account? 
+            <a href="/users/">Register</a>
+        </p>
+    </div>
+    
+</main>
+<%- include ('../partials/footer'); %><script src="../../js/main.js"></script></body>
+</html>
